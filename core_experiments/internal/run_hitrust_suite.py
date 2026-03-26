@@ -12,7 +12,7 @@ from adapter_tuning import resolve_tuning_mode
 from attack_injection import apply_attack, mark_poisoned_clients, summarize_poisoned_ids
 from client_partition_hitrust import build_partition_audit
 from hierarchical_aggregation import aggregate_hierarchical, aggregate_krum_proxy, aggregate_mean, aggregate_median
-from hitrust_common import load_json, resolve_suite_paths, save_json, timestamp_utc
+from hitrust_common import load_json, resolve_repo_local_path, resolve_suite_paths, save_json, timestamp_utc
 from trust_scoring import compute_trust_score, normalize_scores
 
 
@@ -71,7 +71,7 @@ def main() -> None:
 
     rng = np.random.default_rng(seed)
     if partition_audit_file:
-        partition_audit = load_json(partition_audit_file)
+        partition_audit = load_json(resolve_repo_local_path(partition_audit_file, args.project_root))
         num_clients = int(partition_audit.get("num_clients", num_clients))
         partition_mode = str(partition_audit.get("partition_mode", partition_mode))
     else:

@@ -32,6 +32,42 @@ def save_json(path: str | Path, data: dict[str, Any]) -> None:
     p.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 
+def resolve_repo_local_path(path_value: str | Path, project_root: str | Path) -> Path:
+    raw = str(path_value).strip()
+    project = Path(project_root).resolve()
+    if not raw:
+        return project
+
+    path = Path(raw)
+    if path.exists():
+        return path.resolve()
+
+    if not path.is_absolute():
+        candidate = (project / path).resolve()
+        if candidate.exists():
+            return candidate
+
+    parts = list(path.parts)
+    anchor_names = {
+        project.name,
+        "core_experiments",
+        "data_hitrust",
+        "paper_hitrust",
+        "docs",
+        "tests",
+    }
+    for idx, part in enumerate(parts):
+        if part in anchor_names:
+            if part == project.name:
+                suffix = parts[idx + 1 :]
+            else:
+                suffix = parts[idx:]
+            candidate = project.joinpath(*suffix).resolve()
+            return candidate
+
+    return path.resolve()
+
+
 @dataclass
 class SuitePaths:
     project_root: Path

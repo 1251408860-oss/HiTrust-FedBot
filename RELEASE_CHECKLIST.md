@@ -29,6 +29,7 @@ This file summarizes what is intentionally included in the public repository and
 4. Run the smoke test
 5. Reproduce the public auxiliary validation if needed
 6. Reproduce the conditional-floor hardening package if needed
+7. Optionally run `core_experiments/reproduce/reproduce_reviewer_bundle.sh`
 
 ## Paper-Interpretation Constraints
 
@@ -39,6 +40,11 @@ The repository is aligned with the current manuscript framing:
 - semantic group coverage is part of the problem definition, not an afterthought
 - NSL-KDD is an auxiliary external-validation point
 - conditional trust-mass floor is a targeted hardening for the principal failure mode
+
+## Reproduction Boundary
+
+- The public repository supports rerunning the released paper artifact from bundled derived graphs.
+- The repository does not support reconstructing the internal pilot graphs from private upstream raw collection traces, because those traces are not part of the public release.
 
 ## Minimal Release Sanity Checks
 

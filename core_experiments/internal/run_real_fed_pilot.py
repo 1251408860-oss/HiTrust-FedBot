@@ -18,7 +18,7 @@ from torch_geometric.nn import SAGEConv
 from adapter_tuning import resolve_tuning_mode
 from attack_injection import apply_attack, mark_poisoned_clients, summarize_poisoned_ids
 from hierarchical_aggregation import aggregate_hierarchical, aggregate_krum_proxy, aggregate_mean, aggregate_median
-from hitrust_common import resolve_suite_paths, save_json, timestamp_utc
+from hitrust_common import resolve_repo_local_path, resolve_suite_paths, save_json, timestamp_utc
 from trust_scoring import compute_trust_score, normalize_scores
 
 
@@ -648,7 +648,7 @@ def main() -> None:
         run_name=str(cfg["run_name"]),
     )
 
-    graph_file = Path(str(cfg["graph_file"]))
+    graph_file = resolve_repo_local_path(str(cfg["graph_file"]), args.project_root)
     graph = torch.load(graph_file, weights_only=False, map_location="cpu")
     x = graph.x_norm.float()
     edge_index = graph.edge_index.long()

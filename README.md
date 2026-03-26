@@ -64,6 +64,7 @@ Suggested execution order:
 1. Run the smoke test to verify the environment and artifact plumbing.
 2. Reproduce the auxiliary public NSL-KDD validation.
 3. Reproduce the conditional trust-mass floor hardening package.
+4. If desired, run the bundled reviewer path that chains the supported public release steps.
 
 Smoke test:
 
@@ -87,6 +88,13 @@ cd /path/to/HiTrust-FedBot
 bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh
 ```
 
+Bundled reviewer path:
+
+```bash
+cd /path/to/HiTrust-FedBot
+bash core_experiments/reproduce/reproduce_reviewer_bundle.sh
+```
+
 ## Delivered Paper Outputs
 
 The most directly inspectable paper-facing artifacts are:
@@ -106,6 +114,15 @@ This artifact should be read with the same framing as the manuscript:
 - semantic group coverage is treated as a first-class concern
 - the auxiliary NSL-KDD path is a cross-domain stress test, not a same-distribution public bot benchmark
 - conditional trust-mass floor is a targeted hardening for the identified principal failure mode, not a universal replacement
+
+The reproducible public release scope is:
+
+- rerunning the bundled smoke test
+- rerunning the paper pipelines from the released derived graph artifacts
+- rerunning the public NSL-KDD auxiliary validation
+- rerunning the conditional hardening package
+
+The release does not include the private raw collection traces upstream of the internal pilot graphs. Accordingly, the repository supports paper-level artifact reproduction from the released derived graphs, but not a full rebuild from private raw collection.
 
 ## Additional Documentation
 
