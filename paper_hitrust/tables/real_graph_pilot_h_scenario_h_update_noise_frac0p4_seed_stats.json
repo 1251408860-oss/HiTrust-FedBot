@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_base_seed11",
+      "test_f1": 0.964616222101252,
+      "test_recall": 0.9486081370449678,
+      "test_fpr": 0.03917050691244239
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_base_seed22",
+      "test_f1": 0.950191570881226,
+      "test_recall": 0.9293361884368309,
+      "test_fpr": 0.0576036866359447
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_base_seed33",
+      "test_f1": 0.9628808864265929,
+      "test_recall": 0.930406852248394,
+      "test_fpr": 0.004608294930875576
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_base_seed44",
+      "test_f1": 0.9635761589403973,
+      "test_recall": 0.9346895074946466,
+      "test_fpr": 0.01152073732718894
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_base_seed55",
+      "test_f1": 0.9533735600658256,
+      "test_recall": 0.930406852248394,
+      "test_fpr": 0.04608294930875576
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9589276796830587,
+      "std": 0.006647622874505738
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9346895074946466,
+      "std": 0.008047803200413726
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.03179723502304147,
+      "std": 0.022774956300740216
+    }
+  }
+}

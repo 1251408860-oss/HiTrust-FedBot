@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_seed11",
+      "seed": 11,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_seed22",
+      "seed": 22,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_seed33",
+      "seed": 33,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_seed44",
+      "seed": 44,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_seed55",
+      "seed": 55,
+      "status": "ok"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "metric": "test_f1",
+  "reference": "sage",
+  "rows": [
+    {
+      "label": "feature_mlp",
+      "test_f1": {
+        "n": 5,
+        "mean": 0.9975308641975309,
+        "std": 0.005521155499999505
+      },
+      "p_value_vs_reference": 0.3739009663000665,
+      "t_stat_vs_reference": 0.9999999999999821
+    },
+    {
+      "label": "sage",
+      "test_f1": {
+        "n": 5,
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "p_value_vs_reference": null,
+      "t_stat_vs_reference": null
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "rows": [
+    {
+      "run_name": "public_nslkdd_median_sage_update_noise_frac0p4_keepall_seed11",
+      "seed": 11,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_nslkdd_median_sage_update_noise_frac0p4_keepall_seed22",
+      "seed": 22,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_nslkdd_median_sage_update_noise_frac0p4_keepall_seed33",
+      "seed": 33,
+      "status": "ok"
+    }
+  ]
+}

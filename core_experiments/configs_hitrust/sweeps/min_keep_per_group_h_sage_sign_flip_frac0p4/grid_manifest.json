@@ -1,0 +1,29 @@
+{
+  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4.json",
+  "rows": [
+    {
+      "id": "keep0",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_keep0",
+      "status": "ok",
+      "overrides": {
+        "min_keep_per_group": 0
+      }
+    },
+    {
+      "id": "keep1",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_keep1",
+      "status": "ok",
+      "overrides": {
+        "min_keep_per_group": 1
+      }
+    },
+    {
+      "id": "keep2",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_keep2",
+      "status": "ok",
+      "overrides": {
+        "min_keep_per_group": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed11",
+      "test_f1": 0.9693165969316596,
+      "test_recall": 0.9546703296703297,
+      "test_fpr": 0.03426791277258567
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed22",
+      "test_f1": 0.9343575418994413,
+      "test_recall": 0.9189560439560439,
+      "test_fpr": 0.10903426791277258
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed33",
+      "test_f1": 0.9483240223463686,
+      "test_recall": 0.9326923076923077,
+      "test_fpr": 0.0778816199376947
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed44",
+      "test_f1": 0.9223684210526316,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.2834890965732087
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed55",
+      "test_f1": 0.934131736526946,
+      "test_recall": 0.9642857142857143,
+      "test_fpr": 0.22741433021806853
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9416996637514095,
+      "std": 0.01796840522361393
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9467032967032967,
+      "std": 0.020009733774318864
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.14641744548286603,
+      "std": 0.10490628187216658
+    }
+  }
+}

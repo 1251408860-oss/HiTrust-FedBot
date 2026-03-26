@@ -1,0 +1,106 @@
+{
+  "timestamp_utc": "2026-03-20T08:39:50Z",
+  "config": {
+    "run_name": "real_graph_pilot_h_scenario_h_full_ft_clean",
+    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+    "seed": 42,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "tuning_mode": "full_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.0,
+    "poison_type": "none",
+    "poison_scale": 0.0,
+    "trust_threshold": 0.35
+  },
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "graph_stats": {
+    "num_nodes": 6985,
+    "num_edges": 9755,
+    "flow_nodes": 6984,
+    "train_nodes": 4248,
+    "val_nodes": 1368,
+    "test_nodes": 1368
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "poisoned_clients": [],
+  "tuning_info": {
+    "tuning_mode": "full_ft",
+    "trainable_ratio_hint": 1.0,
+    "comm_multiplier_hint": 1.0,
+    "total_params": 874,
+    "trainable_params": 874,
+    "trainable_ratio_actual": 1.0
+  },
+  "comm_cost": {
+    "tuning_mode": "full_ft",
+    "bytes_per_client_per_round_est": 3496,
+    "bytes_per_round_est": 34960,
+    "total_bytes_est": 174800
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.946101517530089,
+      "test_f1": 0.9370037056643727,
+      "test_recall": 0.9475374732334048,
+      "test_fpr": 0.16129032258064516,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9506966773847804,
+      "test_f1": 0.9397066811515481,
+      "test_recall": 0.9261241970021413,
+      "test_fpr": 0.0967741935483871,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9549356223175965,
+      "test_f1": 0.9434167573449401,
+      "test_recall": 0.9282655246252677,
+      "test_fpr": 0.08525345622119816,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9586688137412775,
+      "test_f1": 0.9471389645776567,
+      "test_recall": 0.930406852248394,
+      "test_fpr": 0.07373271889400922,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9618074233458849,
+      "test_f1": 0.9559955995599559,
+      "test_recall": 0.930406852248394,
+      "test_fpr": 0.03456221198156682,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9618074233458849,
+    "test_f1": 0.9559955995599559,
+    "test_recall": 0.930406852248394,
+    "test_fpr": 0.03456221198156682,
+    "kept_clients": 6,
+    "kept_poisoned_clients": 0
+  }
+}

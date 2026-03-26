@@ -1,0 +1,22 @@
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments and local env files
+.env
+.env.*
+.venv/
+venv/
+env/
+
+# Notebook and OS noise
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Local logs and duplicate figure mirrors
+paper_hitrust/logs/
+data_hitrust/bootstrap_graphs/logs/
+paper_hitrust/figures_sage_main/

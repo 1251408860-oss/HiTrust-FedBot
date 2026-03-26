@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "id": "hierarchical_seed42",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 42
+      }
+    },
+    {
+      "id": "mean_seed42",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 42
+      }
+    },
+    {
+      "id": "median_seed42",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 42
+      }
+    },
+    {
+      "id": "krum_seed42",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 42
+      }
+    }
+  ]
+}

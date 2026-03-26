@@ -1,0 +1,72 @@
+{
+  "rows": [
+    {
+      "seed": 11,
+      "test_f1": 0.9496204278812974,
+      "test_fpr": 0.102803738317757,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 1,
+      "benign_kept_poisoned_clients": 1,
+      "retained_poisoned_groups": [
+        "role:benign_user"
+      ],
+      "retained_poisoned_trust_norm": [
+        0.010577544515231217
+      ],
+      "benign_avg_trust_final_round": 0.005288772257615608,
+      "group_other_avg_trust_final_round": 0.9665140720046218
+    },
+    {
+      "seed": 22,
+      "test_f1": 0.9770034843205576,
+      "test_fpr": 0.018691588785046728,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0,
+      "benign_kept_poisoned_clients": 0,
+      "retained_poisoned_groups": [],
+      "retained_poisoned_trust_norm": [],
+      "benign_avg_trust_final_round": 0.5280461275296635,
+      "group_other_avg_trust_final_round": 0.4944793767685739
+    },
+    {
+      "seed": 33,
+      "test_f1": 0.9811320754716982,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0,
+      "benign_kept_poisoned_clients": 0,
+      "retained_poisoned_groups": [],
+      "retained_poisoned_trust_norm": [],
+      "benign_avg_trust_final_round": 0.9416632085104863,
+      "group_other_avg_trust_final_round": 0.5128741591382121
+    },
+    {
+      "seed": 44,
+      "test_f1": 0.9744651483781918,
+      "test_fpr": 0.04672897196261682,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0,
+      "benign_kept_poisoned_clients": 0,
+      "retained_poisoned_groups": [],
+      "retained_poisoned_trust_norm": [],
+      "benign_avg_trust_final_round": 0.5429235951412802,
+      "group_other_avg_trust_final_round": 0.9390605524500639
+    },
+    {
+      "seed": 55,
+      "test_f1": 0.9609483960948396,
+      "test_fpr": 0.0529595015576324,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 1,
+      "benign_kept_poisoned_clients": 0,
+      "retained_poisoned_groups": [
+        "group_other"
+      ],
+      "retained_poisoned_trust_norm": [
+        0.039969402297585964
+      ],
+      "benign_avg_trust_final_round": 0.8907639433432744,
+      "group_other_avg_trust_final_round": 0.03277224658964524
+    }
+  ]
+}

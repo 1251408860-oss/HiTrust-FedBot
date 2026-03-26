@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_update_noise_frac0p4_keepall_seed11",
+      "test_f1": 0.9895287958115184,
+      "test_recall": 0.9869451697127938,
+      "test_fpr": 0.008902077151335312,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_update_noise_frac0p4_keepall_seed22",
+      "test_f1": 0.9816753926701571,
+      "test_recall": 0.97911227154047,
+      "test_fpr": 0.017804154302670624,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_update_noise_frac0p4_keepall_seed33",
+      "test_f1": 0.9869109947643979,
+      "test_recall": 0.9843342036553525,
+      "test_fpr": 0.011869436201780416,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_update_noise_frac0p4_keepall_seed44",
+      "test_f1": 0.9869451697127938,
+      "test_recall": 0.9869451697127938,
+      "test_fpr": 0.01483679525222552,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_update_noise_frac0p4_keepall_seed55",
+      "test_f1": 0.9856957087126138,
+      "test_recall": 0.9895561357702349,
+      "test_fpr": 0.020771513353115726,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9861512123342963,
+      "std": 0.002866014350139682
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.985378590078329,
+      "std": 0.003959726080444664
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.01483679525222552,
+      "std": 0.0046918066174605035
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 10.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 4.0,
+      "std": 0.0
+    }
+  }
+}

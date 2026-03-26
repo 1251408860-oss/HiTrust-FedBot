@@ -1,0 +1,204 @@
+{
+  "timestamp_utc": "2026-03-23T03:59:45Z",
+  "config": {
+    "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sage_sign_flip_frac0p4",
+    "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_g_mimic_congest.pt",
+    "seed": 42,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "sign_flip",
+    "poison_scale": 1.0,
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1
+  },
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_g_mimic_congest.pt",
+  "graph_stats": {
+    "num_nodes": 1407,
+    "num_edges": 1657,
+    "flow_nodes": 1406,
+    "train_nodes": 1014,
+    "val_nodes": 210,
+    "test_nodes": 212
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_g_mimic_congest/arena_manifest_v2.json",
+    "topology_type": "three_tier",
+    "load_profile": "medium",
+    "bot_type_mode": "all_mimic"
+  },
+  "poisoned_clients": [
+    0,
+    4,
+    5,
+    6
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 3178,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.19446192573945878
+  },
+  "trust_filter": {
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1
+  },
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 1.0,
+      "test_f1": 0.9937888198757764,
+      "test_recall": 1.0,
+      "test_fpr": 0.007575757575757576,
+      "kept_clients": 5,
+      "kept_client_ids": [
+        3,
+        6,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 1
+    },
+    {
+      "round": 2,
+      "val_f1": 1.0,
+      "test_f1": 0.9937888198757764,
+      "test_recall": 1.0,
+      "test_fpr": 0.007575757575757576,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        2,
+        3,
+        5,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 2
+    },
+    {
+      "round": 3,
+      "val_f1": 1.0,
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0,
+      "kept_clients": 9,
+      "kept_client_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 3
+    },
+    {
+      "round": 4,
+      "val_f1": 1.0,
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0,
+      "kept_clients": 5,
+      "kept_client_ids": [
+        2,
+        3,
+        5,
+        6,
+        9
+      ],
+      "kept_groups": [
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 2
+    },
+    {
+      "round": 5,
+      "val_f1": 1.0,
+      "test_f1": 0.975609756097561,
+      "test_recall": 1.0,
+      "test_fpr": 0.030303030303030304,
+      "kept_clients": 7,
+      "kept_client_ids": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 2
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 1.0,
+    "test_f1": 0.975609756097561,
+    "test_recall": 1.0,
+    "test_fpr": 0.030303030303030304,
+    "kept_clients": 7,
+    "kept_client_ids": [
+      1,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "kept_groups": [
+      "role:benign_user",
+      "role:bot:mimic"
+    ],
+    "kept_poisoned_clients": 2
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "timestamp_utc": "2026-03-24T02:07:47Z",
+  "config": {
+    "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed33",
+    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+    "seed": 33,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "sign_flip",
+    "poison_scale": 1.0,
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1
+  },
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+  "dataset_info": {
+    "dataset_name": "NSL-KDD",
+    "dataset_variant": "train20_test_public_graph",
+    "dataset_source": "https://github.com/defcom17/NSL_KDD",
+    "split_scheme": "official_train_test_with_sampled_train_val"
+  },
+  "graph_stats": {
+    "num_nodes": 14000,
+    "num_edges": 73631,
+    "flow_nodes": 14000,
+    "train_nodes": 8000,
+    "val_nodes": 2000,
+    "test_nodes": 4000
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
+    "topology_type": "public_benchmark",
+    "load_profile": "public_benchmark",
+    "bot_type_mode": "intrusion_binary"
+  },
+  "poisoned_clients": [
+    3,
+    5,
+    6,
+    8
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 10218,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.060481503229594835
+  },
+  "trust_filter": {
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1
+  },
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.9746630727762803,
+      "test_f1": 0.7795054804996177,
+      "test_recall": 0.6714975845410628,
+      "test_fpr": 0.06790481717933837,
+      "kept_clients": 4,
+      "kept_client_ids": [
+        0,
+        4,
+        5,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 1
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9741379310344827,
+      "test_f1": 0.7802393684746627,
+      "test_recall": 0.6728151075977163,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        3,
+        4,
+        5,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 3
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9741379310344827,
+      "test_f1": 0.7808602697887503,
+      "test_recall": 0.6736934563021519,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 7,
+      "kept_client_ids": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 3
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9741379310344827,
+      "test_f1": 0.7808602697887503,
+      "test_recall": 0.6736934563021519,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 9,
+      "kept_client_ids": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 4
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9741379310344827,
+      "test_f1": 0.7814805393029763,
+      "test_recall": 0.6745718050065876,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 7,
+      "kept_client_ids": [
+        0,
+        2,
+        3,
+        4,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 2
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9741379310344827,
+    "test_f1": 0.7814805393029763,
+    "test_recall": 0.6745718050065876,
+    "test_fpr": 0.06848520023215322,
+    "kept_clients": 7,
+    "kept_client_ids": [
+      0,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9
+    ],
+    "kept_groups": [
+      "group_other",
+      "role:proto:icmp",
+      "role:proto:tcp"
+    ],
+    "kept_poisoned_clients": 2
+  }
+}

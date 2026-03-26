@@ -1,0 +1,41 @@
+{
+  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_clean.json",
+  "rows": [
+    {
+      "id": "hierarchical_seed42",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_hierarchical_seed42",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 42
+      }
+    },
+    {
+      "id": "mean_seed42",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_mean_seed42",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 42
+      }
+    },
+    {
+      "id": "median_seed42",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_median_seed42",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 42
+      }
+    },
+    {
+      "id": "krum_seed42",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_krum_seed42",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 42
+      }
+    }
+  ]
+}

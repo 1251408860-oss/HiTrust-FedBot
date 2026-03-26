@@ -1,0 +1,20 @@
+{
+  "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base_thr0p20_g3",
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "seed": 42,
+  "num_clients": 10,
+  "partition_mode": "topology_noniid",
+  "aggregation": "hierarchical",
+  "num_groups": 3,
+  "hidden_dim": 32,
+  "adapter_dim": 8,
+  "tuning_mode": "adapter_ft",
+  "global_warmup_epochs": 8,
+  "rounds": 5,
+  "local_epochs": 1,
+  "lr": 0.01,
+  "poison_frac": 0.4,
+  "poison_type": "sign_flip",
+  "poison_scale": 1.0,
+  "trust_threshold": 0.2
+}

@@ -1,0 +1,34 @@
+{
+  "reference": "condfloor",
+  "title_prefix": "Scenario-H_clean",
+  "rows": [
+    {
+      "label": "condfloor",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_clean_condfloor_seed_stats.json",
+      "test_f1_mean": 0.9775787671217149,
+      "test_f1_std": 0.0030260336657002467,
+      "test_fpr_mean": 0.018691588785046728,
+      "test_fpr_std": 0.01706300802196779,
+      "kept_poisoned_clients_mean": 0.0,
+      "kept_poisoned_clients_std": 0.0,
+      "kept_clients_mean": 7.8,
+      "n": 5,
+      "f1_p_value_vs_reference": null,
+      "f1_t_stat_vs_reference": null
+    },
+    {
+      "label": "static",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_clean_seed_stats.json",
+      "test_f1_mean": 0.9784892782069413,
+      "test_f1_std": 0.0028217619462674107,
+      "test_fpr_mean": 0.024299065420560748,
+      "test_fpr_std": 0.016097209573537462,
+      "kept_poisoned_clients_mean": 0.0,
+      "kept_poisoned_clients_std": 0.0,
+      "kept_clients_mean": 8.0,
+      "n": 5,
+      "f1_p_value_vs_reference": 0.6359493541044416,
+      "f1_t_stat_vs_reference": -0.4920715432764227
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "rows": [
+    {
+      "id": "head_only",
+      "overrides": {
+        "tuning_mode": "head_only"
+      }
+    },
+    {
+      "id": "adapter_ft",
+      "overrides": {
+        "tuning_mode": "adapter_ft"
+      }
+    },
+    {
+      "id": "full_ft",
+      "overrides": {
+        "tuning_mode": "full_ft"
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "rows": [
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed11",
+      "test_f1": 0.7618059159314997,
+      "test_recall": 0.6447079490557751,
+      "test_fpr": 0.0632617527568195,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed22",
+      "test_f1": 0.7631851085832472,
+      "test_recall": 0.6482213438735178,
+      "test_fpr": 0.06674405107370865,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed33",
+      "test_f1": 0.7801273885350318,
+      "test_recall": 0.6723759332454985,
+      "test_fpr": 0.06790481717933837,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 3,
+      "mean": 0.7683728043499263,
+      "std": 0.010203099044712317
+    },
+    "test_recall": {
+      "n": 3,
+      "mean": 0.6551017420582638,
+      "std": 0.015062677274182956
+    },
+    "test_fpr": {
+      "n": 3,
+      "mean": 0.06597020700328884,
+      "std": 0.0024163273354220957
+    },
+    "kept_clients": {
+      "n": 3,
+      "mean": 10.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 3,
+      "mean": 4.0,
+      "std": 0.0
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed11",
+      "seed": 11,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed22",
+      "seed": 22,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed33",
+      "seed": 33,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed44",
+      "seed": 44,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean_seed55",
+      "seed": 55,
+      "status": "ok"
+    }
+  ]
+}

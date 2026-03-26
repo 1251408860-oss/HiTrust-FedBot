@@ -1,0 +1,124 @@
+{
+  "rows": [
+    {
+      "client_id": 0,
+      "group": "group_0",
+      "is_poisoned": true,
+      "val_gain": 0.19549521488289112,
+      "similarity": 0.2722758236209213,
+      "stability": 0.48477790563790396,
+      "calibration_penalty": 0.15410484463517143,
+      "norm_penalty": 0.1520866559070302,
+      "trust_raw": 0.23768780870300205,
+      "trust_norm": 0.0
+    },
+    {
+      "client_id": 1,
+      "group": "group_1",
+      "is_poisoned": true,
+      "val_gain": 0.24511718623478174,
+      "similarity": 0.5620418439608996,
+      "stability": 0.3669697429326703,
+      "calibration_penalty": 0.1304944935040319,
+      "norm_penalty": 0.17783526164373942,
+      "trust_raw": 0.3087906556250222,
+      "trust_norm": 0.1795848762183234
+    },
+    {
+      "client_id": 2,
+      "group": "group_2",
+      "is_poisoned": false,
+      "val_gain": 0.5261562546600101,
+      "similarity": 0.697149908836137,
+      "stability": 0.7285160761706391,
+      "calibration_penalty": 0.16110167763915445,
+      "norm_penalty": 0.12293330185565586,
+      "trust_raw": 0.5425592580654262,
+      "trust_norm": 0.770015602276762
+    },
+    {
+      "client_id": 3,
+      "group": "group_0",
+      "is_poisoned": false,
+      "val_gain": 0.5938321168640422,
+      "similarity": 0.7884122307996209,
+      "stability": 0.5334864599538519,
+      "calibration_penalty": 0.024088173164094888,
+      "norm_penalty": 0.025308136331859098,
+      "trust_raw": 0.568554986804697,
+      "trust_norm": 0.835673166353866
+    },
+    {
+      "client_id": 4,
+      "group": "group_1",
+      "is_poisoned": false,
+      "val_gain": 0.7834156103578702,
+      "similarity": 0.5771263381508325,
+      "stability": 0.5306358895168009,
+      "calibration_penalty": 0.11018805951860546,
+      "norm_penalty": 0.03589305746123863,
+      "trust_raw": 0.5956417312531177,
+      "trust_norm": 0.9040863151868775
+    },
+    {
+      "client_id": 5,
+      "group": "group_2",
+      "is_poisoned": false,
+      "val_gain": 0.7677922250466416,
+      "similarity": 0.5676937653444185,
+      "stability": 0.6405106130482412,
+      "calibration_penalty": 0.07427217604661779,
+      "norm_penalty": 0.11714804083021102,
+      "trust_raw": 0.6059610543729002,
+      "trust_norm": 0.930149889928905
+    },
+    {
+      "client_id": 6,
+      "group": "group_0",
+      "is_poisoned": false,
+      "val_gain": 0.5670875663320343,
+      "similarity": 0.3525899515896606,
+      "stability": 0.5090029510602576,
+      "calibration_penalty": 0.19314157961891262,
+      "norm_penalty": 0.1644587174202932,
+      "trust_raw": 0.42725746810692183,
+      "trust_norm": 0.4787971971943568
+    },
+    {
+      "client_id": 7,
+      "group": "group_1",
+      "is_poisoned": false,
+      "val_gain": 0.7698242802864497,
+      "similarity": 0.4595219768757117,
+      "stability": 0.9345881886738618,
+      "calibration_penalty": 0.16017516271384302,
+      "norm_penalty": 0.13187133215702923,
+      "trust_raw": 0.633616733339059,
+      "trust_norm": 1.0
+    },
+    {
+      "client_id": 8,
+      "group": "group_2",
+      "is_poisoned": false,
+      "val_gain": 0.6196169012862731,
+      "similarity": 0.46334493710709546,
+      "stability": 0.49819548107674966,
+      "calibration_penalty": 0.1824684313778915,
+      "norm_penalty": 0.08748196927171387,
+      "trust_raw": 0.48080541603846644,
+      "trust_norm": 0.6140435623867119
+    },
+    {
+      "client_id": 9,
+      "group": "group_0",
+      "is_poisoned": false,
+      "val_gain": 0.4714180188771382,
+      "similarity": 0.4835739744903915,
+      "stability": 0.7396097844709479,
+      "calibration_penalty": 0.05181910092906171,
+      "norm_penalty": 0.15562442829570383,
+      "trust_raw": 0.47058138255026144,
+      "trust_norm": 0.5882206612243301
+    }
+  ]
+}

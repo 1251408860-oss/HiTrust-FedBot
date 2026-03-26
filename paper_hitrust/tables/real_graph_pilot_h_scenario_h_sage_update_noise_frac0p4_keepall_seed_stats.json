@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keepall_seed11",
+      "test_f1": 0.9761904761904763,
+      "test_recall": 0.9574175824175825,
+      "test_fpr": 0.009345794392523364,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keepall_seed22",
+      "test_f1": 0.9725931131412509,
+      "test_recall": 0.9505494505494505,
+      "test_fpr": 0.009345794392523364,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keepall_seed33",
+      "test_f1": 0.9811320754716982,
+      "test_recall": 0.9642857142857143,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keepall_seed44",
+      "test_f1": 0.9746053534660262,
+      "test_recall": 0.9752747252747253,
+      "test_fpr": 0.059190031152647975,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keepall_seed55",
+      "test_f1": 0.9615912208504801,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.09034267912772585,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9732224478239864,
+      "std": 0.007227816630501837
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9620879120879121,
+      "std": 0.00914261609466689
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.03426791277258567,
+      "std": 0.03865941945791544
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 10.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 4.0,
+      "std": 0.0
+    }
+  }
+}

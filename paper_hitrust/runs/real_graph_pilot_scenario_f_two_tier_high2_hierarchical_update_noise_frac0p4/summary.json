@@ -1,0 +1,111 @@
+{
+  "timestamp_utc": "2026-03-20T08:59:05Z",
+  "config": {
+    "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_update_noise_frac0p4",
+    "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_f_two_tier_high2.pt",
+    "seed": 42,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "update_noise",
+    "poison_scale": 0.2,
+    "trust_threshold": 0.35
+  },
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_f_two_tier_high2.pt",
+  "graph_stats": {
+    "num_nodes": 4794,
+    "num_edges": 6656,
+    "flow_nodes": 4793,
+    "train_nodes": 2855,
+    "val_nodes": 984,
+    "test_nodes": 954
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "poisoned_clients": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 874,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.7070938215102975
+  },
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.934018851756641,
+      "test_f1": 0.9187772925764192,
+      "test_recall": 0.9376114081996435,
+      "test_fpr": 0.1475826972010178,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9429323968393328,
+      "test_f1": 0.9291479820627803,
+      "test_recall": 0.9233511586452763,
+      "test_fpr": 0.0916030534351145,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9474605954465849,
+      "test_f1": 0.9339285714285716,
+      "test_recall": 0.9322638146167558,
+      "test_fpr": 0.0916030534351145,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9518810148731409,
+      "test_f1": 0.9385574354407837,
+      "test_recall": 0.9393939393939394,
+      "test_fpr": 0.089058524173028,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9536307961504812,
+      "test_f1": 0.9455842997323819,
+      "test_recall": 0.9447415329768271,
+      "test_fpr": 0.07633587786259542,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9536307961504812,
+    "test_f1": 0.9455842997323819,
+    "test_recall": 0.9447415329768271,
+    "test_fpr": 0.07633587786259542,
+    "kept_clients": 6,
+    "kept_poisoned_clients": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "artifact_version": "2026-03-24",
+  "public_validation": {
+    "graph": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+    "build_summary": "data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_build_summary.json",
+    "trust_vs_keepall_table": "paper_hitrust/tables/public_nslkdd_trust_vs_keepall_seed_comparison.json",
+    "trust_vs_keepall_figure": "paper_hitrust/figures/public_nslkdd_trust_vs_keepall_seed_comparison.png",
+    "baseline_table": "paper_hitrust/tables/public_nslkdd_update_noise_baseline_comparison.json",
+    "baseline_figure": "paper_hitrust/figures/public_nslkdd_update_noise_baseline_comparison.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_public_nslkdd_validation.sh"
+  },
+  "conditional_floor_validation": {
+    "scenario_h_table": "paper_hitrust/tables/scenario_h_update_noise_condfloor_comparison.json",
+    "scenario_h_figure": "paper_hitrust/figures/scenario_h_update_noise_condfloor_comparison.png",
+    "scenario_e_table": "paper_hitrust/tables/scenario_e_update_noise_condfloor_comparison.json",
+    "scenario_e_figure": "paper_hitrust/figures/scenario_e_update_noise_condfloor_comparison.png",
+    "public_table": "paper_hitrust/tables/public_nslkdd_update_noise_condfloor_comparison.json",
+    "public_figure": "paper_hitrust/figures/public_nslkdd_update_noise_condfloor_comparison.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
+  },
+  "docs": {
+    "artifact_release_notes": "docs/ARTIFACT_RELEASE_20260324.md",
+    "data_availability_notes": "docs/DATA_AVAILABILITY_20260324.md",
+    "submission_checklist": "docs/CYBERSECURITY_SUBMISSION_CHECKLIST_20260324.md",
+    "cover_letter_draft": "docs/CYBERSECURITY_COVER_LETTER_20260324.md",
+    "title_page_template": "docs/CYBERSECURITY_TITLE_PAGE_TEMPLATE_20260324.md"
+  }
+}

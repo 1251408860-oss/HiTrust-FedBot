@@ -1,0 +1,207 @@
+{
+  "timestamp_utc": "2026-03-23T05:10:47Z",
+  "config": {
+    "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keep0",
+    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+    "seed": 42,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "update_noise",
+    "poison_scale": 0.2,
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 0
+  },
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "graph_stats": {
+    "num_nodes": 6985,
+    "num_edges": 9755,
+    "flow_nodes": 6984,
+    "train_nodes": 4946,
+    "val_nodes": 1047,
+    "test_nodes": 1049
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
+    "topology_type": "three_tier",
+    "load_profile": "high",
+    "bot_type_mode": "mimic_heavy"
+  },
+  "poisoned_clients": [
+    0,
+    4,
+    5,
+    6
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 3178,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.19446192573945878
+  },
+  "trust_filter": {
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 0
+  },
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.9626666666666667,
+      "test_f1": 0.9695290858725762,
+      "test_recall": 0.9615384615384616,
+      "test_fpr": 0.04984423676012461,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9640479360852198,
+      "test_f1": 0.970954356846473,
+      "test_recall": 0.9642857142857143,
+      "test_fpr": 0.04984423676012461,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9635036496350364,
+      "test_f1": 0.9703652653342523,
+      "test_recall": 0.967032967032967,
+      "test_fpr": 0.059190031152647975,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9641909814323607,
+      "test_f1": 0.9718213058419244,
+      "test_recall": 0.9711538461538461,
+      "test_fpr": 0.06230529595015576,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9635520212060967,
+      "test_f1": 0.970487302676733,
+      "test_recall": 0.9711538461538461,
+      "test_fpr": 0.06853582554517133,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:benign_user",
+        "role:bot:mimic"
+      ],
+      "kept_poisoned_clients": 0
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9635520212060967,
+    "test_f1": 0.970487302676733,
+    "test_recall": 0.9711538461538461,
+    "test_fpr": 0.06853582554517133,
+    "kept_clients": 6,
+    "kept_client_ids": [
+      1,
+      2,
+      3,
+      7,
+      8,
+      9
+    ],
+    "kept_groups": [
+      "group_other",
+      "role:benign_user",
+      "role:bot:mimic"
+    ],
+    "kept_poisoned_clients": 0
+  }
+}

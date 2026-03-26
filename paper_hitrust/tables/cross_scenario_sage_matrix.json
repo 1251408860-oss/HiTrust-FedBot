@@ -1,0 +1,99 @@
+{
+  "aggregation": "hierarchical",
+  "conditions": [
+    "sage_clean",
+    "sage_sign_flip_frac0p4"
+  ],
+  "rows": [
+    {
+      "condition": "sage_clean",
+      "scenario_name": "scenario_d_three_tier_low2",
+      "run_name": "real_graph_pilot_scenario_d_three_tier_low2_hierarchical_sage_clean",
+      "test_f1": 0.9965811965811966,
+      "test_recall": 1.0,
+      "test_fpr": 0.037383177570093455,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "condition": "sage_clean",
+      "scenario_name": "scenario_e_three_tier_high2",
+      "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical_sage_clean",
+      "test_f1": 0.9826388888888888,
+      "test_recall": 0.987783595113438,
+      "test_fpr": 0.040123456790123455,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "condition": "sage_clean",
+      "scenario_name": "scenario_f_two_tier_high2",
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_clean",
+      "test_f1": 0.974293059125964,
+      "test_recall": 0.9895561357702349,
+      "test_fpr": 0.04747774480712166,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "condition": "sage_clean",
+      "scenario_name": "scenario_g_mimic_congest",
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sage_clean",
+      "test_f1": 0.975609756097561,
+      "test_recall": 1.0,
+      "test_fpr": 0.030303030303030304,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "condition": "sage_clean",
+      "scenario_name": "scenario_h_mimic_heavy_overlap",
+      "run_name": "real_graph_pilot_scenario_h_mimic_heavy_overlap_hierarchical_sage_clean",
+      "test_f1": 0.9691991786447638,
+      "test_recall": 0.9725274725274725,
+      "test_fpr": 0.0778816199376947,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "condition": "sage_sign_flip_frac0p4",
+      "scenario_name": "scenario_d_three_tier_low2",
+      "run_name": "real_graph_pilot_scenario_d_three_tier_low2_hierarchical_sage_sign_flip_frac0p4",
+      "test_f1": 0.9965811965811966,
+      "test_recall": 1.0,
+      "test_fpr": 0.037383177570093455,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "condition": "sage_sign_flip_frac0p4",
+      "scenario_name": "scenario_e_three_tier_high2",
+      "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical_sage_sign_flip_frac0p4",
+      "test_f1": 0.9834926151172894,
+      "test_recall": 0.987783595113438,
+      "test_fpr": 0.037037037037037035,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "condition": "sage_sign_flip_frac0p4",
+      "scenario_name": "scenario_f_two_tier_high2",
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4",
+      "test_f1": 0.9720372836218375,
+      "test_recall": 0.9530026109660574,
+      "test_fpr": 0.008902077151335312,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "condition": "sage_sign_flip_frac0p4",
+      "scenario_name": "scenario_g_mimic_congest",
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sage_sign_flip_frac0p4",
+      "test_f1": 0.975609756097561,
+      "test_recall": 1.0,
+      "test_fpr": 0.030303030303030304,
+      "kept_poisoned_clients": 2
+    },
+    {
+      "condition": "sage_sign_flip_frac0p4",
+      "scenario_name": "scenario_h_mimic_heavy_overlap",
+      "run_name": "real_graph_pilot_scenario_h_mimic_heavy_overlap_hierarchical_sage_sign_flip_frac0p4",
+      "test_f1": 0.9695712309820194,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.0529595015576324,
+      "kept_poisoned_clients": 4
+    }
+  ]
+}

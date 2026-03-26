@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sign_flip_frac0p4_seed11",
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sign_flip_frac0p4_seed22",
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sign_flip_frac0p4_seed33",
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sign_flip_frac0p4_seed44",
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_sign_flip_frac0p4_seed55",
+      "test_f1": 1.0,
+      "test_recall": 1.0,
+      "test_fpr": 0.0
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 1.0,
+      "std": 0.0
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.0,
+      "std": 0.0
+    }
+  }
+}

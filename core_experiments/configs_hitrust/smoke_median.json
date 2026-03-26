@@ -1,0 +1,15 @@
+{
+  "run_name": "smoke_median",
+  "seed": 42,
+  "num_clients": 10,
+  "num_groups": 3,
+  "partition_mode": "topology_noniid",
+  "aggregation": "median",
+  "tuning_mode": "adapter_ft",
+  "rounds": 20,
+  "update_dim": 32,
+  "poison_frac": 0.2,
+  "poison_type": "update_noise",
+  "poison_scale": 0.4,
+  "trust_threshold": 0.35
+}

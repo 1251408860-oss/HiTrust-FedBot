@@ -1,0 +1,89 @@
+{
+  "timestamp_utc": "2026-03-20T08:20:54Z",
+  "config": {
+    "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical",
+    "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
+    "seed": 42,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.2,
+    "poison_type": "update_noise",
+    "poison_scale": 0.2,
+    "trust_threshold": 0.35
+  },
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
+  "graph_stats": {
+    "num_nodes": 5976,
+    "num_edges": 8142,
+    "flow_nodes": 5975,
+    "train_nodes": 3566,
+    "val_nodes": 1195,
+    "test_nodes": 1214
+  },
+  "poisoned_clients": [
+    0,
+    1
+  ],
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.8624919302775985,
+      "test_f1": 0.8616125150421179,
+      "test_recall": 0.8905472636815921,
+      "test_fpr": 0.3463414634146341,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9046705054382597,
+      "test_f1": 0.9057714958775029,
+      "test_recall": 0.9564676616915423,
+      "test_fpr": 0.3048780487804878,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9432432432432432,
+      "test_f1": 0.9448319594166138,
+      "test_recall": 0.9266169154228856,
+      "test_fpr": 0.06829268292682927,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9706275033377837,
+      "test_f1": 0.9605015673981191,
+      "test_recall": 0.9527363184079602,
+      "test_fpr": 0.06097560975609756,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9760638297872342,
+      "test_f1": 0.9680250783699059,
+      "test_recall": 0.9601990049751243,
+      "test_fpr": 0.046341463414634146,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9760638297872342,
+    "test_f1": 0.9680250783699059,
+    "test_recall": 0.9601990049751243,
+    "test_fpr": 0.046341463414634146,
+    "kept_clients": 8,
+    "kept_poisoned_clients": 0
+  }
+}

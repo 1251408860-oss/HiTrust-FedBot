@@ -1,0 +1,185 @@
+{
+  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4.json",
+  "rows": [
+    {
+      "id": "hierarchical_seed11",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_hierarchical_seed11",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 11
+      }
+    },
+    {
+      "id": "hierarchical_seed22",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_hierarchical_seed22",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 22
+      }
+    },
+    {
+      "id": "hierarchical_seed33",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_hierarchical_seed33",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 33
+      }
+    },
+    {
+      "id": "hierarchical_seed44",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_hierarchical_seed44",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 44
+      }
+    },
+    {
+      "id": "hierarchical_seed55",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_hierarchical_seed55",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 55
+      }
+    },
+    {
+      "id": "mean_seed11",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_mean_seed11",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 11
+      }
+    },
+    {
+      "id": "mean_seed22",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_mean_seed22",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 22
+      }
+    },
+    {
+      "id": "mean_seed33",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_mean_seed33",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 33
+      }
+    },
+    {
+      "id": "mean_seed44",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_mean_seed44",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 44
+      }
+    },
+    {
+      "id": "mean_seed55",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_mean_seed55",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 55
+      }
+    },
+    {
+      "id": "median_seed11",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_median_seed11",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 11
+      }
+    },
+    {
+      "id": "median_seed22",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_median_seed22",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 22
+      }
+    },
+    {
+      "id": "median_seed33",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_median_seed33",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 33
+      }
+    },
+    {
+      "id": "median_seed44",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_median_seed44",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 44
+      }
+    },
+    {
+      "id": "median_seed55",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_median_seed55",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 55
+      }
+    },
+    {
+      "id": "krum_seed11",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_krum_seed11",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 11
+      }
+    },
+    {
+      "id": "krum_seed22",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_krum_seed22",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 22
+      }
+    },
+    {
+      "id": "krum_seed33",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_krum_seed33",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 33
+      }
+    },
+    {
+      "id": "krum_seed44",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_krum_seed44",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 44
+      }
+    },
+    {
+      "id": "krum_seed55",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_krum_seed55",
+      "status": "ok",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 55
+      }
+    }
+  ]
+}

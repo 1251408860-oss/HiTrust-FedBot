@@ -1,0 +1,39 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_seed11",
+      "test_f1": 0.9520174482006544,
+      "test_recall": 0.9346895074946466,
+      "test_fpr": 0.06221198156682028
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_seed22",
+      "test_f1": 0.9410492157923201,
+      "test_recall": 0.9314775160599572,
+      "test_fpr": 0.10368663594470046
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_seed33",
+      "test_f1": 0.9478935698447892,
+      "test_recall": 0.9154175588865097,
+      "test_fpr": 0.03456221198156682
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 3,
+      "mean": 0.9469867446125879,
+      "std": 0.005540061330177312
+    },
+    "test_recall": {
+      "n": 3,
+      "mean": 0.9271948608137045,
+      "std": 0.010325107881148748
+    },
+    "test_fpr": {
+      "n": 3,
+      "mean": 0.06682027649769585,
+      "std": 0.03479186375700806
+    }
+  }
+}

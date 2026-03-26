@@ -1,0 +1,144 @@
+{
+  "rows": [
+    {
+      "id": "hierarchical_seed11",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 11
+      }
+    },
+    {
+      "id": "hierarchical_seed22",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 22
+      }
+    },
+    {
+      "id": "hierarchical_seed33",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 33
+      }
+    },
+    {
+      "id": "hierarchical_seed44",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 44
+      }
+    },
+    {
+      "id": "hierarchical_seed55",
+      "overrides": {
+        "aggregation": "hierarchical",
+        "seed": 55
+      }
+    },
+    {
+      "id": "mean_seed11",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 11
+      }
+    },
+    {
+      "id": "mean_seed22",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 22
+      }
+    },
+    {
+      "id": "mean_seed33",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 33
+      }
+    },
+    {
+      "id": "mean_seed44",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 44
+      }
+    },
+    {
+      "id": "mean_seed55",
+      "overrides": {
+        "aggregation": "mean",
+        "seed": 55
+      }
+    },
+    {
+      "id": "median_seed11",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 11
+      }
+    },
+    {
+      "id": "median_seed22",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 22
+      }
+    },
+    {
+      "id": "median_seed33",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 33
+      }
+    },
+    {
+      "id": "median_seed44",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 44
+      }
+    },
+    {
+      "id": "median_seed55",
+      "overrides": {
+        "aggregation": "median",
+        "seed": 55
+      }
+    },
+    {
+      "id": "krum_seed11",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 11
+      }
+    },
+    {
+      "id": "krum_seed22",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 22
+      }
+    },
+    {
+      "id": "krum_seed33",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 33
+      }
+    },
+    {
+      "id": "krum_seed44",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 44
+      }
+    },
+    {
+      "id": "krum_seed55",
+      "overrides": {
+        "aggregation": "krum",
+        "seed": 55
+      }
+    }
+  ]
+}

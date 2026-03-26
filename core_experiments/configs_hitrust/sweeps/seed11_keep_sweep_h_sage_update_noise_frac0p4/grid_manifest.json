@@ -1,0 +1,32 @@
+{
+  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4.json",
+  "rows": [
+    {
+      "id": "seed11_keep0",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed11_keep0",
+      "status": "ok",
+      "overrides": {
+        "seed": 11,
+        "min_keep_per_group": 0
+      }
+    },
+    {
+      "id": "seed11_keep1",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed11_keep1",
+      "status": "ok",
+      "overrides": {
+        "seed": 11,
+        "min_keep_per_group": 1
+      }
+    },
+    {
+      "id": "seed11_keep2",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed11_keep2",
+      "status": "ok",
+      "overrides": {
+        "seed": 11,
+        "min_keep_per_group": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "backbone": "feature_mlp",
+      "condition": "clean",
+      "test_f1_mean": 0.9975308641975309,
+      "test_f1_std": 0.005521155499999505,
+      "test_fpr_mean": 0.0030303030303030303,
+      "test_fpr_std": 0.006775963568181181
+    },
+    {
+      "backbone": "feature_mlp",
+      "condition": "sign_flip_frac0p4",
+      "test_f1_mean": 1.0,
+      "test_f1_std": 0.0,
+      "test_fpr_mean": 0.0,
+      "test_fpr_std": 0.0
+    },
+    {
+      "backbone": "sage",
+      "condition": "clean",
+      "test_f1_mean": 1.0,
+      "test_f1_std": 0.0,
+      "test_fpr_mean": 0.0,
+      "test_fpr_std": 0.0
+    },
+    {
+      "backbone": "sage",
+      "condition": "sign_flip_frac0p4",
+      "test_f1_mean": 0.9987577639751553,
+      "test_f1_std": 0.002777724195651918,
+      "test_fpr_mean": 0.0015151515151515152,
+      "test_fpr_std": 0.0033879817840905906
+    }
+  ],
+  "delta_rows": [
+    {
+      "condition": "clean",
+      "sage_minus_feature_f1": 0.0024691358024691024,
+      "sage_minus_feature_fpr": -0.0030303030303030303
+    },
+    {
+      "condition": "sign_flip_frac0p4",
+      "sage_minus_feature_f1": -0.001242236024844745,
+      "sage_minus_feature_fpr": 0.0015151515151515152
+    }
+  ]
+}

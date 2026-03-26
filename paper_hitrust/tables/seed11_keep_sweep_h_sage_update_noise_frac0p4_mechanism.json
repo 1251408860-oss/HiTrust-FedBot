@@ -1,0 +1,62 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed11_keep0",
+      "seed": 11,
+      "poison_type": "update_noise",
+      "poison_frac": 0.4,
+      "min_keep_per_group": 0,
+      "test_f1": 0.980528511821975,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0,
+      "benign_total_clients": 2,
+      "benign_kept_clients": 0,
+      "benign_dropped_clients": 2,
+      "benign_kept_poisoned_clients": 0,
+      "benign_avg_trust_final_round": 0.008264072101098564,
+      "max_retained_poisoned_trust_norm": 0.0,
+      "retained_poisoned_groups": []
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed11_keep1",
+      "seed": 11,
+      "poison_type": "update_noise",
+      "poison_frac": 0.4,
+      "min_keep_per_group": 1,
+      "test_f1": 0.9496204278812974,
+      "test_fpr": 0.102803738317757,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 1,
+      "benign_total_clients": 2,
+      "benign_kept_clients": 1,
+      "benign_dropped_clients": 1,
+      "benign_kept_poisoned_clients": 1,
+      "benign_avg_trust_final_round": 0.005288772257615608,
+      "max_retained_poisoned_trust_norm": 0.010577544515231217,
+      "retained_poisoned_groups": [
+        "role:benign_user"
+      ]
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed11_keep2",
+      "seed": 11,
+      "poison_type": "update_noise",
+      "poison_frac": 0.4,
+      "min_keep_per_group": 2,
+      "test_f1": 0.9779005524861878,
+      "test_fpr": 0.037383177570093455,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 2,
+      "benign_total_clients": 2,
+      "benign_kept_clients": 2,
+      "benign_dropped_clients": 0,
+      "benign_kept_poisoned_clients": 2,
+      "benign_avg_trust_final_round": 0.029505271461154794,
+      "max_retained_poisoned_trust_norm": 0.05901054292230959,
+      "retained_poisoned_groups": [
+        "role:benign_user"
+      ]
+    }
+  ]
+}

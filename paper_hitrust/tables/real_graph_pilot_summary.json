@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical",
+      "aggregation": "hierarchical",
+      "partition_mode": "topology_noniid",
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+      "test_f1": 0.9615592853275582,
+      "test_recall": 0.9507494646680942,
+      "test_fpr": 0.0576036866359447,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_krum",
+      "aggregation": "krum",
+      "partition_mode": "topology_noniid",
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+      "test_f1": 0.9593667546174144,
+      "test_recall": 0.9732334047109208,
+      "test_fpr": 0.11981566820276497,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_mean",
+      "aggregation": "mean",
+      "partition_mode": "topology_noniid",
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+      "test_f1": 0.9609544468546637,
+      "test_recall": 0.9486081370449678,
+      "test_fpr": 0.055299539170506916,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_median",
+      "aggregation": "median",
+      "partition_mode": "topology_noniid",
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+      "test_f1": 0.9583991574512902,
+      "test_recall": 0.974304068522484,
+      "test_fpr": 0.12672811059907835,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_seed11",
+      "test_f1": 0.980528511821975,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_seed22",
+      "test_f1": 0.9783670621074668,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_seed33",
+      "test_f1": 0.9825540823447313,
+      "test_recall": 0.967032967032967,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_seed44",
+      "test_f1": 0.9759450171821307,
+      "test_recall": 0.9752747252747253,
+      "test_fpr": 0.0529595015576324,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_seed55",
+      "test_f1": 0.9812889812889811,
+      "test_recall": 0.9725274725274725,
+      "test_fpr": 0.021806853582554516,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.979736730949057,
+      "std": 0.002608972641728102
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9692307692307692,
+      "std": 0.00481749393317311
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.02118380062305296,
+      "std": 0.01900056159747901
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 8.6,
+      "std": 0.8944271909999159
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 3.6,
+      "std": 0.5477225575051661
+    }
+  }
+}

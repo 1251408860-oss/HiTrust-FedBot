@@ -1,0 +1,88 @@
+{
+  "rows": [
+    {
+      "id": "thr0p20_g2",
+      "overrides": {
+        "trust_threshold": 0.2,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p20_g3",
+      "overrides": {
+        "trust_threshold": 0.2,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p20_g5",
+      "overrides": {
+        "trust_threshold": 0.2,
+        "num_groups": 5
+      }
+    },
+    {
+      "id": "thr0p35_g2",
+      "overrides": {
+        "trust_threshold": 0.35,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p35_g3",
+      "overrides": {
+        "trust_threshold": 0.35,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p35_g5",
+      "overrides": {
+        "trust_threshold": 0.35,
+        "num_groups": 5
+      }
+    },
+    {
+      "id": "thr0p50_g2",
+      "overrides": {
+        "trust_threshold": 0.5,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p50_g3",
+      "overrides": {
+        "trust_threshold": 0.5,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p50_g5",
+      "overrides": {
+        "trust_threshold": 0.5,
+        "num_groups": 5
+      }
+    },
+    {
+      "id": "thr0p65_g2",
+      "overrides": {
+        "trust_threshold": 0.65,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p65_g3",
+      "overrides": {
+        "trust_threshold": 0.65,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p65_g5",
+      "overrides": {
+        "trust_threshold": 0.65,
+        "num_groups": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_adapter_ft",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "trainable_ratio_actual": 0.19446192573945878,
+      "bytes_per_round_est": 24720,
+      "total_bytes_est": 123600,
+      "test_f1": 0.9695712309820194,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.0529595015576324
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_full_ft",
+      "tuning_mode": "full_ft",
+      "trainable_params": 3178,
+      "trainable_ratio_actual": 1.0,
+      "bytes_per_round_est": 127120,
+      "total_bytes_est": 635600,
+      "test_f1": 0.9665985003408316,
+      "test_recall": 0.9739010989010989,
+      "test_fpr": 0.09345794392523364
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_head_only",
+      "tuning_mode": "head_only",
+      "trainable_params": 66,
+      "trainable_ratio_actual": 0.02076777847702958,
+      "bytes_per_round_est": 2640,
+      "total_bytes_est": 13200,
+      "test_f1": 0.9691569568197395,
+      "test_recall": 0.9711538461538461,
+      "test_fpr": 0.07476635514018691
+    }
+  ]
+}

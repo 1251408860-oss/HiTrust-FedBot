@@ -1,0 +1,25 @@
+{
+  "rows": [
+    {
+      "id": "seed11_keep0",
+      "overrides": {
+        "seed": 11,
+        "min_keep_per_group": 0
+      }
+    },
+    {
+      "id": "seed11_keep1",
+      "overrides": {
+        "seed": 11,
+        "min_keep_per_group": 1
+      }
+    },
+    {
+      "id": "seed11_keep2",
+      "overrides": {
+        "seed": 11,
+        "min_keep_per_group": 2
+      }
+    }
+  ]
+}

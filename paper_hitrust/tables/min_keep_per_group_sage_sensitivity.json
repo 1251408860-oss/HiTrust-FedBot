@@ -1,0 +1,85 @@
+{
+  "rows": [
+    {
+      "condition": "clean",
+      "min_keep_per_group": 0,
+      "test_f1": 0.9665985003408316,
+      "test_fpr": 0.09345794392523364,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 0,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_keep0"
+    },
+    {
+      "condition": "clean",
+      "min_keep_per_group": 1,
+      "test_f1": 0.9691991786447638,
+      "test_fpr": 0.0778816199376947,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 0,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_keep1"
+    },
+    {
+      "condition": "clean",
+      "min_keep_per_group": 2,
+      "test_f1": 0.9691991786447638,
+      "test_fpr": 0.0778816199376947,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 0,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean_keep2"
+    },
+    {
+      "condition": "sign_flip_frac0p4",
+      "min_keep_per_group": 0,
+      "test_f1": 0.9691569568197395,
+      "test_fpr": 0.07476635514018691,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_keep0"
+    },
+    {
+      "condition": "sign_flip_frac0p4",
+      "min_keep_per_group": 1,
+      "test_f1": 0.9695712309820194,
+      "test_fpr": 0.0529595015576324,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_keep1"
+    },
+    {
+      "condition": "sign_flip_frac0p4",
+      "min_keep_per_group": 2,
+      "test_f1": 0.9685362517099865,
+      "test_fpr": 0.08099688473520249,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_keep2"
+    },
+    {
+      "condition": "update_noise_frac0p4",
+      "min_keep_per_group": 0,
+      "test_f1": 0.970487302676733,
+      "test_fpr": 0.06853582554517133,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keep0"
+    },
+    {
+      "condition": "update_noise_frac0p4",
+      "min_keep_per_group": 1,
+      "test_f1": 0.970487302676733,
+      "test_fpr": 0.06853582554517133,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keep1"
+    },
+    {
+      "condition": "update_noise_frac0p4",
+      "min_keep_per_group": 2,
+      "test_f1": 0.9711538461538461,
+      "test_fpr": 0.06542056074766354,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 1,
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keep2"
+    }
+  ]
+}

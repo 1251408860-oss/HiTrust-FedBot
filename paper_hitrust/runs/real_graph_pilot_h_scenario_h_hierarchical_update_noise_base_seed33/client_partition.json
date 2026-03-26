@@ -1,0 +1,4 @@
+{
+  "num_clients": 10,
+  "partition_mode": "topology_noniid"
+}

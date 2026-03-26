@@ -1,0 +1,29 @@
+{
+  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4.json",
+  "rows": [
+    {
+      "id": "head_only",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_head_only",
+      "status": "ok",
+      "overrides": {
+        "tuning_mode": "head_only"
+      }
+    },
+    {
+      "id": "adapter_ft",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_adapter_ft",
+      "status": "ok",
+      "overrides": {
+        "tuning_mode": "adapter_ft"
+      }
+    },
+    {
+      "id": "full_ft",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_full_ft",
+      "status": "ok",
+      "overrides": {
+        "tuning_mode": "full_ft"
+      }
+    }
+  ]
+}

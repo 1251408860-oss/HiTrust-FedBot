@@ -1,0 +1,40 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base_sign_flip_frac0p0",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.0,
+      "test_f1": 0.9387320191795417,
+      "test_recall": 0.943254817987152,
+      "test_fpr": 0.14285714285714285,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base_sign_flip_frac0p2",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.2,
+      "test_f1": 0.9392324093816632,
+      "test_recall": 0.943254817987152,
+      "test_fpr": 0.14055299539170507,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base_sign_flip_frac0p4",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.4,
+      "test_f1": 0.9343299519487452,
+      "test_recall": 0.936830835117773,
+      "test_fpr": 0.14746543778801843,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base_sign_flip_frac0p6",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.6,
+      "test_f1": 0.9323467230443975,
+      "test_recall": 0.9443254817987152,
+      "test_fpr": 0.17511520737327188,
+      "kept_poisoned_clients": 5
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "scenario_name": "scenario_d_three_tier_low2",
+      "run_name": "real_graph_pilot_scenario_d_three_tier_low2_hierarchical_clean",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_e_three_tier_high2",
+      "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical_clean",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_f_two_tier_high2",
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_clean",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_g_mimic_congest",
+      "run_name": "real_graph_pilot_scenario_g_mimic_congest_hierarchical_clean",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_h_mimic_heavy_overlap",
+      "run_name": "real_graph_pilot_scenario_h_mimic_heavy_overlap_hierarchical_clean",
+      "status": "ok"
+    }
+  ]
+}

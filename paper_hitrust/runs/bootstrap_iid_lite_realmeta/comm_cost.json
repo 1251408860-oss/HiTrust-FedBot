@@ -1,0 +1,7 @@
+{
+  "tuning_mode": "adapter_ft",
+  "trainable_ratio": 0.12,
+  "comm_multiplier": 0.2,
+  "bytes_per_round_est": 500000,
+  "total_bytes_est": 10000000
+}

@@ -1,0 +1,50 @@
+{
+  "reference": "full_ft",
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_head_only",
+      "tuning_mode": "head_only",
+      "trainable_params": 66,
+      "trainable_ratio_actual": 0.02076777847702958,
+      "bytes_per_round_est": 2640,
+      "total_bytes_est": 13200,
+      "test_f1": 0.9691569568197395,
+      "test_recall": 0.9711538461538461,
+      "test_fpr": 0.07476635514018691,
+      "bytes_vs_full_ft_ratio": 0.02076777847702958,
+      "bytes_saving_vs_full_ft": 0.9792322215229704,
+      "f1_delta_vs_full_ft": 0.0025584564789078446,
+      "f1_retention_vs_full_ft": 1.0026468657648504
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_adapter_ft",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "trainable_ratio_actual": 0.19446192573945878,
+      "bytes_per_round_est": 24720,
+      "total_bytes_est": 123600,
+      "test_f1": 0.9695712309820194,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.0529595015576324,
+      "bytes_vs_full_ft_ratio": 0.19446192573945878,
+      "bytes_saving_vs_full_ft": 0.8055380742605412,
+      "f1_delta_vs_full_ft": 0.0029727306411877485,
+      "f1_retention_vs_full_ft": 1.0030754554658832
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_full_ft",
+      "tuning_mode": "full_ft",
+      "trainable_params": 3178,
+      "trainable_ratio_actual": 1.0,
+      "bytes_per_round_est": 127120,
+      "total_bytes_est": 635600,
+      "test_f1": 0.9665985003408316,
+      "test_recall": 0.9739010989010989,
+      "test_fpr": 0.09345794392523364,
+      "bytes_vs_full_ft_ratio": 1.0,
+      "bytes_saving_vs_full_ft": 0.0,
+      "f1_delta_vs_full_ft": 0.0,
+      "f1_retention_vs_full_ft": 1.0
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4.json",
+  "rows": [
+    {
+      "id": "thr0p20_g2",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p20_g2",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.2,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p20_g3",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p20_g3",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.2,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p20_g5",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p20_g5",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.2,
+        "num_groups": 5
+      }
+    },
+    {
+      "id": "thr0p35_g2",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p35_g2",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.35,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p35_g3",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p35_g3",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.35,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p35_g5",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p35_g5",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.35,
+        "num_groups": 5
+      }
+    },
+    {
+      "id": "thr0p50_g2",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p50_g2",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.5,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p50_g3",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p50_g3",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.5,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p50_g5",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p50_g5",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.5,
+        "num_groups": 5
+      }
+    },
+    {
+      "id": "thr0p65_g2",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p65_g2",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.65,
+        "num_groups": 2
+      }
+    },
+    {
+      "id": "thr0p65_g3",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p65_g3",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.65,
+        "num_groups": 3
+      }
+    },
+    {
+      "id": "thr0p65_g5",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4_thr0p65_g5",
+      "status": "ok",
+      "overrides": {
+        "trust_threshold": 0.65,
+        "num_groups": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "timestamp_utc": "2026-03-20T07:42:40Z",
+  "config": {
+    "run_name": "smoke_krum",
+    "seed": 42,
+    "num_clients": 10,
+    "num_groups": 3,
+    "partition_mode": "topology_noniid",
+    "aggregation": "krum",
+    "tuning_mode": "adapter_ft",
+    "rounds": 20,
+    "update_dim": 32,
+    "poison_frac": 0.2,
+    "poison_type": "update_noise",
+    "poison_scale": 0.4,
+    "trust_threshold": 0.35
+  },
+  "partition_audit": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "seed": 42,
+    "clients": [
+      {
+        "client_id": 0,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 469,
+        "benign": 165,
+        "attack": 304,
+        "attack_ratio": 0.6481876332622601,
+        "mean_delay_ms": 15.0,
+        "mean_bw_mbps": 8.0
+      },
+      {
+        "client_id": 1,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 808,
+        "benign": 358,
+        "attack": 450,
+        "attack_ratio": 0.556930693069307,
+        "mean_delay_ms": 5.0,
+        "mean_bw_mbps": 4.0
+      },
+      {
+        "client_id": 2,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 662,
+        "benign": 308,
+        "attack": 354,
+        "attack_ratio": 0.5347432024169184,
+        "mean_delay_ms": 15.0,
+        "mean_bw_mbps": 10.0
+      },
+      {
+        "client_id": 3,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 776,
+        "benign": 189,
+        "attack": 587,
+        "attack_ratio": 0.7564432989690721,
+        "mean_delay_ms": 15.0,
+        "mean_bw_mbps": 8.0
+      },
+      {
+        "client_id": 4,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 650,
+        "benign": 340,
+        "attack": 310,
+        "attack_ratio": 0.47692307692307695,
+        "mean_delay_ms": 8.0,
+        "mean_bw_mbps": 10.0
+      },
+      {
+        "client_id": 5,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 713,
+        "benign": 347,
+        "attack": 366,
+        "attack_ratio": 0.5133239831697055,
+        "mean_delay_ms": 12.0,
+        "mean_bw_mbps": 8.0
+      },
+      {
+        "client_id": 6,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 628,
+        "benign": 247,
+        "attack": 381,
+        "attack_ratio": 0.606687898089172,
+        "mean_delay_ms": 5.0,
+        "mean_bw_mbps": 12.0
+      },
+      {
+        "client_id": 7,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 458,
+        "benign": 224,
+        "attack": 234,
+        "attack_ratio": 0.5109170305676856,
+        "mean_delay_ms": 8.0,
+        "mean_bw_mbps": 10.0
+      },
+      {
+        "client_id": 8,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 502,
+        "benign": 162,
+        "attack": 340,
+        "attack_ratio": 0.6772908366533864,
+        "mean_delay_ms": 15.0,
+        "mean_bw_mbps": 4.0
+      },
+      {
+        "client_id": 9,
+        "partition_mode": "topology_noniid",
+        "train_nodes": 858,
+        "benign": 439,
+        "attack": 419,
+        "attack_ratio": 0.48834498834498835,
+        "mean_delay_ms": 12.0,
+        "mean_bw_mbps": 10.0
+      }
+    ],
+    "train_size_cv": 0.2057454214587267,
+    "attack_ratio_std": 0.08757414298714755
+  },
+  "poisoned_clients": [
+    0,
+    1
+  ],
+  "trust_summary": {
+    "threshold": 0.35,
+    "scores": {
+      "n": 10,
+      "mean": 0.6300571270770133,
+      "std": 0.33143714747853253
+    },
+    "kept_clients": 8,
+    "kept_poisoned_clients": 0,
+    "kept_clean_clients": 8
+  },
+  "metrics": {
+    "f1": 0.9,
+    "recall": 0.8061,
+    "fpr": 0.0866,
+    "ece": 0.097
+  },
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio": 0.12,
+    "comm_multiplier": 0.2,
+    "bytes_per_round_est": 500000,
+    "total_bytes_est": 10000000
+  },
+  "group_update_norms": {},
+  "global_update_norm": 5.813993696603431
+}

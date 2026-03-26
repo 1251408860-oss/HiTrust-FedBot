@@ -1,0 +1,48 @@
+{
+  "reference": "condfloor",
+  "title_prefix": "Scenario-H_update-noise0p4",
+  "rows": [
+    {
+      "label": "condfloor",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor_seed_stats.json",
+      "test_f1_mean": 0.9766256322104006,
+      "test_f1_std": 0.0049891073079457076,
+      "test_fpr_mean": 0.02305295950155763,
+      "test_fpr_std": 0.017428785957257775,
+      "kept_poisoned_clients_mean": 0.0,
+      "kept_poisoned_clients_std": 0.0,
+      "kept_clients_mean": 6.0,
+      "n": 5,
+      "f1_p_value_vs_reference": null,
+      "f1_t_stat_vs_reference": null
+    },
+    {
+      "label": "static",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_seed_stats.json",
+      "test_f1_mean": 0.9686339064293169,
+      "test_f1_std": 0.01304642558091254,
+      "test_fpr_mean": 0.044859813084112146,
+      "test_fpr_std": 0.03825565466170405,
+      "kept_poisoned_clients_mean": 0.4,
+      "kept_poisoned_clients_std": 0.5477225575051661,
+      "kept_clients_mean": 6.4,
+      "n": 5,
+      "f1_p_value_vs_reference": 0.25542066752680703,
+      "f1_t_stat_vs_reference": 1.279370941510367
+    },
+    {
+      "label": "keepall",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_keepall_seed_stats.json",
+      "test_f1_mean": 0.9732224478239864,
+      "test_f1_std": 0.007227816630501837,
+      "test_fpr_mean": 0.03426791277258567,
+      "test_fpr_std": 0.03865941945791544,
+      "kept_poisoned_clients_mean": 4.0,
+      "kept_poisoned_clients_std": 0.0,
+      "kept_clients_mean": 10.0,
+      "n": 5,
+      "f1_p_value_vs_reference": 0.4145288652251795,
+      "f1_t_stat_vs_reference": 0.8664663636220941
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "trainable_ratio_actual": 0.7070938215102975,
+      "bytes_per_round_est": 24720,
+      "total_bytes_est": 123600,
+      "test_f1": 0.9387320191795417,
+      "test_recall": 0.943254817987152,
+      "test_fpr": 0.14285714285714285
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_full_ft_clean",
+      "tuning_mode": "full_ft",
+      "trainable_params": 874,
+      "trainable_ratio_actual": 1.0,
+      "bytes_per_round_est": 34960,
+      "total_bytes_est": 174800,
+      "test_f1": 0.9559955995599559,
+      "test_recall": 0.930406852248394,
+      "test_fpr": 0.03456221198156682
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_head_only_clean",
+      "tuning_mode": "head_only",
+      "trainable_params": 66,
+      "trainable_ratio_actual": 0.07551487414187644,
+      "bytes_per_round_est": 2640,
+      "total_bytes_est": 13200,
+      "test_f1": 0.9400971397733405,
+      "test_recall": 0.9325481798715204,
+      "test_fpr": 0.11059907834101383
+    }
+  ]
+}

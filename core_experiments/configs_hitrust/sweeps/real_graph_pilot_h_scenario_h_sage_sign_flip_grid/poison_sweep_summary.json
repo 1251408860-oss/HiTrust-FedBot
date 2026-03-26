@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_base_sign_flip_frac0p0",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.0,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_base_sign_flip_frac0p2",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.2,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_base_sign_flip_frac0p4",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.4,
+      "status": "ok"
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_base_sign_flip_frac0p6",
+      "poison_type": "sign_flip",
+      "poison_frac": 0.6,
+      "status": "ok"
+    }
+  ]
+}

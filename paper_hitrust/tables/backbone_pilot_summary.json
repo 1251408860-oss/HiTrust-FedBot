@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "label": "feature_mlp_clean",
+      "run_name": "real_graph_pilot_h_scenario_h_adapter_ft_clean",
+      "condition": "clean",
+      "backbone": "feature_mlp",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "test_f1": 0.9148351648351648,
+      "test_recall": 0.9148351648351648,
+      "test_fpr": 0.19314641744548286,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "label": "feature_mlp_sign_flip_frac0p4",
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base",
+      "condition": "sign_flip_frac0p4",
+      "backbone": "feature_mlp",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "test_f1": 0.9242529534398889,
+      "test_recall": 0.9134615384615384,
+      "test_fpr": 0.14330218068535824,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "label": "sage_clean",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_clean",
+      "condition": "clean",
+      "backbone": "sage",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "test_f1": 0.9691991786447638,
+      "test_recall": 0.9725274725274725,
+      "test_fpr": 0.0778816199376947,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "label": "sage_sign_flip_frac0p4",
+      "run_name": "real_graph_pilot_h_scenario_h_sage_sign_flip_frac0p4",
+      "condition": "sign_flip_frac0p4",
+      "backbone": "sage",
+      "tuning_mode": "adapter_ft",
+      "trainable_params": 618,
+      "test_f1": 0.9695712309820194,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.0529595015576324,
+      "kept_poisoned_clients": 4
+    }
+  ]
+}

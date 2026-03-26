@@ -1,0 +1,46 @@
+{
+  "metric": "test_f1",
+  "reference": "hierarchical",
+  "rows": [
+    {
+      "label": "hierarchical",
+      "test_f1": {
+        "n": 5,
+        "mean": 0.9549303809636867,
+        "std": 0.009657224265337347
+      },
+      "p_value_vs_reference": null,
+      "t_stat_vs_reference": null
+    },
+    {
+      "label": "mean",
+      "test_f1": {
+        "n": 5,
+        "mean": 0.955608403081825,
+        "std": 0.009911378191818787
+      },
+      "p_value_vs_reference": 0.9154594176242854,
+      "t_stat_vs_reference": -0.10955883986140069
+    },
+    {
+      "label": "median",
+      "test_f1": {
+        "n": 5,
+        "mean": 0.9552269912078307,
+        "std": 0.009292339731624827
+      },
+      "p_value_vs_reference": 0.9617448312300896,
+      "t_stat_vs_reference": -0.049488743367515846
+    },
+    {
+      "label": "krum",
+      "test_f1": {
+        "n": 5,
+        "mean": 0.9545586536376529,
+        "std": 0.011147301615353322
+      },
+      "p_value_vs_reference": 0.9564662570146314,
+      "t_stat_vs_reference": 0.05635800174585504
+    }
+  ]
+}

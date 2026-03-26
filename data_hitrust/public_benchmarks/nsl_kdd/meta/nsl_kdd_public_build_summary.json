@@ -1,0 +1,28 @@
+{
+  "dataset_name": "NSL-KDD",
+  "output_graph": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+  "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
+  "seed": 42,
+  "rows": 14000,
+  "num_features": 117,
+  "num_edges": 73631,
+  "num_owners": 151,
+  "num_protocol_roles": 3,
+  "split_counts": {
+    "train": 8000,
+    "val": 2000,
+    "test": 4000
+  },
+  "label_counts": {
+    "normal": 7062,
+    "attack": 6938
+  },
+  "attack_rate": 0.49557142857142855,
+  "owner_bucket_size": 128,
+  "knn_k": 8,
+  "protocol_counts": {
+    "tcp": 11514,
+    "udp": 1664,
+    "icmp": 822
+  }
+}

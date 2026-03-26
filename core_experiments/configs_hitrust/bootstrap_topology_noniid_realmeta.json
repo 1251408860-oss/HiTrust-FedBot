@@ -1,0 +1,16 @@
+{
+  "run_name": "bootstrap_topology_noniid_realmeta",
+  "seed": 42,
+  "num_clients": 10,
+  "num_groups": 3,
+  "partition_mode": "topology_noniid",
+  "partition_audit_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap/partition_topology_noniid_k10.json",
+  "aggregation": "hierarchical",
+  "tuning_mode": "adapter_ft",
+  "rounds": 20,
+  "update_dim": 32,
+  "poison_frac": 0.2,
+  "poison_type": "update_noise",
+  "poison_scale": 0.4,
+  "trust_threshold": 0.35
+}

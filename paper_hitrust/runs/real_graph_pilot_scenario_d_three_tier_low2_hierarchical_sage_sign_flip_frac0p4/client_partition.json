@@ -1,0 +1,415 @@
+{
+  "partition_mode": "topology_noniid",
+  "seed": 42,
+  "num_clients": 10,
+  "num_assigned_ips": 70,
+  "support_nodes": 1,
+  "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_d_three_tier_low2/arena_manifest_v2.json",
+  "topology_type": "three_tier",
+  "load_profile": "low",
+  "bot_type_mode": "mixed",
+  "clients": [
+    {
+      "client_id": 0,
+      "owned_ip_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "owned_ips": [
+        "10.0.0.10",
+        "10.0.0.11",
+        "10.0.0.12",
+        "10.0.0.13",
+        "10.0.0.14",
+        "10.0.0.15",
+        "10.0.0.16"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 496,
+      "visible_flow_nodes": 495,
+      "local_num_edges": 597,
+      "train_nodes": 366,
+      "val_nodes": 84,
+      "test_nodes": 73,
+      "attack_nodes": 0,
+      "attack_ratio": 0.0,
+      "role_counts": {
+        "benign_user": 7
+      },
+      "label_counts": {
+        "0": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "group_other"
+    },
+    {
+      "client_id": 1,
+      "owned_ip_indices": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "owned_ips": [
+        "10.0.0.17",
+        "10.0.0.18",
+        "10.0.0.19",
+        "10.0.0.30",
+        "10.0.0.31",
+        "10.0.0.32",
+        "10.0.0.33"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 540,
+      "visible_flow_nodes": 539,
+      "local_num_edges": 607,
+      "train_nodes": 380,
+      "val_nodes": 87,
+      "test_nodes": 80,
+      "attack_nodes": 336,
+      "attack_ratio": 0.6233766233766234,
+      "role_counts": {
+        "benign_user": 3,
+        "bot:slowburn": 4
+      },
+      "label_counts": {
+        "0": 3,
+        "1": 4
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:slowburn"
+    },
+    {
+      "client_id": 2,
+      "owned_ip_indices": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "owned_ips": [
+        "10.0.0.34",
+        "10.0.0.35",
+        "10.0.0.36",
+        "10.0.0.37",
+        "10.0.0.38",
+        "10.0.0.39",
+        "10.0.0.40"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 578,
+      "visible_flow_nodes": 577,
+      "local_num_edges": 642,
+      "train_nodes": 401,
+      "val_nodes": 99,
+      "test_nodes": 90,
+      "attack_nodes": 577,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:slowburn": 7
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:slowburn"
+    },
+    {
+      "client_id": 3,
+      "owned_ip_indices": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "owned_ips": [
+        "10.0.0.41",
+        "10.0.0.42",
+        "10.0.0.43",
+        "10.0.0.44",
+        "10.0.0.45",
+        "10.0.0.46",
+        "10.0.0.47"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 574,
+      "visible_flow_nodes": 573,
+      "local_num_edges": 644,
+      "train_nodes": 401,
+      "val_nodes": 77,
+      "test_nodes": 93,
+      "attack_nodes": 573,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:slowburn": 7
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:slowburn"
+    },
+    {
+      "client_id": 4,
+      "owned_ip_indices": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "owned_ips": [
+        "10.0.0.48",
+        "10.0.0.49",
+        "10.0.0.50",
+        "10.0.0.51",
+        "10.0.0.52",
+        "10.0.0.53",
+        "10.0.0.54"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 545,
+      "visible_flow_nodes": 544,
+      "local_num_edges": 615,
+      "train_nodes": 374,
+      "val_nodes": 67,
+      "test_nodes": 72,
+      "attack_nodes": 544,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:slowburn": 7
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:slowburn"
+    },
+    {
+      "client_id": 5,
+      "owned_ip_indices": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ],
+      "owned_ips": [
+        "10.0.0.55",
+        "10.0.0.56",
+        "10.0.0.57",
+        "10.0.0.58",
+        "10.0.0.59",
+        "10.0.0.60",
+        "10.0.0.61"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 559,
+      "visible_flow_nodes": 558,
+      "local_num_edges": 632,
+      "train_nodes": 377,
+      "val_nodes": 80,
+      "test_nodes": 86,
+      "attack_nodes": 558,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:slowburn": 7
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:slowburn"
+    },
+    {
+      "client_id": 6,
+      "owned_ip_indices": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "owned_ips": [
+        "10.0.0.62",
+        "10.0.0.63",
+        "10.0.0.64",
+        "10.0.0.65",
+        "10.0.0.66",
+        "10.0.0.67",
+        "10.0.0.68"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 398,
+      "visible_flow_nodes": 397,
+      "local_num_edges": 502,
+      "train_nodes": 267,
+      "val_nodes": 61,
+      "test_nodes": 64,
+      "attack_nodes": 397,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:burst": 3,
+        "bot:slowburn": 4
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:slowburn"
+    },
+    {
+      "client_id": 7,
+      "owned_ip_indices": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "owned_ips": [
+        "10.0.0.69",
+        "10.0.0.70",
+        "10.0.0.71",
+        "10.0.0.72",
+        "10.0.0.73",
+        "10.0.0.74",
+        "10.0.0.75"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 240,
+      "visible_flow_nodes": 239,
+      "local_num_edges": 431,
+      "train_nodes": 143,
+      "val_nodes": 38,
+      "test_nodes": 32,
+      "attack_nodes": 239,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:burst": 7
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:burst"
+    },
+    {
+      "client_id": 8,
+      "owned_ip_indices": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "owned_ips": [
+        "10.0.0.76",
+        "10.0.0.77",
+        "10.0.0.78",
+        "10.0.0.79",
+        "10.0.0.80",
+        "10.0.0.81",
+        "10.0.0.82"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 280,
+      "visible_flow_nodes": 279,
+      "local_num_edges": 421,
+      "train_nodes": 182,
+      "val_nodes": 33,
+      "test_nodes": 49,
+      "attack_nodes": 279,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:burst": 5,
+        "bot:mimic": 2
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "role:bot:burst"
+    },
+    {
+      "client_id": 9,
+      "owned_ip_indices": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "owned_ips": [
+        "10.0.0.83",
+        "10.0.0.84",
+        "10.0.0.85",
+        "10.0.0.86",
+        "10.0.0.87",
+        "10.0.0.88",
+        "10.0.0.89"
+      ],
+      "owned_ip_count": 7,
+      "visible_nodes": 395,
+      "visible_flow_nodes": 394,
+      "local_num_edges": 442,
+      "train_nodes": 267,
+      "val_nodes": 63,
+      "test_nodes": 51,
+      "attack_nodes": 394,
+      "attack_ratio": 1.0,
+      "role_counts": {
+        "bot:mimic": 7
+      },
+      "label_counts": {
+        "1": 7
+      },
+      "partition_mode": "topology_noniid",
+      "group_name": "group_other"
+    }
+  ],
+  "active_clients": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "poisoned_clients": [
+    0,
+    4,
+    5,
+    6
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor005_seed11",
+      "test_f1": 0.9812108559498955,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor005_seed22",
+      "test_f1": 0.9770034843205576,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.018691588785046728,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor005_seed33",
+      "test_f1": 0.9811320754716982,
+      "test_recall": 0.9642857142857143,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor005_seed44",
+      "test_f1": 0.9744651483781918,
+      "test_recall": 0.9697802197802198,
+      "test_fpr": 0.04672897196261682,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor005_seed55",
+      "test_f1": 0.9609483960948396,
+      "test_recall": 0.9464285714285714,
+      "test_fpr": 0.0529595015576324,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 1
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9749519920430365,
+      "std": 0.008335363600180955
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9623626373626374,
+      "std": 0.009346717492419795
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.026791277258566976,
+      "std": 0.021873507391329542
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 6.2,
+      "std": 0.4472135954999579
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 0.2,
+      "std": 0.4472135954999579
+    }
+  }
+}

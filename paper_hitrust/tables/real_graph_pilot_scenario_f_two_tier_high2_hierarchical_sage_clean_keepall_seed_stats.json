@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_clean_keepall_seed11",
+      "test_f1": 0.9882659713168188,
+      "test_recall": 0.9895561357702349,
+      "test_fpr": 0.01483679525222552,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_clean_keepall_seed22",
+      "test_f1": 0.9842519685039369,
+      "test_recall": 0.97911227154047,
+      "test_fpr": 0.011869436201780416,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_clean_keepall_seed33",
+      "test_f1": 0.9868766404199475,
+      "test_recall": 0.9817232375979112,
+      "test_fpr": 0.008902077151335312,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_clean_keepall_seed44",
+      "test_f1": 0.9869451697127938,
+      "test_recall": 0.9869451697127938,
+      "test_fpr": 0.01483679525222552,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_clean_keepall_seed55",
+      "test_f1": 0.9818181818181818,
+      "test_recall": 0.9869451697127938,
+      "test_fpr": 0.026706231454005934,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 0
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9856315863543358,
+      "std": 0.002581716704344689
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9848563968668408,
+      "std": 0.0042902550196227025
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.01543026706231454,
+      "std": 0.006766619733526041
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 10.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 0.0,
+      "std": 0.0
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "run_name": "real_graph_pilot_h_scenario_h_hierarchical",
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "seed": 42,
+  "num_clients": 10,
+  "partition_mode": "topology_noniid",
+  "aggregation": "hierarchical",
+  "num_groups": 3,
+  "hidden_dim": 32,
+  "rounds": 5,
+  "local_epochs": 1,
+  "lr": 0.01,
+  "poison_frac": 0.2,
+  "poison_type": "update_noise",
+  "poison_scale": 0.2,
+  "trust_threshold": 0.35
+}

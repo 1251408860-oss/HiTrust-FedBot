@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_keepall_seed11",
+      "test_f1": 0.9868421052631579,
+      "test_recall": 0.97911227154047,
+      "test_fpr": 0.005934718100890208,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_keepall_seed22",
+      "test_f1": 0.9842519685039369,
+      "test_recall": 0.97911227154047,
+      "test_fpr": 0.011869436201780416,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_keepall_seed33",
+      "test_f1": 0.9827357237715804,
+      "test_recall": 0.9660574412532638,
+      "test_fpr": 0.0,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_keepall_seed44",
+      "test_f1": 0.9869451697127938,
+      "test_recall": 0.9869451697127938,
+      "test_fpr": 0.01483679525222552,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "real_graph_pilot_scenario_f_two_tier_high2_hierarchical_sage_sign_flip_frac0p4_keepall_seed55",
+      "test_f1": 0.9763157894736841,
+      "test_recall": 0.9686684073107049,
+      "test_fpr": 0.017804154302670624,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9834181513450306,
+      "std": 0.00435223567833377
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9759791122715404,
+      "std": 0.008540693072478405
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.010089020771513354,
+      "std": 0.007146346931034003
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 10.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 4.0,
+      "std": 0.0
+    }
+  }
+}

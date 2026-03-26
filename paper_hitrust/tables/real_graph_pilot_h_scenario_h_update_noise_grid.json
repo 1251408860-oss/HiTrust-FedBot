@@ -1,0 +1,40 @@
+{
+  "rows": [
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_frac0p0",
+      "poison_type": "update_noise",
+      "poison_frac": 0.0,
+      "test_f1": 0.9574123989218328,
+      "test_recall": 0.9507494646680942,
+      "test_fpr": 0.07603686635944701,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_frac0p2",
+      "poison_type": "update_noise",
+      "poison_frac": 0.2,
+      "test_f1": 0.9615592853275582,
+      "test_recall": 0.9507494646680942,
+      "test_fpr": 0.0576036866359447,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_frac0p4",
+      "poison_type": "update_noise",
+      "poison_frac": 0.4,
+      "test_f1": 0.9593495934959351,
+      "test_recall": 0.9475374732334048,
+      "test_fpr": 0.059907834101382486,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "real_graph_pilot_h_scenario_h_hierarchical_update_noise_frac0p6",
+      "poison_type": "update_noise",
+      "poison_frac": 0.6,
+      "test_f1": 0.9521276595744681,
+      "test_recall": 0.9582441113490364,
+      "test_fpr": 0.1175115207373272,
+      "kept_poisoned_clients": 0
+    }
+  ]
+}
