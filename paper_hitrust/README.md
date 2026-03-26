@@ -17,3 +17,9 @@ Reviewers who want to inspect delivered evidence without re-running the full pip
 - `tables/`
 - `figures/`
 - `artifact_manifest_20260324.json`
+
+The release-facing integrity metadata is stored alongside the paper artifact:
+
+- `docs/ARTIFACT_STATUS_20260326.md`
+- `docs/reviewer_bundle_sha256_20260326.txt`
+- `core_experiments/reproduce/verify_artifact_bundle.sh`

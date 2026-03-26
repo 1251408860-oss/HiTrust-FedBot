@@ -2,9 +2,19 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-PY_BIN="${PY_BIN:-python}"
 MAIN_SEEDS="${MAIN_SEEDS:-11,22,33,44,55}"
 PUBLIC_SEEDS="${PUBLIC_SEEDS:-11,22,33}"
+
+if [[ -n "${PY_BIN:-}" ]]; then
+  :
+elif command -v python >/dev/null 2>&1; then
+  PY_BIN="python"
+elif command -v python3 >/dev/null 2>&1; then
+  PY_BIN="python3"
+else
+  echo "[FAIL] Neither python nor python3 is available." >&2
+  exit 1
+fi
 
 cd "$REPO_ROOT"
 

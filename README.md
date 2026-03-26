@@ -57,6 +57,17 @@ If needed, the exact freeze used during packaging is also available:
 pip install -r requirements_artifact.txt
 ```
 
+## Reviewer Integrity Check
+
+Before running the longer pipelines, verify that the bundled artifact is complete and internally consistent:
+
+```bash
+cd /path/to/HiTrust-FedBot
+bash core_experiments/reproduce/verify_artifact_bundle.sh
+```
+
+This check validates the expected release layout, parses the compact artifact manifest, syntax-checks the reviewer shell entry points, and verifies the checksum manifest for the bundled release files.
+
 ## Reviewer-First Reproduction Paths
 
 Suggested execution order:
@@ -95,6 +106,15 @@ cd /path/to/HiTrust-FedBot
 bash core_experiments/reproduce/reproduce_reviewer_bundle.sh
 ```
 
+Maintainer-side release packaging, following the same reviewer-facing pattern used by Ca-Bench:
+
+```bash
+cd /path/to/HiTrust-FedBot
+bash core_experiments/reproduce/package_reviewer_release.sh 20260326
+```
+
+This produces a `dist/` tarball and matching SHA-256 file that can be uploaded to a GitHub Release.
+
 ## Delivered Paper Outputs
 
 The most directly inspectable paper-facing artifacts are:
@@ -129,6 +149,7 @@ The release does not include the private raw collection traces upstream of the i
 - `core_experiments/README.md`
 - `data_hitrust/README.md`
 - `paper_hitrust/README.md`
+- `docs/ARTIFACT_STATUS_20260326.md`
 - `docs/ARTIFACT_RELEASE_20260324.md`
 - `docs/DATA_AVAILABILITY_20260324.md`
 - `docs/CYBERSECURITY_SUBMISSION_CHECKLIST_20260324.md`

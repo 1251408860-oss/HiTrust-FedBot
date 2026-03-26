@@ -10,3 +10,9 @@ This directory contains the bundled derived data artifacts used by the released 
 ## Data-Release Boundary
 
 The repository ships derived graph artifacts required to run the released code. It does not ship upstream private raw collection traces used before graph derivation for the internal pilot scenarios.
+
+Reviewers can verify the integrity of the bundled public artifact surface with:
+
+```bash
+bash core_experiments/reproduce/verify_artifact_bundle.sh
+```

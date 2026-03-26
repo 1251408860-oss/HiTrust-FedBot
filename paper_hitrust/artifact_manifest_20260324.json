@@ -18,6 +18,13 @@
     "public_figure": "paper_hitrust/figures/public_nslkdd_update_noise_condfloor_comparison.png",
     "reproduce_script": "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
   },
+  "release_integrity": {
+    "artifact_status": "docs/ARTIFACT_STATUS_20260326.md",
+    "checksum_manifest": "docs/reviewer_bundle_sha256_20260326.txt",
+    "checksum_refresh_script": "core_experiments/reproduce/generate_reviewer_checksums.sh",
+    "verify_script": "core_experiments/reproduce/verify_artifact_bundle.sh",
+    "package_script": "core_experiments/reproduce/package_reviewer_release.sh"
+  },
   "docs": {
     "artifact_release_notes": "docs/ARTIFACT_RELEASE_20260324.md",
     "data_availability_notes": "docs/DATA_AVAILABILITY_20260324.md",

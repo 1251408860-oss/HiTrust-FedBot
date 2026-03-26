@@ -28,3 +28,15 @@ Conditional-floor hardening:
 ```bash
 bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh
 ```
+
+Artifact integrity verification:
+
+```bash
+bash core_experiments/reproduce/verify_artifact_bundle.sh
+```
+
+Maintainer packaging for a GitHub Release:
+
+```bash
+bash core_experiments/reproduce/package_reviewer_release.sh 20260326
+```
