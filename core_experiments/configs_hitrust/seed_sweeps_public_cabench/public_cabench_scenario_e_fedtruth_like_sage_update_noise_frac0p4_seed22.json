@@ -1,0 +1,22 @@
+{
+  "run_name": "public_cabench_scenario_e_fedtruth_like_sage_update_noise_frac0p4_seed22",
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "seed": 22,
+  "num_clients": 10,
+  "partition_mode": "topology_noniid",
+  "aggregation": "fedtruth_like",
+  "num_groups": 3,
+  "hidden_dim": 32,
+  "adapter_dim": 8,
+  "backbone": "sage",
+  "tuning_mode": "adapter_ft",
+  "global_warmup_epochs": 8,
+  "rounds": 5,
+  "local_epochs": 1,
+  "lr": 0.01,
+  "poison_frac": 0.4,
+  "poison_type": "update_noise",
+  "poison_scale": 0.2,
+  "fedtruth_like_iterations": 4,
+  "fedtruth_like_temperature": 4.0
+}

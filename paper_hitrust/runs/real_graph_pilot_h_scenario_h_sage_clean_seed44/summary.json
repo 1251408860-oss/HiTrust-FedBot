@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-03-23T03:56:22Z",
+  "timestamp_utc": "2026-03-30T03:45:09Z",
   "config": {
     "run_name": "real_graph_pilot_h_scenario_h_sage_clean_seed44",
     "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
@@ -23,6 +23,12 @@
     "min_keep_per_group": 1
   },
   "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "dataset_info": {
+    "dataset_name": "",
+    "dataset_variant": "",
+    "dataset_source": "",
+    "split_scheme": ""
+  },
   "graph_stats": {
     "num_nodes": 6985,
     "num_edges": 9755,
@@ -57,7 +63,9 @@
   },
   "trust_filter": {
     "trust_threshold": 0.35,
-    "min_keep_per_group": 1
+    "min_keep_per_group": 1,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0
   },
   "comm_cost": {
     "tuning_mode": "adapter_ft",
@@ -89,7 +97,38 @@
         "role:benign_user",
         "role:bot:mimic"
       ],
-      "kept_poisoned_clients": 0
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:benign_user",
+          "kept_before_floor": 0,
+          "trust_mass": 0.0,
+          "max_trust": 0.0,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:bot:mimic",
+          "kept_before_floor": 6,
+          "trust_mass": 4.931420889920761,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.8177540340161693,
+          "max_trust": 0.9831420228879912,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 2,
@@ -113,7 +152,38 @@
         "role:benign_user",
         "role:bot:mimic"
       ],
-      "kept_poisoned_clients": 0
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:benign_user",
+          "kept_before_floor": 0,
+          "trust_mass": 0.014995114733866607,
+          "max_trust": 0.014995114733866607,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            1
+          ]
+        },
+        {
+          "group": "role:bot:mimic",
+          "kept_before_floor": 5,
+          "trust_mass": 4.69940046946264,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.837921613855022,
+          "max_trust": 0.9831491825627398,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 3,
@@ -137,7 +207,38 @@
         "role:benign_user",
         "role:bot:mimic"
       ],
-      "kept_poisoned_clients": 0
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:benign_user",
+          "kept_before_floor": 0,
+          "trust_mass": 0.06301465255632246,
+          "max_trust": 0.06301465255632246,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            1
+          ]
+        },
+        {
+          "group": "role:bot:mimic",
+          "kept_before_floor": 5,
+          "trust_mass": 4.363008592656121,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.6844379292773182,
+          "max_trust": 0.9136576426302119,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 4,
@@ -161,7 +262,38 @@
         "role:benign_user",
         "role:bot:mimic"
       ],
-      "kept_poisoned_clients": 0
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:benign_user",
+          "kept_before_floor": 0,
+          "trust_mass": 0.2605806029850033,
+          "max_trust": 0.14219902792126857,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            1
+          ]
+        },
+        {
+          "group": "role:bot:mimic",
+          "kept_before_floor": 5,
+          "trust_mass": 4.291618792288613,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.3936817940689394,
+          "max_trust": 0.8524829423377747,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 5,
@@ -185,7 +317,38 @@
         "role:benign_user",
         "role:bot:mimic"
       ],
-      "kept_poisoned_clients": 0
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:benign_user",
+          "kept_before_floor": 0,
+          "trust_mass": 0.5798794234706566,
+          "max_trust": 0.29027567484884115,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:bot:mimic",
+          "kept_before_floor": 5,
+          "trust_mass": 4.247595813146275,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.6206247271631466,
+          "max_trust": 0.9379994073572598,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     }
   ],
   "final_metrics": {
@@ -210,6 +373,37 @@
       "role:benign_user",
       "role:bot:mimic"
     ],
-    "kept_poisoned_clients": 0
+    "kept_poisoned_clients": 0,
+    "group_floor_diagnostics": [
+      {
+        "group": "role:benign_user",
+        "kept_before_floor": 0,
+        "trust_mass": 0.5798794234706566,
+        "max_trust": 0.29027567484884115,
+        "floor_allowed": true,
+        "floor_applied": true,
+        "selected_by_floor": [
+          0
+        ]
+      },
+      {
+        "group": "role:bot:mimic",
+        "kept_before_floor": 5,
+        "trust_mass": 4.247595813146275,
+        "max_trust": 1.0,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      },
+      {
+        "group": "group_other",
+        "kept_before_floor": 2,
+        "trust_mass": 1.6206247271631466,
+        "max_trust": 0.9379994073572598,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      }
+    ]
   }
 }

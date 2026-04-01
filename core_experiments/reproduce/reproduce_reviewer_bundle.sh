@@ -2,6 +2,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+WITH_PUBLIC_CABENCH="${WITH_PUBLIC_CABENCH:-1}"
 
 if [[ -n "${PY_BIN:-}" ]]; then
   :
@@ -19,6 +20,10 @@ cd "$REPO_ROOT"
 "$PY_BIN" core_experiments/internal/run_hitrust_suite.py \
   --config core_experiments/configs_hitrust/smoke_topology_noniid.json \
   --project-root "$REPO_ROOT"
+
+if [[ "$WITH_PUBLIC_CABENCH" == "1" ]]; then
+  bash core_experiments/reproduce/reproduce_public_cabench_validation.sh
+fi
 
 bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh

@@ -1,0 +1,353 @@
+{
+  "timestamp_utc": "2026-03-31T05:11:14Z",
+  "config": {
+    "run_name": "public_cabench_scenario_e_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed22",
+    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+    "seed": 22,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "trust_mode": "temporal_rootguard_v2",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "adaptive_benign_mimic",
+    "poison_scale": 0.2,
+    "trust_threshold": 0.15,
+    "min_keep_per_group": 0,
+    "server_root_size": 96,
+    "server_root_local_epochs": 1,
+    "server_root_lr": 0.01,
+    "temporal_reputation_decay": 0.7,
+    "temporal_history_decay": 0.8,
+    "temporal_server_cosine_floor": -0.15,
+    "temporal_root_drift_scale": 0.08,
+    "temporal_anchor_blend_min": 0.15,
+    "temporal_anchor_blend_max": 0.4,
+    "temporal_peer_topk": 2,
+    "temporal_use_layerwise": true,
+    "temporal_use_behavioral_probe": true,
+    "temporal_use_soft_weighting": true,
+    "temporal_behavior_probe_mix": 0.1,
+    "temporal_behavior_probe_scale": 0.1,
+    "temporal_soft_weight_power": 1.4,
+    "temporal_weight_floor": 0.05,
+    "temporal_hard_reject_floor": 0.04,
+    "temporal_redemption_mix": 0.25,
+    "temporal_camouflage_peer_threshold": 0.92,
+    "temporal_camouflage_server_cosine_max": 0.08,
+    "temporal_camouflage_layerwise_max": 0.12,
+    "temporal_camouflage_similarity_threshold": 0.95,
+    "temporal_camouflage_min_redundant_peers": 2,
+    "temporal_camouflage_cluster_server_cosine_max": 0.25,
+    "temporal_score_weights": {
+      "server_cosine": 0.35,
+      "history_cosine": 0.15,
+      "global_alignment": 0.08,
+      "root_f1": 0.08,
+      "val_f1": 0.04,
+      "stability": 0.08,
+      "server_misalignment_penalty": 0.2,
+      "root_prob_drift_penalty": 0.12,
+      "history_residual_penalty": 0.08,
+      "peer_redundancy_penalty": 0.12,
+      "layerwise_server_cosine": 0.18,
+      "behavior_alignment": 0.12,
+      "behavior_probe_alignment": 0.1,
+      "behavior_shift_alignment": 0.12,
+      "layer_profile_penalty": 0.14,
+      "layer_concentration_penalty": 0.1
+    }
+  },
+  "graph_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\graphs\\cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "dataset_info": {
+    "dataset_name": "Ca-Bench",
+    "dataset_variant": "scenario_e_three_tier_high2_public_data_v1",
+    "dataset_source": "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1",
+    "split_scheme": "random_flow_split_from_public_scenario_capture"
+  },
+  "graph_stats": {
+    "num_nodes": 5976,
+    "num_edges": 8142,
+    "flow_nodes": 5975,
+    "train_nodes": 4156,
+    "val_nodes": 896,
+    "test_nodes": 897
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\raw\\real_collection\\mininet_testbed\\real_collection\\scenario_e_three_tier_high2\\arena_manifest_v2.json",
+    "topology_type": "three_tier",
+    "load_profile": "high",
+    "bot_type_mode": "mixed"
+  },
+  "poisoned_clients": [
+    1,
+    2,
+    5,
+    8
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 3178,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.19446192573945878
+  },
+  "trust_filter": {
+    "trust_mode": "temporal_rootguard_v2",
+    "trust_threshold": 0.15,
+    "min_keep_per_group": 0,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0,
+    "temporal_reputation_decay": 0.7,
+    "temporal_history_decay": 0.8,
+    "temporal_server_cosine_floor": -0.15,
+    "temporal_root_drift_scale": 0.08,
+    "temporal_anchor_blend_min": 0.15,
+    "temporal_anchor_blend_max": 0.4,
+    "temporal_peer_topk": 2,
+    "temporal_use_layerwise": true,
+    "temporal_use_behavioral_probe": true,
+    "temporal_use_soft_weighting": true,
+    "temporal_behavior_probe_mix": 0.1,
+    "temporal_behavior_probe_scale": 0.1,
+    "temporal_soft_weight_power": 1.4,
+    "temporal_weight_floor": 0.05,
+    "temporal_hard_reject_floor": 0.04,
+    "temporal_redemption_mix": 0.25,
+    "temporal_camouflage_peer_threshold": 0.92,
+    "temporal_camouflage_server_cosine_max": 0.08,
+    "temporal_camouflage_layerwise_max": 0.12,
+    "temporal_camouflage_similarity_threshold": 0.95,
+    "temporal_camouflage_min_redundant_peers": 2,
+    "temporal_camouflage_cluster_server_cosine_max": 0.25,
+    "temporal_score_weights": {
+      "server_cosine": 0.35,
+      "history_cosine": 0.15,
+      "global_alignment": 0.08,
+      "root_f1": 0.08,
+      "val_f1": 0.04,
+      "stability": 0.08,
+      "server_misalignment_penalty": 0.2,
+      "root_prob_drift_penalty": 0.12,
+      "history_residual_penalty": 0.08,
+      "peer_redundancy_penalty": 0.12,
+      "layerwise_server_cosine": 0.18,
+      "behavior_alignment": 0.12,
+      "behavior_probe_alignment": 0.1,
+      "behavior_shift_alignment": 0.12,
+      "layer_profile_penalty": 0.14,
+      "layer_concentration_penalty": 0.1
+    }
+  },
+  "server_root": {
+    "selection": "balanced_label",
+    "seed": 314,
+    "root_size": 96,
+    "positive_nodes": 48,
+    "negative_nodes": 48,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "source": "global_train_subset"
+  },
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.9888412017167382,
+      "test_f1": 0.9894736842105263,
+      "test_recall": 0.9842931937172775,
+      "test_fpr": 0.009259259259259259,
+      "kept_clients": 4,
+      "kept_client_ids": [
+        0,
+        3,
+        4,
+        7
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "temporal_rootguard_v2",
+          "accepted_count": 4,
+          "accepted_root_mass": 0.17353593146270155,
+          "accepted_weight_mass": 0.37888940698710144,
+          "anchor_blend": 0.2854969759892171
+        }
+      ],
+      "aggregation_mode": "temporal_rootguard_hierarchical",
+      "trust_weight_mass": 2.674109320090279
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9896907216494846,
+      "test_f1": 0.9894551845342707,
+      "test_recall": 0.9825479930191972,
+      "test_fpr": 0.006172839506172839,
+      "kept_clients": 3,
+      "kept_client_ids": [
+        0,
+        3,
+        4
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "temporal_rootguard_v2",
+          "accepted_count": 3,
+          "accepted_root_mass": 0.212969862991601,
+          "accepted_weight_mass": 0.46295222481368903,
+          "anchor_blend": 0.28499360647996197
+        }
+      ],
+      "aggregation_mode": "temporal_rootguard_hierarchical",
+      "trust_weight_mass": 2.5796634991969847
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9896907216494846,
+      "test_f1": 0.9894551845342707,
+      "test_recall": 0.9825479930191972,
+      "test_fpr": 0.006172839506172839,
+      "kept_clients": 3,
+      "kept_client_ids": [
+        0,
+        3,
+        4
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "temporal_rootguard_v2",
+          "accepted_count": 3,
+          "accepted_root_mass": 0.1809767982751691,
+          "accepted_weight_mass": 0.4279398440191622,
+          "anchor_blend": 0.29427439346646506
+        }
+      ],
+      "aggregation_mode": "temporal_rootguard_hierarchical",
+      "trust_weight_mass": 2.6715170309028484
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9896907216494846,
+      "test_f1": 0.9894551845342707,
+      "test_recall": 0.9825479930191972,
+      "test_fpr": 0.006172839506172839,
+      "kept_clients": 5,
+      "kept_client_ids": [
+        0,
+        3,
+        4,
+        7,
+        8
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 1,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "temporal_rootguard_v2",
+          "accepted_count": 5,
+          "accepted_root_mass": 0.10873030554329989,
+          "accepted_weight_mass": 0.36451672452608885,
+          "anchor_blend": 0.3254284520932057
+        }
+      ],
+      "aggregation_mode": "temporal_rootguard_hierarchical",
+      "trust_weight_mass": 2.954922137411089
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9896907216494846,
+      "test_f1": 0.9894551845342707,
+      "test_recall": 0.9825479930191972,
+      "test_fpr": 0.006172839506172839,
+      "kept_clients": 2,
+      "kept_client_ids": [
+        0,
+        3
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "temporal_rootguard_v2",
+          "accepted_count": 2,
+          "accepted_root_mass": 0.2044479360729225,
+          "accepted_weight_mass": 0.4491348008799641,
+          "anchor_blend": 0.2861990121493818
+        }
+      ],
+      "aggregation_mode": "temporal_rootguard_hierarchical",
+      "trust_weight_mass": 2.5624850605921465
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9896907216494846,
+    "test_f1": 0.9894551845342707,
+    "test_recall": 0.9825479930191972,
+    "test_fpr": 0.006172839506172839,
+    "kept_clients": 2,
+    "kept_client_ids": [
+      0,
+      3
+    ],
+    "kept_groups": [
+      "group_other",
+      "role:bot:slowburn"
+    ],
+    "kept_poisoned_clients": 0,
+    "group_floor_diagnostics": [
+      {
+        "aggregation": "temporal_rootguard_v2",
+        "accepted_count": 2,
+        "accepted_root_mass": 0.2044479360729225,
+        "accepted_weight_mass": 0.4491348008799641,
+        "anchor_blend": 0.2861990121493818
+      }
+    ],
+    "aggregation_mode": "temporal_rootguard_hierarchical",
+    "trust_weight_mass": 2.5624850605921465
+  }
+}

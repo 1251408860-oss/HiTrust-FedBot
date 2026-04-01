@@ -35,6 +35,7 @@ for cfg in \
   core_experiments/configs_hitrust/public_nslkdd_hierarchical_sage_clean_keepall.json \
   core_experiments/configs_hitrust/public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall.json \
   core_experiments/configs_hitrust/public_nslkdd_hierarchical_sage_update_noise_frac0p4_keepall.json \
+  core_experiments/configs_hitrust/public_nslkdd_fltrust_like_sage_update_noise_frac0p4.json \
   core_experiments/configs_hitrust/public_nslkdd_mean_sage_update_noise_frac0p4_keepall.json \
   core_experiments/configs_hitrust/public_nslkdd_median_sage_update_noise_frac0p4_keepall.json \
   core_experiments/configs_hitrust/public_nslkdd_krum_sage_update_noise_frac0p4_keepall.json
@@ -55,6 +56,7 @@ for prefix in \
   public_nslkdd_hierarchical_sage_clean_keepall \
   public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall \
   public_nslkdd_hierarchical_sage_update_noise_frac0p4_keepall \
+  public_nslkdd_fltrust_like_sage_update_noise_frac0p4 \
   public_nslkdd_mean_sage_update_noise_frac0p4_keepall \
   public_nslkdd_median_sage_update_noise_frac0p4_keepall \
   public_nslkdd_krum_sage_update_noise_frac0p4_keepall
@@ -80,7 +82,7 @@ cp "$REPO_ROOT/paper_hitrust/figures/public_nslkdd_trust_vs_keepall_seed_compari
   "$REPO_ROOT/paper_hitrust/figures_sage_main/public_nslkdd_trust_vs_keepall_seed_comparison.png"
 
 "$PY_BIN" core_experiments/internal/build_method_comparison_report.py \
-  --method-specs "trust_aware=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_seed_stats.json,hier_keepall=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json,mean=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_mean_sage_update_noise_frac0p4_keepall_seed_stats.json,median=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_median_sage_update_noise_frac0p4_keepall_seed_stats.json,krum=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed_stats.json" \
+  --method-specs "trust_aware=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_seed_stats.json,fltrust_like=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed_stats.json,hier_keepall=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json,mean=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_mean_sage_update_noise_frac0p4_keepall_seed_stats.json,median=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_median_sage_update_noise_frac0p4_keepall_seed_stats.json,krum=$REPO_ROOT/paper_hitrust/tables/public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed_stats.json" \
   --reference trust_aware \
   --title-prefix Public-NSL-KDD_update-noise0p4 \
   --output-table "$REPO_ROOT/paper_hitrust/tables/public_nslkdd_update_noise_baseline_comparison.json" \

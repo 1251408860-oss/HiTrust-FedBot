@@ -1,0 +1,111 @@
+{
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed11",
+      "test_f1": 0.9812369701181376,
+      "test_recall": 0.9697802197802198,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 1,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed111",
+      "test_f1": 0.9778393351800554,
+      "test_recall": 0.9697802197802198,
+      "test_fpr": 0.03115264797507788,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed22",
+      "test_f1": 0.9797909407665506,
+      "test_recall": 0.9656593406593407,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 1,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed33",
+      "test_f1": 0.9818941504178273,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.009345794392523364,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed44",
+      "test_f1": 0.9743589743589743,
+      "test_recall": 0.9656593406593407,
+      "test_fpr": 0.037383177570093455,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed55",
+      "test_f1": 0.9812369701181376,
+      "test_recall": 0.9697802197802198,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed66",
+      "test_f1": 0.9748251748251748,
+      "test_recall": 0.9574175824175825,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 2,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed77",
+      "test_f1": 0.9798471160528145,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.018691588785046728,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed88",
+      "test_f1": 0.9722607489597781,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.040498442367601244,
+      "kept_clients": 2,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_flshield_like_sage_adaptive_benign_mimic_frac0p4_seed99",
+      "test_f1": 0.9740350877192984,
+      "test_recall": 0.9532967032967034,
+      "test_fpr": 0.009345794392523364,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 10,
+      "mean": 0.9777325468516749,
+      "std": 0.003559748445146223
+    },
+    "test_recall": {
+      "n": 10,
+      "mean": 0.9651098901098901,
+      "std": 0.005689459548354949
+    },
+    "test_fpr": {
+      "n": 10,
+      "mean": 0.020560747663551402,
+      "std": 0.011488528918745031
+    },
+    "kept_clients": {
+      "n": 10,
+      "mean": 5.5,
+      "std": 3.5039660069381067
+    },
+    "kept_poisoned_clients": {
+      "n": 10,
+      "mean": 2.4,
+      "std": 2.065591117977289
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed11",
+      "test_f1": 0.980528511821975,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed111",
+      "test_f1": 0.9779310344827586,
+      "test_recall": 0.9739010989010989,
+      "test_fpr": 0.040498442367601244,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed22",
+      "test_f1": 0.9783670621074668,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed33",
+      "test_f1": 0.9825540823447313,
+      "test_recall": 0.967032967032967,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed44",
+      "test_f1": 0.9759450171821307,
+      "test_recall": 0.9752747252747253,
+      "test_fpr": 0.0529595015576324,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 3
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed55",
+      "test_f1": 0.9812889812889811,
+      "test_recall": 0.9725274725274725,
+      "test_fpr": 0.021806853582554516,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed66",
+      "test_f1": 0.9769713886950454,
+      "test_recall": 0.9615384615384616,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 2
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed77",
+      "test_f1": 0.9798190675017399,
+      "test_recall": 0.967032967032967,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed88",
+      "test_f1": 0.975609756097561,
+      "test_recall": 0.9615384615384616,
+      "test_fpr": 0.021806853582554516,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_sign_flip_frac0p4_seed99",
+      "test_f1": 0.9776223776223776,
+      "test_recall": 0.9601648351648352,
+      "test_fpr": 0.009345794392523364,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 2
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 10,
+      "mean": 0.9786637279144768,
+      "std": 0.0023125369929055876
+    },
+    "test_recall": {
+      "n": 10,
+      "mean": 0.967032967032967,
+      "std": 0.005494505494505475
+    },
+    "test_fpr": {
+      "n": 10,
+      "mean": 0.02087227414330218,
+      "std": 0.014979928931973672
+    },
+    "kept_clients": {
+      "n": 10,
+      "mean": 8.4,
+      "std": 1.0749676997731399
+    },
+    "kept_poisoned_clients": {
+      "n": 10,
+      "mean": 3.4,
+      "std": 0.8432740427115678
+    }
+  }
+}

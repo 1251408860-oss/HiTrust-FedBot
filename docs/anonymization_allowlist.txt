@@ -1,0 +1,2 @@
+# Regex lines to suppress known false positives in check_anonymization_leaks.sh
+# Keep each rule specific.

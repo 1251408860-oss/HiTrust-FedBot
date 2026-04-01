@@ -1,0 +1,146 @@
+{
+  "title_prefix": "Public-CaBench-ScenarioH_FLTrust-like_sensitivity",
+  "rows": [
+    {
+      "label": "root48_e1",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root48_e1_seed_stats.json",
+      "server_root_size": 48,
+      "server_root_local_epochs": 1,
+      "test_f1_mean": 0.9771511519358685,
+      "test_f1_std": 0.0028849931644370098,
+      "test_fpr_mean": 0.010384215991692626,
+      "test_fpr_std": 0.003597197938876173,
+      "kept_clients_mean": 4.666666666666667,
+      "kept_poisoned_clients_mean": 2.0,
+      "kept_poisoned_clients_std": 0.0,
+      "n": 3
+    },
+    {
+      "label": "root48_e2",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root48_e2_seed_stats.json",
+      "server_root_size": 48,
+      "server_root_local_epochs": 2,
+      "test_f1_mean": 0.9776921182001176,
+      "test_f1_std": 0.004464535948580943,
+      "test_fpr_mean": 0.017653167185877467,
+      "test_fpr_std": 0.0064849408083057095,
+      "kept_clients_mean": 4.333333333333333,
+      "kept_poisoned_clients_mean": 1.6666666666666667,
+      "kept_poisoned_clients_std": 0.5773502691896257,
+      "n": 3
+    },
+    {
+      "label": "root96_e1",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root96_e1_seed_stats.json",
+      "server_root_size": 96,
+      "server_root_local_epochs": 1,
+      "test_f1_mean": 0.9775136253914662,
+      "test_f1_std": 0.0020604227689595294,
+      "test_fpr_mean": 0.021806853582554516,
+      "test_fpr_std": 0.013579124434706148,
+      "kept_clients_mean": 4.666666666666667,
+      "kept_poisoned_clients_mean": 1.3333333333333333,
+      "kept_poisoned_clients_std": 0.5773502691896257,
+      "n": 3
+    },
+    {
+      "label": "root96_e2",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root96_e2_seed_stats.json",
+      "server_root_size": 96,
+      "server_root_local_epochs": 2,
+      "test_f1_mean": 0.9791259354549249,
+      "test_f1_std": 0.0021205910765186428,
+      "test_fpr_mean": 0.017653167185877467,
+      "test_fpr_std": 0.0064849408083057095,
+      "kept_clients_mean": 4.333333333333333,
+      "kept_poisoned_clients_mean": 1.3333333333333333,
+      "kept_poisoned_clients_std": 0.5773502691896257,
+      "n": 3
+    },
+    {
+      "label": "root192_e1",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e1_seed_stats.json",
+      "server_root_size": 192,
+      "server_root_local_epochs": 1,
+      "test_f1_mean": 0.9802454423298907,
+      "test_f1_std": 0.002913869367323947,
+      "test_fpr_mean": 0.010384215991692628,
+      "test_fpr_std": 0.0064849408083057095,
+      "kept_clients_mean": 3.3333333333333335,
+      "kept_poisoned_clients_mean": 1.0,
+      "kept_poisoned_clients_std": 1.0,
+      "n": 3
+    },
+    {
+      "label": "root192_e2",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e2_seed_stats.json",
+      "server_root_size": 192,
+      "server_root_local_epochs": 2,
+      "test_f1_mean": 0.9802700178357615,
+      "test_f1_std": 0.002856696633523747,
+      "test_fpr_mean": 0.013499480789200415,
+      "test_fpr_std": 0.0017985989694380867,
+      "kept_clients_mean": 3.6666666666666665,
+      "kept_poisoned_clients_mean": 1.6666666666666667,
+      "kept_poisoned_clients_std": 1.1547005383792515,
+      "n": 3
+    }
+  ],
+  "reference_rows": [
+    {
+      "label": "trust_aware",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
+      "test_f1_mean": 0.9692519958911844,
+      "test_fpr_mean": 0.041536863966770504,
+      "kept_poisoned_clients_mean": 0.3333333333333333,
+      "kept_clients_mean": 6.333333333333333,
+      "n": 3
+    },
+    {
+      "label": "condfloor",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
+      "test_f1_mean": 0.9797821385807172,
+      "test_fpr_mean": 0.01142263759086189,
+      "kept_poisoned_clients_mean": 0.0,
+      "kept_clients_mean": 6.0,
+      "n": 3
+    },
+    {
+      "label": "keepall",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
+      "test_f1_mean": 0.9766385549344752,
+      "test_fpr_mean": 0.007268951194184838,
+      "kept_poisoned_clients_mean": 4.0,
+      "kept_clients_mean": 10.0,
+      "n": 3
+    }
+  ],
+  "best_by_f1": {
+    "label": "root192_e2",
+    "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e2_seed_stats.json",
+    "server_root_size": 192,
+    "server_root_local_epochs": 2,
+    "test_f1_mean": 0.9802700178357615,
+    "test_f1_std": 0.002856696633523747,
+    "test_fpr_mean": 0.013499480789200415,
+    "test_fpr_std": 0.0017985989694380867,
+    "kept_clients_mean": 3.6666666666666665,
+    "kept_poisoned_clients_mean": 1.6666666666666667,
+    "kept_poisoned_clients_std": 1.1547005383792515,
+    "n": 3
+  },
+  "best_by_retained_poisoned": {
+    "label": "root192_e1",
+    "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e1_seed_stats.json",
+    "server_root_size": 192,
+    "server_root_local_epochs": 1,
+    "test_f1_mean": 0.9802454423298907,
+    "test_f1_std": 0.002913869367323947,
+    "test_fpr_mean": 0.010384215991692628,
+    "test_fpr_std": 0.0064849408083057095,
+    "kept_clients_mean": 3.3333333333333335,
+    "kept_poisoned_clients_mean": 1.0,
+    "kept_poisoned_clients_std": 1.0,
+    "n": 3
+  }
+}

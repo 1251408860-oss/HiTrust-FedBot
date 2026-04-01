@@ -25,13 +25,21 @@ required_files=(
   "requirements_artifact.txt"
   "core_experiments/README.md"
   "core_experiments/reproduce/reproduce_public_nslkdd_validation.sh"
+  "core_experiments/reproduce/reproduce_public_cabench_validation.sh"
+  "core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh"
+  "core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh"
   "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
   "core_experiments/reproduce/reproduce_reviewer_bundle.sh"
+  "core_experiments/reproduce/check_anonymization_leaks.sh"
   "core_experiments/reproduce/generate_reviewer_checksums.sh"
   "core_experiments/reproduce/package_reviewer_release.sh"
   "docs/ARTIFACT_RELEASE_20260324.md"
   "docs/DATA_AVAILABILITY_20260324.md"
   "docs/ARTIFACT_STATUS_20260326.md"
+  "docs/EAAI_SUBMISSION_CHECKLIST_20260327.md"
+  "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md"
+  "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md"
+  "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md"
   "docs/reviewer_bundle_sha256_20260326.txt"
   "data_hitrust/README.md"
   "paper_hitrust/README.md"
@@ -40,7 +48,11 @@ required_files=(
 
 required_dirs=(
   "data_hitrust/bootstrap_graphs/graphs"
+  "data_hitrust/public_benchmarks/cabench_v1"
+  "data_hitrust/public_benchmarks/cabench_v1/graphs"
+  "data_hitrust/public_benchmarks/cabench_v1/meta"
   "data_hitrust/public_benchmarks/nsl_kdd/graphs"
+  "data_hitrust/public_benchmarks/nsl_kdd/meta"
   "paper_hitrust/tables"
   "paper_hitrust/figures"
   "paper_hitrust/runs"
@@ -68,6 +80,8 @@ for path in core_experiments/reproduce/*.sh; do
   bash -n "$path"
 done
 echo "[OK] shell syntax: core_experiments/reproduce/*.sh"
+
+bash core_experiments/reproduce/check_anonymization_leaks.sh
 
 "$PY_BIN" - <<'PY'
 import json
@@ -102,6 +116,11 @@ print("[OK] artifact manifest references resolved")
 PY
 
 if command -v sha256sum >/dev/null 2>&1; then
+  echo "[INFO] SHA-256 verification covers the static release surface only."
+  echo "[INFO] Mutable rerun outputs are checked by layout and manifest references:"
+  echo "[INFO]   data_hitrust/public_benchmarks/*/{graphs,meta}"
+  echo "[INFO]   paper_hitrust/{runs,tables,figures}"
+  echo "[INFO] Run verification before reruns, or use a fresh clone if you want to compare against the shipped derived outputs."
   sha256sum -c "$CHECKSUM_FILE"
 else
   echo "[WARN] sha256sum is unavailable; skipped checksum verification"
@@ -109,18 +128,25 @@ fi
 
 graph_count="$(find data_hitrust/bootstrap_graphs/graphs -maxdepth 1 -type f -name '*.pt' | wc -l | tr -d ' ')"
 public_graph_count="$(find data_hitrust/public_benchmarks/nsl_kdd/graphs -maxdepth 1 -type f -name '*.pt' | wc -l | tr -d ' ')"
+cabench_public_graph_count="$(find data_hitrust/public_benchmarks/cabench_v1/graphs -maxdepth 1 -type f -name '*.pt' 2>/dev/null | wc -l | tr -d ' ')"
 table_count="$(find paper_hitrust/tables -type f | wc -l | tr -d ' ')"
 figure_count="$(find paper_hitrust/figures -type f | wc -l | tr -d ' ')"
 run_count="$(find paper_hitrust/runs -type f | wc -l | tr -d ' ')"
 
 echo "[INFO] bootstrap graph files: $graph_count"
 echo "[INFO] public graph files:    $public_graph_count"
+echo "[INFO] Ca-Bench public graphs: $cabench_public_graph_count"
 echo "[INFO] paper tables:          $table_count"
 echo "[INFO] paper figures:         $figure_count"
 echo "[INFO] paper run files:       $run_count"
 
 if [[ "$graph_count" -lt 5 || "$public_graph_count" -lt 1 || "$table_count" -lt 1 || "$figure_count" -lt 1 || "$run_count" -lt 1 ]]; then
   echo "[FAIL] artifact bundle appears incomplete" >&2
+  exit 1
+fi
+
+if [[ "$cabench_public_graph_count" -lt 2 ]]; then
+  echo "[FAIL] expected both public Ca-Bench graphs (scenario_e and scenario_h)" >&2
   exit 1
 fi
 

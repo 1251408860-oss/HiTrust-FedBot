@@ -3,8 +3,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 from pathlib import Path
+
+
+def resolve_subprocess_cwd(project_root: Path) -> str | None:
+    project_text = str(project_root)
+    if os.name == "nt" and project_text.startswith("\\\\"):
+        return None
+    return project_text
 
 
 def main() -> None:
@@ -43,7 +51,7 @@ def main() -> None:
             "--project-root",
             str(project_root),
         ]
-        result = subprocess.run(cmd, cwd=str(project_root))
+        result = subprocess.run(cmd, cwd=resolve_subprocess_cwd(project_root))
         status = "ok" if result.returncode == 0 else f"failed:{result.returncode}"
         rows.append({"run_name": cfg["run_name"], "seed": seed, "status": status})
         print(f"[{status}] {cfg['run_name']}")

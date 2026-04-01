@@ -1,0 +1,19 @@
+{
+  "rows": [
+    {
+      "run_name": "tmp_temporal_rg_nofloor010_blend045_seed42_seed11",
+      "seed": 11,
+      "status": "ok"
+    },
+    {
+      "run_name": "tmp_temporal_rg_nofloor010_blend045_seed42_seed22",
+      "seed": 22,
+      "status": "ok"
+    },
+    {
+      "run_name": "tmp_temporal_rg_nofloor010_blend045_seed42_seed33",
+      "seed": 33,
+      "status": "ok"
+    }
+  ]
+}

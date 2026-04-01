@@ -1,0 +1,71 @@
+{
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed11",
+      "test_f1": 0.9805013927576602,
+      "test_recall": 0.967032967032967,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 1,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed22",
+      "test_f1": 0.9769713886950454,
+      "test_recall": 0.9615384615384616,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 3,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed33",
+      "test_f1": 0.9784871616932685,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.024922118380062305,
+      "kept_clients": 3,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed44",
+      "test_f1": 0.9723374827109267,
+      "test_recall": 0.9656593406593407,
+      "test_fpr": 0.04672897196261682,
+      "kept_clients": 3,
+      "kept_poisoned_clients": 0
+    },
+    {
+      "run_name": "public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed55",
+      "test_f1": 0.9826509368494101,
+      "test_recall": 0.9725274725274725,
+      "test_fpr": 0.01557632398753894,
+      "kept_clients": 3,
+      "kept_poisoned_clients": 0
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9781896725412622,
+      "std": 0.003907293523714792
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.967032967032967,
+      "std": 0.004004774653053077
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.023052959501557634,
+      "std": 0.014035987945257082
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 2.6,
+      "std": 0.8944271909999159
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 0.0,
+      "std": 0.0
+    }
+  }
+}

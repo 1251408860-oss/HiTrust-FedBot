@@ -1,0 +1,54 @@
+{
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed11",
+      "seed": 11,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed22",
+      "seed": 22,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed33",
+      "seed": 33,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed44",
+      "seed": 44,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed55",
+      "seed": 55,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed66",
+      "seed": 66,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed77",
+      "seed": 77,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed88",
+      "seed": 88,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed99",
+      "seed": 99,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed111",
+      "seed": 111,
+      "status": "ok"
+    }
+  ]
+}

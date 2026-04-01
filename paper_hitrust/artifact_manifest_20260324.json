@@ -1,6 +1,33 @@
 {
-  "artifact_version": "2026-03-24",
-  "public_validation": {
+  "artifact_version": "2026-03-30",
+  "same_task_public_validation": {
+    "scenario_e": {
+      "graph": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+      "build_summary": "data_hitrust/public_benchmarks/cabench_v1/meta/cabench_scenario_e_three_tier_high2_public_build_summary.json",
+      "trust_vs_keepall_table": "paper_hitrust/tables/public_cabench_scenario_e_trust_vs_keepall_seed_comparison.json",
+      "trust_vs_keepall_figure": "paper_hitrust/figures/public_cabench_scenario_e_trust_vs_keepall_seed_comparison.png",
+      "baseline_table": "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json",
+      "baseline_figure": "paper_hitrust/figures/public_cabench_scenario_e_update_noise_baseline_comparison.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_cabench_validation.sh"
+    },
+    "scenario_h": {
+      "graph": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+      "build_summary": "data_hitrust/public_benchmarks/cabench_v1/meta/cabench_scenario_h_mimic_heavy_overlap_public_build_summary.json",
+      "trust_vs_keepall_table": "paper_hitrust/tables/public_cabench_scenario_h_trust_vs_keepall_seed_comparison.json",
+      "trust_vs_keepall_figure": "paper_hitrust/figures/public_cabench_scenario_h_trust_vs_keepall_seed_comparison.png",
+      "baseline_table": "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+      "baseline_figure": "paper_hitrust/figures/public_cabench_scenario_h_update_noise_baseline_comparison.png",
+      "condfloor_table": "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json",
+      "condfloor_figure": "paper_hitrust/figures/public_cabench_scenario_h_update_noise_condfloor_comparison.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh"
+    }
+  },
+  "public_hardest_fltrust_sensitivity": {
+    "table": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sensitivity_report.json",
+    "figure": "paper_hitrust/figures/public_cabench_scenario_h_fltrust_like_sensitivity.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh"
+  },
+  "public_aux_validation": {
     "graph": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
     "build_summary": "data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_build_summary.json",
     "trust_vs_keepall_table": "paper_hitrust/tables/public_nslkdd_trust_vs_keepall_seed_comparison.json",
@@ -18,6 +45,11 @@
     "public_figure": "paper_hitrust/figures/public_nslkdd_update_noise_condfloor_comparison.png",
     "reproduce_script": "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
   },
+  "manuscript_support": {
+    "main_draft": "paper_hitrust/manuscript_cyber_draft_20260324.md",
+    "fltrust_like_note": "paper_hitrust/fltrust_like_baseline_note_20260330.md",
+    "paper_readme": "paper_hitrust/README.md"
+  },
   "release_integrity": {
     "artifact_status": "docs/ARTIFACT_STATUS_20260326.md",
     "checksum_manifest": "docs/reviewer_bundle_sha256_20260326.txt",
@@ -29,6 +61,10 @@
     "artifact_release_notes": "docs/ARTIFACT_RELEASE_20260324.md",
     "data_availability_notes": "docs/DATA_AVAILABILITY_20260324.md",
     "submission_checklist": "docs/CYBERSECURITY_SUBMISSION_CHECKLIST_20260324.md",
+    "eaai_submission_checklist": "docs/EAAI_SUBMISSION_CHECKLIST_20260327.md",
+    "eaai_title_page_template": "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md",
+    "eaai_highlights_template": "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md",
+    "eaai_data_availability_template": "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md",
     "cover_letter_draft": "docs/CYBERSECURITY_COVER_LETTER_20260324.md",
     "title_page_template": "docs/CYBERSECURITY_TITLE_PAGE_TEMPLATE_20260324.md"
   }

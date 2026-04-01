@@ -1,0 +1,324 @@
+{
+  "title_prefix": "Public-CaBench-ScenarioH_condfloor-sensitivity",
+  "rows": [
+    {
+      "trust_threshold": 0.25,
+      "group_floor_min_trust_mass": 0.05,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.9797821385807172,
+        "std": 0.002406707546434177
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.01142263759086189,
+        "std": 0.007839911147737019
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.25,
+      "group_floor_min_trust_mass": 0.1,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.9797821385807172,
+        "std": 0.002406707546434177
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.01142263759086189,
+        "std": 0.007839911147737019
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p10_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p10_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p10_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.25,
+      "group_floor_min_trust_mass": 0.15,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.979554690538077,
+        "std": 0.002229924246033655
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.012461059190031152,
+        "std": 0.008242215922319596
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p15_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p15_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p15_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.35,
+      "group_floor_min_trust_mass": 0.05,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.9797821385807172,
+        "std": 0.002406707546434177
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.01142263759086189,
+        "std": 0.007839911147737019
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p05_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p05_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p05_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.35,
+      "group_floor_min_trust_mass": 0.1,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.9797821385807172,
+        "std": 0.002406707546434177
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.01142263759086189,
+        "std": 0.007839911147737019
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p10_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p10_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p10_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.35,
+      "group_floor_min_trust_mass": 0.15,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.979554690538077,
+        "std": 0.002229924246033655
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.012461059190031152,
+        "std": 0.008242215922319596
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p15_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p15_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p35_floor0p15_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.45,
+      "group_floor_min_trust_mass": 0.05,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.9797821385807172,
+        "std": 0.002406707546434177
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.01142263759086189,
+        "std": 0.007839911147737019
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p05_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p05_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p05_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.45,
+      "group_floor_min_trust_mass": 0.1,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.9797821385807172,
+        "std": 0.002406707546434177
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.01142263759086189,
+        "std": 0.007839911147737019
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p10_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p10_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p10_seed33"
+      ]
+    },
+    {
+      "trust_threshold": 0.45,
+      "group_floor_min_trust_mass": 0.15,
+      "test_f1": {
+        "n": 3,
+        "mean": 0.979554690538077,
+        "std": 0.002229924246033655
+      },
+      "test_fpr": {
+        "n": 3,
+        "mean": 0.012461059190031152,
+        "std": 0.008242215922319596
+      },
+      "kept_poisoned_clients": {
+        "n": 3,
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "kept_clients": {
+        "n": 3,
+        "mean": 6.0,
+        "std": 0.0
+      },
+      "run_names": [
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p15_seed11",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p15_seed22",
+        "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p45_floor0p15_seed33"
+      ]
+    }
+  ],
+  "best_by_f1": {
+    "trust_threshold": 0.25,
+    "group_floor_min_trust_mass": 0.05,
+    "test_f1": {
+      "n": 3,
+      "mean": 0.9797821385807172,
+      "std": 0.002406707546434177
+    },
+    "test_fpr": {
+      "n": 3,
+      "mean": 0.01142263759086189,
+      "std": 0.007839911147737019
+    },
+    "kept_poisoned_clients": {
+      "n": 3,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "kept_clients": {
+      "n": 3,
+      "mean": 6.0,
+      "std": 0.0
+    },
+    "run_names": [
+      "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed11",
+      "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed22",
+      "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed33"
+    ]
+  },
+  "best_by_security": {
+    "trust_threshold": 0.25,
+    "group_floor_min_trust_mass": 0.05,
+    "test_f1": {
+      "n": 3,
+      "mean": 0.9797821385807172,
+      "std": 0.002406707546434177
+    },
+    "test_fpr": {
+      "n": 3,
+      "mean": 0.01142263759086189,
+      "std": 0.007839911147737019
+    },
+    "kept_poisoned_clients": {
+      "n": 3,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "kept_clients": {
+      "n": 3,
+      "mean": 6.0,
+      "std": 0.0
+    },
+    "run_names": [
+      "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed11",
+      "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed22",
+      "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_thr0p25_floor0p05_seed33"
+    ]
+  }
+}

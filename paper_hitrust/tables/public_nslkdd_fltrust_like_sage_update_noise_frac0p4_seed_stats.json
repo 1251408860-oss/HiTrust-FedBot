@@ -1,0 +1,55 @@
+{
+  "rows": [
+    {
+      "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed11",
+      "test_f1": 0.7655403662625742,
+      "test_recall": 0.6517347386912604,
+      "test_fpr": 0.0673244341265235,
+      "kept_clients": 7,
+      "kept_poisoned_clients": 2
+    },
+    {
+      "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed22",
+      "test_f1": 0.717793103448276,
+      "test_recall": 0.5713658322353975,
+      "test_fpr": 0.027278003482298318,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 2
+    },
+    {
+      "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed33",
+      "test_f1": 0.7864200658728148,
+      "test_recall": 0.681598594642073,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 5,
+      "kept_poisoned_clients": 3
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 3,
+      "mean": 0.7565845118612217,
+      "std": 0.03517912007069583
+    },
+    "test_recall": {
+      "n": 3,
+      "mean": 0.6348997218562437,
+      "std": 0.057012093636597094
+    },
+    "test_fpr": {
+      "n": 3,
+      "mean": 0.05436254594699168,
+      "std": 0.023463081103711172
+    },
+    "kept_clients": {
+      "n": 3,
+      "mean": 6.0,
+      "std": 1.0
+    },
+    "kept_poisoned_clients": {
+      "n": 3,
+      "mean": 2.3333333333333335,
+      "std": 0.5773502691896257
+    }
+  }
+}

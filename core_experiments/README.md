@@ -17,7 +17,25 @@ python core_experiments/internal/run_hitrust_suite.py \
   --config core_experiments/configs_hitrust/smoke_topology_noniid.json
 ```
 
-Auxiliary public validation:
+Same-task public held-out validation (`scenario_e`):
+
+```bash
+bash core_experiments/reproduce/reproduce_public_cabench_validation.sh
+```
+
+Same-task public hardest validation (`scenario_h`):
+
+```bash
+bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh
+```
+
+FLTrust-like sensitivity on public hardest `scenario_h`:
+
+```bash
+bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh
+```
+
+Auxiliary cross-domain validation:
 
 ```bash
 bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
@@ -33,6 +51,14 @@ Artifact integrity verification:
 
 ```bash
 bash core_experiments/reproduce/verify_artifact_bundle.sh
+```
+
+The verification entry point hashes only immutable release files. The public rerun scripts regenerate outputs in `data_hitrust/public_benchmarks/*/{graphs,meta}`, `paper_hitrust/runs`, `paper_hitrust/tables`, and `paper_hitrust/figures`, so those paths are validated by presence and manifest references rather than by fixed output checksums.
+
+Anonymous-submission leak scan:
+
+```bash
+bash core_experiments/reproduce/check_anonymization_leaks.sh
 ```
 
 Maintainer packaging for a GitHub Release:

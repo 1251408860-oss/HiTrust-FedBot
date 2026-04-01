@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-03-24T02:03:43Z",
+  "timestamp_utc": "2026-03-30T03:47:39Z",
   "config": {
     "run_name": "public_nslkdd_hierarchical_sage_update_noise_frac0p4_seed11",
     "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
@@ -68,7 +68,9 @@
   },
   "trust_filter": {
     "trust_threshold": 0.35,
-    "min_keep_per_group": 1
+    "min_keep_per_group": 1,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0
   },
   "comm_cost": {
     "tuning_mode": "adapter_ft",
@@ -98,7 +100,38 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 1
+      "kept_poisoned_clients": 1,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.20502055917514378,
+          "max_trust": 0.20502055917514378,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 5,
+          "trust_mass": 5.3390648067620265,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 0.9997665796071835,
+          "max_trust": 0.9997665796071835,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 2,
@@ -121,7 +154,38 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 1
+      "kept_poisoned_clients": 1,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.05167536383015534,
+          "max_trust": 0.05167536383015534,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 5,
+          "trust_mass": 4.428226661296922,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 0.9781305625948823,
+          "max_trust": 0.9781305625948823,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 3,
@@ -144,7 +208,38 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 1
+      "kept_poisoned_clients": 1,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.16127111081233797,
+          "max_trust": 0.16127111081233797,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 5,
+          "trust_mass": 5.116341687216342,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 0.7552623438274729,
+          "max_trust": 0.7552623438274729,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 4,
@@ -167,7 +262,38 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 1
+      "kept_poisoned_clients": 1,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.03605802007688617,
+          "max_trust": 0.03605802007688617,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 5,
+          "trust_mass": 4.406677000688964,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 0.7221351564605355,
+          "max_trust": 0.7221351564605355,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     },
     {
       "round": 5,
@@ -190,7 +316,38 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 1
+      "kept_poisoned_clients": 1,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.0,
+          "max_trust": 0.0,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 5,
+          "trust_mass": 4.448549196502854,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 0.9206877937683212,
+          "max_trust": 0.9206877937683212,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ]
     }
   ],
   "final_metrics": {
@@ -214,6 +371,37 @@
       "role:proto:icmp",
       "role:proto:tcp"
     ],
-    "kept_poisoned_clients": 1
+    "kept_poisoned_clients": 1,
+    "group_floor_diagnostics": [
+      {
+        "group": "role:proto:icmp",
+        "kept_before_floor": 0,
+        "trust_mass": 0.0,
+        "max_trust": 0.0,
+        "floor_allowed": true,
+        "floor_applied": true,
+        "selected_by_floor": [
+          0
+        ]
+      },
+      {
+        "group": "role:proto:tcp",
+        "kept_before_floor": 5,
+        "trust_mass": 4.448549196502854,
+        "max_trust": 1.0,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      },
+      {
+        "group": "group_other",
+        "kept_before_floor": 1,
+        "trust_mass": 0.9206877937683212,
+        "max_trust": 0.9206877937683212,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      }
+    ]
   }
 }

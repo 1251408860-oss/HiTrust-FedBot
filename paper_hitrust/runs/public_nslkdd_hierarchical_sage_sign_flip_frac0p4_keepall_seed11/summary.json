@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-03-24T02:09:03Z",
+  "timestamp_utc": "2026-03-30T03:41:46Z",
   "config": {
     "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed11",
     "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
@@ -68,7 +68,9 @@
   },
   "trust_filter": {
     "trust_threshold": 0.0,
-    "min_keep_per_group": 0
+    "min_keep_per_group": 0,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0
   },
   "comm_cost": {
     "tuning_mode": "adapter_ft",
@@ -101,7 +103,8 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 4
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": []
     },
     {
       "round": 2,
@@ -127,7 +130,8 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 4
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": []
     },
     {
       "round": 3,
@@ -153,7 +157,8 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 4
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": []
     },
     {
       "round": 4,
@@ -179,7 +184,8 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 4
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": []
     },
     {
       "round": 5,
@@ -205,7 +211,8 @@
         "role:proto:icmp",
         "role:proto:tcp"
       ],
-      "kept_poisoned_clients": 4
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": []
     }
   ],
   "final_metrics": {
@@ -232,6 +239,7 @@
       "role:proto:icmp",
       "role:proto:tcp"
     ],
-    "kept_poisoned_clients": 4
+    "kept_poisoned_clients": 4,
+    "group_floor_diagnostics": []
   }
 }

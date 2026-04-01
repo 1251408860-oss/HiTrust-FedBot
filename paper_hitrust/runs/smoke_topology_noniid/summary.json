@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-03-20T06:32:18Z",
+  "timestamp_utc": "2026-03-30T03:50:01Z",
   "config": {
     "run_name": "smoke_topology_noniid",
     "seed": 42,
@@ -126,24 +126,24 @@
   },
   "poisoned_clients": [
     0,
-    1
+    7
   ],
   "trust_summary": {
     "threshold": 0.35,
     "scores": {
       "n": 10,
-      "mean": 0.6300571270770133,
-      "std": 0.33143714747853253
+      "mean": 0.5993304069808799,
+      "std": 0.32387684973025477
     },
-    "kept_clients": 8,
+    "kept_clients": 7,
     "kept_poisoned_clients": 0,
-    "kept_clean_clients": 8
+    "kept_clean_clients": 7
   },
   "metrics": {
-    "f1": 0.8754,
-    "recall": 0.8096,
-    "fpr": 0.0866,
-    "ece": 0.097
+    "f1": 0.8735,
+    "recall": 0.8038,
+    "fpr": 0.0921,
+    "ece": 0.1001
   },
   "comm_cost": {
     "tuning_mode": "adapter_ft",
@@ -153,9 +153,9 @@
     "total_bytes_est": 10000000
   },
   "group_update_norms": {
-    "group_0": 4.4067367260463275,
-    "group_1": 5.687484842053251,
-    "group_2": 4.540816890265548
+    "group_0": 4.547198743689128,
+    "group_1": 5.1294971361188955,
+    "group_2": 4.790360945123782
   },
-  "global_update_norm": 4.384447024974332
+  "global_update_norm": 4.338248617653787
 }

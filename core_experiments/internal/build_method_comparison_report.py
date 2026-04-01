@@ -3,11 +3,21 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
+from typing import Any
 
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
+
+METRICS = [
+    ("test_f1", "F1"),
+    ("test_fpr", "FPR"),
+    ("kept_poisoned_clients", "Retained Poisoned"),
+    ("kept_clients", "Retained Clients"),
+]
+SEED_PATTERN = re.compile(r"_seed(\d+)$")
 
 
 def parse_specs(text: str) -> list[tuple[str, Path]]:
@@ -21,75 +31,220 @@ def parse_specs(text: str) -> list[tuple[str, Path]]:
     return out
 
 
-def load_json(path: Path) -> dict:
+def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def build_rows(specs: list[tuple[str, Path]], reference: str) -> list[dict]:
+def extract_seed_key(run_name: str, fallback_index: int) -> str:
+    match = SEED_PATTERN.search(str(run_name))
+    if match:
+        return str(match.group(1))
+    return f"row_{fallback_index}"
+
+
+def metric_values(obj: dict[str, Any], metric: str) -> list[float]:
+    return [float(row.get(metric, 0.0)) for row in obj.get("rows", [])]
+
+
+def stable_seed(*parts: object) -> int:
+    text = "|".join(str(part) for part in parts)
+    acc = 0
+    for idx, ch in enumerate(text.encode("utf-8"), start=1):
+        acc = (acc + idx * int(ch)) % (2**31 - 1)
+    return int(acc or 1)
+
+
+def metric_seed_map(obj: dict[str, Any], metric: str) -> dict[str, float]:
+    out: dict[str, float] = {}
+    for idx, row in enumerate(obj.get("rows", [])):
+        seed_key = extract_seed_key(str(row.get("run_name", "")), idx)
+        out[seed_key] = float(row.get(metric, 0.0))
+    return out
+
+
+def bootstrap_mean_ci(values: list[float], seed: int, num_bootstrap: int = 5000) -> tuple[float, float]:
+    arr = np.asarray(values, dtype=np.float64)
+    if arr.size <= 0:
+        return 0.0, 0.0
+    if arr.size == 1:
+        val = float(arr[0])
+        return val, val
+    rng = np.random.default_rng(int(seed))
+    idx = rng.integers(0, arr.size, size=(int(num_bootstrap), int(arr.size)))
+    boot = arr[idx].mean(axis=1)
+    lo, hi = np.quantile(boot, [0.025, 0.975])
+    return float(lo), float(hi)
+
+
+def aligned_pairs(reference: dict[str, float], candidate: dict[str, float]) -> tuple[np.ndarray, np.ndarray]:
+    keys = sorted(set(reference) & set(candidate), key=lambda x: (len(str(x)), str(x)))
+    if not keys:
+        return np.asarray([], dtype=np.float64), np.asarray([], dtype=np.float64)
+    ref = np.asarray([float(reference[k]) for k in keys], dtype=np.float64)
+    cand = np.asarray([float(candidate[k]) for k in keys], dtype=np.float64)
+    return ref, cand
+
+
+def bootstrap_paired_diff_ci(
+    reference: dict[str, float],
+    candidate: dict[str, float],
+    seed: int,
+    num_bootstrap: int = 5000,
+) -> tuple[float | None, float | None, float | None]:
+    ref, cand = aligned_pairs(reference, candidate)
+    if ref.size <= 0:
+        return None, None, None
+    diff = cand - ref
+    observed = float(np.mean(diff))
+    if diff.size == 1:
+        return observed, observed, observed
+    rng = np.random.default_rng(int(seed))
+    idx = rng.integers(0, diff.size, size=(int(num_bootstrap), int(diff.size)))
+    boot = diff[idx].mean(axis=1)
+    lo, hi = np.quantile(boot, [0.025, 0.975])
+    return observed, float(lo), float(hi)
+
+
+def paired_sign_flip_p_value(reference: dict[str, float], candidate: dict[str, float]) -> float | None:
+    ref, cand = aligned_pairs(reference, candidate)
+    if ref.size <= 0:
+        return None
+    diff = (cand - ref).astype(np.float64, copy=False)
+    diff = diff[np.abs(diff) > 1e-12]
+    if diff.size <= 0:
+        return 1.0
+    observed = float(abs(np.mean(diff)))
+    if diff.size <= 18:
+        total = 1 << int(diff.size)
+        extreme = 0
+        for mask in range(total):
+            signs = np.ones(diff.size, dtype=np.float64)
+            for bit in range(diff.size):
+                if (mask >> bit) & 1:
+                    signs[bit] = -1.0
+            stat = float(abs(np.mean(signs * diff)))
+            if stat + 1e-12 >= observed:
+                extreme += 1
+        return float(extreme / total)
+    rng = np.random.default_rng(20260331)
+    signs = rng.choice(np.asarray([-1.0, 1.0], dtype=np.float64), size=(50000, diff.size))
+    boot = np.abs((signs * diff[None, :]).mean(axis=1))
+    return float(np.mean(boot + 1e-12 >= observed))
+
+
+def build_rows(specs: list[tuple[str, Path]], reference: str) -> list[dict[str, Any]]:
     objects = {label: load_json(path) for label, path in specs}
     ref_obj = objects[reference]
-    ref_f1 = [float(row["test_f1"]) for row in ref_obj.get("rows", [])]
-    rows = []
+    ref_maps = {metric: metric_seed_map(ref_obj, metric) for metric, _ in METRICS}
+    ref_f1_map = metric_seed_map(ref_obj, "test_f1")
+    rows: list[dict[str, Any]] = []
+
     for label, path in specs:
         obj = objects[label]
-        vals_f1 = [float(row["test_f1"]) for row in obj.get("rows", [])]
-        vals_fpr = [float(row["test_fpr"]) for row in obj.get("rows", [])]
-        vals_kept_poisoned = [float(row.get("kept_poisoned_clients", 0)) for row in obj.get("rows", [])]
-        p_value = None
-        t_stat = None
-        if label != reference and len(ref_f1) >= 2 and len(vals_f1) >= 2:
-            t_stat, p_value = stats.ttest_ind(ref_f1, vals_f1, equal_var=False)
-            p_value = float(p_value)
-            t_stat = float(t_stat)
-        rows.append(
-            {
-                "label": label,
-                "source_file": str(path),
-                "test_f1_mean": float(obj["stats"]["test_f1"]["mean"]),
-                "test_f1_std": float(obj["stats"]["test_f1"]["std"]),
-                "test_fpr_mean": float(obj["stats"]["test_fpr"]["mean"]),
-                "test_fpr_std": float(obj["stats"]["test_fpr"]["std"]),
-                "kept_poisoned_clients_mean": float(obj["stats"].get("kept_poisoned_clients", {}).get("mean", 0.0)),
-                "kept_poisoned_clients_std": float(obj["stats"].get("kept_poisoned_clients", {}).get("std", 0.0)),
-                "kept_clients_mean": float(obj["stats"].get("kept_clients", {}).get("mean", 0.0)),
-                "n": int(obj["stats"]["test_f1"]["n"]),
-                "f1_p_value_vs_reference": p_value,
-                "f1_t_stat_vs_reference": t_stat,
-            }
-        )
+        row: dict[str, Any] = {
+            "label": label,
+            "source_file": str(path),
+            "n": int(obj["stats"]["test_f1"]["n"]),
+        }
+        method_maps = {metric: metric_seed_map(obj, metric) for metric, _ in METRICS}
+
+        for metric, _metric_title in METRICS:
+            values = metric_values(obj, metric)
+            stats_obj = obj["stats"].get(metric, {"mean": 0.0, "std": 0.0, "n": len(values)})
+            ci_low, ci_high = bootstrap_mean_ci(values, seed=stable_seed(label, metric))
+            row[f"{metric}_mean"] = float(stats_obj.get("mean", 0.0))
+            row[f"{metric}_std"] = float(stats_obj.get("std", 0.0))
+            row[f"{metric}_ci95_low"] = float(ci_low)
+            row[f"{metric}_ci95_high"] = float(ci_high)
+            if label == reference:
+                row[f"{metric}_paired_p_value_vs_reference"] = None
+                row[f"{metric}_delta_mean_vs_reference"] = None
+                row[f"{metric}_delta_ci95_low_vs_reference"] = None
+                row[f"{metric}_delta_ci95_high_vs_reference"] = None
+                row[f"{metric}_paired_n_vs_reference"] = None
+            else:
+                delta_mean, delta_low, delta_high = bootstrap_paired_diff_ci(
+                    ref_maps[metric],
+                    method_maps[metric],
+                    seed=stable_seed(reference, label, metric),
+                )
+                ref_vals, cand_vals = aligned_pairs(ref_maps[metric], method_maps[metric])
+                row[f"{metric}_paired_p_value_vs_reference"] = paired_sign_flip_p_value(
+                    ref_maps[metric],
+                    method_maps[metric],
+                )
+                row[f"{metric}_delta_mean_vs_reference"] = delta_mean
+                row[f"{metric}_delta_ci95_low_vs_reference"] = delta_low
+                row[f"{metric}_delta_ci95_high_vs_reference"] = delta_high
+                row[f"{metric}_paired_n_vs_reference"] = int(min(ref_vals.size, cand_vals.size))
+
+        if label == reference:
+            row["f1_p_value_vs_reference"] = None
+            row["f1_t_stat_vs_reference"] = None
+            row["test_f1_paired_ttest_p_value_vs_reference"] = None
+            row["test_f1_paired_ttest_t_stat_vs_reference"] = None
+        else:
+            ref_f1, cand_f1 = aligned_pairs(ref_f1_map, method_maps["test_f1"])
+            if ref_f1.size >= 2 and cand_f1.size >= 2:
+                t_stat, p_value = stats.ttest_rel(cand_f1, ref_f1)
+                row["f1_p_value_vs_reference"] = float(p_value)
+                row["f1_t_stat_vs_reference"] = float(t_stat)
+                row["test_f1_paired_ttest_p_value_vs_reference"] = float(p_value)
+                row["test_f1_paired_ttest_t_stat_vs_reference"] = float(t_stat)
+            else:
+                row["f1_p_value_vs_reference"] = None
+                row["f1_t_stat_vs_reference"] = None
+                row["test_f1_paired_ttest_p_value_vs_reference"] = None
+                row["test_f1_paired_ttest_t_stat_vs_reference"] = None
+        rows.append(row)
     return rows
 
 
-def plot_rows(rows: list[dict], output_file: Path, title_prefix: str) -> None:
+def metric_error_bars(rows: list[dict[str, Any]], metric: str) -> np.ndarray:
+    means = np.asarray([float(row[f"{metric}_mean"]) for row in rows], dtype=np.float64)
+    lows = np.asarray([float(row[f"{metric}_ci95_low"]) for row in rows], dtype=np.float64)
+    highs = np.asarray([float(row[f"{metric}_ci95_high"]) for row in rows], dtype=np.float64)
+    lower = np.maximum(means - lows, 0.0)
+    upper = np.maximum(highs - means, 0.0)
+    return np.vstack([lower, upper])
+
+
+def plot_rows(
+    rows: list[dict[str, Any]],
+    output_file: Path,
+    title_prefix: str,
+    include_kept_clients: bool = False,
+) -> None:
     labels = [str(row["label"]) for row in rows]
     x = np.arange(len(labels))
     width = 0.7
-    fig, axes = plt.subplots(1, 3, figsize=(13.5, 4.2))
+    metrics = ["test_f1", "test_fpr", "kept_poisoned_clients"]
+    if include_kept_clients:
+        metrics.append("kept_clients")
+    panel_titles = {
+        "test_f1": "F1",
+        "test_fpr": "FPR",
+        "kept_poisoned_clients": "Retained Poisoned",
+        "kept_clients": "Retained Clients",
+    }
+    fig, axes = plt.subplots(1, len(metrics), figsize=(4.4 * len(metrics), 4.2))
+    if len(metrics) == 1:
+        axes = [axes]
 
-    f1 = [float(row["test_f1_mean"]) for row in rows]
-    f1_std = [float(row["test_f1_std"]) for row in rows]
-    fpr = [float(row["test_fpr_mean"]) for row in rows]
-    fpr_std = [float(row["test_fpr_std"]) for row in rows]
-    kept_poisoned = [float(row["kept_poisoned_clients_mean"]) for row in rows]
-    kept_poisoned_std = [float(row["kept_poisoned_clients_std"]) for row in rows]
-
-    axes[0].bar(x, f1, width, yerr=f1_std, capsize=4)
-    axes[0].set_xticks(x, labels, rotation=15)
-    axes[0].set_ylim(0.0, 1.05)
-    axes[0].set_title(f"{title_prefix} F1")
-    axes[0].grid(axis="y", alpha=0.25)
-
-    axes[1].bar(x, fpr, width, yerr=fpr_std, capsize=4)
-    axes[1].set_xticks(x, labels, rotation=15)
-    axes[1].set_ylim(0.0, max(fpr) + max(fpr_std + [0.01]) + 0.05)
-    axes[1].set_title(f"{title_prefix} FPR")
-    axes[1].grid(axis="y", alpha=0.25)
-
-    axes[2].bar(x, kept_poisoned, width, yerr=kept_poisoned_std, capsize=4)
-    axes[2].set_xticks(x, labels, rotation=15)
-    axes[2].set_ylim(0.0, max(kept_poisoned) + max(kept_poisoned_std + [0.25]) + 0.5)
-    axes[2].set_title(f"{title_prefix} Retained Poisoned")
-    axes[2].grid(axis="y", alpha=0.25)
+    for ax, metric in zip(axes, metrics):
+        means = [float(row[f"{metric}_mean"]) for row in rows]
+        yerr = metric_error_bars(rows, metric)
+        ax.bar(x, means, width, yerr=yerr, capsize=4)
+        ax.set_xticks(x, labels, rotation=15)
+        ax.set_title(f"{title_prefix} {panel_titles[metric]}")
+        ax.grid(axis="y", alpha=0.25)
+        if metric == "test_f1":
+            ax.set_ylim(0.0, 1.05)
+        else:
+            highs = [float(row[f"{metric}_ci95_high"]) for row in rows]
+            upper = max(highs + [0.1])
+            margin = 0.05 if metric == "test_fpr" else 0.5
+            ax.set_ylim(0.0, upper + margin)
 
     fig.tight_layout()
     output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -104,6 +259,7 @@ def main() -> None:
     p.add_argument("--title-prefix", default="Method Comparison")
     p.add_argument("--output-table", required=True)
     p.add_argument("--output-figure", required=True)
+    p.add_argument("--include-kept-clients", action="store_true")
     args = p.parse_args()
 
     specs = parse_specs(args.method_specs)
@@ -119,13 +275,19 @@ def main() -> None:
             {
                 "reference": args.reference,
                 "title_prefix": str(args.title_prefix),
+                "include_kept_clients": bool(args.include_kept_clients),
                 "rows": rows,
             },
             indent=2,
         ),
         encoding="utf-8",
     )
-    plot_rows(rows, Path(args.output_figure).resolve(), title_prefix=str(args.title_prefix))
+    plot_rows(
+        rows,
+        Path(args.output_figure).resolve(),
+        title_prefix=str(args.title_prefix),
+        include_kept_clients=bool(args.include_kept_clients),
+    )
     print(f"[OK] wrote {output_table}")
     print(f"[OK] wrote {Path(args.output_figure).resolve()}")
 

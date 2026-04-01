@@ -1,0 +1,509 @@
+{
+  "timestamp_utc": "2026-03-31T07:48:53Z",
+  "config": {
+    "run_name": "public_cabench_scenario_e_flshield_like_sage_adaptive_alie_like_frac0p4_seed77",
+    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+    "seed": 77,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "flshield_like",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "adaptive_alie_like",
+    "poison_scale": 0.2,
+    "flshield_like_num_clusters": 2,
+    "flshield_like_cluster_iterations": 6
+  },
+  "graph_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\graphs\\cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "dataset_info": {
+    "dataset_name": "Ca-Bench",
+    "dataset_variant": "scenario_e_three_tier_high2_public_data_v1",
+    "dataset_source": "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1",
+    "split_scheme": "random_flow_split_from_public_scenario_capture"
+  },
+  "graph_stats": {
+    "num_nodes": 5976,
+    "num_edges": 8142,
+    "flow_nodes": 5975,
+    "train_nodes": 4156,
+    "val_nodes": 896,
+    "test_nodes": 897
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\raw\\real_collection\\mininet_testbed\\real_collection\\scenario_e_three_tier_high2\\arena_manifest_v2.json",
+    "topology_type": "three_tier",
+    "load_profile": "high",
+    "bot_type_mode": "mixed"
+  },
+  "poisoned_clients": [
+    0,
+    5,
+    6,
+    9
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 3178,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.19446192573945878
+  },
+  "trust_filter": {
+    "trust_mode": "static",
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 0,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0,
+    "temporal_reputation_decay": 0.7,
+    "temporal_history_decay": 0.8,
+    "temporal_server_cosine_floor": -0.1,
+    "temporal_root_drift_scale": 0.12,
+    "temporal_anchor_blend_min": 0.2,
+    "temporal_anchor_blend_max": 0.6,
+    "temporal_peer_topk": 2,
+    "temporal_use_layerwise": false,
+    "temporal_use_behavioral_probe": false,
+    "temporal_use_soft_weighting": false,
+    "temporal_behavior_probe_mix": 0.12,
+    "temporal_behavior_probe_scale": 0.1,
+    "temporal_soft_weight_power": 1.5,
+    "temporal_weight_floor": 0.01,
+    "temporal_hard_reject_floor": 0.35,
+    "temporal_redemption_mix": 0.0,
+    "temporal_camouflage_peer_threshold": 1.5,
+    "temporal_camouflage_server_cosine_max": -1.0,
+    "temporal_camouflage_layerwise_max": -1.0,
+    "temporal_camouflage_similarity_threshold": 1.1,
+    "temporal_camouflage_min_redundant_peers": 99,
+    "temporal_camouflage_cluster_server_cosine_max": -1.0,
+    "temporal_score_weights": {}
+  },
+  "server_root": null,
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.9897084048027444,
+      "test_f1": 0.9895287958115183,
+      "test_recall": 0.9895287958115183,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 4,
+      "kept_client_ids": [
+        3,
+        4,
+        7,
+        8
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "flshield_like",
+          "clusters": [
+            {
+              "cluster_id": 1,
+              "member_ids": [
+                3,
+                4,
+                7,
+                8
+              ],
+              "cluster_size": 4,
+              "cluster_val_f1": 0.9897084048027444,
+              "cluster_val_accuracy": 0.9866071428571429,
+              "cluster_best_threshold": 0.7000000000000001,
+              "mean_centroid_cosine": 0.902996327282707,
+              "cluster_update_norm": 0.20936357413075743
+            },
+            {
+              "cluster_id": 0,
+              "member_ids": [
+                0,
+                1,
+                2,
+                5,
+                6,
+                9
+              ],
+              "cluster_size": 6,
+              "cluster_val_f1": 0.9896907216494846,
+              "cluster_val_accuracy": 0.9866071428571429,
+              "cluster_best_threshold": 0.65,
+              "mean_centroid_cosine": 0.9095431660523566,
+              "cluster_update_norm": 0.15060762495974847
+            }
+          ],
+          "selected_client_ids": [
+            3,
+            4,
+            7,
+            8
+          ]
+        }
+      ],
+      "aggregation_mode": "validation_selected_cluster",
+      "trust_weight_mass": 4.0
+    },
+    {
+      "round": 2,
+      "val_f1": 0.9914675767918089,
+      "test_f1": 0.9912891986062716,
+      "test_recall": 0.9930191972076788,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 4,
+      "kept_client_ids": [
+        3,
+        4,
+        7,
+        8
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "flshield_like",
+          "clusters": [
+            {
+              "cluster_id": 1,
+              "member_ids": [
+                3,
+                4,
+                7,
+                8
+              ],
+              "cluster_size": 4,
+              "cluster_val_f1": 0.9914675767918089,
+              "cluster_val_accuracy": 0.9888392857142857,
+              "cluster_best_threshold": 0.7000000000000001,
+              "mean_centroid_cosine": 0.8545872187590011,
+              "cluster_update_norm": 0.19633268236005735
+            },
+            {
+              "cluster_id": 0,
+              "member_ids": [
+                0,
+                1,
+                2,
+                5,
+                6,
+                9
+              ],
+              "cluster_size": 6,
+              "cluster_val_f1": 0.9888603256212511,
+              "cluster_val_accuracy": 0.9854910714285714,
+              "cluster_best_threshold": 0.65,
+              "mean_centroid_cosine": 0.9083930693182704,
+              "cluster_update_norm": 0.15367618673768244
+            }
+          ],
+          "selected_client_ids": [
+            3,
+            4,
+            7,
+            8
+          ]
+        }
+      ],
+      "aggregation_mode": "validation_selected_cluster",
+      "trust_weight_mass": 4.0
+    },
+    {
+      "round": 3,
+      "val_f1": 0.9914529914529915,
+      "test_f1": 0.990409764603313,
+      "test_recall": 0.9912739965095986,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 4,
+      "kept_client_ids": [
+        3,
+        4,
+        7,
+        8
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "flshield_like",
+          "clusters": [
+            {
+              "cluster_id": 1,
+              "member_ids": [
+                3,
+                4,
+                7,
+                8
+              ],
+              "cluster_size": 4,
+              "cluster_val_f1": 0.9914529914529915,
+              "cluster_val_accuracy": 0.9888392857142857,
+              "cluster_best_threshold": 0.75,
+              "mean_centroid_cosine": 0.7765573384254976,
+              "cluster_update_norm": 0.1714272307152039
+            },
+            {
+              "cluster_id": 0,
+              "member_ids": [
+                0,
+                1,
+                2,
+                5,
+                6,
+                9
+              ],
+              "cluster_size": 6,
+              "cluster_val_f1": 0.989778534923339,
+              "cluster_val_accuracy": 0.9866071428571429,
+              "cluster_best_threshold": 0.65,
+              "mean_centroid_cosine": 0.8885825888795585,
+              "cluster_update_norm": 0.15256831482199235
+            }
+          ],
+          "selected_client_ids": [
+            3,
+            4,
+            7,
+            8
+          ]
+        }
+      ],
+      "aggregation_mode": "validation_selected_cluster",
+      "trust_weight_mass": 4.0
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9914675767918089,
+      "test_f1": 0.9912891986062716,
+      "test_recall": 0.9930191972076788,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:benign_user",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "flshield_like",
+          "clusters": [
+            {
+              "cluster_id": 1,
+              "member_ids": [
+                0,
+                1,
+                2,
+                5,
+                6,
+                9
+              ],
+              "cluster_size": 6,
+              "cluster_val_f1": 0.9914675767918089,
+              "cluster_val_accuracy": 0.9888392857142857,
+              "cluster_best_threshold": 0.7000000000000001,
+              "mean_centroid_cosine": 0.8749177893335899,
+              "cluster_update_norm": 0.15012538491626032
+            },
+            {
+              "cluster_id": 0,
+              "member_ids": [
+                3,
+                4,
+                7,
+                8
+              ],
+              "cluster_size": 4,
+              "cluster_val_f1": 0.9914675767918089,
+              "cluster_val_accuracy": 0.9888392857142857,
+              "cluster_best_threshold": 0.75,
+              "mean_centroid_cosine": 0.7693928930446868,
+              "cluster_update_norm": 0.1693492581647959
+            }
+          ],
+          "selected_client_ids": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            9
+          ]
+        }
+      ],
+      "aggregation_mode": "validation_selected_cluster",
+      "trust_weight_mass": 6.0
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9914529914529915,
+      "test_f1": 0.990409764603313,
+      "test_recall": 0.9912739965095986,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 4,
+      "kept_client_ids": [
+        3,
+        4,
+        7,
+        8
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:bot:slowburn"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "aggregation": "flshield_like",
+          "clusters": [
+            {
+              "cluster_id": 0,
+              "member_ids": [
+                3,
+                4,
+                7,
+                8
+              ],
+              "cluster_size": 4,
+              "cluster_val_f1": 0.9914529914529915,
+              "cluster_val_accuracy": 0.9888392857142857,
+              "cluster_best_threshold": 0.75,
+              "mean_centroid_cosine": 0.7835147553563088,
+              "cluster_update_norm": 0.17534964746982168
+            },
+            {
+              "cluster_id": 1,
+              "member_ids": [
+                0,
+                1,
+                2,
+                5,
+                6,
+                9
+              ],
+              "cluster_size": 6,
+              "cluster_val_f1": 0.989778534923339,
+              "cluster_val_accuracy": 0.9866071428571429,
+              "cluster_best_threshold": 0.65,
+              "mean_centroid_cosine": 0.8887008403053462,
+              "cluster_update_norm": 0.1520680730045664
+            }
+          ],
+          "selected_client_ids": [
+            3,
+            4,
+            7,
+            8
+          ]
+        }
+      ],
+      "aggregation_mode": "validation_selected_cluster",
+      "trust_weight_mass": 4.0
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9914529914529915,
+    "test_f1": 0.990409764603313,
+    "test_recall": 0.9912739965095986,
+    "test_fpr": 0.018518518518518517,
+    "kept_clients": 4,
+    "kept_client_ids": [
+      3,
+      4,
+      7,
+      8
+    ],
+    "kept_groups": [
+      "group_other",
+      "role:bot:slowburn"
+    ],
+    "kept_poisoned_clients": 0,
+    "group_floor_diagnostics": [
+      {
+        "aggregation": "flshield_like",
+        "clusters": [
+          {
+            "cluster_id": 0,
+            "member_ids": [
+              3,
+              4,
+              7,
+              8
+            ],
+            "cluster_size": 4,
+            "cluster_val_f1": 0.9914529914529915,
+            "cluster_val_accuracy": 0.9888392857142857,
+            "cluster_best_threshold": 0.75,
+            "mean_centroid_cosine": 0.7835147553563088,
+            "cluster_update_norm": 0.17534964746982168
+          },
+          {
+            "cluster_id": 1,
+            "member_ids": [
+              0,
+              1,
+              2,
+              5,
+              6,
+              9
+            ],
+            "cluster_size": 6,
+            "cluster_val_f1": 0.989778534923339,
+            "cluster_val_accuracy": 0.9866071428571429,
+            "cluster_best_threshold": 0.65,
+            "mean_centroid_cosine": 0.8887008403053462,
+            "cluster_update_norm": 0.1520680730045664
+          }
+        ],
+        "selected_client_ids": [
+          3,
+          4,
+          7,
+          8
+        ]
+      }
+    ],
+    "aggregation_mode": "validation_selected_cluster",
+    "trust_weight_mass": 4.0
+  }
+}
