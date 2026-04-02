@@ -29,7 +29,7 @@ The repository now also includes same-task public external-validation paths base
 
 - Public release source:
   - `https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1`
-- Raw archive used by the build script:
+- Optional local cache downloaded by the build script on demand:
   - `data_hitrust/public_benchmarks/cabench_v1/raw/real_collection.tar.gz`
 - Local generated graph outputs:
   - `data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt`

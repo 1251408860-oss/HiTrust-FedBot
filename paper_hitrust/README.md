@@ -15,7 +15,6 @@ This directory contains paper-facing outputs and manuscript-support materials.
 Current manuscript-support files kept in the repo include:
 
 - `manuscript_eaai_compact_draft_20260401.md`
-- `manuscript_cyber_draft_20260324.md`
 - `fltrust_like_baseline_note_20260330.md`
 - `foolsgold_official_baseline_note_20260331.md`
 

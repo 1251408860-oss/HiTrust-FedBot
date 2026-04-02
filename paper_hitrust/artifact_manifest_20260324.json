@@ -47,7 +47,6 @@
   },
   "manuscript_support": {
     "main_draft": "paper_hitrust/manuscript_eaai_compact_draft_20260401.md",
-    "full_draft": "paper_hitrust/manuscript_cyber_draft_20260324.md",
     "fltrust_like_note": "paper_hitrust/fltrust_like_baseline_note_20260330.md",
     "foolsgold_note": "paper_hitrust/foolsgold_official_baseline_note_20260331.md",
     "paper_readme": "paper_hitrust/README.md"

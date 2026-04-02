@@ -40,10 +40,16 @@ append_find data_hitrust/public_benchmarks/nsl_kdd/raw -type f
 append_find paper_hitrust -maxdepth 1 -type f -name '*.md'
 append_find docs -maxdepth 1 -type f -name '*.md'
 
-paths+=(
+optional_paths=(
   "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection.tar.gz"
   "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection.tar.gz.sha256"
 )
+
+for path in "${optional_paths[@]}"; do
+  if [[ -f "$path" ]]; then
+    paths+=("$path")
+  fi
+done
 
 mapfile -t unique_paths < <(printf '%s\n' "${paths[@]}" | LC_ALL=C sort -u)
 
