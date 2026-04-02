@@ -8,9 +8,16 @@ This directory contains paper-facing outputs and manuscript-support materials.
 - `tables/`: JSON summaries used to support paper claims
 - `figures/`: paper-ready figures referenced by the manuscript workflow
 - `artifact_manifest_20260324.json`: compact manifest of artifact-side deliverables
-- manuscript-support markdown files for Chinese and English paper drafting
+- current manuscript-support markdown files for the release-facing paper narrative
 - `fltrust_like_baseline_note_20260330.md`: manuscript-facing positioning note for the new FLTrust-like baseline and sensitivity evidence
 - `foolsgold_official_baseline_note_20260331.md`: manuscript-facing positioning note for the official FoolsGold adaptive baseline
+
+Current manuscript-support files kept in the repo include:
+
+- `manuscript_eaai_compact_draft_20260401.md`
+- `manuscript_cyber_draft_20260324.md`
+- `fltrust_like_baseline_note_20260330.md`
+- `foolsgold_official_baseline_note_20260331.md`
 
 Key public-evidence files for the current manuscript round include:
 

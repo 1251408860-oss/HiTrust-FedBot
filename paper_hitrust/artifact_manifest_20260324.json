@@ -46,8 +46,10 @@
     "reproduce_script": "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
   },
   "manuscript_support": {
-    "main_draft": "paper_hitrust/manuscript_cyber_draft_20260324.md",
+    "main_draft": "paper_hitrust/manuscript_eaai_compact_draft_20260401.md",
+    "full_draft": "paper_hitrust/manuscript_cyber_draft_20260324.md",
     "fltrust_like_note": "paper_hitrust/fltrust_like_baseline_note_20260330.md",
+    "foolsgold_note": "paper_hitrust/foolsgold_official_baseline_note_20260331.md",
     "paper_readme": "paper_hitrust/README.md"
   },
   "release_integrity": {
@@ -60,12 +62,9 @@
   "docs": {
     "artifact_release_notes": "docs/ARTIFACT_RELEASE_20260324.md",
     "data_availability_notes": "docs/DATA_AVAILABILITY_20260324.md",
-    "submission_checklist": "docs/CYBERSECURITY_SUBMISSION_CHECKLIST_20260324.md",
     "eaai_submission_checklist": "docs/EAAI_SUBMISSION_CHECKLIST_20260327.md",
     "eaai_title_page_template": "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md",
     "eaai_highlights_template": "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md",
-    "eaai_data_availability_template": "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md",
-    "cover_letter_draft": "docs/CYBERSECURITY_COVER_LETTER_20260324.md",
-    "title_page_template": "docs/CYBERSECURITY_TITLE_PAGE_TEMPLATE_20260324.md"
+    "eaai_data_availability_template": "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md"
   }
 }
