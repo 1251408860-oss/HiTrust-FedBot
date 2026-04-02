@@ -18,6 +18,7 @@ from torch_geometric.nn import SAGEConv
 from adapter_tuning import resolve_tuning_mode
 from attack_injection import apply_attack, mark_poisoned_clients, summarize_poisoned_ids
 from hierarchical_aggregation import (
+    aggregate_centered_clipping,
     aggregate_hierarchical,
     aggregate_krum_proxy,
     aggregate_mean,
@@ -1468,6 +1469,9 @@ def main() -> None:
     foolsgold_use_history = safe_bool(cfg.get("foolsgold_use_history", True), True)
     rfa_max_iter = int(cfg.get("rfa_max_iter", 100))
     rfa_tolerance = float(cfg.get("rfa_tolerance", 1e-6))
+    centered_clipping_iterations = int(cfg.get("centered_clipping_iterations", 10))
+    centered_clipping_clip_ratio = float(cfg.get("centered_clipping_clip_ratio", 2.0))
+    centered_clipping_clip_radius = float(cfg.get("centered_clipping_clip_radius", 0.0))
     server_root_size = int(cfg.get("server_root_size", 96))
     server_root_seed = int(cfg.get("server_root_seed", 314))
     server_root_local_epochs = int(cfg.get("server_root_local_epochs", local_epochs))
@@ -2173,6 +2177,18 @@ def main() -> None:
                             max_iter=rfa_max_iter,
                             tol=rfa_tolerance,
                         )
+                    elif aggregation == "centered_clipping":
+                        flat = [u for arr in grouped_updates.values() for u in arr]
+                        w = [w for arr in grouped_weights.values() for w in arr]
+                        client_update = aggregate_centered_clipping(
+                            flat,
+                            w,
+                            clip_radius=(
+                                centered_clipping_clip_radius if centered_clipping_clip_radius > 0.0 else None
+                            ),
+                            clip_ratio=centered_clipping_clip_ratio,
+                            num_iterations=centered_clipping_iterations,
+                        )
                     elif aggregation == "median":
                         flat = [u for arr in grouped_updates.values() for u in arr]
                         client_update = aggregate_median(flat)
@@ -2315,6 +2331,18 @@ def main() -> None:
                         w,
                         max_iter=rfa_max_iter,
                         tol=rfa_tolerance,
+                    )
+                elif aggregation == "centered_clipping":
+                    flat = [u for arr in grouped_updates.values() for u in arr]
+                    w = [w for arr in grouped_weights.values() for w in arr]
+                    global_update = aggregate_centered_clipping(
+                        flat,
+                        w,
+                        clip_radius=(
+                            centered_clipping_clip_radius if centered_clipping_clip_radius > 0.0 else None
+                        ),
+                        clip_ratio=centered_clipping_clip_ratio,
+                        num_iterations=centered_clipping_iterations,
                     )
                 elif aggregation == "median":
                     flat = [u for arr in grouped_updates.values() for u in arr]

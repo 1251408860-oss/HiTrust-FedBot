@@ -19,6 +19,7 @@ Current manuscript-support files kept in the repo include:
 - `fltrust_like_baseline_note_20260330.md`
 - `foolsgold_official_baseline_note_20260331.md`
 - `robust_fl_frontier_note_20260402.md`
+- `centered_clipping_baseline_note_20260402.md`
 
 Key public-evidence files for the current manuscript round include:
 
@@ -29,6 +30,8 @@ Key public-evidence files for the current manuscript round include:
 - `tables/public_nslkdd_update_noise_baseline_comparison.json`
 
 The public comparison artifacts are maintained from matched-seed summaries. The current rerun entry points default to 10-seed public sweeps and rebuild the trust-vs-keepall tables with matched-seed paired testing.
+
+The non-adaptive update-noise comparison tables now also include a modern Centered Clipping comparator, which is useful for separating strong aggregation metrics from explicit poisoned-participation control.
 
 ## Reviewer Use
 
@@ -52,3 +55,6 @@ Submission-anonymization support scripts and templates are available under:
 - `docs/EAAI_SUBMISSION_CHECKLIST_20260327.md`
 - `docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md`
 - `docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md`
+- `docs/EAAI_COVER_LETTER_DRAFT_20260402.md`
+- `docs/EAAI_TITLE_PAGE_DRAFT_20260402.md`
+- `docs/EAAI_HIGHLIGHTS_DRAFT_20260402.md`

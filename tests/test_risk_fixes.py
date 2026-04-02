@@ -27,7 +27,7 @@ from run_real_fed_pilot import (  # noqa: E402
     load_config,
     select_kept_clients,
 )
-from hierarchical_aggregation import aggregate_rfa_geometric_median  # noqa: E402
+from hierarchical_aggregation import aggregate_centered_clipping, aggregate_rfa_geometric_median  # noqa: E402
 
 
 class RiskFixTests(unittest.TestCase):
@@ -204,6 +204,22 @@ class RiskFixTests(unittest.TestCase):
 
         self.assertLess(float(np.linalg.norm(global_update)), 0.5)
         self.assertLess(float(np.linalg.norm(global_update - updates[0])), 0.5)
+
+    def test_aggregate_centered_clipping_clips_far_outlier(self) -> None:
+        updates = [
+            np.asarray([0.0, 0.0], dtype=np.float64),
+            np.asarray([0.1, -0.1], dtype=np.float64),
+            np.asarray([-0.1, 0.1], dtype=np.float64),
+            np.asarray([10.0, 10.0], dtype=np.float64),
+        ]
+        global_update = aggregate_centered_clipping(
+            updates,
+            clip_radius=0.5,
+            num_iterations=10,
+        )
+
+        self.assertLess(float(np.linalg.norm(global_update)), 1.0)
+        self.assertLess(float(np.linalg.norm(global_update - updates[0])), 1.0)
 
     def test_is_adaptive_attack_type_includes_adaptive_alie_like(self) -> None:
         self.assertTrue(is_adaptive_attack_type("adaptive_benign_mimic"))

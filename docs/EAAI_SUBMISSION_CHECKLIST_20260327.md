@@ -7,6 +7,7 @@ This checklist is for preparing a double-anonymized EAAI submission package from
 - Main manuscript file (for review) contains no author names, affiliations, emails, or acknowledgements.
 - Title page is uploaded as a separate file (`EAAI_TITLE_PAGE_TEMPLATE_20260327.md` as template).
 - Highlights are uploaded as a separate file (`EAAI_HIGHLIGHTS_TEMPLATE_20260327.md` as template).
+- Current working drafts for this submission round are `EAAI_COVER_LETTER_DRAFT_20260402.md`, `EAAI_TITLE_PAGE_DRAFT_20260402.md`, and `EAAI_HIGHLIGHTS_DRAFT_20260402.md`.
 
 ## 2. Anonymous-Main-File Checks
 
@@ -43,6 +44,7 @@ bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 
 - Treat trust-aware filtering as a conservative defense control.
 - Treat FLTrust-like as a covered trust-bootstrapping baseline, not as the paper's proposed method.
+- Treat Centered Clipping as a modern aggregation-only comparator; if it appears strong on F1/FPR, also state that it retains all poisoned clients because it does not perform explicit participation control.
 - Report security gain primarily as reduced poisoned participation.
 - Keep accuracy claims near-neutral; do not claim universal F1 improvement.
 - State that NSL-KDD is cross-domain auxiliary validation.
@@ -55,4 +57,5 @@ bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 2. Title page
 3. Highlights
 4. Data-availability statement
-5. Optional response-to-editor note on related manuscript separation
+5. Optional cover letter
+6. Optional response-to-editor note on related manuscript separation

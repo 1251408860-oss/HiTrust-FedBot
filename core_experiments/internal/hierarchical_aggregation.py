@@ -67,6 +67,57 @@ def aggregate_rfa_geometric_median(
     return np.asarray(estimate, dtype=np.float64)
 
 
+def aggregate_centered_clipping(
+    updates: Iterable[np.ndarray],
+    weights: Iterable[float] | None = None,
+    *,
+    clip_radius: float | None = None,
+    clip_ratio: float = 2.0,
+    num_iterations: int = 10,
+    initial_center: np.ndarray | None = None,
+    eps: float = 1e-12,
+) -> np.ndarray:
+    stack = _stack(updates)
+    if weights is None:
+        base_weights = np.full(stack.shape[0], 1.0 / max(stack.shape[0], 1), dtype=np.float64)
+    else:
+        base_weights = np.asarray(list(weights), dtype=np.float64)
+        if base_weights.shape[0] != stack.shape[0]:
+            raise ValueError("weights length must match the number of updates")
+        weight_sum = float(np.sum(base_weights))
+        if weight_sum <= float(eps):
+            raise ValueError("weights must contain positive mass")
+        base_weights = base_weights / weight_sum
+    if initial_center is None:
+        center = np.zeros(stack.shape[1], dtype=np.float64)
+    else:
+        center = np.asarray(initial_center, dtype=np.float64).reshape(-1)
+        if center.shape[0] != stack.shape[1]:
+            raise ValueError("initial_center shape must match update dimension")
+
+    if clip_radius is None or clip_radius <= 0.0:
+        norms = np.linalg.norm(stack - center[None, :], axis=1)
+        nonzero = norms[norms > float(eps)]
+        base_radius = float(np.median(nonzero)) if nonzero.size > 0 else 0.0
+        if base_radius <= float(eps):
+            base_radius = float(np.mean(norms)) if norms.size > 0 else 0.0
+        if base_radius <= float(eps):
+            base_radius = 1.0
+        clip_radius = max(base_radius * max(float(clip_ratio), float(eps)), float(eps))
+
+    for _ in range(max(int(num_iterations), 1)):
+        residuals = stack - center[None, :]
+        norms = np.linalg.norm(residuals, axis=1)
+        scales = np.minimum(1.0, float(clip_radius) / np.maximum(norms, float(eps)))
+        clipped_mean = np.tensordot(base_weights, residuals * scales[:, None], axes=1)
+        updated = center + clipped_mean
+        delta = float(np.linalg.norm(updated - center))
+        center = updated
+        if delta <= 1e-6 * max(float(np.linalg.norm(center)), 1.0):
+            break
+    return np.asarray(center, dtype=np.float64)
+
+
 def aggregate_krum_proxy(updates: Iterable[np.ndarray]) -> np.ndarray:
     stack = _stack(updates)
     dists = np.zeros(stack.shape[0], dtype=np.float64)
