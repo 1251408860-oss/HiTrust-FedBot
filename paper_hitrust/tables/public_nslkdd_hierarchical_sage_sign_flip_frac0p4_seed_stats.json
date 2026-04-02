@@ -9,6 +9,14 @@
       "kept_poisoned_clients": 3
     },
     {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed111",
+      "test_f1": 0.7579227696404793,
+      "test_recall": 0.6249451032059727,
+      "test_fpr": 0.03192106790481718,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 3
+    },
+    {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed22",
       "test_f1": 0.7272727272727273,
       "test_recall": 0.5867369345630216,
@@ -23,33 +31,81 @@
       "test_fpr": 0.06848520023215322,
       "kept_clients": 7,
       "kept_poisoned_clients": 2
+    },
+    {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed44",
+      "test_f1": 0.7262959978511953,
+      "test_recall": 0.5937637241985068,
+      "test_fpr": 0.054556006964596636,
+      "kept_clients": 9,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed55",
+      "test_f1": 0.7558441558441559,
+      "test_recall": 0.6389986824769434,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 2
+    },
+    {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed66",
+      "test_f1": 0.7622779519331244,
+      "test_recall": 0.6407553798858147,
+      "test_fpr": 0.053395240858966915,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed77",
+      "test_f1": 0.7679874869655892,
+      "test_recall": 0.6469038208168643,
+      "test_fpr": 0.04991294254207777,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed88",
+      "test_f1": 0.7493431424067262,
+      "test_recall": 0.6262626262626263,
+      "test_fpr": 0.05977945443993035,
+      "kept_clients": 8,
+      "kept_poisoned_clients": 2
+    },
+    {
+      "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed99",
+      "test_f1": 0.7602122015915119,
+      "test_recall": 0.629336846728151,
+      "test_fpr": 0.034822983168891465,
+      "kept_clients": 6,
+      "kept_poisoned_clients": 2
     }
   ],
   "stats": {
     "test_f1": {
-      "n": 3,
-      "mean": 0.758667841347411,
-      "std": 0.0281045391548764
+      "n": 10,
+      "mean": 0.7555887230275016,
+      "std": 0.017418409420739838
     },
     "test_recall": {
-      "n": 3,
-      "mean": 0.6385595081247255,
-      "std": 0.04600233421229159
+      "n": 10,
+      "mean": 0.6316644707949056,
+      "std": 0.02637326393442199
     },
     "test_fpr": {
-      "n": 3,
-      "mean": 0.05726446121106597,
-      "std": 0.018934487495634856
+      "n": 10,
+      "mean": 0.052466627974463144,
+      "std": 0.014303560975327461
     },
     "kept_clients": {
-      "n": 3,
-      "mean": 7.0,
-      "std": 0.0
+      "n": 10,
+      "mean": 7.3,
+      "std": 1.1595018087284057
     },
     "kept_poisoned_clients": {
-      "n": 3,
-      "mean": 2.3333333333333335,
-      "std": 0.5773502691896257
+      "n": 10,
+      "mean": 2.8,
+      "std": 0.9189365834726815
     }
   }
 }

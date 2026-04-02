@@ -23,6 +23,8 @@ Same-task public held-out validation (`scenario_e`):
 bash core_experiments/reproduce/reproduce_public_cabench_validation.sh
 ```
 
+The public Ca-Bench rerun now defaults to a 10-seed sweep (`11..111`) and skips already-completed runs unless `SKIP_EXISTING=0` is set.
+
 Same-task public hardest validation (`scenario_h`):
 
 ```bash
@@ -40,6 +42,8 @@ Auxiliary cross-domain validation:
 ```bash
 bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 ```
+
+The auxiliary NSL-KDD rerun follows the same 10-seed default sweep and supports `SKIP_EXISTING=1` for incremental backfills.
 
 Conditional-floor hardening:
 

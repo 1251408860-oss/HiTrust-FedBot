@@ -1,0 +1,435 @@
+{
+  "timestamp_utc": "2026-04-02T06:45:13Z",
+  "config": {
+    "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_seed77",
+    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+    "seed": 77,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "sign_flip",
+    "poison_scale": 1.0,
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1
+  },
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+  "dataset_info": {
+    "dataset_name": "NSL-KDD",
+    "dataset_variant": "train20_test_public_graph",
+    "dataset_source": "https://github.com/defcom17/NSL_KDD",
+    "split_scheme": "official_train_test_with_sampled_train_val"
+  },
+  "graph_stats": {
+    "num_nodes": 14000,
+    "num_edges": 73631,
+    "flow_nodes": 14000,
+    "train_nodes": 8000,
+    "val_nodes": 2000,
+    "test_nodes": 4000
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
+    "topology_type": "public_benchmark",
+    "load_profile": "public_benchmark",
+    "bot_type_mode": "intrusion_binary"
+  },
+  "poisoned_clients": [
+    0,
+    5,
+    6,
+    9
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 10218,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.060481503229594835
+  },
+  "trust_filter": {
+    "trust_mode": "static",
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0,
+    "temporal_reputation_decay": 0.7,
+    "temporal_history_decay": 0.8,
+    "temporal_server_cosine_floor": -0.1,
+    "temporal_root_drift_scale": 0.12,
+    "temporal_anchor_blend_min": 0.2,
+    "temporal_anchor_blend_max": 0.6,
+    "temporal_peer_topk": 2,
+    "temporal_use_layerwise": false,
+    "temporal_use_behavioral_probe": false,
+    "temporal_use_soft_weighting": false,
+    "temporal_behavior_probe_mix": 0.12,
+    "temporal_behavior_probe_scale": 0.1,
+    "temporal_soft_weight_power": 1.5,
+    "temporal_weight_floor": 0.01,
+    "temporal_hard_reject_floor": 0.35,
+    "temporal_redemption_mix": 0.0,
+    "temporal_camouflage_peer_threshold": 1.5,
+    "temporal_camouflage_server_cosine_max": -1.0,
+    "temporal_camouflage_layerwise_max": -1.0,
+    "temporal_camouflage_similarity_threshold": 1.1,
+    "temporal_camouflage_min_redundant_peers": 99,
+    "temporal_camouflage_cluster_server_cosine_max": -1.0,
+    "temporal_score_weights": {}
+  },
+  "server_root": null,
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.973641742872512,
+      "test_f1": 0.7653543307086614,
+      "test_recall": 0.6403162055335968,
+      "test_fpr": 0.04352872896111434,
+      "kept_clients": 3,
+      "kept_client_ids": [
+        0,
+        6,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 3,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.0056094121524529585,
+          "max_trust": 0.0056094121524529585,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 1,
+          "trust_mass": 1.2703518407620447,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 0.6396022558505285,
+          "max_trust": 0.6396022558505285,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 1.9155635087650262
+    },
+    {
+      "round": 2,
+      "val_f1": 0.973641742872512,
+      "test_f1": 0.7656782996588822,
+      "test_recall": 0.6407553798858147,
+      "test_fpr": 0.04352872896111434,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.32684014109169884,
+          "max_trust": 0.32684014109169884,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 4,
+          "trust_mass": 3.011450095573626,
+          "max_trust": 0.9081860199662388,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 4.338290236665324
+    },
+    {
+      "round": 3,
+      "val_f1": 0.973641742872512,
+      "test_f1": 0.7656782996588822,
+      "test_recall": 0.6407553798858147,
+      "test_fpr": 0.04352872896111434,
+      "kept_clients": 7,
+      "kept_client_ids": [
+        0,
+        2,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.26226496829886664,
+          "max_trust": 0.26226496829886664,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 5,
+          "trust_mass": 3.5703654044370983,
+          "max_trust": 0.9033120977552187,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 4.832630372735965
+    },
+    {
+      "round": 4,
+      "val_f1": 0.9731182795698925,
+      "test_f1": 0.7675450039133839,
+      "test_recall": 0.6460254721124287,
+      "test_fpr": 0.04933255948926291,
+      "kept_clients": 5,
+      "kept_client_ids": [
+        0,
+        3,
+        5,
+        6,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.15284282823972148,
+          "max_trust": 0.15284282823972148,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 3,
+          "trust_mass": 2.402114563001752,
+          "max_trust": 0.9331666213042034,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 3.554957391241473
+    },
+    {
+      "round": 5,
+      "val_f1": 0.9731182795698925,
+      "test_f1": 0.7679874869655892,
+      "test_recall": 0.6469038208168643,
+      "test_fpr": 0.04991294254207777,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:proto:icmp",
+        "role:proto:tcp"
+      ],
+      "kept_poisoned_clients": 4,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:proto:icmp",
+          "kept_before_floor": 0,
+          "trust_mass": 0.2792117583521055,
+          "max_trust": 0.2792117583521055,
+          "floor_allowed": true,
+          "floor_applied": true,
+          "selected_by_floor": [
+            0
+          ]
+        },
+        {
+          "group": "role:proto:tcp",
+          "kept_before_floor": 4,
+          "trust_mass": 3.7591404794998415,
+          "max_trust": 0.9311879158687427,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.038352237851948
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.9731182795698925,
+    "test_f1": 0.7679874869655892,
+    "test_recall": 0.6469038208168643,
+    "test_fpr": 0.04991294254207777,
+    "kept_clients": 6,
+    "kept_client_ids": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      9
+    ],
+    "kept_groups": [
+      "group_other",
+      "role:proto:icmp",
+      "role:proto:tcp"
+    ],
+    "kept_poisoned_clients": 4,
+    "group_floor_diagnostics": [
+      {
+        "group": "role:proto:icmp",
+        "kept_before_floor": 0,
+        "trust_mass": 0.2792117583521055,
+        "max_trust": 0.2792117583521055,
+        "floor_allowed": true,
+        "floor_applied": true,
+        "selected_by_floor": [
+          0
+        ]
+      },
+      {
+        "group": "role:proto:tcp",
+        "kept_before_floor": 4,
+        "trust_mass": 3.7591404794998415,
+        "max_trust": 0.9311879158687427,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      },
+      {
+        "group": "group_other",
+        "kept_before_floor": 1,
+        "trust_mass": 1.0,
+        "max_trust": 1.0,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      }
+    ],
+    "aggregation_mode": "hierarchical",
+    "trust_weight_mass": 5.038352237851948
+  }
+}

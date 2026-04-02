@@ -17,7 +17,13 @@ from torch_geometric.nn import SAGEConv
 
 from adapter_tuning import resolve_tuning_mode
 from attack_injection import apply_attack, mark_poisoned_clients, summarize_poisoned_ids
-from hierarchical_aggregation import aggregate_hierarchical, aggregate_krum_proxy, aggregate_mean, aggregate_median
+from hierarchical_aggregation import (
+    aggregate_hierarchical,
+    aggregate_krum_proxy,
+    aggregate_mean,
+    aggregate_median,
+    aggregate_rfa_geometric_median,
+)
 from hitrust_common import resolve_repo_local_path, resolve_suite_paths, save_json, timestamp_utc
 from trust_scoring import compute_trust_score, normalize_scores
 
@@ -1460,6 +1466,8 @@ def main() -> None:
     flshield_like_num_clusters = int(cfg.get("flshield_like_num_clusters", 2))
     flshield_like_cluster_iterations = int(cfg.get("flshield_like_cluster_iterations", 6))
     foolsgold_use_history = safe_bool(cfg.get("foolsgold_use_history", True), True)
+    rfa_max_iter = int(cfg.get("rfa_max_iter", 100))
+    rfa_tolerance = float(cfg.get("rfa_tolerance", 1e-6))
     server_root_size = int(cfg.get("server_root_size", 96))
     server_root_seed = int(cfg.get("server_root_seed", 314))
     server_root_local_epochs = int(cfg.get("server_root_local_epochs", local_epochs))
@@ -2156,6 +2164,15 @@ def main() -> None:
                         flat = [u for arr in grouped_updates.values() for u in arr]
                         w = [w for arr in grouped_weights.values() for w in arr]
                         client_update = aggregate_mean(flat, w)
+                    elif aggregation == "rfa":
+                        flat = [u for arr in grouped_updates.values() for u in arr]
+                        w = [w for arr in grouped_weights.values() for w in arr]
+                        client_update = aggregate_rfa_geometric_median(
+                            flat,
+                            w,
+                            max_iter=rfa_max_iter,
+                            tol=rfa_tolerance,
+                        )
                     elif aggregation == "median":
                         flat = [u for arr in grouped_updates.values() for u in arr]
                         client_update = aggregate_median(flat)
@@ -2290,6 +2307,15 @@ def main() -> None:
                     flat = [u for arr in grouped_updates.values() for u in arr]
                     w = [w for arr in grouped_weights.values() for w in arr]
                     global_update = aggregate_mean(flat, w)
+                elif aggregation == "rfa":
+                    flat = [u for arr in grouped_updates.values() for u in arr]
+                    w = [w for arr in grouped_weights.values() for w in arr]
+                    global_update = aggregate_rfa_geometric_median(
+                        flat,
+                        w,
+                        max_iter=rfa_max_iter,
+                        tol=rfa_tolerance,
+                    )
                 elif aggregation == "median":
                     flat = [u for arr in grouped_updates.values() for u in arr]
                     global_update = aggregate_median(flat)

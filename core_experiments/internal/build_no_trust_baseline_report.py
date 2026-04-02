@@ -3,15 +3,69 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
 
+SEED_PATTERN = re.compile(r"_seed(\d+)$")
+
 
 def load_json(path: str | Path) -> dict:
     return json.loads(Path(path).resolve().read_text(encoding="utf-8"))
+
+
+def extract_seed_key(run_name: str, fallback_index: int) -> str:
+    match = SEED_PATTERN.search(str(run_name))
+    if match:
+        return str(match.group(1))
+    return f"row_{fallback_index}"
+
+
+def metric_seed_map(obj: dict, metric: str) -> dict[str, float]:
+    out: dict[str, float] = {}
+    for idx, row in enumerate(obj.get("rows", [])):
+        seed_key = extract_seed_key(str(row.get("run_name", "")), idx)
+        out[seed_key] = float(row.get(metric, 0.0))
+    return out
+
+
+def aligned_pairs(reference: dict[str, float], candidate: dict[str, float]) -> tuple[np.ndarray, np.ndarray]:
+    keys = sorted(set(reference) & set(candidate), key=lambda x: (len(str(x)), str(x)))
+    if not keys:
+        return np.asarray([], dtype=np.float64), np.asarray([], dtype=np.float64)
+    ref = np.asarray([float(reference[k]) for k in keys], dtype=np.float64)
+    cand = np.asarray([float(candidate[k]) for k in keys], dtype=np.float64)
+    return ref, cand
+
+
+def paired_sign_flip_p_value(reference: dict[str, float], candidate: dict[str, float]) -> float | None:
+    ref, cand = aligned_pairs(reference, candidate)
+    if ref.size <= 0:
+        return None
+    diff = (ref - cand).astype(np.float64, copy=False)
+    diff = diff[np.abs(diff) > 1e-12]
+    if diff.size <= 0:
+        return 1.0
+    observed = float(abs(np.mean(diff)))
+    if diff.size <= 18:
+        total = 1 << int(diff.size)
+        extreme = 0
+        for mask in range(total):
+            signs = np.ones(diff.size, dtype=np.float64)
+            for bit in range(diff.size):
+                if (mask >> bit) & 1:
+                    signs[bit] = -1.0
+            stat = float(abs(np.mean(signs * diff)))
+            if stat + 1e-12 >= observed:
+                extreme += 1
+        return float(extreme / total)
+    rng = np.random.default_rng(20260402)
+    signs = rng.choice(np.asarray([-1.0, 1.0], dtype=np.float64), size=(50000, diff.size))
+    boot = np.abs((signs * diff[None, :]).mean(axis=1))
+    return float(np.mean(boot + 1e-12 >= observed))
 
 
 def build_condition_row(condition: str, trust_obj: dict, keepall_obj: dict) -> dict:
@@ -19,12 +73,25 @@ def build_condition_row(condition: str, trust_obj: dict, keepall_obj: dict) -> d
     keepall_f1 = [float(row["test_f1"]) for row in keepall_obj.get("rows", [])]
     trust_fpr = [float(row["test_fpr"]) for row in trust_obj.get("rows", [])]
     keepall_fpr = [float(row["test_fpr"]) for row in keepall_obj.get("rows", [])]
+    trust_f1_map = metric_seed_map(trust_obj, "test_f1")
+    keepall_f1_map = metric_seed_map(keepall_obj, "test_f1")
+    paired_trust_f1, paired_keepall_f1 = aligned_pairs(trust_f1_map, keepall_f1_map)
     p_value = None
     t_stat = None
-    if len(trust_f1) >= 2 and len(keepall_f1) >= 2:
-        t_stat, p_value = stats.ttest_ind(trust_f1, keepall_f1, equal_var=False)
-        p_value = float(p_value)
-        t_stat = float(t_stat)
+    paired_sign_flip = paired_sign_flip_p_value(trust_f1_map, keepall_f1_map)
+    paired_n = int(min(paired_trust_f1.size, paired_keepall_f1.size))
+    if paired_n >= 2:
+        if np.allclose(paired_trust_f1, paired_keepall_f1):
+            t_stat = 0.0
+            p_value = 1.0
+        else:
+            t_stat, p_value = stats.ttest_rel(paired_trust_f1, paired_keepall_f1)
+            if np.isfinite(p_value) and np.isfinite(t_stat):
+                p_value = float(p_value)
+                t_stat = float(t_stat)
+            else:
+                p_value = None
+                t_stat = None
     return {
         "condition": condition,
         "trust_aware": {
@@ -53,6 +120,9 @@ def build_condition_row(condition: str, trust_obj: dict, keepall_obj: dict) -> d
         },
         "f1_p_value_trust_vs_keepall": p_value,
         "f1_t_stat_trust_vs_keepall": t_stat,
+        "f1_test_type_trust_vs_keepall": "paired_ttest",
+        "f1_sign_flip_p_value_trust_vs_keepall": paired_sign_flip,
+        "f1_paired_n_trust_vs_keepall": paired_n if paired_n > 0 else None,
     }
 
 

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-SEEDS="${SEEDS:-11,22,33,44,55}"
+SEEDS="${SEEDS:-11,22,33,44,55,66,77,88,99,111}"
 SCENARIO_NAME="scenario_h_mimic_heavy_overlap"
 
 if [[ -n "${PY_BIN:-}" ]]; then
@@ -44,6 +44,7 @@ for cfg in \
   core_experiments/configs_hitrust/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4.json \
   core_experiments/configs_hitrust/public_cabench_scenario_h_fedtruth_like_sage_update_noise_frac0p4.json \
   core_experiments/configs_hitrust/public_cabench_scenario_h_flshield_like_sage_update_noise_frac0p4.json \
+  core_experiments/configs_hitrust/public_cabench_scenario_h_rfa_sage_update_noise_frac0p4_keepall.json \
   core_experiments/configs_hitrust/public_cabench_scenario_h_mean_sage_update_noise_frac0p4_keepall.json \
   core_experiments/configs_hitrust/public_cabench_scenario_h_median_sage_update_noise_frac0p4_keepall.json \
   core_experiments/configs_hitrust/public_cabench_scenario_h_krum_sage_update_noise_frac0p4_keepall.json
@@ -69,6 +70,7 @@ for prefix in \
   public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4 \
   public_cabench_scenario_h_fedtruth_like_sage_update_noise_frac0p4 \
   public_cabench_scenario_h_flshield_like_sage_update_noise_frac0p4 \
+  public_cabench_scenario_h_rfa_sage_update_noise_frac0p4_keepall \
   public_cabench_scenario_h_mean_sage_update_noise_frac0p4_keepall \
   public_cabench_scenario_h_median_sage_update_noise_frac0p4_keepall \
   public_cabench_scenario_h_krum_sage_update_noise_frac0p4_keepall
@@ -95,7 +97,7 @@ cp "$REPO_ROOT/paper_hitrust/figures/public_cabench_scenario_h_trust_vs_keepall_
   "$REPO_ROOT/paper_hitrust/figures_sage_main/public_cabench_scenario_h_trust_vs_keepall_seed_comparison.png"
 
 "$PY_BIN" core_experiments/internal/build_method_comparison_report.py \
-  --method-specs "trust_aware=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json,fltrust_like=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_seed_stats.json,fedtruth_like=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_fedtruth_like_sage_update_noise_frac0p4_seed_stats.json,flshield_like=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_flshield_like_sage_update_noise_frac0p4_seed_stats.json,hier_keepall=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json,mean=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_mean_sage_update_noise_frac0p4_keepall_seed_stats.json,median=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_median_sage_update_noise_frac0p4_keepall_seed_stats.json,krum=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_krum_sage_update_noise_frac0p4_keepall_seed_stats.json" \
+  --method-specs "trust_aware=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json,fltrust_like=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_seed_stats.json,fedtruth_like=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_fedtruth_like_sage_update_noise_frac0p4_seed_stats.json,flshield_like=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_flshield_like_sage_update_noise_frac0p4_seed_stats.json,hier_keepall=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json,rfa=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_rfa_sage_update_noise_frac0p4_keepall_seed_stats.json,mean=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_mean_sage_update_noise_frac0p4_keepall_seed_stats.json,median=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_median_sage_update_noise_frac0p4_keepall_seed_stats.json,krum=$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_krum_sage_update_noise_frac0p4_keepall_seed_stats.json" \
   --reference trust_aware \
   --title-prefix Public-CaBench-ScenarioH_update-noise0p4 \
   --output-table "$REPO_ROOT/paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json" \

@@ -15,6 +15,7 @@ INTERNAL = ROOT / "core_experiments" / "internal"
 sys.path.insert(0, str(INTERNAL))
 
 from attack_injection import mark_poisoned_clients  # noqa: E402
+from build_no_trust_baseline_report import build_condition_row  # noqa: E402
 from run_real_fed_pilot import (  # noqa: E402
     aggregate_foolsgold_official,
     aggregate_fltrust_like,
@@ -26,6 +27,7 @@ from run_real_fed_pilot import (  # noqa: E402
     load_config,
     select_kept_clients,
 )
+from hierarchical_aggregation import aggregate_rfa_geometric_median  # noqa: E402
 
 
 class RiskFixTests(unittest.TestCase):
@@ -191,10 +193,60 @@ class RiskFixTests(unittest.TestCase):
         self.assertAlmostEqual(float(global_update[0]), 1.0, places=6)
         self.assertAlmostEqual(float(global_update[1]), 1.0, places=6)
 
+    def test_aggregate_rfa_geometric_median_downweights_outlier(self) -> None:
+        updates = [
+            np.asarray([0.0, 0.0], dtype=np.float64),
+            np.asarray([0.1, -0.1], dtype=np.float64),
+            np.asarray([-0.1, 0.1], dtype=np.float64),
+            np.asarray([10.0, 10.0], dtype=np.float64),
+        ]
+        global_update = aggregate_rfa_geometric_median(updates)
+
+        self.assertLess(float(np.linalg.norm(global_update)), 0.5)
+        self.assertLess(float(np.linalg.norm(global_update - updates[0])), 0.5)
+
     def test_is_adaptive_attack_type_includes_adaptive_alie_like(self) -> None:
         self.assertTrue(is_adaptive_attack_type("adaptive_benign_mimic"))
         self.assertTrue(is_adaptive_attack_type("adaptive_alie_like"))
         self.assertFalse(is_adaptive_attack_type("update_noise"))
+
+    def test_build_condition_row_uses_matched_seed_paired_test(self) -> None:
+        trust_obj = {
+            "rows": [
+                {"run_name": "trust_seed22", "test_f1": 0.91, "test_fpr": 0.05},
+                {"run_name": "trust_seed11", "test_f1": 0.80, "test_fpr": 0.07},
+                {"run_name": "trust_seed33", "test_f1": 0.50, "test_fpr": 0.20},
+            ],
+            "stats": {
+                "test_f1": {"mean": 0.7366666666666667, "std": 0.2159475249020514, "n": 3},
+                "test_fpr": {"mean": 0.10666666666666667, "std": 0.08137703743892898, "n": 3},
+                "kept_clients": {"mean": 6.0, "std": 1.0, "n": 3},
+                "kept_poisoned_clients": {"mean": 0.5, "std": 0.5, "n": 3},
+            },
+        }
+        keepall_obj = {
+            "rows": [
+                {"run_name": "keepall_seed11", "test_f1": 0.10, "test_fpr": 0.15},
+                {"run_name": "keepall_seed22", "test_f1": 0.26, "test_fpr": 0.14},
+                {"run_name": "keepall_seed44", "test_f1": 0.99, "test_fpr": 0.01},
+            ],
+            "stats": {
+                "test_f1": {"mean": 0.45, "std": 0.4709922167966118, "n": 3},
+                "test_fpr": {"mean": 0.1, "std": 0.07810249675906655, "n": 3},
+                "kept_clients": {"mean": 10.0, "std": 0.0, "n": 3},
+                "kept_poisoned_clients": {"mean": 4.0, "std": 0.0, "n": 3},
+            },
+        }
+
+        row = build_condition_row("update_noise_frac0p4", trust_obj, keepall_obj)
+
+        self.assertEqual(row["f1_test_type_trust_vs_keepall"], "paired_ttest")
+        self.assertEqual(row["f1_paired_n_trust_vs_keepall"], 2)
+        self.assertAlmostEqual(row["f1_sign_flip_p_value_trust_vs_keepall"], 0.5, places=6)
+        self.assertIsNotNone(row["f1_t_stat_trust_vs_keepall"])
+        self.assertIsNotNone(row["f1_p_value_trust_vs_keepall"])
+        self.assertGreater(float(row["f1_t_stat_trust_vs_keepall"]), 0.0)
+        self.assertLess(float(row["f1_p_value_trust_vs_keepall"]), 0.1)
 
     def test_build_adaptive_alie_like_attack_is_coordinated(self) -> None:
         local_updates = {

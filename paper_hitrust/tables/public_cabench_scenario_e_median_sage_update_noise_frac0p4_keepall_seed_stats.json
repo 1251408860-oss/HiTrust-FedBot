@@ -9,6 +9,14 @@
       "kept_poisoned_clients": 4
     },
     {
+      "run_name": "public_cabench_scenario_e_median_sage_update_noise_frac0p4_keepall_seed111",
+      "test_f1": 0.9739583333333333,
+      "test_recall": 0.9790575916230366,
+      "test_fpr": 0.05555555555555555,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
       "run_name": "public_cabench_scenario_e_median_sage_update_noise_frac0p4_keepall_seed22",
       "test_f1": 0.9895470383275261,
       "test_recall": 0.9912739965095986,
@@ -39,31 +47,63 @@
       "test_fpr": 0.012345679012345678,
       "kept_clients": 10,
       "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_e_median_sage_update_noise_frac0p4_keepall_seed66",
+      "test_f1": 0.9921397379912664,
+      "test_recall": 0.9912739965095986,
+      "test_fpr": 0.012345679012345678,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_e_median_sage_update_noise_frac0p4_keepall_seed77",
+      "test_f1": 0.9912891986062716,
+      "test_recall": 0.9930191972076788,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_e_median_sage_update_noise_frac0p4_keepall_seed88",
+      "test_f1": 0.9851007887817703,
+      "test_recall": 0.9808027923211169,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_cabench_scenario_e_median_sage_update_noise_frac0p4_keepall_seed99",
+      "test_f1": 0.988646288209607,
+      "test_recall": 0.987783595113438,
+      "test_fpr": 0.018518518518518517,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
     }
   ],
   "stats": {
     "test_f1": {
-      "n": 5,
-      "mean": 0.9879830028904161,
-      "std": 0.0041079438457261065
+      "n": 10,
+      "mean": 0.9871049361374329,
+      "std": 0.005710016899273404
     },
     "test_recall": {
-      "n": 5,
-      "mean": 0.9891797556719023,
-      "std": 0.003121909916230043
+      "n": 10,
+      "mean": 0.987783595113438,
+      "std": 0.004867132207877105
     },
     "test_fpr": {
-      "n": 5,
-      "mean": 0.023456790123456788,
-      "std": 0.013906025093912111
+      "n": 10,
+      "mean": 0.024074074074074074,
+      "std": 0.014894618165311816
     },
     "kept_clients": {
-      "n": 5,
+      "n": 10,
       "mean": 10.0,
       "std": 0.0
     },
     "kept_poisoned_clients": {
-      "n": 5,
+      "n": 10,
       "mean": 4.0,
       "std": 0.0
     }

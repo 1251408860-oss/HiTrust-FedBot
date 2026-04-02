@@ -1,11 +1,11 @@
 {
   "reference": "condfloor",
   "title_prefix": "Public-CaBench-ScenarioH_condfloor_update-noise0p4",
-  "include_kept_clients": true,
+  "include_kept_clients": false,
   "rows": [
     {
       "label": "condfloor",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9763290498660508,
       "test_f1_std": 0.003949517858315583,
@@ -50,7 +50,7 @@
     },
     {
       "label": "fltrust_like",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_seed_stats.json",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9743164723353741,
       "test_f1_std": 0.00406310912919654,
@@ -95,7 +95,7 @@
     },
     {
       "label": "static",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9723331869755091,
       "test_f1_std": 0.00976175924135322,
@@ -140,7 +140,7 @@
     },
     {
       "label": "keepall",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
+      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9745525032652376,
       "test_f1_std": 0.0054834556571031435,

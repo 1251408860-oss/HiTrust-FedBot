@@ -11,12 +11,14 @@ This directory contains paper-facing outputs and manuscript-support materials.
 - current manuscript-support markdown files for the release-facing paper narrative
 - `fltrust_like_baseline_note_20260330.md`: manuscript-facing positioning note for the new FLTrust-like baseline and sensitivity evidence
 - `foolsgold_official_baseline_note_20260331.md`: manuscript-facing positioning note for the official FoolsGold adaptive baseline
+- `robust_fl_frontier_note_20260402.md`: manuscript-facing note on more recent robust-FL baseline options after the public 10-seed refresh
 
 Current manuscript-support files kept in the repo include:
 
 - `manuscript_eaai_compact_draft_20260401.md`
 - `fltrust_like_baseline_note_20260330.md`
 - `foolsgold_official_baseline_note_20260331.md`
+- `robust_fl_frontier_note_20260402.md`
 
 Key public-evidence files for the current manuscript round include:
 
@@ -25,6 +27,8 @@ Key public-evidence files for the current manuscript round include:
 - `tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json`
 - `tables/public_cabench_scenario_h_fltrust_like_sensitivity_report.json`
 - `tables/public_nslkdd_update_noise_baseline_comparison.json`
+
+The public comparison artifacts are maintained from matched-seed summaries. The current rerun entry points default to 10-seed public sweeps and rebuild the trust-vs-keepall tables with matched-seed paired testing.
 
 ## Reviewer Use
 

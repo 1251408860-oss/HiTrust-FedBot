@@ -27,6 +27,46 @@ def aggregate_median(updates: Iterable[np.ndarray]) -> np.ndarray:
     return np.median(stack, axis=0)
 
 
+def aggregate_rfa_geometric_median(
+    updates: Iterable[np.ndarray],
+    weights: Iterable[float] | None = None,
+    *,
+    max_iter: int = 100,
+    tol: float = 1e-6,
+    eps: float = 1e-12,
+) -> np.ndarray:
+    stack = _stack(updates)
+    if weights is None:
+        base_weights = np.full(stack.shape[0], 1.0 / max(stack.shape[0], 1), dtype=np.float64)
+    else:
+        base_weights = np.asarray(list(weights), dtype=np.float64)
+        if base_weights.shape[0] != stack.shape[0]:
+            raise ValueError("weights length must match the number of updates")
+        weight_sum = float(np.sum(base_weights))
+        if weight_sum <= float(eps):
+            raise ValueError("weights must contain positive mass")
+        base_weights = base_weights / weight_sum
+
+    estimate = aggregate_mean(stack, base_weights)
+    for _ in range(max(int(max_iter), 1)):
+        distances = np.linalg.norm(stack - estimate[None, :], axis=1)
+        close_mask = distances <= float(eps)
+        if np.any(close_mask):
+            close_weights = base_weights[close_mask]
+            close_weight_sum = float(np.sum(close_weights))
+            if close_weight_sum > float(eps):
+                return aggregate_mean(stack[close_mask], close_weights)
+            return np.asarray(stack[np.where(close_mask)[0][0]], dtype=np.float64)
+        reweighted = base_weights / np.maximum(distances, float(eps))
+        reweighted = reweighted / max(float(np.sum(reweighted)), float(eps))
+        updated = aggregate_mean(stack, reweighted)
+        delta = float(np.linalg.norm(updated - estimate))
+        estimate = updated
+        if delta <= float(tol) * max(float(np.linalg.norm(estimate)), 1.0):
+            break
+    return np.asarray(estimate, dtype=np.float64)
+
+
 def aggregate_krum_proxy(updates: Iterable[np.ndarray]) -> np.ndarray:
     stack = _stack(updates)
     dists = np.zeros(stack.shape[0], dtype=np.float64)

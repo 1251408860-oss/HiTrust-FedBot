@@ -1,0 +1,111 @@
+{
+  "rows": [
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed11",
+      "test_f1": 0.7672502574665294,
+      "test_recall": 0.6543697848045674,
+      "test_fpr": 0.06790481717933837,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed111",
+      "test_f1": 0.7707692307692307,
+      "test_recall": 0.6600790513833992,
+      "test_fpr": 0.06964596633778293,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed22",
+      "test_f1": 0.7604976671850701,
+      "test_recall": 0.6442687747035574,
+      "test_fpr": 0.0661636680208938,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed33",
+      "test_f1": 0.7872340425531915,
+      "test_recall": 0.6824769433465085,
+      "test_fpr": 0.06790481717933837,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed44",
+      "test_f1": 0.7324772605671481,
+      "test_recall": 0.6012296881862099,
+      "test_fpr": 0.053395240858966915,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed55",
+      "test_f1": 0.7461902259590121,
+      "test_recall": 0.6236275801493193,
+      "test_fpr": 0.0632617527568195,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed66",
+      "test_f1": 0.778855975485189,
+      "test_recall": 0.6697408871321915,
+      "test_fpr": 0.0661636680208938,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed77",
+      "test_f1": 0.78382502543235,
+      "test_recall": 0.6767676767676768,
+      "test_fpr": 0.0661636680208938,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed88",
+      "test_f1": 0.7738951695786229,
+      "test_recall": 0.6613965744400527,
+      "test_fpr": 0.0632617527568195,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed99",
+      "test_f1": 0.7910485290419915,
+      "test_recall": 0.6908212560386473,
+      "test_fpr": 0.07370864770748695,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 10,
+      "mean": 0.7692043384038335,
+      "std": 0.018534539658514017
+    },
+    "test_recall": {
+      "n": 10,
+      "mean": 0.656477821695213,
+      "std": 0.027416895015155884
+    },
+    "test_fpr": {
+      "n": 10,
+      "mean": 0.06575739988392339,
+      "std": 0.005305560389511801
+    },
+    "kept_clients": {
+      "n": 10,
+      "mean": 10.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 10,
+      "mean": 4.0,
+      "std": 0.0
+    }
+  }
+}

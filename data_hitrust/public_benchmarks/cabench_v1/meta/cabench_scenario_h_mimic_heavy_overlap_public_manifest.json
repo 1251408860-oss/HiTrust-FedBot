@@ -4,7 +4,7 @@
   "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
   "release_asset_url": "https://github.com/1251408860-oss/Ca-Bench/releases/download/data-v1/real_collection.tar.gz",
   "scenario_name": "scenario_h_mimic_heavy_overlap",
-  "scenario_manifest_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\raw\\real_collection\\mininet_testbed\\real_collection\\scenario_h_mimic_heavy_overlap\\arena_manifest_v2.json",
+  "scenario_manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
   "topology": {
     "type": "three_tier",
     "target_ip": "10.0.0.100",
@@ -211,6 +211,6 @@
     "10.0.0.98": 1,
     "10.0.0.99": 1
   },
-  "graph_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\graphs\\cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
   "build_tool_source": "https://raw.githubusercontent.com/1251408860-oss/Ca-Bench/main/core_experiments/build_graph_v2.py"
 }

@@ -9,6 +9,14 @@
       "kept_poisoned_clients": 4
     },
     {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed111",
+      "test_f1": 0.7722264924417115,
+      "test_recall": 0.6618357487922706,
+      "test_fpr": 0.06906558328496808,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
       "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed22",
       "test_f1": 0.7631851085832472,
       "test_recall": 0.6482213438735178,
@@ -23,31 +31,79 @@
       "test_fpr": 0.06790481717933837,
       "kept_clients": 10,
       "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed44",
+      "test_f1": 0.7298527443105756,
+      "test_recall": 0.5985946420729029,
+      "test_fpr": 0.05513639001741149,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed55",
+      "test_f1": 0.786727456940223,
+      "test_recall": 0.6820377689942907,
+      "test_fpr": 0.06848520023215322,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed66",
+      "test_f1": 0.7758134768127082,
+      "test_recall": 0.6649099692577953,
+      "test_fpr": 0.06500290191526407,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed77",
+      "test_f1": 0.788860759493671,
+      "test_recall": 0.6842336407553798,
+      "test_fpr": 0.06674405107370865,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed88",
+      "test_f1": 0.7713697219361483,
+      "test_recall": 0.65788317962231,
+      "test_fpr": 0.0632617527568195,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
+    },
+    {
+      "run_name": "public_nslkdd_krum_sage_update_noise_frac0p4_keepall_seed99",
+      "test_f1": 0.8058444774640913,
+      "test_recall": 0.7145366710584102,
+      "test_fpr": 0.07777132907719095,
+      "kept_clients": 10,
+      "kept_poisoned_clients": 4
     }
   ],
   "stats": {
     "test_f1": {
-      "n": 3,
-      "mean": 0.7683728043499263,
-      "std": 0.010203099044712317
+      "n": 10,
+      "mean": 0.7735813542448907,
+      "std": 0.020167860743898248
     },
     "test_recall": {
-      "n": 3,
-      "mean": 0.6551017420582638,
-      "std": 0.015062677274182956
+      "n": 10,
+      "mean": 0.6629336846728151,
+      "std": 0.030348787285629557
     },
     "test_fpr": {
-      "n": 3,
-      "mean": 0.06597020700328884,
-      "std": 0.0024163273354220957
+      "n": 10,
+      "mean": 0.06633778293673825,
+      "std": 0.005693475906218398
     },
     "kept_clients": {
-      "n": 3,
+      "n": 10,
       "mean": 10.0,
       "std": 0.0
     },
     "kept_poisoned_clients": {
-      "n": 3,
+      "n": 10,
       "mean": 4.0,
       "std": 0.0
     }
