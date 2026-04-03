@@ -118,6 +118,43 @@ def aggregate_centered_clipping(
     return np.asarray(center, dtype=np.float64)
 
 
+def preaggregate_arc(
+    updates: Iterable[np.ndarray],
+    *,
+    f: int = 0,
+    eps: float = 1e-12,
+) -> tuple[np.ndarray, dict[str, object]]:
+    stack = _stack(updates)
+    num_updates = int(stack.shape[0])
+    faulty = int(max(f, 0))
+    if faulty >= num_updates + 1:
+        raise ValueError(f"f must be smaller than len(vectors)+1, but got f={faulty} and len(vectors)={num_updates}")
+
+    norms = np.linalg.norm(stack, axis=1)
+    order = np.argsort(norms)
+    num_clipped = int((2 * faulty / max(num_updates, 1)) * (num_updates - faulty))
+    cut_off = max(num_updates - num_clipped, 1)
+    clipping_threshold = float(norms[order[cut_off - 1]]) if num_updates > 0 else 0.0
+    clipped_indices = [int(idx) for idx in order[cut_off:]]
+
+    out = np.asarray(stack, dtype=np.float64).copy()
+    for idx in clipped_indices:
+        norm = float(norms[idx])
+        if norm > max(clipping_threshold, float(eps)):
+            out[idx] *= clipping_threshold / norm
+
+    diagnostics: dict[str, object] = {
+        "faulty_budget": int(faulty),
+        "num_updates": int(num_updates),
+        "num_clipped": int(len(clipped_indices)),
+        "clipping_threshold": float(clipping_threshold),
+        "original_norms": [float(x) for x in norms.tolist()],
+        "clipped_norms": [float(x) for x in np.linalg.norm(out, axis=1).tolist()],
+        "clipped_indices": clipped_indices,
+    }
+    return out, diagnostics
+
+
 def aggregate_krum_proxy(updates: Iterable[np.ndarray]) -> np.ndarray:
     stack = _stack(updates)
     dists = np.zeros(stack.shape[0], dtype=np.float64)

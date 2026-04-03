@@ -20,6 +20,7 @@ Current manuscript-support files kept in the repo include:
 - `foolsgold_official_baseline_note_20260331.md`
 - `robust_fl_frontier_note_20260402.md`
 - `centered_clipping_baseline_note_20260402.md`
+- `arc_baseline_note_20260402.md`
 
 Key public-evidence files for the current manuscript round include:
 
@@ -31,7 +32,7 @@ Key public-evidence files for the current manuscript round include:
 
 The public comparison artifacts are maintained from matched-seed summaries. The current rerun entry points default to 10-seed public sweeps and rebuild the trust-vs-keepall tables with matched-seed paired testing.
 
-The non-adaptive update-noise comparison tables now also include a modern Centered Clipping comparator, which is useful for separating strong aggregation metrics from explicit poisoned-participation control.
+The non-adaptive update-noise comparison tables now also include modern Centered Clipping and `ARC+mean` comparators, which are useful for separating strong aggregation metrics from explicit poisoned-participation control.
 
 ## Reviewer Use
 

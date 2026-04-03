@@ -10,7 +10,7 @@ The evaluation is designed to support engineering relevance and reproducibility.
 
 - Same-task public external validation is provided on Ca-Bench `scenario_e` and `scenario_h`.
 - Key public claims are backed by matched 10-seed paired testing rather than single-run comparisons.
-- The non-adaptive comparator set includes keep-all, mean, median, Krum, RFA, FLTrust-like, FLShield-like, FedTruth-like, and a modern Centered Clipping baseline.
+- The non-adaptive comparator set includes keep-all, mean, median, Krum, RFA, FLTrust-like, FLShield-like, FedTruth-like, and modern Centered Clipping and `ARC+mean` baselines.
 - The adaptive suite includes an official FoolsGold comparator to expose the poisoning-retention versus abstention frontier.
 
 The manuscript intentionally keeps its claims conservative. The main conclusion is not universal superiority on F1, but that the proposed controls occupy more practical operating points when retained poisoned participation is considered together with predictive quality and client retention. This conservative positioning is reflected consistently in the abstract, results, discussion, and submission-facing highlights.

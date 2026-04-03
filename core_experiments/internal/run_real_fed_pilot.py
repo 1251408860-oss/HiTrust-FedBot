@@ -24,6 +24,7 @@ from hierarchical_aggregation import (
     aggregate_mean,
     aggregate_median,
     aggregate_rfa_geometric_median,
+    preaggregate_arc,
 )
 from hitrust_common import resolve_repo_local_path, resolve_suite_paths, save_json, timestamp_utc
 from trust_scoring import compute_trust_score, normalize_scores
@@ -1467,6 +1468,7 @@ def main() -> None:
     flshield_like_num_clusters = int(cfg.get("flshield_like_num_clusters", 2))
     flshield_like_cluster_iterations = int(cfg.get("flshield_like_cluster_iterations", 6))
     foolsgold_use_history = safe_bool(cfg.get("foolsgold_use_history", True), True)
+    arc_faulty_clients = int(cfg.get("arc_faulty_clients", max(int(round(poison_frac * num_clients)), 0)))
     rfa_max_iter = int(cfg.get("rfa_max_iter", 100))
     rfa_tolerance = float(cfg.get("rfa_tolerance", 1e-6))
     centered_clipping_iterations = int(cfg.get("centered_clipping_iterations", 10))
@@ -1800,6 +1802,54 @@ def main() -> None:
                 prev_updates[cid] = local_updates[cid].copy()
             keep = {int(row["client_id"]): float(row["trust_norm"]) > 0.0 for row in trust_rows}
             floor_diagnostics = []
+        elif aggregation == "arc_mean":
+            view_by_id = {int(view["client_id"]): view for view in active_views}
+            ordered_client_ids = sorted(int(cid) for cid in local_updates)
+            ordered_updates = [local_updates[cid] for cid in ordered_client_ids]
+            arc_updates, arc_diag = preaggregate_arc(
+                ordered_updates,
+                f=min(max(int(arc_faulty_clients), 0), len(ordered_updates)),
+            )
+            global_update = aggregate_mean(arc_updates)
+            aggregation_mode = "arc_mean"
+            clipped_set = {int(idx) for idx in arc_diag["clipped_indices"]}
+            original_norms = list(arc_diag["original_norms"])
+            clipped_norms = list(arc_diag["clipped_norms"])
+            for pos, cid in enumerate(ordered_client_ids):
+                view = view_by_id[cid]
+                eval_row = client_eval[cid]
+                trust_rows.append(
+                    {
+                        "round": round_id,
+                        "client_id": cid,
+                        "group": str(view["group_name"]),
+                        "is_poisoned": bool(cid in poisoned_clients),
+                        "owned_ip_count": len(view["owned_ip_indices"]),
+                        "best_val_threshold": float(eval_row["threshold"]),
+                        "trust_raw": 1.0,
+                        "trust_norm": 1.0,
+                        "val_f1": float(eval_row["val_metrics"]["f1"]),
+                        "similarity": 0.0,
+                        "stability": 0.0,
+                        "update_norm": update_norms[cid],
+                        "arc_original_norm": float(original_norms[pos]),
+                        "arc_clipped_norm": float(clipped_norms[pos]),
+                        "arc_was_clipped": bool(pos in clipped_set),
+                        "arc_clipping_threshold": float(arc_diag["clipping_threshold"]),
+                    }
+                )
+                prev_updates[cid] = local_updates[cid].copy()
+            keep = {int(row["client_id"]): True for row in trust_rows}
+            floor_diagnostics = [
+                {
+                    "aggregation": "arc_mean",
+                    "faulty_budget": int(arc_diag["faulty_budget"]),
+                    "num_updates": int(arc_diag["num_updates"]),
+                    "num_clipped": int(arc_diag["num_clipped"]),
+                    "clipping_threshold": float(arc_diag["clipping_threshold"]),
+                    "clipped_client_ids": [int(ordered_client_ids[idx]) for idx in arc_diag["clipped_indices"]],
+                }
+            ]
         else:
             mean_update = aggregate_mean(local_updates.values())
             if trust_mode in {"temporal_rootguard", "temporal_rootguard_v2"}:

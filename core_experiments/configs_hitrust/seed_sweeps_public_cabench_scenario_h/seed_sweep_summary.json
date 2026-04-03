@@ -1,52 +1,52 @@
 {
   "rows": [
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed11",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed11",
       "seed": 11,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed22",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed22",
       "seed": 22,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed33",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed33",
       "seed": 33,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed44",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed44",
       "seed": 44,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed55",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed55",
       "seed": 55,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed66",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed66",
       "seed": 66,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed77",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed77",
       "seed": 77,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed88",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed88",
       "seed": 88,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed99",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed99",
       "seed": 99,
       "status": "ok"
     },
     {
-      "run_name": "public_cabench_scenario_h_centered_clipping_sage_update_noise_frac0p4_keepall_seed111",
+      "run_name": "public_cabench_scenario_h_arc_mean_sage_update_noise_frac0p4_keepall_seed111",
       "seed": 111,
       "status": "ok"
     }
