@@ -1,12 +1,11 @@
 {
-  "source_root": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection",
   "num_scenarios": 5,
   "rows": [
     {
       "scenario_name": "scenario_d_three_tier_low2",
-      "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_d_three_tier_low2/arena_manifest_v2.json",
-      "pcap_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_d_three_tier_low2/full_arena_v2.pcap",
-      "pcap_exists": true,
+      "manifest_file": "data_hitrust/bootstrap/manifests/scenario_d_three_tier_low2/arena_manifest_v2.json",
+      "pcap_file": "data_hitrust/bootstrap/manifests/scenario_d_three_tier_low2/full_arena_v2.pcap",
+      "pcap_exists": false,
       "topology_type": "three_tier",
       "users": 20,
       "bots": 60,
@@ -19,9 +18,9 @@
     },
     {
       "scenario_name": "scenario_e_three_tier_high2",
-      "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_e_three_tier_high2/arena_manifest_v2.json",
-      "pcap_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_e_three_tier_high2/full_arena_v2.pcap",
-      "pcap_exists": true,
+      "manifest_file": "data_hitrust/bootstrap/manifests/scenario_e_three_tier_high2/arena_manifest_v2.json",
+      "pcap_file": "data_hitrust/bootstrap/manifests/scenario_e_three_tier_high2/full_arena_v2.pcap",
+      "pcap_exists": false,
       "topology_type": "three_tier",
       "users": 25,
       "bots": 80,
@@ -34,9 +33,9 @@
     },
     {
       "scenario_name": "scenario_f_two_tier_high2",
-      "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_f_two_tier_high2/arena_manifest_v2.json",
-      "pcap_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_f_two_tier_high2/full_arena_v2.pcap",
-      "pcap_exists": true,
+      "manifest_file": "data_hitrust/bootstrap/manifests/scenario_f_two_tier_high2/arena_manifest_v2.json",
+      "pcap_file": "data_hitrust/bootstrap/manifests/scenario_f_two_tier_high2/full_arena_v2.pcap",
+      "pcap_exists": false,
       "topology_type": "two_tier",
       "users": 25,
       "bots": 80,
@@ -49,9 +48,9 @@
     },
     {
       "scenario_name": "scenario_g_mimic_congest",
-      "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_g_mimic_congest/arena_manifest_v2.json",
-      "pcap_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_g_mimic_congest/full_arena_v2.pcap",
-      "pcap_exists": true,
+      "manifest_file": "data_hitrust/bootstrap/manifests/scenario_g_mimic_congest/arena_manifest_v2.json",
+      "pcap_file": "data_hitrust/bootstrap/manifests/scenario_g_mimic_congest/full_arena_v2.pcap",
+      "pcap_exists": false,
       "topology_type": "three_tier",
       "users": 20,
       "bots": 100,
@@ -64,9 +63,9 @@
     },
     {
       "scenario_name": "scenario_h_mimic_heavy_overlap",
-      "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
-      "pcap_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/full_arena_v2.pcap",
-      "pcap_exists": true,
+      "manifest_file": "data_hitrust/bootstrap/manifests/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
+      "pcap_file": "data_hitrust/bootstrap/manifests/scenario_h_mimic_heavy_overlap/full_arena_v2.pcap",
+      "pcap_exists": false,
       "topology_type": "three_tier",
       "users": 35,
       "bots": 70,
@@ -77,5 +76,6 @@
       "bot_type_mode": "mimic_heavy",
       "duration_sec": 180
     }
-  ]
+  ],
+  "manifest_root": "data_hitrust/bootstrap/manifests"
 }
