@@ -16,10 +16,12 @@ sys.path.insert(0, str(INTERNAL))
 
 from attack_injection import mark_poisoned_clients  # noqa: E402
 from build_no_trust_baseline_report import build_condition_row  # noqa: E402
+from experiment_registry import PRIMARY_SEEDS_20, build_experiment_contract  # noqa: E402
 from run_real_fed_pilot import (  # noqa: E402
     aggregate_foolsgold_official,
     aggregate_fltrust_like,
     build_adaptive_alie_like_attack,
+    build_targeted_label_flip_labels,
     build_client_views,
     build_server_root_mask,
     compute_foolsgold_weights,
@@ -27,7 +29,8 @@ from run_real_fed_pilot import (  # noqa: E402
     load_config,
     select_kept_clients,
 )
-from hierarchical_aggregation import aggregate_centered_clipping, aggregate_rfa_geometric_median, preaggregate_arc  # noqa: E402
+from hierarchical_aggregation import aggregate_caf, aggregate_centered_clipping, aggregate_rfa_geometric_median, preaggregate_arc  # noqa: E402
+from stats_contract import correct_p_values  # noqa: E402
 
 
 class RiskFixTests(unittest.TestCase):
@@ -221,6 +224,23 @@ class RiskFixTests(unittest.TestCase):
         self.assertLess(float(np.linalg.norm(global_update)), 1.0)
         self.assertLess(float(np.linalg.norm(global_update - updates[0])), 1.0)
 
+    def test_aggregate_caf_downweights_far_outlier(self) -> None:
+        updates = [
+            np.asarray([0.0, 0.0], dtype=np.float64),
+            np.asarray([0.1, -0.1], dtype=np.float64),
+            np.asarray([-0.1, 0.1], dtype=np.float64),
+            np.asarray([10.0, 10.0], dtype=np.float64),
+        ]
+        global_update = aggregate_caf(
+            updates,
+            f=1,
+            max_iter=4,
+            power_max_iter=2,
+        )
+
+        self.assertLess(float(np.linalg.norm(global_update)), 1.0)
+        self.assertLess(float(np.linalg.norm(global_update - updates[0])), 1.0)
+
     def test_preaggregate_arc_clips_only_largest_norms(self) -> None:
         updates = [
             np.asarray([1.0, 0.0], dtype=np.float64),
@@ -239,7 +259,82 @@ class RiskFixTests(unittest.TestCase):
     def test_is_adaptive_attack_type_includes_adaptive_alie_like(self) -> None:
         self.assertTrue(is_adaptive_attack_type("adaptive_benign_mimic"))
         self.assertTrue(is_adaptive_attack_type("adaptive_alie_like"))
+        self.assertTrue(is_adaptive_attack_type("multi_round_stealth"))
         self.assertFalse(is_adaptive_attack_type("update_noise"))
+
+    def test_build_targeted_label_flip_labels_prefers_positive_examples(self) -> None:
+        y = torch.tensor([0, 1, 1, 0, 1], dtype=torch.long)
+        mask = torch.tensor([False, True, True, False, True], dtype=torch.bool)
+        flipped = build_targeted_label_flip_labels(
+            y=y,
+            mask=mask,
+            attack_scale=1.0,
+            rng=np.random.default_rng(7),
+        )
+
+        self.assertEqual(int(flipped[1].item()), 0)
+        self.assertEqual(int(flipped[2].item()), 0)
+        self.assertEqual(int(flipped[4].item()), 0)
+        self.assertEqual(int(flipped[0].item()), 0)
+
+    def test_experiment_contract_marks_public_same_task_as_primary(self) -> None:
+        cfg = {
+            "run_name": "public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4",
+            "aggregation": "fltrust_like",
+            "poison_type": "update_noise",
+        }
+        dataset_info = {
+            "dataset_name": "Ca-Bench",
+            "dataset_variant": "scenario_h_public_data_v1",
+            "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
+            "graph_source_kind": "external_public_dataset",
+        }
+
+        contract = build_experiment_contract(
+            cfg=cfg,
+            dataset_info=dataset_info,
+            graph_file="data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_public_graph.pt",
+            run_name=cfg["run_name"],
+        )
+
+        self.assertEqual(contract["method"]["method_key"], "fltrust_like")
+        self.assertEqual(contract["method"]["method_family"], "task_adapted_baseline")
+        self.assertEqual(contract["benchmark"]["benchmark_key"], "public_cabench_scenario_h")
+        self.assertEqual(contract["stats_plan"]["family"], "primary")
+        self.assertEqual(contract["stats_plan"]["recommended_seed_count"], len(PRIMARY_SEEDS_20))
+
+    def test_experiment_contract_marks_nslkdd_as_exploratory(self) -> None:
+        cfg = {
+            "run_name": "public_nslkdd_hierarchical_sage_update_noise_frac0p4",
+            "aggregation": "hierarchical",
+            "poison_type": "update_noise",
+            "trust_threshold": 0.35,
+        }
+        dataset_info = {
+            "dataset_name": "NSL-KDD",
+            "dataset_variant": "train20_test_public_graph",
+            "dataset_source": "public_github_mirror:defcom17/NSL_KDD",
+            "graph_source_kind": "external_public_dataset",
+        }
+
+        contract = build_experiment_contract(
+            cfg=cfg,
+            dataset_info=dataset_info,
+            graph_file="data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+            run_name=cfg["run_name"],
+        )
+
+        self.assertEqual(contract["method"]["method_key"], "hitrust_static")
+        self.assertEqual(contract["benchmark"]["benchmark_key"], "public_nslkdd")
+        self.assertEqual(contract["stats_plan"]["family"], "exploratory")
+        self.assertEqual(contract["stats_plan"]["correction_method"], "bh_fdr")
+
+    def test_holm_correction_is_monotone_and_bounded(self) -> None:
+        corrected = correct_p_values([0.01, 0.02, 0.2], "holm_bonferroni")
+        self.assertEqual(len(corrected), 3)
+        self.assertGreaterEqual(float(corrected[0]), 0.01)
+        self.assertGreaterEqual(float(corrected[1]), float(corrected[0]))
+        self.assertLessEqual(float(corrected[2]), 1.0)
 
     def test_build_condition_row_uses_matched_seed_paired_test(self) -> None:
         trust_obj = {

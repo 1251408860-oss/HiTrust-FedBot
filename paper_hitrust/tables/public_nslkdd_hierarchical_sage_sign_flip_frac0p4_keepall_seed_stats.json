@@ -1,84 +1,197 @@
 {
+  "run_prefix": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall",
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "hier_keepall",
+      "method_family": "repo_ablation",
+      "provenance_kind": "repo_native",
+      "reference_grade": false,
+      "claim_role": "keep_all_control",
+      "notes": "Hierarchical aggregation with trust filtering disabled.",
+      "method_key": "hierarchical_keepall",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "sign_flip",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "sign_flip",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "cross_domain_auxiliary",
+      "evidence_tier": "auxiliary",
+      "benchmark_key": "public_nslkdd",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "exploratory",
+      "recommended_seed_count": 10,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "bh_fdr",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "seed_plan": {
+    "observed_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55,
+      66,
+      77,
+      88,
+      99,
+      111
+    ],
+    "observed_seed_count": 10,
+    "recommended_seed_count": 10,
+    "meets_recommended_seed_count": true,
+    "family": "exploratory",
+    "correction_method": "bh_fdr"
+  },
   "rows": [
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed11",
+      "seed": 11,
       "test_f1": 0.7662973460448339,
       "test_recall": 0.653052261747914,
       "test_fpr": 0.06790481717933837,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed111",
+      "seed": 111,
       "test_f1": 0.7582534611288605,
       "test_recall": 0.6253842775581906,
       "test_fpr": 0.03192106790481718,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed22",
+      "seed": 22,
       "test_f1": 0.7276190476190477,
       "test_recall": 0.5871761089152393,
       "test_fpr": 0.035403366221706326,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed33",
+      "seed": 33,
       "test_f1": 0.7808602697887503,
       "test_recall": 0.6736934563021519,
       "test_fpr": 0.06848520023215322,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed44",
+      "seed": 44,
       "test_f1": 0.7259060402684563,
       "test_recall": 0.5937637241985068,
       "test_fpr": 0.05571677307022635,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed55",
+      "seed": 55,
       "test_f1": 0.758102151931553,
       "test_recall": 0.6420729029424681,
       "test_fpr": 0.06848520023215322,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed66",
+      "seed": 66,
       "test_f1": 0.7622779519331244,
       "test_recall": 0.6407553798858147,
       "test_fpr": 0.053395240858966915,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed77",
+      "seed": 77,
       "test_f1": 0.7653997378768022,
       "test_recall": 0.6411945542380325,
       "test_fpr": 0.04526987811955891,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed88",
+      "seed": 88,
       "test_f1": 0.75,
       "test_recall": 0.6271409749670619,
       "test_fpr": 0.05977945443993035,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed99",
+      "seed": 99,
       "test_f1": 0.7588953797132236,
       "test_recall": 0.6275801493192797,
       "test_fpr": 0.034822983168891465,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "sign_flip",
+      "benchmark_key": "public_nslkdd"
     }
   ],
   "stats": {

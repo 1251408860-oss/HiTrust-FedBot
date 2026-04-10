@@ -1,84 +1,199 @@
 {
+  "run_prefix": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4",
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "fltrust_like",
+      "method_family": "task_adapted_baseline",
+      "provenance_kind": "task_adapted_reimplementation",
+      "reference_grade": false,
+      "claim_role": "adapted_comparator",
+      "upstream_name": "FLTrust",
+      "upstream_url": "https://www.ndss-symposium.org/wp-content/uploads/ndss2021_6C-2_24434_paper.pdf",
+      "notes": "Adapted trust-bootstrap comparator, not a strict reference reproduction.",
+      "method_key": "fltrust_like",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "update_noise",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "update_noise",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "cross_domain_auxiliary",
+      "evidence_tier": "auxiliary",
+      "benchmark_key": "public_nslkdd",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "exploratory",
+      "recommended_seed_count": 10,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "bh_fdr",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "seed_plan": {
+    "observed_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55,
+      66,
+      77,
+      88,
+      99,
+      111
+    ],
+    "observed_seed_count": 10,
+    "recommended_seed_count": 10,
+    "meets_recommended_seed_count": true,
+    "family": "exploratory",
+    "correction_method": "bh_fdr"
+  },
   "rows": [
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed11",
+      "seed": 11,
       "test_f1": 0.7655403662625742,
       "test_recall": 0.6517347386912604,
       "test_fpr": 0.0673244341265235,
-      "kept_clients": 7,
-      "kept_poisoned_clients": 2
+      "kept_clients": 7.0,
+      "kept_poisoned_clients": 2.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed111",
+      "seed": 111,
       "test_f1": 0.763771186440678,
       "test_recall": 0.6332894158981115,
       "test_fpr": 0.0330818340104469,
-      "kept_clients": 2,
-      "kept_poisoned_clients": 0
+      "kept_clients": 2.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed22",
+      "seed": 22,
       "test_f1": 0.717793103448276,
       "test_recall": 0.5713658322353975,
       "test_fpr": 0.027278003482298318,
-      "kept_clients": 6,
-      "kept_poisoned_clients": 2
+      "kept_clients": 6.0,
+      "kept_poisoned_clients": 2.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed33",
+      "seed": 33,
       "test_f1": 0.7864200658728148,
       "test_recall": 0.681598594642073,
       "test_fpr": 0.06848520023215322,
-      "kept_clients": 5,
-      "kept_poisoned_clients": 3
+      "kept_clients": 5.0,
+      "kept_poisoned_clients": 3.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed44",
+      "seed": 44,
       "test_f1": 0.7425020264793298,
       "test_recall": 0.6034255599472991,
       "test_fpr": 0.02901915264074289,
-      "kept_clients": 4,
-      "kept_poisoned_clients": 1
+      "kept_clients": 4.0,
+      "kept_poisoned_clients": 1.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed55",
+      "seed": 55,
       "test_f1": 0.7387292380701291,
       "test_recall": 0.6152832674571805,
       "test_fpr": 0.06674405107370865,
-      "kept_clients": 5,
-      "kept_poisoned_clients": 1
+      "kept_clients": 5.0,
+      "kept_poisoned_clients": 1.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed66",
+      "seed": 66,
       "test_f1": 0.7863291139240507,
       "test_recall": 0.6820377689942907,
       "test_fpr": 0.06964596633778293,
-      "kept_clients": 6,
-      "kept_poisoned_clients": 3
+      "kept_clients": 6.0,
+      "kept_poisoned_clients": 3.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed77",
+      "seed": 77,
       "test_f1": 0.7605781865965835,
       "test_recall": 0.6354852876592006,
       "test_fpr": 0.047011027278003485,
-      "kept_clients": 4,
-      "kept_poisoned_clients": 1
+      "kept_clients": 4.0,
+      "kept_poisoned_clients": 1.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed88",
+      "seed": 88,
       "test_f1": 0.7441489361702128,
       "test_recall": 0.6144049187527448,
       "test_fpr": 0.04875217643644805,
-      "kept_clients": 8,
-      "kept_poisoned_clients": 3
+      "kept_clients": 8.0,
+      "kept_poisoned_clients": 3.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_fltrust_like_sage_update_noise_frac0p4_seed99",
+      "seed": 99,
       "test_f1": 0.7512038523274479,
       "test_recall": 0.616600790513834,
       "test_fpr": 0.0330818340104469,
-      "kept_clients": 4,
-      "kept_poisoned_clients": 1
+      "kept_clients": 4.0,
+      "kept_poisoned_clients": 1.0,
+      "method_key": "fltrust_like",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     }
   ],
   "stats": {

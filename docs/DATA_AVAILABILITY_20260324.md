@@ -9,6 +9,17 @@ The main paper scenarios are stored as derived graph artifacts under:
 These files are generated from the local collection pipeline used for the HiTrust-FedBot pilot scenarios.
 Raw collection traces are not distributed in this artifact package; the released files are the derived graph objects used by the training pipeline.
 
+Maintainer-side confidential audit support is now included for the internal bundle:
+
+- Expected local raw-trace root:
+  - `/home/user/workspace/Ca-Bench-temp/mininet_testbed/real_collection`
+- Maintainer-side audit script:
+  - `core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh`
+- Local audit outputs:
+  - `paper_hitrust/artifacts/internal_bootstrap_raw_audit/`
+
+The current audit path rebuilds all five released internal graphs from the preserved private traces and verifies exact tensor/hash agreement against `data_hitrust/bootstrap_graphs/graphs/`. This narrows the auditability gap for maintainers, but it does not change the public redistribution boundary: the raw traces themselves are still not part of the release package.
+
 ## Public Auxiliary Benchmark
 
 The repository now includes a public auxiliary benchmark path based on NSL-KDD.
@@ -48,6 +59,8 @@ The repository now also includes same-task public external-validation paths base
   - `core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh`
 - Public same-task hardest FLTrust-like sensitivity:
   - `core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh`
+- Public same-task hardest runtime scaling:
+  - `core_experiments/reproduce/reproduce_public_server_runtime_scaling.sh`
 - Public auxiliary validation:
   - `core_experiments/reproduce/reproduce_public_nslkdd_validation.sh`
 - Conditional-floor hardening validation:

@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="760" viewBox="0 0 1500 760">
+<rect x="0" y="0" width="1500" height="760" fill="white" />
+<text x="750.0" y="34" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#32465a" text-anchor="middle">HiTrust-FedBot framework</text>
+<rect x="26" y="60" width="1448" height="650" rx="24" ry="24" fill="white" stroke="#b8c7d5" stroke-width="1.6" stroke-dasharray="7 6" />
+<circle cx="86" cy="96" r="15" fill="#fff3e0" stroke="#d98a35" stroke-width="1.6" />
+<text x="86" y="101" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#d98a35" text-anchor="middle">1</text>
+<text x="110" y="100" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">Local</text>
+<text x="110" y="118" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">clients</text>
+<circle cx="346" cy="96" r="15" fill="#fff3e0" stroke="#d98a35" stroke-width="1.6" />
+<text x="346" y="101" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#d98a35" text-anchor="middle">2</text>
+<text x="370" y="100" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">Upload</text>
+<text x="370" y="118" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">tuple</text>
+<circle cx="558" cy="96" r="15" fill="#fff3e0" stroke="#d98a35" stroke-width="1.6" />
+<text x="558" y="101" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#d98a35" text-anchor="middle">3</text>
+<text x="582" y="100" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">Trust</text>
+<text x="582" y="118" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">screening</text>
+<circle cx="930" cy="96" r="15" fill="#fff3e0" stroke="#d98a35" stroke-width="1.6" />
+<text x="930" y="101" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#d98a35" text-anchor="middle">4</text>
+<text x="954" y="100" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">Coverage-aware</text>
+<text x="954" y="118" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">grouping</text>
+<circle cx="1270" cy="96" r="15" fill="#fff3e0" stroke="#d98a35" stroke-width="1.6" />
+<text x="1270" y="101" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#d98a35" text-anchor="middle">5</text>
+<text x="1294" y="100" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">Global</text>
+<text x="1294" y="118" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="start">update</text>
+<rect x="52" y="132" width="218" height="506" rx="22" ry="22" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="161" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Edge clients</text>
+<rect x="74" y="186" width="172" height="78" rx="16" ry="16" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.8" />
+<line x1="98" y1="218" x2="130" y2="212" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="98" y1="218" x2="112" y2="240" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="212" x2="112" y2="240" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="212" x2="144" y2="234" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="112" y1="240" x2="144" y2="234" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<circle cx="98" cy="218" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<circle cx="130" cy="212" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<circle cx="112" cy="240" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<circle cx="144" cy="234" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="178" y="211" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">Client 1</text>
+<text x="178" y="233" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#6f8193" text-anchor="middle">GraphSAGE</text>
+<text x="178" y="251" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#6f8193" text-anchor="middle">local update</text>
+<rect x="74" y="276" width="172" height="78" rx="16" ry="16" fill="#faecec" stroke="#d06565" stroke-width="1.8" />
+<line x1="98" y1="308" x2="130" y2="302" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="98" y1="308" x2="112" y2="330" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="302" x2="112" y2="330" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="302" x2="144" y2="324" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="112" y1="330" x2="144" y2="324" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<circle cx="98" cy="308" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<circle cx="130" cy="302" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<circle cx="112" cy="330" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<circle cx="144" cy="324" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<text x="178" y="301" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">Client 2</text>
+<text x="178" y="323" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#6f8193" text-anchor="middle">GraphSAGE</text>
+<text x="178" y="341" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#6f8193" text-anchor="middle">local update</text>
+<circle cx="230" cy="291" r="6" fill="#d06565" />
+<rect x="74" y="366" width="172" height="78" rx="16" ry="16" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.8" />
+<line x1="98" y1="398" x2="130" y2="392" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="98" y1="398" x2="112" y2="420" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="392" x2="112" y2="420" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="392" x2="144" y2="414" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<line x1="112" y1="420" x2="144" y2="414" stroke="#2b6ea6" stroke-width="1.5" stroke-linecap="round" />
+<circle cx="98" cy="398" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<circle cx="130" cy="392" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<circle cx="112" cy="420" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<circle cx="144" cy="414" r="4.5" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="178" y="391" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">Client 3</text>
+<text x="178" y="413" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#6f8193" text-anchor="middle">GraphSAGE</text>
+<text x="178" y="431" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#6f8193" text-anchor="middle">local update</text>
+<rect x="74" y="456" width="172" height="78" rx="16" ry="16" fill="#faecec" stroke="#d06565" stroke-width="1.8" />
+<line x1="98" y1="488" x2="130" y2="482" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="98" y1="488" x2="112" y2="510" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="482" x2="112" y2="510" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="130" y1="482" x2="144" y2="504" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<line x1="112" y1="510" x2="144" y2="504" stroke="#d06565" stroke-width="1.5" stroke-linecap="round" />
+<circle cx="98" cy="488" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<circle cx="130" cy="482" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<circle cx="112" cy="510" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<circle cx="144" cy="504" r="4.5" fill="white" stroke="#d06565" stroke-width="1.6" />
+<text x="178" y="481" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">Client 4</text>
+<text x="178" y="503" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#6f8193" text-anchor="middle">GraphSAGE</text>
+<text x="178" y="521" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#6f8193" text-anchor="middle">local update</text>
+<circle cx="230" cy="471" r="6" fill="#d06565" />
+<text x="161" y="570" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#6f8193" text-anchor="middle">non-IID traffic</text>
+<text x="161" y="588" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#6f8193" text-anchor="middle">graph partitions</text>
+<rect x="320" y="252" width="152" height="150" rx="20" ry="20" fill="#fff3e0" stroke="#d98a35" stroke-width="1.8" />
+<text x="396" y="282" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#d98a35" text-anchor="middle">Client upload</text>
+<rect x="338" y="304" width="116" height="26" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="396.0" y="322.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">model update</text>
+<rect x="338" y="338" width="116" height="26" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="396.0" y="356.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">val. signal</text>
+<rect x="338" y="372" width="116" height="26" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="396.0" y="390.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">behavior sum.</text>
+<line x1="270" y1="334" x2="320" y2="334" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="516" y="168" width="316" height="300" rx="22" ry="22" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.8" />
+<text x="674" y="198" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Server trust analysis</text>
+<rect x="546" y="226" width="256" height="44" rx="14" ry="14" fill="white" stroke="#b8c7d5" stroke-width="1.8" />
+<rect x="546" y="282" width="256" height="44" rx="14" ry="14" fill="white" stroke="#b8c7d5" stroke-width="1.8" />
+<rect x="546" y="338" width="256" height="56" rx="14" ry="14" fill="white" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="674" y="254" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">trust scoring</text>
+<text x="674" y="310" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">semantic group assignment</text>
+<text x="674" y="361" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">poison-aware</text>
+<text x="674" y="379" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">retention decision</text>
+<rect x="548" y="416" width="76" height="24" rx="10" ry="10" fill="#f0f3f7" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="586.0" y="433.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f8193" text-anchor="middle">val. F1</text>
+<rect x="636" y="416" width="76" height="24" rx="10" ry="10" fill="#f0f3f7" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="674.0" y="433.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f8193" text-anchor="middle">sim.</text>
+<rect x="724" y="416" width="76" height="24" rx="10" ry="10" fill="#f0f3f7" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="762.0" y="433.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f8193" text-anchor="middle">history</text>
+<line x1="472" y1="334" x2="516" y2="334" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="882" y="148" width="340" height="420" rx="22" ry="22" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1052" y="178" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Coverage-safe semantic groups</text>
+<rect x="904" y="212" width="150" height="112" rx="18" ry="18" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="918" y="236" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="start">Group A</text>
+<rect x="918" y="252" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="944.0" y="269.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u1</text>
+<rect x="984" y="252" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1010.0" y="269.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u2</text>
+<rect x="918" y="286" width="52" height="24" rx="10" ry="10" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="944.0" y="303.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u7</text>
+<rect x="924" y="292" width="110" height="24" rx="10" ry="10" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.4" />
+<text x="979.0" y="309" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3e8f87" text-anchor="middle">group agg</text>
+<rect x="1068" y="212" width="150" height="112" rx="18" ry="18" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1082" y="236" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="start">Group B</text>
+<rect x="1082" y="252" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1108.0" y="269.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u3</text>
+<rect x="1148" y="252" width="52" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="1174.0" y="269.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u4</text>
+<rect x="1082" y="286" width="52" height="24" rx="10" ry="10" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1108.0" y="303.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u8</text>
+<rect x="1088" y="292" width="110" height="24" rx="10" ry="10" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.4" />
+<text x="1143.0" y="309" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3e8f87" text-anchor="middle">group agg</text>
+<rect x="986" y="352" width="152" height="108" rx="18" ry="18" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1000" y="376" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="start">Group C</text>
+<rect x="1000" y="392" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1026.0" y="409.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u5</text>
+<rect x="1066" y="392" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1092.0" y="409.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u6</text>
+<rect x="1006" y="428" width="112" height="24" rx="10" ry="10" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.4" />
+<text x="1062.0" y="445" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3e8f87" text-anchor="middle">group agg</text>
+<rect x="930" y="494" width="244" height="42" rx="14" ry="14" fill="#eef8ea" stroke="#6aa870" stroke-width="1.8" />
+<text x="1052" y="521" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#6aa870" text-anchor="middle">minimum group coverage</text>
+<line x1="832" y1="334" x2="882" y2="334" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="1264" y="224" width="176" height="88" rx="20" ry="20" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.8" />
+<text x="1352" y="252" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#3e8f87" text-anchor="middle">Global model</text>
+<text x="1352" y="271" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#3e8f87" text-anchor="middle">aggregation</text>
+<rect x="1264" y="334" width="176" height="176" rx="20" ry="20" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1352" y="360" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">Deployment outputs</text>
+<rect x="1290" y="380" width="124" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1352.0" y="397.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#32465a" text-anchor="middle">F1</text>
+<rect x="1290" y="414" width="124" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1352.0" y="431.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#32465a" text-anchor="middle">FPR</text>
+<rect x="1290" y="448" width="124" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1352.0" y="465.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#32465a" text-anchor="middle">retained poison</text>
+<rect x="1290" y="482" width="124" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1352.0" y="499.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#32465a" text-anchor="middle">retained clients</text>
+<polyline points="1054,322 1200,322 1264,268" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="1054,460 1200,460 1264,278" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="1440,268 1456,268 1456,664 160,664 160,638" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" stroke-dasharray="7 6" />
+<text x="1000" y="688" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="500" fill="#6f8193" text-anchor="middle">broadcast next-round global model</text>
+
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7e91a6" />
+  </marker>
+</defs>
+
+</svg>

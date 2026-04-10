@@ -1,6 +1,6 @@
 {
   "run_name": "public_cabench_scenario_e_temporal_rootguard_v2_sage_adaptive_alie_like_frac0p4",
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
   "seed": 42,
   "num_clients": 10,
   "partition_mode": "topology_noniid",
@@ -28,13 +28,13 @@
   "temporal_server_cosine_floor": -0.15,
   "temporal_root_drift_scale": 0.08,
   "temporal_anchor_blend_min": 0.15,
-  "temporal_anchor_blend_max": 0.40,
+  "temporal_anchor_blend_max": 0.4,
   "temporal_peer_topk": 2,
   "temporal_use_layerwise": true,
   "temporal_use_behavioral_probe": true,
   "temporal_use_soft_weighting": true,
-  "temporal_behavior_probe_mix": 0.10,
-  "temporal_behavior_probe_scale": 0.10,
+  "temporal_behavior_probe_mix": 0.1,
+  "temporal_behavior_probe_scale": 0.1,
   "temporal_soft_weight_power": 1.4,
   "temporal_weight_floor": 0.05,
   "temporal_hard_reject_floor": 0.04,
@@ -52,15 +52,15 @@
     "root_f1": 0.08,
     "val_f1": 0.04,
     "stability": 0.08,
-    "server_misalignment_penalty": 0.20,
+    "server_misalignment_penalty": 0.2,
     "root_prob_drift_penalty": 0.12,
     "history_residual_penalty": 0.08,
     "peer_redundancy_penalty": 0.12,
     "layerwise_server_cosine": 0.18,
     "behavior_alignment": 0.12,
-    "behavior_probe_alignment": 0.10,
+    "behavior_probe_alignment": 0.1,
     "behavior_shift_alignment": 0.12,
     "layer_profile_penalty": 0.14,
-    "layer_concentration_penalty": 0.10
+    "layer_concentration_penalty": 0.1
   }
 }

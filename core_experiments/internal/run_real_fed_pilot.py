@@ -4,7 +4,9 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import statistics
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -15,9 +17,21 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import SAGEConv
 
+try:
+    import resource
+except ImportError:  # pragma: no cover - platform dependent
+    resource = None
+
+try:
+    import psutil
+except ImportError:  # pragma: no cover - optional dependency
+    psutil = None
+
 from adapter_tuning import resolve_tuning_mode
+from experiment_registry import build_experiment_contract
 from attack_injection import apply_attack, mark_poisoned_clients, summarize_poisoned_ids
 from hierarchical_aggregation import (
+    aggregate_caf,
     aggregate_centered_clipping,
     aggregate_hierarchical,
     aggregate_krum_proxy,
@@ -26,8 +40,12 @@ from hierarchical_aggregation import (
     aggregate_rfa_geometric_median,
     preaggregate_arc,
 )
+from graph_contract import repo_relative_path, validate_graph_contract
 from hitrust_common import resolve_repo_local_path, resolve_suite_paths, save_json, timestamp_utc
 from trust_scoring import compute_trust_score, normalize_scores
+
+
+PROCESS_HANDLE = psutil.Process(os.getpid()) if psutil is not None else None
 
 
 class FeatureMLP(nn.Module):
@@ -89,6 +107,50 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+def summarize_numeric_series(values: list[float]) -> dict[str, float]:
+    if not values:
+        return {
+            "n": 0,
+            "mean": 0.0,
+            "median": 0.0,
+            "p95": 0.0,
+            "max": 0.0,
+        }
+    sorted_vals = sorted(float(v) for v in values)
+    p95_index = min(len(sorted_vals) - 1, max(0, int(round(0.95 * (len(sorted_vals) - 1)))))
+    return {
+        "n": int(len(sorted_vals)),
+        "mean": float(statistics.mean(sorted_vals)),
+        "median": float(statistics.median(sorted_vals)),
+        "p95": float(sorted_vals[p95_index]),
+        "max": float(sorted_vals[-1]),
+    }
+
+
+def read_process_memory_snapshot() -> dict[str, float]:
+    current_rss_mb = 0.0
+    if PROCESS_HANDLE is not None:
+        try:
+            current_rss_mb = float(PROCESS_HANDLE.memory_info().rss) / (1024.0 * 1024.0)
+        except Exception:
+            current_rss_mb = 0.0
+
+    peak_rss_mb = 0.0
+    if resource is not None:
+        try:
+            peak_raw = float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
+            if peak_raw > 0.0:
+                # Linux reports KB; other platforms may report bytes.
+                peak_rss_mb = peak_raw / 1024.0 if peak_raw > 1024.0 else peak_raw / (1024.0 * 1024.0)
+        except Exception:
+            peak_rss_mb = 0.0
+
+    return {
+        "process_rss_mb": float(current_rss_mb),
+        "process_peak_rss_mb": float(max(peak_rss_mb, current_rss_mb)),
+    }
+
+
 def load_config(path: str | Path) -> dict[str, Any]:
     return json.loads(Path(path).read_text(encoding="utf-8-sig"))
 
@@ -141,8 +203,8 @@ def safe_bool(value: Any, default: bool = False) -> bool:
     return bool(value)
 
 
-def load_manifest_metadata(graph) -> dict[str, Any]:
-    manifest_file = str(getattr(graph, "manifest_file", "")).strip()
+def load_manifest_metadata(graph, project_root: str | Path) -> dict[str, Any]:
+    manifest_file = repo_relative_path(str(getattr(graph, "manifest_file", "")).strip(), project_root)
     out: dict[str, Any] = {
         "manifest_file": manifest_file,
         "topology_type": "",
@@ -151,9 +213,22 @@ def load_manifest_metadata(graph) -> dict[str, Any]:
         "role_by_ip": {},
         "label_by_ip": {},
     }
+    embedded = getattr(graph, "manifest_metadata", None)
+    if isinstance(embedded, dict) and embedded:
+        obj = embedded
+        topology = obj.get("topology", {})
+        run_cfg = obj.get("run_config", {})
+        out["topology_type"] = str(topology.get("type", ""))
+        out["load_profile"] = str(run_cfg.get("load_profile", ""))
+        out["bot_type_mode"] = str(run_cfg.get("bot_type_mode", ""))
+        out["role_by_ip"] = {str(k): str(v) for k, v in dict(obj.get("roles", {})).items()}
+        out["label_by_ip"] = {str(k): safe_int(v, default=-1) for k, v in dict(obj.get("ip_labels", {})).items()}
+        out["manifest_embedded"] = True
+        if out["topology_type"] or out["load_profile"] or out["role_by_ip"]:
+            return out
     if not manifest_file:
         return out
-    path = Path(manifest_file)
+    path = resolve_repo_local_path(manifest_file, project_root)
     if not path.exists():
         out["manifest_error"] = f"missing_manifest:{path}"
         return out
@@ -326,6 +401,7 @@ def induce_local_subgraph(visible_mask: torch.Tensor, edge_index: torch.Tensor) 
 def build_client_views(
     *,
     graph,
+    project_root: str | Path = Path(__file__).resolve().parents[2],
     train_mask: torch.Tensor,
     val_mask: torch.Tensor,
     test_mask: torch.Tensor,
@@ -334,7 +410,7 @@ def build_client_views(
     seed: int,
     num_groups: int,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    manifest_meta = load_manifest_metadata(graph)
+    manifest_meta = load_manifest_metadata(graph, project_root)
     ip_records = build_ip_records(
         graph=graph,
         train_mask=train_mask,
@@ -689,6 +765,7 @@ def local_train(
     mask: torch.Tensor,
     epochs: int,
     lr: float,
+    y_override: torch.Tensor | None = None,
 ) -> nn.Module:
     out = copy.deepcopy(model)
     out.train()
@@ -696,17 +773,18 @@ def local_train(
     if not trainable:
         raise RuntimeError("no trainable parameters for local training")
     opt = torch.optim.Adam(trainable, lr=lr)
+    train_y = y if y_override is None else y_override
     class_weights = torch.tensor(
         [
             1.0,
-            max(1.0, float(((y[mask] == 0).sum().item()) / max(int((y[mask] == 1).sum().item()), 1))),
+            max(1.0, float(((train_y[mask] == 0).sum().item()) / max(int((train_y[mask] == 1).sum().item()), 1))),
         ],
         dtype=torch.float32,
     )
     for _ in range(int(epochs)):
         opt.zero_grad()
         logits = out(x, edge_index)[mask]
-        loss = F.cross_entropy(logits, y[mask], weight=class_weights)
+        loss = F.cross_entropy(logits, train_y[mask], weight=class_weights)
         loss.backward()
         opt.step()
     return out
@@ -741,6 +819,27 @@ def global_warmup_train(
         loss = F.cross_entropy(logits, y[mask], weight=class_weights)
         loss.backward()
         opt.step()
+
+
+def build_targeted_label_flip_labels(
+    *,
+    y: torch.Tensor,
+    mask: torch.Tensor,
+    attack_scale: float,
+    rng: np.random.Generator,
+) -> torch.Tensor:
+    flipped = y.clone()
+    candidate = torch.nonzero(mask & (y == 1), as_tuple=False).view(-1)
+    if candidate.numel() <= 0:
+        candidate = torch.nonzero(mask, as_tuple=False).view(-1)
+    if candidate.numel() <= 0:
+        return flipped
+    flip_fraction = min(max(float(attack_scale), 0.1), 1.0)
+    num_flip = min(int(candidate.numel()), max(1, int(round(flip_fraction * int(candidate.numel())))))
+    chosen = rng.choice(candidate.detach().cpu().numpy(), size=num_flip, replace=False)
+    chosen_idx = torch.as_tensor(chosen, dtype=torch.long)
+    flipped[chosen_idx] = 1 - flipped[chosen_idx]
+    return flipped
 
 
 def build_server_root_mask(
@@ -1124,7 +1223,16 @@ def aggregate_foolsgold_official(
 
 
 def is_adaptive_attack_type(attack_type: str) -> bool:
-    return str(attack_type).strip() in {"adaptive_benign_mimic", "adaptive_alie_like"}
+    return str(attack_type).strip() in {"adaptive_benign_mimic", "adaptive_alie_like", "multi_round_stealth"}
+
+
+def is_group_attack_type(attack_type: str) -> bool:
+    return str(attack_type).strip() in {
+        "adaptive_benign_mimic",
+        "adaptive_alie_like",
+        "colluding_update_noise",
+        "multi_round_stealth",
+    }
 
 
 def normalize_vector(vec: np.ndarray, eps: float = 1e-12) -> np.ndarray:
@@ -1142,6 +1250,63 @@ def orthogonal_component(vec: np.ndarray, ref: np.ndarray, eps: float = 1e-12) -
     if ref_norm_sq <= float(eps):
         return arr.copy()
     return arr - (float(np.dot(arr, ref_arr)) / ref_norm_sq) * ref_arr
+
+
+def sample_orthogonal_direction(ref: np.ndarray, rng: np.random.Generator) -> np.ndarray:
+    ref_arr = np.asarray(ref, dtype=np.float64)
+    noise = orthogonal_component(rng.normal(0.0, 1.0, size=ref_arr.shape), ref_arr)
+    noise_dir = normalize_vector(noise)
+    if float(np.linalg.norm(noise_dir)) <= 1e-12:
+        noise_dir = normalize_vector(rng.normal(0.0, 1.0, size=ref_arr.shape))
+    return noise_dir
+
+
+def build_coordinated_poison_basis(
+    *,
+    local_updates: dict[int, np.ndarray],
+    poisoned_clients: set[int],
+    rng: np.random.Generator,
+) -> dict[str, np.ndarray | float]:
+    clean_updates = [
+        np.asarray(update, dtype=np.float64)
+        for cid, update in local_updates.items()
+        if int(cid) not in poisoned_clients
+    ]
+    ref_updates = clean_updates if clean_updates else [np.asarray(update, dtype=np.float64) for update in local_updates.values()]
+    clean_stack = np.stack(ref_updates, axis=0)
+    clean_mean = np.mean(clean_stack, axis=0)
+    clean_std = np.std(clean_stack, axis=0, ddof=0)
+    clean_norms = np.linalg.norm(clean_stack, axis=1)
+    benign_radius = float(np.median(clean_norms)) if clean_norms.size > 0 else float(np.linalg.norm(clean_mean))
+    benign_radius = max(benign_radius, 1e-6)
+
+    anti_mean_dir = normalize_vector(-clean_mean)
+    if float(np.linalg.norm(anti_mean_dir)) <= 1e-12:
+        anti_mean_dir = sample_orthogonal_direction(clean_mean, rng)
+
+    poisoned_stack = np.stack(
+        [np.asarray(local_updates[int(cid)], dtype=np.float64) for cid in sorted(poisoned_clients) if int(cid) in local_updates],
+        axis=0,
+    )
+    poisoned_mean = np.mean(poisoned_stack, axis=0)
+    orth_dir = normalize_vector(orthogonal_component(-poisoned_mean, clean_mean))
+    if float(np.linalg.norm(orth_dir)) <= 1e-12:
+        orth_dir = sample_orthogonal_direction(clean_mean, rng)
+
+    noise_dir = sample_orthogonal_direction(clean_mean, rng)
+    coordinated_dir = normalize_vector(anti_mean_dir + 0.65 * orth_dir + 0.20 * noise_dir)
+    if float(np.linalg.norm(coordinated_dir)) <= 1e-12:
+        coordinated_dir = anti_mean_dir.copy()
+
+    return {
+        "clean_mean": clean_mean,
+        "clean_std": clean_std,
+        "benign_radius": float(benign_radius),
+        "anti_mean_dir": anti_mean_dir,
+        "orth_dir": orth_dir,
+        "noise_dir": noise_dir,
+        "coordinated_dir": coordinated_dir,
+    }
 
 
 def copy_update_map(local_updates: dict[int, np.ndarray]) -> dict[int, np.ndarray]:
@@ -1279,6 +1444,149 @@ def build_adaptive_benign_mimic_attack(
     return attacked
 
 
+def build_colluding_update_noise_attack(
+    *,
+    local_updates: dict[int, np.ndarray],
+    poisoned_clients: set[int],
+    attack_scale: float,
+    rng: np.random.Generator,
+) -> dict[int, np.ndarray]:
+    if not local_updates or not poisoned_clients:
+        return copy_update_map(local_updates)
+
+    basis = build_coordinated_poison_basis(
+        local_updates=local_updates,
+        poisoned_clients=poisoned_clients,
+        rng=rng,
+    )
+    clean_mean = np.asarray(basis["clean_mean"], dtype=np.float64)
+    clean_std = np.asarray(basis["clean_std"], dtype=np.float64)
+    benign_radius = float(basis["benign_radius"])
+    anti_mean_dir = np.asarray(basis["anti_mean_dir"], dtype=np.float64)
+    orth_dir = np.asarray(basis["orth_dir"], dtype=np.float64)
+    coordinated_dir = np.asarray(basis["coordinated_dir"], dtype=np.float64)
+    noise_dir = np.asarray(basis["noise_dir"], dtype=np.float64)
+
+    amplitude = min(max(float(attack_scale), 0.0), 1.0)
+    attack_norm = benign_radius * (1.25 + 3.0 * amplitude)
+    orth_budget = benign_radius * (0.20 + 1.10 * amplitude)
+    shared_budget = benign_radius * (0.08 + 0.35 * amplitude)
+    template = (
+        attack_norm * coordinated_dir
+        + orth_budget * orth_dir
+        + shared_budget * noise_dir
+        - 0.20 * clean_mean
+    )
+    template_norm = float(np.linalg.norm(template))
+    target_cap = benign_radius * (1.35 + 3.40 * amplitude)
+    if template_norm > target_cap:
+        template = template * (target_cap / max(template_norm, 1e-12))
+
+    jitter_scale = 0.012 + 0.010 * amplitude
+
+    attacked: dict[int, np.ndarray] = {}
+    for cid, update in local_updates.items():
+        update_arr = np.asarray(update, dtype=np.float64)
+        if int(cid) not in poisoned_clients:
+            attacked[int(cid)] = update_arr.copy()
+            continue
+        jitter = rng.normal(0.0, 1.0, size=template.shape)
+        jitter_dir = normalize_vector(0.7 * orth_dir + 0.3 * sample_orthogonal_direction(clean_mean, rng))
+        if float(np.linalg.norm(jitter_dir)) <= 1e-12:
+            jitter_dir = orth_dir.copy()
+        attacked[int(cid)] = template + jitter_scale * benign_radius * jitter_dir + (0.01 + 0.01 * amplitude) * clean_std * jitter
+    return attacked
+
+
+def build_multi_round_stealth_attack(
+    *,
+    local_updates: dict[int, np.ndarray],
+    poisoned_clients: set[int],
+    attack_scale: float,
+    rng: np.random.Generator,
+    prev_updates: dict[int, np.ndarray] | None = None,
+    prev_global_update: np.ndarray | None = None,
+) -> dict[int, np.ndarray]:
+    if not local_updates or not poisoned_clients:
+        return copy_update_map(local_updates)
+
+    clean_updates = [
+        np.asarray(update, dtype=np.float64)
+        for cid, update in local_updates.items()
+        if int(cid) not in poisoned_clients
+    ]
+    if not clean_updates:
+        return build_colluding_update_noise_attack(
+            local_updates=local_updates,
+            poisoned_clients=poisoned_clients,
+            attack_scale=attack_scale,
+            rng=rng,
+        )
+
+    basis = build_coordinated_poison_basis(
+        local_updates=local_updates,
+        poisoned_clients=poisoned_clients,
+        rng=rng,
+    )
+    clean_mean = np.asarray(basis["clean_mean"], dtype=np.float64)
+    clean_std = np.asarray(basis["clean_std"], dtype=np.float64)
+    benign_radius = float(basis["benign_radius"])
+    anti_mean_dir = np.asarray(basis["anti_mean_dir"], dtype=np.float64)
+    orth_dir = np.asarray(basis["orth_dir"], dtype=np.float64)
+    coordinated_dir = np.asarray(basis["coordinated_dir"], dtype=np.float64)
+    noise_dir = np.asarray(basis["noise_dir"], dtype=np.float64)
+    clean_stack = np.stack(clean_updates, axis=0)
+    clean_norms = np.linalg.norm(clean_stack, axis=1)
+    benign_norm_cap = float(np.mean(clean_norms) + np.std(clean_norms)) if clean_norms.size > 0 else benign_radius
+    benign_norm_cap = max(benign_norm_cap, benign_radius, 1e-6)
+
+    prev_updates = dict(prev_updates or {})
+    prev_poison = [
+        np.asarray(prev_updates[int(cid)], dtype=np.float64)
+        for cid in sorted(poisoned_clients)
+        if int(cid) in prev_updates
+    ]
+    prev_anchor = np.mean(np.stack(prev_poison, axis=0), axis=0) if prev_poison else None
+    if prev_global_update is not None:
+        drift_dir = normalize_vector(
+            orthogonal_component(-np.asarray(prev_global_update, dtype=np.float64), clean_mean)
+        )
+    else:
+        drift_dir = np.zeros_like(clean_mean)
+    if float(np.linalg.norm(drift_dir)) <= 1e-12:
+        drift_dir = sample_orthogonal_direction(clean_mean, rng)
+
+    amplitude = min(max(float(attack_scale), 0.0), 1.0)
+    target_dir = normalize_vector(anti_mean_dir + 0.60 * orth_dir + 0.55 * drift_dir + 0.15 * noise_dir)
+    if float(np.linalg.norm(target_dir)) <= 1e-12:
+        target_dir = coordinated_dir.copy()
+
+    target_norm = benign_radius * (1.25 + 3.20 * amplitude)
+    target = target_norm * target_dir + benign_radius * (0.25 + 1.10 * amplitude) * drift_dir - 0.18 * clean_mean
+    if prev_anchor is not None:
+        template = 0.45 * prev_anchor + 0.55 * target
+    else:
+        template = target
+    template_norm = float(np.linalg.norm(template))
+    target_cap = max(benign_norm_cap * (1.10 + 2.20 * amplitude), benign_radius * (1.40 + 3.00 * amplitude))
+    if template_norm > target_cap:
+        template = template * (target_cap / max(template_norm, 1e-12))
+
+    jitter_scale = 0.012 + 0.010 * amplitude
+    attacked: dict[int, np.ndarray] = {}
+    for cid, update in local_updates.items():
+        update_arr = np.asarray(update, dtype=np.float64)
+        if int(cid) not in poisoned_clients:
+            attacked[int(cid)] = update_arr.copy()
+            continue
+        jitter = rng.normal(0.0, 1.0, size=template.shape)
+        jitter_dir = normalize_vector(0.65 * orth_dir + 0.35 * drift_dir)
+        if float(np.linalg.norm(jitter_dir)) <= 1e-12:
+            jitter_dir = orth_dir.copy()
+        attacked[int(cid)] = template + jitter_scale * benign_radius * jitter_dir + (0.010 + 0.010 * amplitude) * clean_std * jitter
+    return attacked
+
+
 def apply_adaptive_group_attack(
     *,
     local_updates: dict[int, np.ndarray],
@@ -1286,6 +1594,8 @@ def apply_adaptive_group_attack(
     attack_type: str,
     attack_scale: float,
     rng: np.random.Generator,
+    prev_updates: dict[int, np.ndarray] | None = None,
+    prev_global_update: np.ndarray | None = None,
 ) -> dict[int, np.ndarray]:
     if attack_type == "adaptive_benign_mimic":
         return build_adaptive_benign_mimic_attack(
@@ -1300,6 +1610,22 @@ def apply_adaptive_group_attack(
             poisoned_clients=poisoned_clients,
             attack_scale=attack_scale,
             rng=rng,
+        )
+    if attack_type == "colluding_update_noise":
+        return build_colluding_update_noise_attack(
+            local_updates=local_updates,
+            poisoned_clients=poisoned_clients,
+            attack_scale=attack_scale,
+            rng=rng,
+        )
+    if attack_type == "multi_round_stealth":
+        return build_multi_round_stealth_attack(
+            local_updates=local_updates,
+            poisoned_clients=poisoned_clients,
+            attack_scale=attack_scale,
+            rng=rng,
+            prev_updates=prev_updates,
+            prev_global_update=prev_global_update,
         )
     raise KeyError(f"unknown adaptive attack type: {attack_type}")
 
@@ -1427,6 +1753,7 @@ def main() -> None:
 
     graph_file = resolve_repo_local_path(str(cfg["graph_file"]), args.project_root)
     graph = torch.load(graph_file, weights_only=False, map_location="cpu")
+    validate_graph_contract(graph)
     x = graph.x_norm.float()
     edge_index = graph.edge_index.long()
     y = graph.y.long()
@@ -1469,6 +1796,9 @@ def main() -> None:
     flshield_like_cluster_iterations = int(cfg.get("flshield_like_cluster_iterations", 6))
     foolsgold_use_history = safe_bool(cfg.get("foolsgold_use_history", True), True)
     arc_faulty_clients = int(cfg.get("arc_faulty_clients", max(int(round(poison_frac * num_clients)), 0)))
+    caf_faulty_clients = int(cfg.get("caf_faulty_clients", max(int(round(poison_frac * num_clients)), 0)))
+    caf_max_iter = int(cfg.get("caf_max_iter", max(num_clients, 1)))
+    caf_power_iterations = int(cfg.get("caf_power_iterations", 1))
     rfa_max_iter = int(cfg.get("rfa_max_iter", 100))
     rfa_tolerance = float(cfg.get("rfa_tolerance", 1e-6))
     centered_clipping_iterations = int(cfg.get("centered_clipping_iterations", 10))
@@ -1508,6 +1838,7 @@ def main() -> None:
     rng = np.random.default_rng(seed)
     client_views, partition_manifest = build_client_views(
         graph=graph,
+        project_root=args.project_root,
         train_mask=train_mask,
         val_mask=val_mask,
         test_mask=test_mask,
@@ -1580,11 +1911,21 @@ def main() -> None:
             )
 
     for round_id in range(1, rounds + 1):
+        round_wall_start = time.perf_counter()
         base_state = state_to_numpy(model)
         raw_local_updates: dict[int, np.ndarray] = {}
         local_models: dict[int, nn.Module] = {}
+        local_training_start = time.perf_counter()
         for view in active_views:
             cid = int(view["client_id"])
+            local_y_override = None
+            if cid in poisoned_clients and poison_type == "targeted_label_flip":
+                local_y_override = build_targeted_label_flip_labels(
+                    y=view["y"],
+                    mask=view["train_mask"],
+                    attack_scale=poison_scale,
+                    rng=rng,
+                )
             trained = local_train(
                 model=model,
                 x=view["x"],
@@ -1593,24 +1934,29 @@ def main() -> None:
                 mask=view["train_mask"],
                 epochs=local_epochs,
                 lr=lr,
+                y_override=local_y_override,
             )
             update = state_to_numpy(trained) - base_state
             raw_local_updates[cid] = update
             local_models[cid] = trained
+        local_training_ms = float((time.perf_counter() - local_training_start) * 1000.0)
 
-        if is_adaptive_attack_type(poison_type):
+        attack_simulation_start = time.perf_counter()
+        if is_group_attack_type(poison_type):
             local_updates = apply_adaptive_group_attack(
                 local_updates=raw_local_updates,
                 poisoned_clients=poisoned_clients,
                 attack_type=poison_type,
                 attack_scale=poison_scale,
                 rng=rng,
+                prev_updates=prev_updates,
+                prev_global_update=prev_global_update,
             )
         else:
             local_updates = {}
             for cid, update in raw_local_updates.items():
                 attacked_update = np.asarray(update, dtype=np.float64).copy()
-                if cid in poisoned_clients:
+                if cid in poisoned_clients and poison_type != "targeted_label_flip":
                     attacked_update = apply_attack(
                         attacked_update,
                         attack_type=poison_type,
@@ -1618,10 +1964,12 @@ def main() -> None:
                         rng=rng,
                     )
                 local_updates[cid] = attacked_update
+        attack_simulation_ms = float((time.perf_counter() - attack_simulation_start) * 1000.0)
 
         if not local_updates:
             raise RuntimeError("no local updates were produced")
 
+        client_eval_start = time.perf_counter()
         update_norms = {cid: float(np.linalg.norm(upd)) for cid, upd in local_updates.items()}
         client_eval: dict[int, dict[str, Any]] = {}
         for cid, local_model in local_models.items():
@@ -1632,7 +1980,9 @@ def main() -> None:
                 "threshold": float(threshold),
                 "val_metrics": val_metrics,
             }
+        client_eval_ms = float((time.perf_counter() - client_eval_start) * 1000.0)
 
+        server_aggregation_start = time.perf_counter()
         trust_rows: list[dict[str, Any]] = []
         keep: dict[int, bool]
         floor_diagnostics: list[dict[str, Any]]
@@ -2227,6 +2577,16 @@ def main() -> None:
                             max_iter=rfa_max_iter,
                             tol=rfa_tolerance,
                         )
+                    elif aggregation == "caf":
+                        flat = [u for arr in grouped_updates.values() for u in arr]
+                        w = [w for arr in grouped_weights.values() for w in arr]
+                        client_update = aggregate_caf(
+                            flat,
+                            w,
+                            f=min(max(int(caf_faulty_clients), 0), max(len(flat) - 1, 0)),
+                            max_iter=caf_max_iter,
+                            power_max_iter=caf_power_iterations,
+                        )
                     elif aggregation == "centered_clipping":
                         flat = [u for arr in grouped_updates.values() for u in arr]
                         w = [w for arr in grouped_weights.values() for w in arr]
@@ -2382,6 +2742,16 @@ def main() -> None:
                         max_iter=rfa_max_iter,
                         tol=rfa_tolerance,
                     )
+                elif aggregation == "caf":
+                    flat = [u for arr in grouped_updates.values() for u in arr]
+                    w = [w for arr in grouped_weights.values() for w in arr]
+                    global_update = aggregate_caf(
+                        flat,
+                        w,
+                        f=min(max(int(caf_faulty_clients), 0), max(len(flat) - 1, 0)),
+                        max_iter=caf_max_iter,
+                        power_max_iter=caf_power_iterations,
+                    )
                 elif aggregation == "centered_clipping":
                     flat = [u for arr in grouped_updates.values() for u in arr]
                     w = [w for arr in grouped_weights.values() for w in arr]
@@ -2409,7 +2779,9 @@ def main() -> None:
             row.setdefault("selected_by_floor", False)
             row.setdefault("kept_final", bool(keep[cid]))
             keep[cid] = bool(row["kept_final"])
+        server_aggregation_ms = float((time.perf_counter() - server_aggregation_start) * 1000.0)
 
+        global_eval_start = time.perf_counter()
         prev_global_update = np.asarray(global_update, dtype=np.float64).copy()
         model.load_state_dict(numpy_to_state_like(model, base_state + global_update))
         th, val_metrics = find_best_threshold(model, x=x, edge_index=edge_index, y=y, mask=val_mask)
@@ -2418,6 +2790,10 @@ def main() -> None:
             test_logits = model(x, edge_index)
             test_probs = F.softmax(test_logits[test_mask], dim=1)[:, 1]
         test_metrics = evaluate_probs(probs=test_probs, y_true=y[test_mask], threshold=th)
+        global_eval_ms = float((time.perf_counter() - global_eval_start) * 1000.0)
+        server_round_ms = float(client_eval_ms + server_aggregation_ms + global_eval_ms)
+        round_wall_clock_ms = float((time.perf_counter() - round_wall_start) * 1000.0)
+        memory_snapshot = read_process_memory_snapshot()
         kept_client_ids = sorted(int(cid) for cid, is_kept in keep.items() if is_kept)
         round_rows.append(
             {
@@ -2433,20 +2809,41 @@ def main() -> None:
                 "group_floor_diagnostics": floor_diagnostics,
                 "aggregation_mode": aggregation_mode,
                 "trust_weight_mass": float(sum(float(r["trust_norm"]) for r in trust_rows)),
+                "local_training_ms": float(local_training_ms),
+                "attack_simulation_ms": float(attack_simulation_ms),
+                "client_eval_ms": float(client_eval_ms),
+                "server_aggregation_ms": float(server_aggregation_ms),
+                "global_eval_ms": float(global_eval_ms),
+                "server_round_ms": float(server_round_ms),
+                "round_wall_clock_ms": float(round_wall_clock_ms),
+                "process_rss_mb": float(memory_snapshot["process_rss_mb"]),
+                "process_peak_rss_mb": float(memory_snapshot["process_peak_rss_mb"]),
             }
         )
         trust_trace.extend(trust_rows)
 
+    graph_file_rel = repo_relative_path(graph_file, args.project_root)
+    dataset_info = {
+        "dataset_name": str(getattr(graph, "dataset_name", "") or ""),
+        "dataset_variant": str(getattr(graph, "dataset_variant", "") or ""),
+        "dataset_source": str(getattr(graph, "dataset_source", "") or ""),
+        "split_scheme": str(getattr(graph, "split_scheme", "") or ""),
+        "graph_contract_version": str(getattr(graph, "graph_contract_version", "") or ""),
+        "graph_source_kind": str(getattr(graph, "graph_source_kind", "") or ""),
+    }
+    experiment_contract = build_experiment_contract(
+        cfg=cfg,
+        dataset_info=dataset_info,
+        graph_file=graph_file_rel,
+        run_name=str(cfg.get("run_name", "")),
+    )
+
     summary = {
         "timestamp_utc": timestamp_utc(),
         "config": cfg,
-        "graph_file": str(graph_file),
-        "dataset_info": {
-            "dataset_name": str(getattr(graph, "dataset_name", "") or ""),
-            "dataset_variant": str(getattr(graph, "dataset_variant", "") or ""),
-            "dataset_source": str(getattr(graph, "dataset_source", "") or ""),
-            "split_scheme": str(getattr(graph, "split_scheme", "") or ""),
-        },
+        "graph_file": graph_file_rel,
+        "dataset_info": dataset_info,
+        "experiment_contract": experiment_contract,
         "graph_stats": {
             "num_nodes": int(graph.num_nodes),
             "num_edges": int(graph.num_edges),
@@ -2508,6 +2905,21 @@ def main() -> None:
             "bytes_per_client_per_round_est": int(tuning_info["trainable_params"]) * 4,
             "bytes_per_round_est": int(tuning_info["trainable_params"]) * 4 * int(len(active_views)),
             "total_bytes_est": int(tuning_info["trainable_params"]) * 4 * int(len(active_views)) * int(rounds),
+        },
+        "timing": {
+            "local_training_ms": summarize_numeric_series([float(row.get("local_training_ms", 0.0)) for row in round_rows]),
+            "attack_simulation_ms": summarize_numeric_series([float(row.get("attack_simulation_ms", 0.0)) for row in round_rows]),
+            "client_eval_ms": summarize_numeric_series([float(row.get("client_eval_ms", 0.0)) for row in round_rows]),
+            "server_aggregation_ms": summarize_numeric_series([float(row.get("server_aggregation_ms", 0.0)) for row in round_rows]),
+            "global_eval_ms": summarize_numeric_series([float(row.get("global_eval_ms", 0.0)) for row in round_rows]),
+            "server_round_ms": summarize_numeric_series([float(row.get("server_round_ms", 0.0)) for row in round_rows]),
+            "round_wall_clock_ms": summarize_numeric_series([float(row.get("round_wall_clock_ms", 0.0)) for row in round_rows]),
+        },
+        "resource_usage": {
+            "process_rss_mb": summarize_numeric_series([float(row.get("process_rss_mb", 0.0)) for row in round_rows]),
+            "process_peak_rss_mb": summarize_numeric_series(
+                [float(row.get("process_peak_rss_mb", 0.0)) for row in round_rows]
+            ),
         },
         "round_rows": round_rows,
         "final_metrics": round_rows[-1],

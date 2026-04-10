@@ -1,0 +1,279 @@
+{
+  "run_prefix": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40",
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "hier_keepall",
+      "method_family": "repo_ablation",
+      "provenance_kind": "repo_native",
+      "reference_grade": false,
+      "claim_role": "keep_all_control",
+      "notes": "Hierarchical aggregation with trust filtering disabled.",
+      "method_key": "hierarchical_keepall",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "update_noise",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "update_noise",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "same_task_public",
+      "evidence_tier": "primary",
+      "benchmark_key": "public_cabench_scenario_h",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "primary",
+      "recommended_seed_count": 20,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111,
+        122,
+        133,
+        144,
+        155,
+        166,
+        177,
+        188,
+        199,
+        211,
+        222
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "holm_bonferroni",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "seed_plan": {
+    "observed_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "observed_seed_count": 5,
+    "recommended_seed_count": 20,
+    "meets_recommended_seed_count": false,
+    "family": "primary",
+    "correction_method": "holm_bonferroni"
+  },
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40_seed11",
+      "seed": 11,
+      "test_f1": 0.9812108559498955,
+      "test_recall": 0.9684065934065934,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 40.0,
+      "kept_poisoned_clients": 16.0,
+      "local_training_ms_mean": 95.68713359999492,
+      "attack_simulation_ms_mean": 0.624840000000404,
+      "client_eval_ms_mean": 93.61885479997909,
+      "server_aggregation_ms_mean": 2.4634431999857043,
+      "global_eval_ms_mean": 3.732118999960221,
+      "server_round_ms_mean": 99.81441699992502,
+      "round_wall_clock_ms_mean": 196.7764790000274,
+      "process_rss_mb_mean": 818.80546875,
+      "process_peak_rss_mb_mean": 824.12109375,
+      "bytes_per_round_est": 98880.0,
+      "active_clients": 40.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40_seed22",
+      "seed": 22,
+      "test_f1": 0.9719101123595506,
+      "test_recall": 0.9505494505494505,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 40.0,
+      "kept_poisoned_clients": 16.0,
+      "local_training_ms_mean": 98.0650056000286,
+      "attack_simulation_ms_mean": 0.6482904000222334,
+      "client_eval_ms_mean": 95.77991339997425,
+      "server_aggregation_ms_mean": 2.396768999960841,
+      "global_eval_ms_mean": 3.47214419998636,
+      "server_round_ms_mean": 101.64882659992145,
+      "round_wall_clock_ms_mean": 200.98979840004176,
+      "process_rss_mb_mean": 825.734375,
+      "process_peak_rss_mb_mean": 825.734375,
+      "bytes_per_round_est": 98880.0,
+      "active_clients": 40.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40_seed33",
+      "seed": 33,
+      "test_f1": 0.9811320754716982,
+      "test_recall": 0.9642857142857143,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 40.0,
+      "kept_poisoned_clients": 16.0,
+      "local_training_ms_mean": 101.64564760002577,
+      "attack_simulation_ms_mean": 0.7343084000694944,
+      "client_eval_ms_mean": 94.75456080003823,
+      "server_aggregation_ms_mean": 2.5869580000289716,
+      "global_eval_ms_mean": 3.6643111999637767,
+      "server_round_ms_mean": 101.00583000003098,
+      "round_wall_clock_ms_mean": 204.06166000002486,
+      "process_rss_mb_mean": 826.265625,
+      "process_peak_rss_mb_mean": 826.265625,
+      "bytes_per_round_est": 98880.0,
+      "active_clients": 40.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40_seed44",
+      "seed": 44,
+      "test_f1": 0.9744651483781918,
+      "test_recall": 0.9697802197802198,
+      "test_fpr": 0.04672897196261682,
+      "kept_clients": 40.0,
+      "kept_poisoned_clients": 16.0,
+      "local_training_ms_mean": 100.78910540000834,
+      "attack_simulation_ms_mean": 0.6312199999683799,
+      "client_eval_ms_mean": 87.51710899996397,
+      "server_aggregation_ms_mean": 2.30282179995811,
+      "global_eval_ms_mean": 3.1959559999449993,
+      "server_round_ms_mean": 93.01588679986708,
+      "round_wall_clock_ms_mean": 195.01664360000177,
+      "process_rss_mb_mean": 819.51171875,
+      "process_peak_rss_mb_mean": 823.94140625,
+      "bytes_per_round_est": 98880.0,
+      "active_clients": 40.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40_seed55",
+      "seed": 55,
+      "test_f1": 0.9728978457261988,
+      "test_recall": 0.9615384615384616,
+      "test_fpr": 0.03426791277258567,
+      "kept_clients": 40.0,
+      "kept_poisoned_clients": 16.0,
+      "local_training_ms_mean": 106.39456159992733,
+      "attack_simulation_ms_mean": 0.6727907999902527,
+      "client_eval_ms_mean": 102.2980443999586,
+      "server_aggregation_ms_mean": 2.455725000027087,
+      "global_eval_ms_mean": 3.8855727999816736,
+      "server_round_ms_mean": 108.63934219996736,
+      "round_wall_clock_ms_mean": 216.48144760001742,
+      "process_rss_mb_mean": 823.36328125,
+      "process_peak_rss_mb_mean": 826.8671875,
+      "bytes_per_round_est": 98880.0,
+      "active_clients": 40.0,
+      "method_key": "hierarchical_keepall",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.976323207577107,
+      "std": 0.004518717025860411
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9629120879120879,
+      "std": 0.007648027970920377
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.021806853582554516,
+      "std": 0.018030898602476985
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 40.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 16.0,
+      "std": 0.0
+    },
+    "local_training_ms": {
+      "n": 5,
+      "mean": 100.51629075999699,
+      "std": 4.038362928804819
+    },
+    "attack_simulation_ms": {
+      "n": 5,
+      "mean": 0.6622899200101529,
+      "std": 0.04433044368840997
+    },
+    "client_eval_ms": {
+      "n": 5,
+      "mean": 94.79369647998283,
+      "std": 5.282479802285287
+    },
+    "server_aggregation_ms": {
+      "n": 5,
+      "mean": 2.441143399992143,
+      "std": 0.10377108717911887
+    },
+    "global_eval_ms": {
+      "n": 5,
+      "mean": 3.590020639967406,
+      "std": 0.26563316158045636
+    },
+    "server_round_ms": {
+      "n": 5,
+      "mean": 100.82486051994238,
+      "std": 5.56279742236533
+    },
+    "round_wall_clock_ms": {
+      "n": 5,
+      "mean": 202.66520572002264,
+      "std": 8.497399879038113
+    },
+    "process_rss_mb": {
+      "n": 5,
+      "mean": 822.73609375,
+      "std": 3.4527906282539784
+    },
+    "process_peak_rss_mb": {
+      "n": 5,
+      "mean": 825.3859375,
+      "std": 1.301524163788664
+    },
+    "bytes_per_round_est": {
+      "n": 5,
+      "mean": 98880.0,
+      "std": 0.0
+    },
+    "active_clients": {
+      "n": 5,
+      "mean": 40.0,
+      "std": 0.0
+    }
+  }
+}

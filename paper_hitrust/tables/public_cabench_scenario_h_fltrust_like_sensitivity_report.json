@@ -3,7 +3,7 @@
   "rows": [
     {
       "label": "root48_e1",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root48_e1_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root48_e1_seed_stats.json",
       "server_root_size": 48,
       "server_root_local_epochs": 1,
       "test_f1_mean": 0.9771511519358685,
@@ -17,7 +17,7 @@
     },
     {
       "label": "root48_e2",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root48_e2_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root48_e2_seed_stats.json",
       "server_root_size": 48,
       "server_root_local_epochs": 2,
       "test_f1_mean": 0.9776921182001176,
@@ -31,7 +31,7 @@
     },
     {
       "label": "root96_e1",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root96_e1_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root96_e1_seed_stats.json",
       "server_root_size": 96,
       "server_root_local_epochs": 1,
       "test_f1_mean": 0.9775136253914662,
@@ -45,7 +45,7 @@
     },
     {
       "label": "root96_e2",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root96_e2_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root96_e2_seed_stats.json",
       "server_root_size": 96,
       "server_root_local_epochs": 2,
       "test_f1_mean": 0.9791259354549249,
@@ -59,7 +59,7 @@
     },
     {
       "label": "root192_e1",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e1_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e1_seed_stats.json",
       "server_root_size": 192,
       "server_root_local_epochs": 1,
       "test_f1_mean": 0.9802454423298907,
@@ -73,7 +73,7 @@
     },
     {
       "label": "root192_e2",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e2_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e2_seed_stats.json",
       "server_root_size": 192,
       "server_root_local_epochs": 2,
       "test_f1_mean": 0.9802700178357615,
@@ -89,7 +89,7 @@
   "reference_rows": [
     {
       "label": "trust_aware",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
       "test_f1_mean": 0.9692519958911844,
       "test_fpr_mean": 0.041536863966770504,
       "kept_poisoned_clients_mean": 0.3333333333333333,
@@ -98,7 +98,7 @@
     },
     {
       "label": "condfloor",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
       "test_f1_mean": 0.9797821385807172,
       "test_fpr_mean": 0.01142263759086189,
       "kept_poisoned_clients_mean": 0.0,
@@ -107,7 +107,7 @@
     },
     {
       "label": "keepall",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
       "test_f1_mean": 0.9766385549344752,
       "test_fpr_mean": 0.007268951194184838,
       "kept_poisoned_clients_mean": 4.0,
@@ -117,7 +117,7 @@
   ],
   "best_by_f1": {
     "label": "root192_e2",
-    "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e2_seed_stats.json",
+    "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e2_seed_stats.json",
     "server_root_size": 192,
     "server_root_local_epochs": 2,
     "test_f1_mean": 0.9802700178357615,
@@ -131,7 +131,7 @@
   },
   "best_by_retained_poisoned": {
     "label": "root192_e1",
-    "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e1_seed_stats.json",
+    "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_update_noise_frac0p4_root192_e1_seed_stats.json",
     "server_root_size": 192,
     "server_root_local_epochs": 1,
     "test_f1_mean": 0.9802454423298907,

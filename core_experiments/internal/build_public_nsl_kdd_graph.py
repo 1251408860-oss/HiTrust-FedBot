@@ -17,6 +17,13 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
 from torch_geometric.data import Data
 
+from graph_contract import (
+    GRAPH_CONTRACT_VERSION,
+    apply_graph_contract,
+    graph_stats,
+    repo_relative_path,
+    validate_graph_contract,
+)
 
 NSL_COLUMNS = [
     "duration",
@@ -67,6 +74,7 @@ RAW_URLS = {
     "train20": "https://raw.githubusercontent.com/defcom17/NSL_KDD/master/KDDTrain%2B_20Percent.txt",
     "test": "https://raw.githubusercontent.com/defcom17/NSL_KDD/master/KDDTest%2B.txt",
 }
+NSL_DATASET_SOURCE = "public_github_mirror:defcom17/NSL_KDD"
 CATEGORICAL_COLUMNS = ["protocol_type", "service", "flag"]
 
 
@@ -250,7 +258,7 @@ def main() -> None:
     manifest = {
         "dataset_name": "NSL-KDD",
         "dataset_variant": "KDDTrain+_20Percent + KDDTest+",
-        "dataset_source": "public_github_mirror:defcom17/NSL_KDD",
+        "dataset_source": NSL_DATASET_SOURCE,
         "split_scheme": "official_train_test_with_sampled_train_val",
         "seed": int(args.seed),
         "topology": {
@@ -263,6 +271,7 @@ def main() -> None:
         },
         "roles": {name: role_by_owner[name] for name in owner_list},
         "ip_labels": {name: int(label_by_owner[name]) for name in owner_list},
+        "graph_contract_version": GRAPH_CONTRACT_VERSION,
     }
     output_manifest.parent.mkdir(parents=True, exist_ok=True)
     output_manifest.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
@@ -291,25 +300,35 @@ def main() -> None:
         feature_names=feature_names,
         feature_index={name: idx for idx, name in enumerate(feature_names)},
         label_source="nsl_kdd_binary",
+    )
+    apply_graph_contract(
+        data,
+        project_root=project_root,
         dataset_name="NSL-KDD",
         dataset_variant="train20_test_public_graph",
-        dataset_source="https://github.com/defcom17/NSL_KDD",
+        dataset_source=NSL_DATASET_SOURCE,
         split_scheme="official_train_test_with_sampled_train_val",
-        manifest_file=str(output_manifest),
+        manifest_file=output_manifest,
+        manifest_metadata=manifest,
+        graph_source_kind="external_public_dataset",
     )
+    validate_graph_contract(data)
     output_graph.parent.mkdir(parents=True, exist_ok=True)
     torch.save(data, output_graph)
 
     summary = {
         "dataset_name": "NSL-KDD",
-        "output_graph": str(output_graph),
-        "manifest_file": str(output_manifest),
+        "dataset_source": NSL_DATASET_SOURCE,
+        "output_graph": repo_relative_path(output_graph, project_root),
+        "manifest_file": repo_relative_path(output_manifest, project_root),
         "seed": int(args.seed),
+        "graph_contract_version": GRAPH_CONTRACT_VERSION,
         "rows": int(len(combined)),
         "num_features": int(len(feature_names)),
         "num_edges": int(edge_index.shape[1]),
         "num_owners": int(len(owner_list)),
         "num_protocol_roles": int(len(set(role_by_owner.values()))),
+        "graph_stats": graph_stats(data),
         "split_counts": {
             "train": int(train_mask_np.sum()),
             "val": int(val_mask_np.sum()),

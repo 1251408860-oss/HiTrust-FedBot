@@ -1,8 +1,8 @@
 {
-  "timestamp_utc": "2026-03-30T06:14:31Z",
+  "timestamp_utc": "2026-04-07T08:56:56Z",
   "config": {
     "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_seed22",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+    "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
     "seed": 22,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -22,12 +22,77 @@
     "trust_threshold": 0.35,
     "min_keep_per_group": 1
   },
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
   "dataset_info": {
     "dataset_name": "Ca-Bench",
     "dataset_variant": "scenario_h_mimic_heavy_overlap_public_data_v1",
-    "dataset_source": "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1",
-    "split_scheme": "random_flow_split_from_public_scenario_capture"
+    "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
+    "split_scheme": "random_flow_split_from_public_scenario_capture",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "external_public_dataset"
+  },
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "trust_aware",
+      "method_family": "proposed_method",
+      "provenance_kind": "repo_native",
+      "reference_grade": false,
+      "claim_role": "mainline",
+      "notes": "Static grouped trust-aware aggregation.",
+      "method_key": "hitrust_static",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "update_noise",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "update_noise",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "same_task_public",
+      "evidence_tier": "primary",
+      "benchmark_key": "public_cabench_scenario_h",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "primary",
+      "recommended_seed_count": 20,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111,
+        122,
+        133,
+        144,
+        155,
+        166,
+        177,
+        188,
+        199,
+        211,
+        222
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "holm_bonferroni",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
   },
   "graph_stats": {
     "num_nodes": 6985,
@@ -47,7 +112,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
+    "manifest_file": "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
     "topology_type": "three_tier",
     "load_profile": "high",
     "bot_type_mode": "mimic_heavy"
@@ -67,16 +132,92 @@
     "trainable_ratio_actual": 0.19446192573945878
   },
   "trust_filter": {
+    "trust_mode": "static",
     "trust_threshold": 0.35,
     "min_keep_per_group": 1,
     "group_floor_policy": "static",
-    "group_floor_min_trust_mass": 0.0
+    "group_floor_min_trust_mass": 0.0,
+    "temporal_reputation_decay": 0.7,
+    "temporal_history_decay": 0.8,
+    "temporal_server_cosine_floor": -0.1,
+    "temporal_root_drift_scale": 0.12,
+    "temporal_anchor_blend_min": 0.2,
+    "temporal_anchor_blend_max": 0.6,
+    "temporal_peer_topk": 2,
+    "temporal_use_layerwise": false,
+    "temporal_use_behavioral_probe": false,
+    "temporal_use_soft_weighting": false,
+    "temporal_behavior_probe_mix": 0.12,
+    "temporal_behavior_probe_scale": 0.1,
+    "temporal_soft_weight_power": 1.5,
+    "temporal_weight_floor": 0.01,
+    "temporal_hard_reject_floor": 0.35,
+    "temporal_redemption_mix": 0.0,
+    "temporal_camouflage_peer_threshold": 1.5,
+    "temporal_camouflage_server_cosine_max": -1.0,
+    "temporal_camouflage_layerwise_max": -1.0,
+    "temporal_camouflage_similarity_threshold": 1.1,
+    "temporal_camouflage_min_redundant_peers": 99,
+    "temporal_camouflage_cluster_server_cosine_max": -1.0,
+    "temporal_score_weights": {}
   },
+  "server_root": null,
   "comm_cost": {
     "tuning_mode": "adapter_ft",
     "bytes_per_client_per_round_est": 2472,
     "bytes_per_round_est": 24720,
     "total_bytes_est": 123600
+  },
+  "timing": {
+    "local_training_ms": {
+      "n": 5,
+      "mean": 24.94839259998116,
+      "median": 24.791013000026396,
+      "p95": 26.407306000010067,
+      "max": 26.407306000010067
+    },
+    "attack_simulation_ms": {
+      "n": 5,
+      "mean": 0.17007539997848653,
+      "median": 0.17123500003890513,
+      "p95": 0.1783059999524994,
+      "max": 0.1783059999524994
+    },
+    "client_eval_ms": {
+      "n": 5,
+      "mean": 25.07355660002304,
+      "median": 24.861605000069176,
+      "p95": 27.43077299999186,
+      "max": 27.43077299999186
+    },
+    "server_aggregation_ms": {
+      "n": 5,
+      "mean": 0.7072888000266175,
+      "median": 0.7057650000206195,
+      "p95": 0.8502370000087467,
+      "max": 0.8502370000087467
+    },
+    "global_eval_ms": {
+      "n": 5,
+      "mean": 4.209487200023432,
+      "median": 3.9362390000405867,
+      "p95": 6.100117000073624,
+      "max": 6.100117000073624
+    },
+    "server_round_ms": {
+      "n": 5,
+      "mean": 29.99033260007309,
+      "median": 29.625072000044383,
+      "p95": 34.38112700007423,
+      "max": 34.38112700007423
+    },
+    "round_wall_clock_ms": {
+      "n": 5,
+      "mean": 55.422308599986536,
+      "median": 53.89169199997923,
+      "p95": 59.46479299996099,
+      "max": 59.46479299996099
+    }
   },
   "round_rows": [
     {
@@ -128,7 +269,16 @@
           "floor_applied": false,
           "selected_by_floor": []
         }
-      ]
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 6.3282675730527975,
+      "local_training_ms": 24.664459999939936,
+      "attack_simulation_ms": 0.17123500003890513,
+      "client_eval_ms": 27.43077299999186,
+      "server_aggregation_ms": 0.8502370000087467,
+      "global_eval_ms": 6.100117000073624,
+      "server_round_ms": 34.38112700007423,
+      "round_wall_clock_ms": 59.46479299996099
     },
     {
       "round": 2,
@@ -179,7 +329,16 @@
           "floor_applied": false,
           "selected_by_floor": []
         }
-      ]
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.656509238298382,
+      "local_training_ms": 25.67978599995513,
+      "attack_simulation_ms": 0.1615959999980987,
+      "client_eval_ms": 26.7790090000517,
+      "server_aggregation_ms": 0.7057650000206195,
+      "global_eval_ms": 3.9362390000405867,
+      "server_round_ms": 31.421013000112907,
+      "round_wall_clock_ms": 57.64142099997116
     },
     {
       "round": 3,
@@ -230,7 +389,16 @@
           "floor_applied": false,
           "selected_by_floor": []
         }
-      ]
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.8147438311509,
+      "local_training_ms": 23.19939799997428,
+      "attack_simulation_ms": 0.1622629999928904,
+      "client_eval_ms": 24.861605000069176,
+      "server_aggregation_ms": 0.7122920000028898,
+      "global_eval_ms": 4.051174999972318,
+      "server_round_ms": 29.625072000044383,
+      "round_wall_clock_ms": 53.324664999991
     },
     {
       "round": 4,
@@ -281,7 +449,16 @@
           "floor_applied": false,
           "selected_by_floor": []
         }
-      ]
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.996012952871973,
+      "local_training_ms": 26.407306000010067,
+      "attack_simulation_ms": 0.1783059999524994,
+      "client_eval_ms": 22.10810600001878,
+      "server_aggregation_ms": 0.6800790000625057,
+      "global_eval_ms": 3.079214000081265,
+      "server_round_ms": 25.86739900016255,
+      "round_wall_clock_ms": 52.7889720000303
     },
     {
       "round": 5,
@@ -332,7 +509,16 @@
           "floor_applied": false,
           "selected_by_floor": []
         }
-      ]
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 6.011179840868716,
+      "local_training_ms": 24.791013000026396,
+      "attack_simulation_ms": 0.176976999910039,
+      "client_eval_ms": 24.18828999998368,
+      "server_aggregation_ms": 0.588071000038326,
+      "global_eval_ms": 3.8806909999493655,
+      "server_round_ms": 28.657051999971372,
+      "round_wall_clock_ms": 53.89169199997923
     }
   ],
   "final_metrics": {
@@ -384,6 +570,15 @@
         "floor_applied": false,
         "selected_by_floor": []
       }
-    ]
+    ],
+    "aggregation_mode": "hierarchical",
+    "trust_weight_mass": 6.011179840868716,
+    "local_training_ms": 24.791013000026396,
+    "attack_simulation_ms": 0.176976999910039,
+    "client_eval_ms": 24.18828999998368,
+    "server_aggregation_ms": 0.588071000038326,
+    "global_eval_ms": 3.8806909999493655,
+    "server_round_ms": 28.657051999971372,
+    "round_wall_clock_ms": 53.89169199997923
   }
 }

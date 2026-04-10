@@ -118,6 +118,82 @@ def aggregate_centered_clipping(
     return np.asarray(center, dtype=np.float64)
 
 
+def aggregate_caf(
+    updates: Iterable[np.ndarray],
+    weights: Iterable[float] | None = None,
+    *,
+    f: int = 0,
+    max_iter: int | None = None,
+    power_max_iter: int = 1,
+    eps: float = 1e-12,
+) -> np.ndarray:
+    stack = _stack(updates)
+    num_updates, dim = stack.shape
+    if num_updates <= 1:
+        return np.asarray(stack[0], dtype=np.float64)
+
+    faulty = min(max(int(f), 0), max(num_updates - 1, 0))
+    if weights is None:
+        coeffs = np.ones(num_updates, dtype=np.float64)
+    else:
+        base_weights = np.asarray(list(weights), dtype=np.float64)
+        if base_weights.shape[0] != num_updates:
+            raise ValueError("weights length must match the number of updates")
+        weight_sum = float(np.sum(base_weights))
+        if weight_sum <= float(eps):
+            raise ValueError("weights must contain positive mass")
+        coeffs = (float(num_updates) * base_weights) / weight_sum
+
+    total_mass = float(np.sum(coeffs))
+    target_mass = max(float(num_updates - 2 * faulty), float(eps))
+    if total_mass <= target_mass + float(eps):
+        return aggregate_mean(stack, coeffs)
+
+    max_rounds = int(max_iter) if max_iter is not None else int(num_updates)
+    max_rounds = max(max_rounds, 1)
+    best_agg = aggregate_mean(stack, coeffs)
+    best_lambda = float("inf")
+
+    for _ in range(max_rounds):
+        total_mass = float(np.sum(coeffs))
+        if total_mass <= target_mass + float(eps):
+            break
+
+        mean = aggregate_mean(stack, coeffs)
+        centered = stack - mean[None, :]
+        centered_norms = np.linalg.norm(centered, axis=1)
+        start_idx = int(np.argmax(centered_norms))
+        start_vec = np.asarray(centered[start_idx], dtype=np.float64)
+        start_norm = float(np.linalg.norm(start_vec))
+        if start_norm <= float(eps):
+            break
+        direction = start_vec / start_norm
+
+        for _ in range(max(int(power_max_iter), 1)):
+            projection = centered @ direction
+            next_direction = centered.T @ (coeffs * projection)
+            next_norm = float(np.linalg.norm(next_direction))
+            if next_norm <= float(eps):
+                break
+            direction = next_direction / next_norm
+
+        projection = centered @ direction
+        cov_direction = centered.T @ (coeffs * projection) / max(total_mass, float(eps))
+        leading_value = float(direction @ cov_direction)
+        if leading_value < best_lambda:
+            best_lambda = leading_value
+            best_agg = np.asarray(mean, dtype=np.float64)
+
+        scores = np.square(projection)
+        worst_idx = int(np.argmax(scores))
+        remove_mass = min(float(coeffs[worst_idx]), total_mass - target_mass)
+        if remove_mass <= float(eps):
+            break
+        coeffs[worst_idx] = max(float(coeffs[worst_idx] - remove_mass), 0.0)
+
+    return np.asarray(best_agg, dtype=np.float64)
+
+
 def preaggregate_arc(
     updates: Iterable[np.ndarray],
     *,

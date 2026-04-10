@@ -2,7 +2,7 @@
   "timestamp_utc": "2026-03-30T06:15:37Z",
   "config": {
     "run_name": "public_cabench_scenario_h_krum_sage_update_noise_frac0p4_keepall_seed33",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+    "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
     "seed": 33,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -22,12 +22,14 @@
     "trust_threshold": 0.0,
     "min_keep_per_group": 0
   },
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
   "dataset_info": {
     "dataset_name": "Ca-Bench",
     "dataset_variant": "scenario_h_mimic_heavy_overlap_public_data_v1",
-    "dataset_source": "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1",
-    "split_scheme": "random_flow_split_from_public_scenario_capture"
+    "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
+    "split_scheme": "random_flow_split_from_public_scenario_capture",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "external_public_dataset"
   },
   "graph_stats": {
     "num_nodes": 6985,
@@ -47,7 +49,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
+    "manifest_file": "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
     "topology_type": "three_tier",
     "load_profile": "high",
     "bot_type_mode": "mimic_heavy"

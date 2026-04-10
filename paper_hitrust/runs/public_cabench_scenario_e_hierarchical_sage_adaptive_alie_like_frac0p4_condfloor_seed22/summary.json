@@ -2,7 +2,7 @@
   "timestamp_utc": "2026-03-31T07:40:40Z",
   "config": {
     "run_name": "public_cabench_scenario_e_hierarchical_sage_adaptive_alie_like_frac0p4_condfloor_seed22",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+    "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
     "seed": 22,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -24,12 +24,14 @@
     "group_floor_policy": "conditional_trust_mass",
     "group_floor_min_trust_mass": 0.1
   },
-  "graph_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\graphs\\cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
   "dataset_info": {
     "dataset_name": "Ca-Bench",
     "dataset_variant": "scenario_e_three_tier_high2_public_data_v1",
-    "dataset_source": "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1",
-    "split_scheme": "random_flow_split_from_public_scenario_capture"
+    "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
+    "split_scheme": "random_flow_split_from_public_scenario_capture",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "external_public_dataset"
   },
   "graph_stats": {
     "num_nodes": 5976,
@@ -49,7 +51,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\raw\\real_collection\\mininet_testbed\\real_collection\\scenario_e_three_tier_high2\\arena_manifest_v2.json",
+    "manifest_file": "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_e_three_tier_high2/arena_manifest_v2.json",
     "topology_type": "three_tier",
     "load_profile": "high",
     "bot_type_mode": "mixed"

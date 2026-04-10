@@ -1,6 +1,6 @@
 {
   "run_name": "public_nslkdd_hierarchical_sage_update_noise_frac0p4_condfloor005",
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
   "seed": 42,
   "num_clients": 10,
   "partition_mode": "topology_noniid",

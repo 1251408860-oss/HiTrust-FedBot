@@ -1,0 +1,491 @@
+{
+  "timestamp_utc": "2026-04-07T06:21:40Z",
+  "config": {
+    "run_name": "public_westermo_hierarchical_sage_update_noise_frac0p4_seed33",
+    "graph_file": "data_hitrust/public_benchmarks/westermo/graphs/westermo_nst_public_graph.pt",
+    "seed": 33,
+    "num_clients": 10,
+    "partition_mode": "topology_noniid",
+    "aggregation": "hierarchical",
+    "num_groups": 3,
+    "hidden_dim": 32,
+    "adapter_dim": 8,
+    "backbone": "sage",
+    "tuning_mode": "adapter_ft",
+    "global_warmup_epochs": 8,
+    "rounds": 5,
+    "local_epochs": 1,
+    "lr": 0.01,
+    "poison_frac": 0.4,
+    "poison_type": "update_noise",
+    "poison_scale": 0.2,
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1
+  },
+  "graph_file": "data_hitrust/public_benchmarks/westermo/graphs/westermo_nst_public_graph.pt",
+  "dataset_info": {
+    "dataset_name": "Westermo Network Traffic Dataset",
+    "dataset_variant": "reduced_flows_nst_sampled_public_graph",
+    "dataset_source": "github_repo:westermo/network-traffic-dataset@ba85578e19169c2380d2789266f6c42cd0627e00",
+    "split_scheme": "stratified_random_train_val_test_from_reduced_flow_csv",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "external_public_dataset"
+  },
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "trust_aware",
+      "method_family": "proposed_method",
+      "provenance_kind": "repo_native",
+      "reference_grade": false,
+      "claim_role": "mainline",
+      "notes": "Static grouped trust-aware aggregation.",
+      "method_key": "hitrust_static",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "update_noise",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "update_noise",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "same_modality_public",
+      "evidence_tier": "primary",
+      "benchmark_key": "public_westermo",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "primary",
+      "recommended_seed_count": 20,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111,
+        122,
+        133,
+        144,
+        155,
+        166,
+        177,
+        188,
+        199,
+        211,
+        222
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "holm_bonferroni",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "graph_stats": {
+    "num_nodes": 17500,
+    "num_edges": 101432,
+    "flow_nodes": 17500,
+    "train_nodes": 10000,
+    "val_nodes": 2500,
+    "test_nodes": 5000
+  },
+  "warmup": {
+    "global_warmup_epochs": 8
+  },
+  "model_info": {
+    "backbone": "sage"
+  },
+  "partition_info": {
+    "partition_mode": "topology_noniid",
+    "num_clients": 10,
+    "active_clients": 10,
+    "manifest_file": "data_hitrust/public_benchmarks/westermo/meta/westermo_nst_public_manifest.json",
+    "topology_type": "public_benchmark",
+    "load_profile": "public_benchmark",
+    "bot_type_mode": "industrial_intrusion_nst"
+  },
+  "poisoned_clients": [
+    3,
+    5,
+    6,
+    8
+  ],
+  "tuning_info": {
+    "tuning_mode": "adapter_ft",
+    "trainable_ratio_hint": 0.12,
+    "comm_multiplier_hint": 0.2,
+    "total_params": 6314,
+    "trainable_params": 618,
+    "trainable_ratio_actual": 0.09787773202407349
+  },
+  "trust_filter": {
+    "trust_mode": "static",
+    "trust_threshold": 0.35,
+    "min_keep_per_group": 1,
+    "group_floor_policy": "static",
+    "group_floor_min_trust_mass": 0.0,
+    "temporal_reputation_decay": 0.7,
+    "temporal_history_decay": 0.8,
+    "temporal_server_cosine_floor": -0.1,
+    "temporal_root_drift_scale": 0.12,
+    "temporal_anchor_blend_min": 0.2,
+    "temporal_anchor_blend_max": 0.6,
+    "temporal_peer_topk": 2,
+    "temporal_use_layerwise": false,
+    "temporal_use_behavioral_probe": false,
+    "temporal_use_soft_weighting": false,
+    "temporal_behavior_probe_mix": 0.12,
+    "temporal_behavior_probe_scale": 0.1,
+    "temporal_soft_weight_power": 1.5,
+    "temporal_weight_floor": 0.01,
+    "temporal_hard_reject_floor": 0.35,
+    "temporal_redemption_mix": 0.0,
+    "temporal_camouflage_peer_threshold": 1.5,
+    "temporal_camouflage_server_cosine_max": -1.0,
+    "temporal_camouflage_layerwise_max": -1.0,
+    "temporal_camouflage_similarity_threshold": 1.1,
+    "temporal_camouflage_min_redundant_peers": 99,
+    "temporal_camouflage_cluster_server_cosine_max": -1.0,
+    "temporal_score_weights": {}
+  },
+  "server_root": null,
+  "comm_cost": {
+    "tuning_mode": "adapter_ft",
+    "bytes_per_client_per_round_est": 2472,
+    "bytes_per_round_est": 24720,
+    "total_bytes_est": 123600
+  },
+  "round_rows": [
+    {
+      "round": 1,
+      "val_f1": 0.6750972762645914,
+      "test_f1": 0.625,
+      "test_recall": 0.5105348460291734,
+      "test_fpr": 0.0403611258629846,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:source_ip:198.18.134.11",
+        "role:source_ip:198.18.134.12"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:source_ip:198.18.134.11",
+          "kept_before_floor": 3,
+          "trust_mass": 3.0157650054246483,
+          "max_trust": 0.9987968919425594,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "role:source_ip:198.18.134.12",
+          "kept_before_floor": 1,
+          "trust_mass": 1.1008717396963867,
+          "max_trust": 0.9973867060043609,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 2.075845232619105,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 6.19248197774014
+    },
+    {
+      "round": 2,
+      "val_f1": 0.6798418972332017,
+      "test_f1": 0.6289180990899899,
+      "test_recall": 0.5040518638573744,
+      "test_fpr": 0.0323951141795008,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:source_ip:198.18.134.11",
+        "role:source_ip:198.18.134.12"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:source_ip:198.18.134.11",
+          "kept_before_floor": 3,
+          "trust_mass": 2.859220644392587,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "role:source_ip:198.18.134.12",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0507235319262942,
+          "max_trust": 0.9577032391854831,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 2.0513075473526867,
+          "max_trust": 0.9650998742905291,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.961251723671567
+    },
+    {
+      "round": 3,
+      "val_f1": 0.6751717369970559,
+      "test_f1": 0.6290564153769347,
+      "test_recall": 0.5105348460291734,
+      "test_fpr": 0.03690918746680828,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:source_ip:198.18.134.11",
+        "role:source_ip:198.18.134.12"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:source_ip:198.18.134.11",
+          "kept_before_floor": 3,
+          "trust_mass": 2.8248770903977665,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "role:source_ip:198.18.134.12",
+          "kept_before_floor": 1,
+          "trust_mass": 0.9253146378856869,
+          "max_trust": 0.9253146378856869,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.7388309117958305,
+          "max_trust": 0.9284920494240665,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.489022640079283
+    },
+    {
+      "round": 4,
+      "val_f1": 0.6746746746746747,
+      "test_f1": 0.6154639175257732,
+      "test_recall": 0.4837925445705024,
+      "test_fpr": 0.028943175783324483,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:source_ip:198.18.134.11",
+        "role:source_ip:198.18.134.12"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:source_ip:198.18.134.11",
+          "kept_before_floor": 3,
+          "trust_mass": 2.8063288184013695,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "role:source_ip:198.18.134.12",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0902859273798093,
+          "max_trust": 0.9166621835550671,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.9612654321641636,
+          "max_trust": 0.9736020602138932,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.857880177945343
+    },
+    {
+      "round": 5,
+      "val_f1": 0.674,
+      "test_f1": 0.617283950617284,
+      "test_recall": 0.4862236628849271,
+      "test_fpr": 0.029208709506107277,
+      "kept_clients": 6,
+      "kept_client_ids": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        9
+      ],
+      "kept_groups": [
+        "group_other",
+        "role:source_ip:198.18.134.11",
+        "role:source_ip:198.18.134.12"
+      ],
+      "kept_poisoned_clients": 0,
+      "group_floor_diagnostics": [
+        {
+          "group": "role:source_ip:198.18.134.11",
+          "kept_before_floor": 3,
+          "trust_mass": 2.964758074083971,
+          "max_trust": 1.0,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "role:source_ip:198.18.134.12",
+          "kept_before_floor": 1,
+          "trust_mass": 1.0018429808833713,
+          "max_trust": 0.9008080011987396,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        },
+        {
+          "group": "group_other",
+          "kept_before_floor": 2,
+          "trust_mass": 1.8918495023264232,
+          "max_trust": 0.9381419652411818,
+          "floor_allowed": true,
+          "floor_applied": false,
+          "selected_by_floor": []
+        }
+      ],
+      "aggregation_mode": "hierarchical",
+      "trust_weight_mass": 5.858450557293765
+    }
+  ],
+  "final_metrics": {
+    "round": 5,
+    "val_f1": 0.674,
+    "test_f1": 0.617283950617284,
+    "test_recall": 0.4862236628849271,
+    "test_fpr": 0.029208709506107277,
+    "kept_clients": 6,
+    "kept_client_ids": [
+      0,
+      1,
+      2,
+      4,
+      7,
+      9
+    ],
+    "kept_groups": [
+      "group_other",
+      "role:source_ip:198.18.134.11",
+      "role:source_ip:198.18.134.12"
+    ],
+    "kept_poisoned_clients": 0,
+    "group_floor_diagnostics": [
+      {
+        "group": "role:source_ip:198.18.134.11",
+        "kept_before_floor": 3,
+        "trust_mass": 2.964758074083971,
+        "max_trust": 1.0,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      },
+      {
+        "group": "role:source_ip:198.18.134.12",
+        "kept_before_floor": 1,
+        "trust_mass": 1.0018429808833713,
+        "max_trust": 0.9008080011987396,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      },
+      {
+        "group": "group_other",
+        "kept_before_floor": 2,
+        "trust_mass": 1.8918495023264232,
+        "max_trust": 0.9381419652411818,
+        "floor_allowed": true,
+        "floor_applied": false,
+        "selected_by_floor": []
+      }
+    ],
+    "aggregation_mode": "hierarchical",
+    "trust_weight_mass": 5.858450557293765
+  }
+}

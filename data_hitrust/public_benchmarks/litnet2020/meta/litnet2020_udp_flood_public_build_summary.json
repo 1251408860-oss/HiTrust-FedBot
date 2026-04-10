@@ -1,0 +1,43 @@
+{
+  "dataset_name": "LITNET-2020 Network Flow Dataset",
+  "dataset_variant": "udp_flood_sampled_public_graph",
+  "dataset_source": "github_repo:Grigaliunas/electronics9050800@7b366c83d3c255d0507f706c7796af4f21a37bc8",
+  "output_graph": "data_hitrust/public_benchmarks/litnet2020/graphs/litnet2020_udp_flood_public_graph.pt",
+  "manifest_file": "data_hitrust/public_benchmarks/litnet2020/meta/litnet2020_udp_flood_public_manifest.json",
+  "seed": 42,
+  "graph_contract_version": "hitrust_graph_v1",
+  "rows": 17500,
+  "num_features": 48,
+  "num_edges": 88708,
+  "num_owners": 4085,
+  "graph_stats": {
+    "num_nodes": 17500,
+    "num_edges": 88708,
+    "flow_nodes": 17500,
+    "benign_flow_nodes": 14901,
+    "attack_flow_nodes": 2599,
+    "num_features": 48,
+    "num_source_ips": 4085,
+    "split_counts": {
+      "train": 10000,
+      "val": 2500,
+      "test": 5000
+    }
+  },
+  "split_counts": {
+    "train": 10000,
+    "val": 2500,
+    "test": 5000
+  },
+  "label_counts": {
+    "normal": 14901,
+    "attack": 2599
+  },
+  "attack_rate": 0.1485142857142857,
+  "owner_bucket_size": 128,
+  "knn_k": 8,
+  "protocol_counts": {
+    "UDP": 17500
+  },
+  "source_archive": "UDP_FLOOD_FLOWS.zip"
+}

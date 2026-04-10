@@ -1,0 +1,22 @@
+{
+  "run_name": "public_cabench_scenario_h_hierarchical_sage_colluding_update_noise_frac0p4_keepall_seed11",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+  "seed": 11,
+  "num_clients": 10,
+  "partition_mode": "topology_noniid",
+  "aggregation": "hierarchical",
+  "num_groups": 3,
+  "hidden_dim": 32,
+  "adapter_dim": 8,
+  "backbone": "sage",
+  "tuning_mode": "adapter_ft",
+  "global_warmup_epochs": 8,
+  "rounds": 5,
+  "local_epochs": 1,
+  "lr": 0.01,
+  "poison_frac": 0.4,
+  "poison_type": "colluding_update_noise",
+  "poison_scale": 0.2,
+  "trust_threshold": 0.0,
+  "min_keep_per_group": 0
+}

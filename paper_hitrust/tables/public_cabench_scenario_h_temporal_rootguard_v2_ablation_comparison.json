@@ -5,7 +5,7 @@
   "rows": [
     {
       "label": "temporal_rootguard",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_sage_adaptive_benign_mimic_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_sage_adaptive_benign_mimic_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9759647891873653,
       "test_f1_std": 0.0037502958724714873,
@@ -50,7 +50,7 @@
     },
     {
       "label": "temporal_rootguard_v2",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_seed_stats.json",
       "n": 5,
       "test_f1_mean": 0.9781896725412622,
       "test_f1_std": 0.003907293523714792,
@@ -95,7 +95,7 @@
     },
     {
       "label": "no_layerwise",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_layerwise_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_layerwise_seed_stats.json",
       "n": 5,
       "test_f1_mean": 0.9781896725412622,
       "test_f1_std": 0.003907293523714792,
@@ -140,7 +140,7 @@
     },
     {
       "label": "no_behavioral",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_behavioral_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_behavioral_seed_stats.json",
       "n": 5,
       "test_f1_mean": 0.9781896725412622,
       "test_f1_std": 0.003907293523714792,
@@ -185,7 +185,7 @@
     },
     {
       "label": "no_soft_weighting",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_soft_weighting_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_soft_weighting_seed_stats.json",
       "n": 5,
       "test_f1_mean": 0.9781896725412622,
       "test_f1_std": 0.003907293523714792,
@@ -230,7 +230,7 @@
     },
     {
       "label": "no_peer_penalty",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_peer_penalty_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_benign_mimic_frac0p4_no_peer_penalty_seed_stats.json",
       "n": 5,
       "test_f1_mean": 0.9788716296400063,
       "test_f1_std": 0.004251439889252619,

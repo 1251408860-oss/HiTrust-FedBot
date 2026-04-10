@@ -1,0 +1,38 @@
+{
+  "builder_root": "data_hitrust/public_benchmarks/cabench_v1/tools",
+  "python_bin": "python3",
+  "output_root": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw",
+  "rows": [
+    {
+      "scenario_name": "scenario_d_three_tier_low2",
+      "graph_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_d_three_tier_low2.pt",
+      "log_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/logs/build_scenario_d_three_tier_low2.log",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_e_three_tier_high2",
+      "graph_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_e_three_tier_high2.pt",
+      "log_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/logs/build_scenario_e_three_tier_high2.log",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_f_two_tier_high2",
+      "graph_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_f_two_tier_high2.pt",
+      "log_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/logs/build_scenario_f_two_tier_high2.log",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_g_mimic_congest",
+      "graph_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_g_mimic_congest.pt",
+      "log_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/logs/build_scenario_g_mimic_congest.log",
+      "status": "ok"
+    },
+    {
+      "scenario_name": "scenario_h_mimic_heavy_overlap",
+      "graph_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_h_mimic_heavy_overlap.pt",
+      "log_file": "paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/logs/build_scenario_h_mimic_heavy_overlap.log",
+      "status": "ok"
+    }
+  ],
+  "graph_contract_version": "hitrust_graph_v1"
+}

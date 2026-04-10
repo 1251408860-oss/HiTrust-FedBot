@@ -2,7 +2,7 @@
   "timestamp_utc": "2026-04-02T06:46:46Z",
   "config": {
     "run_name": "public_nslkdd_hierarchical_sage_sign_flip_frac0p4_keepall_seed77",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+    "graph_file": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
     "seed": 77,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -22,12 +22,14 @@
     "trust_threshold": 0.0,
     "min_keep_per_group": 0
   },
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
   "dataset_info": {
     "dataset_name": "NSL-KDD",
     "dataset_variant": "train20_test_public_graph",
-    "dataset_source": "https://github.com/defcom17/NSL_KDD",
-    "split_scheme": "official_train_test_with_sampled_train_val"
+    "dataset_source": "public_github_mirror:defcom17/NSL_KDD",
+    "split_scheme": "official_train_test_with_sampled_train_val",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "external_public_dataset"
   },
   "graph_stats": {
     "num_nodes": 14000,
@@ -47,7 +49,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
+    "manifest_file": "data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
     "topology_type": "public_benchmark",
     "load_profile": "public_benchmark",
     "bot_type_mode": "intrusion_binary"

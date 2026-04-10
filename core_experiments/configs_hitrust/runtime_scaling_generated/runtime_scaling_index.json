@@ -1,0 +1,60 @@
+{
+  "output_dir": "core_experiments/configs_hitrust/runtime_scaling_generated",
+  "num_configs": 9,
+  "rows": [
+    {
+      "label": "static",
+      "client_count": 10,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients10",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients10.json"
+    },
+    {
+      "label": "static",
+      "client_count": 20,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients20",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients20.json"
+    },
+    {
+      "label": "static",
+      "client_count": 40,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40.json"
+    },
+    {
+      "label": "condfloor",
+      "client_count": 10,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients10",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients10.json"
+    },
+    {
+      "label": "condfloor",
+      "client_count": 20,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients20",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients20.json"
+    },
+    {
+      "label": "condfloor",
+      "client_count": 40,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients40",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients40.json"
+    },
+    {
+      "label": "keepall",
+      "client_count": 10,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients10",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients10.json"
+    },
+    {
+      "label": "keepall",
+      "client_count": 20,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients20",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients20.json"
+    },
+    {
+      "label": "keepall",
+      "client_count": 40,
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40",
+      "config_file": "core_experiments/configs_hitrust/runtime_scaling_generated/public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_keepall_runtimebench_clients40.json"
+    }
+  ]
+}

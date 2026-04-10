@@ -1,6 +1,6 @@
 {
   "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical_sage_sign_flip_frac0p4_keepall",
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
   "seed": 42,
   "num_clients": 10,
   "partition_mode": "topology_noniid",

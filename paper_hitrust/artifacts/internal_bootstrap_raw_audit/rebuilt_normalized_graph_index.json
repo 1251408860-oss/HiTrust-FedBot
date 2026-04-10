@@ -1,0 +1,66 @@
+{
+  "graphs_root": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized",
+  "num_graphs": 5,
+  "rows": [
+    {
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_d_three_tier_low2.pt",
+      "scenario_name": "scenario_d_three_tier_low2",
+      "num_nodes": 4596,
+      "num_edges": 5533,
+      "flow_nodes": 4595,
+      "benign_flow_nodes": 698,
+      "attack_flow_nodes": 3897,
+      "num_features": 7,
+      "target_ip": "10.0.0.100",
+      "delta_t": 1.0
+    },
+    {
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_e_three_tier_high2.pt",
+      "scenario_name": "scenario_e_three_tier_high2",
+      "num_nodes": 5976,
+      "num_edges": 8142,
+      "flow_nodes": 5975,
+      "benign_flow_nodes": 2137,
+      "attack_flow_nodes": 3838,
+      "num_features": 7,
+      "target_ip": "10.0.0.100",
+      "delta_t": 1.0
+    },
+    {
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_f_two_tier_high2.pt",
+      "scenario_name": "scenario_f_two_tier_high2",
+      "num_nodes": 4794,
+      "num_edges": 6656,
+      "flow_nodes": 4793,
+      "benign_flow_nodes": 1996,
+      "attack_flow_nodes": 2797,
+      "num_features": 7,
+      "target_ip": "10.0.0.100",
+      "delta_t": 1.0
+    },
+    {
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_g_mimic_congest.pt",
+      "scenario_name": "scenario_g_mimic_congest",
+      "num_nodes": 1407,
+      "num_edges": 1657,
+      "flow_nodes": 1406,
+      "benign_flow_nodes": 870,
+      "attack_flow_nodes": 536,
+      "num_features": 7,
+      "target_ip": "10.0.0.100",
+      "delta_t": 1.0
+    },
+    {
+      "graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_h_mimic_heavy_overlap.pt",
+      "scenario_name": "scenario_h_mimic_heavy_overlap",
+      "num_nodes": 6985,
+      "num_edges": 9755,
+      "flow_nodes": 6984,
+      "benign_flow_nodes": 2123,
+      "attack_flow_nodes": 4861,
+      "num_features": 7,
+      "target_ip": "10.0.0.100",
+      "delta_t": 1.0
+    }
+  ]
+}

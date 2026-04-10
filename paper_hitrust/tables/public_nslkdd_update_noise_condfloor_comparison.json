@@ -4,7 +4,7 @@
   "rows": [
     {
       "label": "condfloor",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_condfloor_seed_stats.json",
       "test_f1_mean": 0.7611075745849833,
       "test_f1_std": 0.0279341761333828,
       "test_fpr_mean": 0.056877539175856064,
@@ -18,7 +18,7 @@
     },
     {
       "label": "static",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_seed_stats.json",
       "test_f1_mean": 0.7882386960431317,
       "test_f1_std": 0.060809737467747156,
       "test_fpr_mean": 0.0628748307216096,
@@ -32,7 +32,7 @@
     },
     {
       "label": "keepall",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_nslkdd_hierarchical_sage_update_noise_frac0p4_keepall_seed_stats.json",
       "test_f1_mean": 0.7881729905532077,
       "test_f1_std": 0.054114767398728496,
       "test_fpr_mean": 0.07409556974269685,

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-WITH_PUBLIC_CABENCH="${WITH_PUBLIC_CABENCH:-1}"
+WITH_PUBLIC_CABENCH="${WITH_PUBLIC_CABENCH:-0}"
 
 if [[ -n "${PY_BIN:-}" ]]; then
   :
@@ -23,6 +23,8 @@ cd "$REPO_ROOT"
 
 if [[ "$WITH_PUBLIC_CABENCH" == "1" ]]; then
   bash core_experiments/reproduce/reproduce_public_cabench_validation.sh
+else
+  echo "[INFO] Skipping public Ca-Bench reruns; set WITH_PUBLIC_CABENCH=1 to enable them."
 fi
 
 bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh

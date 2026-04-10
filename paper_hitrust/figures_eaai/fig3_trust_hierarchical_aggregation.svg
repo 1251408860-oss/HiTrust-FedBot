@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="620" viewBox="0 0 1480 620">
+<rect x="0" y="0" width="1480" height="620" fill="white" />
+<text x="740.0" y="34" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#32465a" text-anchor="middle">Trust-aware hierarchical aggregation and coverage filtering</text>
+<rect x="28" y="58" width="1424" height="530" rx="24" ry="24" fill="white" stroke="#b8c7d5" stroke-width="1.6" stroke-dasharray="7 6" />
+<rect x="50" y="132" width="178" height="404" rx="22" ry="22" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="139" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Client updates</text>
+<rect x="86" y="188" width="106" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="139.0" y="205.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u1</text>
+<line x1="192" y1="200" x2="270" y2="200" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="226" width="106" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="139.0" y="243.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u2</text>
+<line x1="192" y1="238" x2="270" y2="238" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="264" width="106" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="139.0" y="281.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u3</text>
+<line x1="192" y1="276" x2="270" y2="276" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="302" width="106" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="139.0" y="319.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u4</text>
+<line x1="192" y1="314" x2="270" y2="314" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="340" width="106" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="139.0" y="357.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u5</text>
+<line x1="192" y1="352" x2="270" y2="352" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="378" width="106" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="139.0" y="395.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u6</text>
+<line x1="192" y1="390" x2="270" y2="390" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="416" width="106" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="139.0" y="433.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u7</text>
+<line x1="192" y1="428" x2="270" y2="428" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="86" y="454" width="106" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="139.0" y="471.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u8</text>
+<line x1="192" y1="466" x2="270" y2="466" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="270" y="132" width="238" height="404" rx="22" ry="22" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.8" />
+<text x="389" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Trust estimation</text>
+<rect x="310" y="206" width="158" height="28" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="389.0" y="225.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">validation quality</text>
+<rect x="310" y="246" width="158" height="28" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="389.0" y="265.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">update similarity</text>
+<rect x="310" y="286" width="158" height="28" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="389.0" y="305.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">historical stability</text>
+<rect x="310" y="360" width="158" height="88" rx="18" ry="18" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.8" />
+<text x="389" y="394" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#3e8f87" text-anchor="middle">trust</text>
+<text x="389" y="412" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#3e8f87" text-anchor="middle">normalization</text>
+<text x="389" y="486" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#6f8193" text-anchor="middle">normalized trust scores</text>
+<line x1="508" y1="404" x2="550" y2="404" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="550" y="132" width="216" height="404" rx="22" ry="22" fill="#fff3e0" stroke="#d98a35" stroke-width="1.8" />
+<text x="658" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#d98a35" text-anchor="middle">Retention decision</text>
+<rect x="600" y="206" width="116" height="98" rx="18" ry="18" fill="white" stroke="#d98a35" stroke-width="1.8" />
+<text x="658" y="238" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">keep if</text>
+<text x="658" y="256" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">score &gt; tau</text>
+<text x="658" y="344" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">retained</text>
+<rect x="610" y="364" width="96" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="658.0" y="381.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u1  u2</text>
+<rect x="610" y="396" width="96" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="658.0" y="413.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u3  u5</text>
+<text x="658" y="462" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#6f8193" text-anchor="middle">rejected</text>
+<rect x="610" y="480" width="96" height="24" rx="10" ry="10" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="658.0" y="497.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f8193" text-anchor="middle">u7</text>
+<rect x="610" y="512" width="96" height="24" rx="10" ry="10" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="658.0" y="529.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#6f8193" text-anchor="middle">u8</text>
+<rect x="810" y="132" width="422" height="404" rx="22" ry="22" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1021" y="160" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Semantic grouping</text>
+<rect x="834" y="198" width="154" height="112" rx="18" ry="18" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="848" y="222" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="start">Group A</text>
+<rect x="848" y="238" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="874.0" y="255.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u1</text>
+<rect x="914" y="238" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="940.0" y="255.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u2</text>
+<rect x="854" y="278" width="114" height="24" rx="10" ry="10" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.4" />
+<text x="911.0" y="295" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3e8f87" text-anchor="middle">group agg</text>
+<rect x="1000" y="198" width="154" height="112" rx="18" ry="18" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1014" y="222" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="start">Group B</text>
+<rect x="1014" y="238" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1040.0" y="255.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u3</text>
+<rect x="1080" y="238" width="52" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="1106.0" y="255.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u4</text>
+<rect x="1020" y="278" width="114" height="24" rx="10" ry="10" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.4" />
+<text x="1077.0" y="295" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3e8f87" text-anchor="middle">group agg</text>
+<rect x="918" y="334" width="154" height="110" rx="18" ry="18" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="932" y="358" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="start">Group C</text>
+<rect x="932" y="374" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="958.0" y="391.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u5</text>
+<rect x="998" y="374" width="52" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1024.0" y="391.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u6</text>
+<rect x="938" y="412" width="114" height="24" rx="10" ry="10" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.4" />
+<text x="995.0" y="429" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#3e8f87" text-anchor="middle">group agg</text>
+<rect x="1098" y="364" width="104" height="64" rx="16" ry="16" fill="#eef8ea" stroke="#6aa870" stroke-width="1.8" />
+<text x="1150" y="390" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#6aa870" text-anchor="middle">coverage</text>
+<text x="1150" y="408" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#6aa870" text-anchor="middle">rule</text>
+<line x1="766" y1="404" x2="810" y2="404" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="1266" y="236" width="160" height="170" rx="20" ry="20" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.8" />
+<text x="1346" y="266" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#3e8f87" text-anchor="middle">Global</text>
+<text x="1346" y="285" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#3e8f87" text-anchor="middle">aggregate</text>
+<rect x="1290" y="308" width="112" height="24" rx="10" ry="10" fill="white" stroke="#3e8f87" stroke-width="1.6" />
+<text x="1346.0" y="325.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">Group A agg</text>
+<rect x="1290" y="340" width="112" height="24" rx="10" ry="10" fill="white" stroke="#3e8f87" stroke-width="1.6" />
+<text x="1346.0" y="357.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">Group B agg</text>
+<rect x="1290" y="372" width="112" height="24" rx="10" ry="10" fill="white" stroke="#3e8f87" stroke-width="1.6" />
+<text x="1346.0" y="389.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">coverage-safe</text>
+<polyline points="988,288 1234,288 1266,320" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="1154,288 1234,288 1266,352" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="1072,430 1216,430 1266,384" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" />
+
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7e91a6" />
+  </marker>
+</defs>
+
+</svg>

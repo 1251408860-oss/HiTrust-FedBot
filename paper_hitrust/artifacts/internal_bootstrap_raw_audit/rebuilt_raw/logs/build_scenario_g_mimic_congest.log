@@ -1,0 +1,22 @@
+====================================================================
+Phase 2: Build Graph from PCAP
+====================================================================
+[1/5] Load PCAP: /home/user/workspace/Ca-Bench-temp/mininet_testbed/real_collection/scenario_g_mimic_congest/full_arena_v2.pcap
+  packets=20381
+  delay_metric=http_request_to_first_response_sec requests=1436 matched=1436 match_rate=1.000
+[2/5] Inbound packets=10191 duration=154.5s windows=155
+  source_ips=66
+  labels=manifest
+[3/5] Build nodes and edges
+  nodes=1407 flow_nodes=1406 edges=1657
+[4/5] Assemble tensors
+[5/5] Save: /home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_g_mimic_congest.pt
+====================================================================
+Done: nodes=1407 edges=1657 windows=155
+Flow labels: benign=870 attack=536
+Features (7D): ['ln(N+1)', 'ln(T+1)', 'entropy', 'D_observed', 'pkt_rate', 'avg_pkt_size', 'port_diversity']
+feature_index={'ln(N+1)': 0, 'ln(T+1)': 1, 'entropy': 2, 'D_observed': 3, 'pkt_rate': 4, 'avg_pkt_size': 5, 'port_diversity': 6}
+label_source=manifest
+delay_match_rate=1.000
+capacity_bytes_per_sec=500000.00 (manifest_core_bw_mbps=4.00)
+====================================================================

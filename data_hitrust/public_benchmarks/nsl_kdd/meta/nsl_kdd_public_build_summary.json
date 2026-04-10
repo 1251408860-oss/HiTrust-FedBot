@@ -1,13 +1,29 @@
 {
   "dataset_name": "NSL-KDD",
-  "output_graph": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
-  "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
+  "dataset_source": "public_github_mirror:defcom17/NSL_KDD",
+  "output_graph": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
+  "manifest_file": "data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
   "seed": 42,
+  "graph_contract_version": "hitrust_graph_v1",
   "rows": 14000,
   "num_features": 117,
   "num_edges": 73631,
   "num_owners": 151,
   "num_protocol_roles": 3,
+  "graph_stats": {
+    "num_nodes": 14000,
+    "num_edges": 73631,
+    "flow_nodes": 14000,
+    "benign_flow_nodes": 7062,
+    "attack_flow_nodes": 6938,
+    "num_features": 117,
+    "num_source_ips": 151,
+    "split_counts": {
+      "train": 8000,
+      "val": 2000,
+      "test": 4000
+    }
+  },
   "split_counts": {
     "train": 8000,
     "val": 2000,

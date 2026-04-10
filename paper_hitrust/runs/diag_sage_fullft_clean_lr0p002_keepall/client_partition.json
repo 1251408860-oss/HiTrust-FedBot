@@ -4,7 +4,7 @@
   "num_clients": 10,
   "num_assigned_ips": 90,
   "support_nodes": 1,
-  "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
+  "manifest_file": "data_hitrust/bootstrap/manifests/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
   "topology_type": "three_tier",
   "load_profile": "high",
   "bot_type_mode": "mimic_heavy",

@@ -39,7 +39,7 @@ def main() -> None:
         )
 
     out = {
-        "source_root": str(source_root),
+        "manifest_root": str(source_root),
         "num_scenarios": len(rows),
         "rows": rows,
     }

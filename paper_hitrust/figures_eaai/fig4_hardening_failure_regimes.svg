@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="670" viewBox="0 0 1500 670">
+<rect x="0" y="0" width="1500" height="670" fill="white" />
+<text x="750.0" y="34" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#32465a" text-anchor="middle">Hardening mechanisms for challenging attack regimes</text>
+<rect x="56" y="96" width="40" height="28" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="76" y="116" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">(a)</text>
+<rect x="770" y="96" width="40" height="28" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="790" y="116" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">(b)</text>
+<rect x="38" y="118" width="674" height="500" rx="24" ry="24" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="375" y="150" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Condfloor for small-group collapse</text>
+<rect x="84" y="198" width="232" height="152" rx="20" ry="20" fill="#fff3e0" stroke="#d98a35" stroke-width="1.8" />
+<text x="200" y="226" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#d98a35" text-anchor="middle">Static floor</text>
+<rect x="116" y="252" width="168" height="64" rx="16" ry="16" fill="white" stroke="#d98a35" stroke-width="1.8" />
+<text x="200" y="278" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">one low-trust client</text>
+<text x="200" y="295" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#32465a" text-anchor="middle">is still forced to stay</text>
+<rect x="148" y="324" width="104" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="200.0" y="341.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">poison kept</text>
+<rect x="392" y="176" width="258" height="236" rx="22" ry="22" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.8" />
+<text x="521" y="206" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#3e8f87" text-anchor="middle">Condfloor gate</text>
+<rect x="434" y="244" width="174" height="72" rx="16" ry="16" fill="white" stroke="#3e8f87" stroke-width="1.8" />
+<text x="521" y="272" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#32465a" text-anchor="middle">if total trust mass</text>
+<text x="521" y="290" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#32465a" text-anchor="middle">falls below threshold</text>
+<rect x="456" y="334" width="130" height="48" rx="14" ry="14" fill="white" stroke="#3e8f87" stroke-width="1.8" />
+<text x="521" y="355" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#32465a" text-anchor="middle">skip floor</text>
+<text x="521" y="371" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#32465a" text-anchor="middle">repair</text>
+<rect x="154" y="446" width="398" height="108" rx="20" ry="20" fill="#eef8ea" stroke="#6aa870" stroke-width="1.8" />
+<text x="353" y="482" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#6aa870" text-anchor="middle">abstain from the compromised</text>
+<text x="353" y="502" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#6aa870" text-anchor="middle">group instead of retaining one proxy</text>
+<line x1="316" y1="274" x2="392" y2="274" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="521" y1="316" x2="521" y2="334" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="521" y1="382" x2="521" y2="446" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<rect x="752" y="118" width="710" height="500" rx="24" ry="24" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1107" y="150" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#32465a" text-anchor="middle">Temporal RootGuard for adaptive camouflage</text>
+<rect x="794" y="198" width="246" height="126" rx="20" ry="20" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.8" />
+<text x="917" y="226" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">Multi-round history</text>
+<rect x="820" y="272" width="60" height="24" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="850.0" y="289.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">t-2</text>
+<rect x="887" y="272" width="60" height="24" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="917.0" y="289.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">t-1</text>
+<rect x="954" y="272" width="60" height="24" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="984.0" y="289.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">t</text>
+<rect x="1088" y="176" width="312" height="216" rx="22" ry="22" fill="#dfeefb" stroke="#2b6ea6" stroke-width="1.8" />
+<text x="1244" y="206" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#2b6ea6" text-anchor="middle">Temporal trust analysis</text>
+<rect x="1128" y="236" width="232" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1244.0" y="253.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">trust smoothing</text>
+<rect x="1128" y="270" width="232" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1244.0" y="287.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">server-root anchor</text>
+<rect x="1128" y="304" width="232" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1244.0" y="321.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">drift penalty</text>
+<rect x="1128" y="338" width="232" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1244.0" y="355.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">peer redundancy penalty</text>
+<rect x="860" y="430" width="492" height="124" rx="20" ry="20" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.8" />
+<text x="1106" y="458" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#3e8f87" text-anchor="middle">Weighted keep / reject decision</text>
+<rect x="910" y="484" width="68" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="944.0" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u1</text>
+<rect x="996" y="484" width="68" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="1030.0" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u2</text>
+<rect x="1082" y="484" width="68" height="24" rx="10" ry="10" fill="#faecec" stroke="#d06565" stroke-width="1.6" />
+<text x="1116.0" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u3</text>
+<rect x="1168" y="484" width="68" height="24" rx="10" ry="10" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="1202.0" y="501.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">u4</text>
+<text x="1106" y="522" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#6f8193" text-anchor="middle">camouflaged cluster is down-weighted</text>
+<text x="1106" y="536" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#6f8193" text-anchor="middle">after temporal, anchor, and redundancy checks</text>
+<line x1="1040" y1="261" x2="1088" y2="261" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="1244" y1="392" x2="1244" y2="430" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<polyline points="917,296 917,430" fill="none" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)" stroke-dasharray="7 6" />
+
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7e91a6" />
+  </marker>
+</defs>
+
+</svg>

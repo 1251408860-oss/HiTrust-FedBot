@@ -107,5 +107,13 @@
     "test_fpr": 0.0,
     "kept_clients": 6,
     "kept_poisoned_clients": 0
+  },
+  "dataset_info": {
+    "dataset_name": "HiTrust-Bootstrap",
+    "dataset_variant": "scenario_g_mimic_congest",
+    "dataset_source": "repo_bootstrap:data_hitrust/bootstrap_graphs",
+    "split_scheme": "released_bootstrap_graph_masks",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "internal_released_bootstrap"
   }
 }

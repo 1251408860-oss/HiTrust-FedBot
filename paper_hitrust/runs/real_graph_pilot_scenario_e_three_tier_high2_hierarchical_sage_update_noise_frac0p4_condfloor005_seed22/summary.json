@@ -2,7 +2,7 @@
   "timestamp_utc": "2026-03-24T05:16:33Z",
   "config": {
     "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical_sage_update_noise_frac0p4_condfloor005_seed22",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
+    "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
     "seed": 22,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -24,12 +24,14 @@
     "group_floor_policy": "conditional_trust_mass",
     "group_floor_min_trust_mass": 0.05
   },
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
   "dataset_info": {
-    "dataset_name": "",
-    "dataset_variant": "",
-    "dataset_source": "",
-    "split_scheme": ""
+    "dataset_name": "HiTrust-Bootstrap",
+    "dataset_variant": "scenario_e_three_tier_high2",
+    "dataset_source": "repo_bootstrap:data_hitrust/bootstrap_graphs",
+    "split_scheme": "released_bootstrap_graph_masks",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "internal_released_bootstrap"
   },
   "graph_stats": {
     "num_nodes": 5976,
@@ -49,7 +51,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_e_three_tier_high2/arena_manifest_v2.json",
+    "manifest_file": "data_hitrust/bootstrap/manifests/scenario_e_three_tier_high2/arena_manifest_v2.json",
     "topology_type": "three_tier",
     "load_profile": "high",
     "bot_type_mode": "mixed"

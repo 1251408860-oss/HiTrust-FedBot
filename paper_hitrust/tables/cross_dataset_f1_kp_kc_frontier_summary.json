@@ -1,0 +1,885 @@
+{
+  "datasets": [
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "rows": [
+        {
+          "dataset_key": "cabench_scenario_e_update_noise",
+          "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+          "method_key": "static",
+          "method_label": "Static",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9874737568863805,
+          "test_fpr": 0.020833333333333332,
+          "kept_poisoned_clients": 0.1,
+          "kept_clients": 6.1,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "cabench_scenario_e_update_noise",
+          "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+          "method_key": "keepall",
+          "method_label": "KeepAll",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9876628844451935,
+          "test_fpr": 0.02222222222222222,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "cabench_scenario_e_update_noise",
+          "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+          "method_key": "fltrust_like",
+          "method_label": "FLTrust",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9884598869342011,
+          "test_fpr": 0.02222222222222222,
+          "kept_poisoned_clients": 2.45,
+          "kept_clients": 6.35,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "cabench_scenario_e_update_noise",
+          "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+          "method_key": "caf",
+          "method_label": "CAF",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9875757478332857,
+          "test_fpr": 0.0220679012345679,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "cabench_scenario_e_update_noise",
+          "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+          "method_key": "centered_clipping",
+          "method_label": "Centered",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9876673060835028,
+          "test_fpr": 0.022530864197530864,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "cabench_scenario_e_update_noise",
+          "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+          "method_key": "arc_mean",
+          "method_label": "ARC+mean",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9877244426969023,
+          "test_fpr": 0.01882716049382716,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": true
+        }
+      ]
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "rows": [
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "static",
+          "method_label": "Static",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.9702534590075057,
+          "test_fpr": 0.04423676012461059,
+          "kept_poisoned_clients": 0.3,
+          "kept_clients": 6.3,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "condfloor",
+          "method_label": "CondFloor",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.9746078540586016,
+          "test_fpr": 0.03068535825545171,
+          "kept_poisoned_clients": 0.0,
+          "kept_clients": 6.0,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "keepall",
+          "method_label": "KeepAll",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.9725379797936125,
+          "test_fpr": 0.037383177570093455,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "fltrust_like",
+          "method_label": "FLTrust",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.9735871449291655,
+          "test_fpr": 0.01573208722741433,
+          "kept_poisoned_clients": 2.05,
+          "kept_clients": 4.85,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "caf",
+          "method_label": "CAF",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9745814131854625,
+          "test_fpr": 0.027881619937694703,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "centered_clipping",
+          "method_label": "Centered",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.9757393410565297,
+          "test_fpr": 0.0264797507788162,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "cabench_scenario_h_update_noise",
+          "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+          "method_key": "arc_mean",
+          "method_label": "ARC+mean",
+          "source_files": [
+            "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.975323254278524,
+          "test_fpr": 0.027414330218068536,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        }
+      ]
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "rows": [
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "static",
+          "method_label": "Static",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.6147255105272821,
+          "test_fpr": 0.022357939458311205,
+          "kept_poisoned_clients": 0.1,
+          "kept_clients": 6.1,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "condfloor",
+          "method_label": "CondFloor",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.6159379093392174,
+          "test_fpr": 0.01898566117896973,
+          "kept_poisoned_clients": 0.05,
+          "kept_clients": 6.05,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "keepall",
+          "method_label": "KeepAll",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.6196105435201987,
+          "test_fpr": 0.0080987785448752,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "fltrust_like",
+          "method_label": "FLTrust",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.6213328928490744,
+          "test_fpr": 0.008722782793414765,
+          "kept_poisoned_clients": 1.85,
+          "kept_clients": 3.9,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "caf",
+          "method_label": "CAF",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.621085488140344,
+          "test_fpr": 0.00929368029739777,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "centered_clipping",
+          "method_label": "Centered",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.6212644682914408,
+          "test_fpr": 0.00804567180031864,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "westermo_update_noise",
+          "dataset_title": "Westermo\nupdate_noise@0.4",
+          "method_key": "arc_mean",
+          "method_label": "ARC+mean",
+          "source_files": [
+            "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.6213216715949325,
+          "test_fpr": 0.010023898035050452,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": true
+        }
+      ]
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "rows": [
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "static",
+          "method_label": "Static",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.5446520946165203,
+          "test_fpr": 0.07655626027719051,
+          "kept_poisoned_clients": 0.85,
+          "kept_clients": 6.85,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "condfloor",
+          "method_label": "CondFloor",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.585606127159304,
+          "test_fpr": 0.046394174301151045,
+          "kept_poisoned_clients": 0.4,
+          "kept_clients": 6.4,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "keepall",
+          "method_label": "KeepAll",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.5445849155665643,
+          "test_fpr": 0.07452431289640592,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "fltrust_like",
+          "method_label": "FLTrust",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+          ],
+          "test_f1": 0.6244046093879305,
+          "test_fpr": 0.025510923185341792,
+          "kept_poisoned_clients": 1.75,
+          "kept_clients": 5.65,
+          "n": 20,
+          "pareto_optimal": true
+        },
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "caf",
+          "method_label": "CAF",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.6196863730199155,
+          "test_fpr": 0.024101479915433405,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "centered_clipping",
+          "method_label": "Centered",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.6187547067094948,
+          "test_fpr": 0.025757575757575757,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": false
+        },
+        {
+          "dataset_key": "litnet2020_udp_update_noise",
+          "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+          "method_key": "arc_mean",
+          "method_label": "ARC+mean",
+          "source_files": [
+            "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json"
+          ],
+          "test_f1": 0.6216695750747232,
+          "test_fpr": 0.027413671599718113,
+          "kept_poisoned_clients": 4.0,
+          "kept_clients": 10.0,
+          "n": 20,
+          "pareto_optimal": true
+        }
+      ]
+    }
+  ],
+  "method_labels": {
+    "static": "Static",
+    "condfloor": "CondFloor",
+    "keepall": "KeepAll",
+    "fltrust_like": "FLTrust",
+    "caf": "CAF",
+    "centered_clipping": "Centered",
+    "arc_mean": "ARC+mean"
+  },
+  "method_colors": {
+    "static": "#1f77b4",
+    "condfloor": "#ff7f0e",
+    "keepall": "#d62728",
+    "fltrust_like": "#2ca02c",
+    "caf": "#9467bd",
+    "centered_clipping": "#8c564b",
+    "arc_mean": "#e377c2"
+  },
+  "method_markers": {
+    "static": "o",
+    "condfloor": "h",
+    "keepall": "s",
+    "fltrust_like": "D",
+    "caf": "^",
+    "centered_clipping": "P",
+    "arc_mean": "X"
+  },
+  "all_rows": [
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "method_key": "static",
+      "method_label": "Static",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9874737568863805,
+      "test_fpr": 0.020833333333333332,
+      "kept_poisoned_clients": 0.1,
+      "kept_clients": 6.1,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "method_key": "keepall",
+      "method_label": "KeepAll",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9876628844451935,
+      "test_fpr": 0.02222222222222222,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "method_key": "fltrust_like",
+      "method_label": "FLTrust",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9884598869342011,
+      "test_fpr": 0.02222222222222222,
+      "kept_poisoned_clients": 2.45,
+      "kept_clients": 6.35,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "method_key": "caf",
+      "method_label": "CAF",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9875757478332857,
+      "test_fpr": 0.0220679012345679,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "method_key": "centered_clipping",
+      "method_label": "Centered",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9876673060835028,
+      "test_fpr": 0.022530864197530864,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "cabench_scenario_e_update_noise",
+      "dataset_title": "Ca-Bench scenario_e\nupdate_noise@0.4",
+      "method_key": "arc_mean",
+      "method_label": "ARC+mean",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_e_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9877244426969023,
+      "test_fpr": 0.01882716049382716,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "static",
+      "method_label": "Static",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.9702534590075057,
+      "test_fpr": 0.04423676012461059,
+      "kept_poisoned_clients": 0.3,
+      "kept_clients": 6.3,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "condfloor",
+      "method_label": "CondFloor",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.9746078540586016,
+      "test_fpr": 0.03068535825545171,
+      "kept_poisoned_clients": 0.0,
+      "kept_clients": 6.0,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "keepall",
+      "method_label": "KeepAll",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.9725379797936125,
+      "test_fpr": 0.037383177570093455,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "fltrust_like",
+      "method_label": "FLTrust",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.9735871449291655,
+      "test_fpr": 0.01573208722741433,
+      "kept_poisoned_clients": 2.05,
+      "kept_clients": 4.85,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "caf",
+      "method_label": "CAF",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9745814131854625,
+      "test_fpr": 0.027881619937694703,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "centered_clipping",
+      "method_label": "Centered",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.9757393410565297,
+      "test_fpr": 0.0264797507788162,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "cabench_scenario_h_update_noise",
+      "dataset_title": "Ca-Bench scenario_h\nupdate_noise@0.4",
+      "method_key": "arc_mean",
+      "method_label": "ARC+mean",
+      "source_files": [
+        "paper_hitrust/tables/public_cabench_scenario_h_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.975323254278524,
+      "test_fpr": 0.027414330218068536,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "static",
+      "method_label": "Static",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.6147255105272821,
+      "test_fpr": 0.022357939458311205,
+      "kept_poisoned_clients": 0.1,
+      "kept_clients": 6.1,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "condfloor",
+      "method_label": "CondFloor",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.6159379093392174,
+      "test_fpr": 0.01898566117896973,
+      "kept_poisoned_clients": 0.05,
+      "kept_clients": 6.05,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "keepall",
+      "method_label": "KeepAll",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.6196105435201987,
+      "test_fpr": 0.0080987785448752,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "fltrust_like",
+      "method_label": "FLTrust",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.6213328928490744,
+      "test_fpr": 0.008722782793414765,
+      "kept_poisoned_clients": 1.85,
+      "kept_clients": 3.9,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "caf",
+      "method_label": "CAF",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.621085488140344,
+      "test_fpr": 0.00929368029739777,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "centered_clipping",
+      "method_label": "Centered",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.6212644682914408,
+      "test_fpr": 0.00804567180031864,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "westermo_update_noise",
+      "dataset_title": "Westermo\nupdate_noise@0.4",
+      "method_key": "arc_mean",
+      "method_label": "ARC+mean",
+      "source_files": [
+        "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.6213216715949325,
+      "test_fpr": 0.010023898035050452,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "static",
+      "method_label": "Static",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.5446520946165203,
+      "test_fpr": 0.07655626027719051,
+      "kept_poisoned_clients": 0.85,
+      "kept_clients": 6.85,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "condfloor",
+      "method_label": "CondFloor",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.585606127159304,
+      "test_fpr": 0.046394174301151045,
+      "kept_poisoned_clients": 0.4,
+      "kept_clients": 6.4,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "keepall",
+      "method_label": "KeepAll",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.5445849155665643,
+      "test_fpr": 0.07452431289640592,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "fltrust_like",
+      "method_label": "FLTrust",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json"
+      ],
+      "test_f1": 0.6244046093879305,
+      "test_fpr": 0.025510923185341792,
+      "kept_poisoned_clients": 1.75,
+      "kept_clients": 5.65,
+      "n": 20,
+      "pareto_optimal": true
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "caf",
+      "method_label": "CAF",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.6196863730199155,
+      "test_fpr": 0.024101479915433405,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "centered_clipping",
+      "method_label": "Centered",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.6187547067094948,
+      "test_fpr": 0.025757575757575757,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": false
+    },
+    {
+      "dataset_key": "litnet2020_udp_update_noise",
+      "dataset_title": "LITNET-2020 UDP-flood\nupdate_noise@0.4",
+      "method_key": "arc_mean",
+      "method_label": "ARC+mean",
+      "source_files": [
+        "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json"
+      ],
+      "test_f1": 0.6216695750747232,
+      "test_fpr": 0.027413671599718113,
+      "kept_poisoned_clients": 4.0,
+      "kept_clients": 10.0,
+      "n": 20,
+      "pareto_optimal": true
+    }
+  ]
+}

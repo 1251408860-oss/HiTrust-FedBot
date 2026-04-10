@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40_seed11",
+      "seed": 11,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40_seed22",
+      "seed": 22,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40_seed33",
+      "seed": 33,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40_seed44",
+      "seed": 44,
+      "status": "ok"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_runtimebench_clients40_seed55",
+      "seed": 55,
+      "status": "ok"
+    }
+  ]
+}

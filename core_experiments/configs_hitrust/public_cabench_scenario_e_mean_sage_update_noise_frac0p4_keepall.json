@@ -1,6 +1,6 @@
 {
   "run_name": "public_cabench_scenario_e_mean_sage_update_noise_frac0p4_keepall",
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
   "seed": 42,
   "num_clients": 10,
   "partition_mode": "topology_noniid",

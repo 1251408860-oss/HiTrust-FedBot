@@ -24,6 +24,8 @@ dist/
 
 # Local raw captures and temporary/debug experiment runs
 data_hitrust/public_benchmarks/cabench_v1/raw/
+data_hitrust/public_benchmarks/*/raw/
+data_hitrust/public_benchmarks/*/downloads/
 paper_hitrust/runs/tmp_*/
 paper_hitrust/runs/*_debug/
 paper_hitrust/runs/*_clustercheck/

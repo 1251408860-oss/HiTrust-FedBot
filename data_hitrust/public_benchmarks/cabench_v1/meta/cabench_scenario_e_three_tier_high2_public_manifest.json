@@ -4,7 +4,7 @@
   "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
   "release_asset_url": "https://github.com/1251408860-oss/Ca-Bench/releases/download/data-v1/real_collection.tar.gz",
   "scenario_name": "scenario_e_three_tier_high2",
-  "scenario_manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_e_three_tier_high2/arena_manifest_v2.json",
+  "scenario_manifest_file": "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_e_three_tier_high2/arena_manifest_v2.json",
   "topology": {
     "type": "three_tier",
     "target_ip": "10.0.0.100",
@@ -229,6 +229,8 @@
     "10.0.0.108": 1,
     "10.0.0.109": 1
   },
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
-  "build_tool_source": "https://raw.githubusercontent.com/1251408860-oss/Ca-Bench/main/core_experiments/build_graph_v2.py"
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
+  "builder_reference": "data_hitrust/public_benchmarks/cabench_v1/tools/build_graph_v2.py",
+  "upstream_builder_commit": "666af74e55f03c321557b2f2f83feb4f0950dd2d",
+  "graph_contract_version": "hitrust_graph_v1"
 }

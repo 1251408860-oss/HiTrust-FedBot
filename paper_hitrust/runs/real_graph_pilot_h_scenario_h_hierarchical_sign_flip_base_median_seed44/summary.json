@@ -2,7 +2,7 @@
   "timestamp_utc": "2026-03-20T08:57:50Z",
   "config": {
     "run_name": "real_graph_pilot_h_scenario_h_hierarchical_sign_flip_base_median_seed44",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+    "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
     "seed": 44,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -20,7 +20,7 @@
     "poison_scale": 1.0,
     "trust_threshold": 0.35
   },
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
   "graph_stats": {
     "num_nodes": 6985,
     "num_edges": 9755,
@@ -107,5 +107,13 @@
     "test_fpr": 0.0069124423963133645,
     "kept_clients": 8,
     "kept_poisoned_clients": 4
+  },
+  "dataset_info": {
+    "dataset_name": "HiTrust-Bootstrap",
+    "dataset_variant": "scenario_h_mimic_heavy_overlap",
+    "dataset_source": "repo_bootstrap:data_hitrust/bootstrap_graphs",
+    "split_scheme": "released_bootstrap_graph_masks",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "internal_released_bootstrap"
   }
 }

@@ -11,7 +11,7 @@ import numpy as np
 from adapter_tuning import resolve_tuning_mode
 from attack_injection import apply_attack, mark_poisoned_clients, summarize_poisoned_ids
 from client_partition_hitrust import build_partition_audit
-from hierarchical_aggregation import aggregate_hierarchical, aggregate_krum_proxy, aggregate_mean, aggregate_median
+from hierarchical_aggregation import aggregate_caf, aggregate_hierarchical, aggregate_krum_proxy, aggregate_mean, aggregate_median
 from hitrust_common import load_json, resolve_repo_local_path, resolve_suite_paths, save_json, timestamp_utc
 from trust_scoring import compute_trust_score, normalize_scores
 
@@ -60,6 +60,9 @@ def main() -> None:
     seed = int(cfg.get("seed", 42))
     partition_mode = str(cfg.get("partition_mode", "topology_noniid"))
     aggregation = str(cfg.get("aggregation", "hierarchical"))
+    caf_faulty_clients = int(cfg.get("caf_faulty_clients", max(int(round(float(cfg.get("poison_frac", 0.2)) * num_clients)), 0)))
+    caf_max_iter = int(cfg.get("caf_max_iter", max(num_clients, 1)))
+    caf_power_iterations = int(cfg.get("caf_power_iterations", 1))
     tuning_mode = resolve_tuning_mode(str(cfg.get("tuning_mode", "adapter_ft")))
     update_dim = int(cfg.get("update_dim", 32))
     poison_frac = float(cfg.get("poison_frac", 0.2))
@@ -162,6 +165,17 @@ def main() -> None:
     elif aggregation == "krum":
         flat_updates = [u for arr in filtered_updates.values() for u in arr]
         global_update = aggregate_krum_proxy(flat_updates)
+        group_updates = {}
+    elif aggregation == "caf":
+        flat_updates = [u for arr in filtered_updates.values() for u in arr]
+        flat_weights = [w for arr in filtered_weights.values() for w in arr]
+        global_update = aggregate_caf(
+            flat_updates,
+            flat_weights,
+            f=min(max(int(caf_faulty_clients), 0), max(len(flat_updates) - 1, 0)),
+            max_iter=caf_max_iter,
+            power_max_iter=caf_power_iterations,
+        )
         group_updates = {}
     else:
         raise KeyError(f"unknown aggregation: {aggregation}")

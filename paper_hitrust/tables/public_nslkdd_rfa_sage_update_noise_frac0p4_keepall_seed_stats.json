@@ -1,84 +1,197 @@
 {
+  "run_prefix": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall",
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "rfa",
+      "method_family": "reference_baseline",
+      "provenance_kind": "paper_spec_reimplementation",
+      "reference_grade": true,
+      "claim_role": "classical_robust_aggregation",
+      "notes": "Geometric median robust aggregation.",
+      "method_key": "rfa",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "update_noise",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "update_noise",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "cross_domain_auxiliary",
+      "evidence_tier": "auxiliary",
+      "benchmark_key": "public_nslkdd",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "exploratory",
+      "recommended_seed_count": 10,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "bh_fdr",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "seed_plan": {
+    "observed_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55,
+      66,
+      77,
+      88,
+      99,
+      111
+    ],
+    "observed_seed_count": 10,
+    "recommended_seed_count": 10,
+    "meets_recommended_seed_count": true,
+    "family": "exploratory",
+    "correction_method": "bh_fdr"
+  },
   "rows": [
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed11",
+      "seed": 11,
       "test_f1": 0.7672502574665294,
       "test_recall": 0.6543697848045674,
       "test_fpr": 0.06790481717933837,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed111",
+      "seed": 111,
       "test_f1": 0.7707692307692307,
       "test_recall": 0.6600790513833992,
       "test_fpr": 0.06964596633778293,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed22",
+      "seed": 22,
       "test_f1": 0.7604976671850701,
       "test_recall": 0.6442687747035574,
       "test_fpr": 0.0661636680208938,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed33",
+      "seed": 33,
       "test_f1": 0.7872340425531915,
       "test_recall": 0.6824769433465085,
       "test_fpr": 0.06790481717933837,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed44",
+      "seed": 44,
       "test_f1": 0.7324772605671481,
       "test_recall": 0.6012296881862099,
       "test_fpr": 0.053395240858966915,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed55",
+      "seed": 55,
       "test_f1": 0.7461902259590121,
       "test_recall": 0.6236275801493193,
       "test_fpr": 0.0632617527568195,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed66",
+      "seed": 66,
       "test_f1": 0.778855975485189,
       "test_recall": 0.6697408871321915,
       "test_fpr": 0.0661636680208938,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed77",
+      "seed": 77,
       "test_f1": 0.78382502543235,
       "test_recall": 0.6767676767676768,
       "test_fpr": 0.0661636680208938,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed88",
+      "seed": 88,
       "test_f1": 0.7738951695786229,
       "test_recall": 0.6613965744400527,
       "test_fpr": 0.0632617527568195,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     },
     {
       "run_name": "public_nslkdd_rfa_sage_update_noise_frac0p4_keepall_seed99",
+      "seed": 99,
       "test_f1": 0.7910485290419915,
       "test_recall": 0.6908212560386473,
       "test_fpr": 0.07370864770748695,
-      "kept_clients": 10,
-      "kept_poisoned_clients": 4
+      "kept_clients": 10.0,
+      "kept_poisoned_clients": 4.0,
+      "method_key": "rfa",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_nslkdd"
     }
   ],
   "stats": {

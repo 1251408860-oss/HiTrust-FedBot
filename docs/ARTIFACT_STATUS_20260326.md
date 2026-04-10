@@ -1,4 +1,4 @@
-# HiTrust-FedBot Artifact Status (updated 2026-03-30)
+# HiTrust-FedBot Artifact Status (updated 2026-04-09)
 
 ## Reviewer Reproduction Matrix
 
@@ -6,15 +6,23 @@
 | --- | --- | --- | --- |
 | Environment and path smoke test | supported | `python core_experiments/internal/run_hitrust_suite.py --config core_experiments/configs_hitrust/smoke_topology_noniid.json` | Confirms the packaged environment and repo-local path resolution |
 | Artifact layout and static checksum verification | supported | `bash core_experiments/reproduce/verify_artifact_bundle.sh` | Confirms that the immutable release files, manifest references, and shell entry points are intact |
-| Paper reruns from released derived graphs | supported | `bash core_experiments/reproduce/reproduce_reviewer_bundle.sh` | Uses bundled internal scenario graphs already shipped in the repository |
-| Same-task public held-out validation on Ca-Bench `scenario_e` | supported | `bash core_experiments/reproduce/reproduce_public_cabench_validation.sh` | Public topology-aware bot-detection scenario with cleaner transfer semantics than NSL-KDD |
-| Same-task public hardest validation on Ca-Bench `scenario_h` | supported | `bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh` | Public hardest-setting stress point used for the main FLTrust-like and hardening discussion |
+| Paper reruns from released derived graphs | supported | `bash core_experiments/reproduce/reproduce_reviewer_bundle.sh` | Uses bundled internal scenario graphs already shipped in the repository; public Ca-Bench reruns stay opt-in via `WITH_PUBLIC_CABENCH=1` |
+| Same-task public held-out validation on Ca-Bench `scenario_e` | supported | `bash core_experiments/reproduce/reproduce_public_cabench_validation.sh` | Public topology-aware bot-detection scenario built with the vendored Ca-Bench helper pinned to a fixed upstream commit |
+| Same-task public hardest validation on Ca-Bench `scenario_h` | supported | `bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh` | Public hardest-setting stress point built under the same repo-local graph contract as the rest of the release |
+| Non-Ca-Bench public raw-data validation on Westermo | supported | `bash core_experiments/reproduce/reproduce_public_westermo_validation.sh` | Public raw-data to local graph-contract to result-table chain used as a second primary public evidence path |
+| Non-Ca-Bench public second attack-family validation on Westermo `sign_flip` | supported | `bash core_experiments/reproduce/reproduce_public_westermo_sign_flip_validation.sh` | Supportive matched 20-seed second-attack-family sweep on the same public raw-data chain |
+| Non-Ca-Bench public raw-data validation on LITNET-2020 UDP-flood | supported | `bash core_experiments/reproduce/reproduce_public_litnet2020_udp_validation.sh` | Additional matched 20-seed public raw-data to local graph-contract to result-table chain used as a third primary public evidence path |
+| Cross-dataset F1 / KP / KC frontier summary figure | supported | `bash core_experiments/reproduce/reproduce_cross_dataset_frontier_summary.sh` | Rebuilds the four-panel cross-dataset public frontier summary from the released comparison tables |
+| Public `scenario_h` attack-extension package | supported | `bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_attack_extension.sh` | Rebuilds the 20-seed `colluding_update_noise` and `multi_round_stealth` stress-point package |
+| Minimal public `scenario_h` server runtime benchmark | supported | `bash core_experiments/reproduce/reproduce_public_server_runtime_benchmark.sh` | Rebuilds the dedicated `runtimebench` runs and the server-runtime comparison table/figure |
+| Public `scenario_h` server runtime scaling | supported | `bash core_experiments/reproduce/reproduce_public_server_runtime_scaling.sh` | Rebuilds the 5-seed `10/20/40`-client timing and peak-RSS scaling table/figure |
 | FLTrust-like sensitivity on public `scenario_h` | supported | `bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh` | Rebuilds the trusted-root sensitivity grid used to qualify the FLTrust-like comparison |
 | Auxiliary external validation on public NSL-KDD | supported | `bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh` | Public cross-domain stress test, not a same-distribution public bot benchmark |
 | Conditional trust-mass floor hardening package | supported | `bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh` | Targeted mitigation for the identified failure mode |
+| Maintainer-side internal raw audit from local private traces | maintainer-only supported | `bash core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh` | Rebuilds all five released internal graphs and verifies exact tensor/hash agreement against the shipped bundle |
 | Anonymous submission leakage scan | supported | `bash core_experiments/reproduce/check_anonymization_leaks.sh` | Heuristic scan for emails/author-affiliation metadata fields in submission-facing markdown |
 | Direct inspection of precomputed evidence | supported | inspect `paper_hitrust/tables/`, `paper_hitrust/figures/`, and `paper_hitrust/runs/` | The release already includes the paper-facing outputs |
-| Rebuild internal pilot graphs from upstream private raw traces | not supported in the public release | not available | The private raw collection traces are not redistributed |
+| Public rebuild of internal pilot graphs from redistributed private raw traces | not supported in the public release | not available | The private raw collection traces are not redistributed; use the maintainer-side raw-audit path when those traces are available locally |
 
 ## Relation to the Ca-Bench Release Pattern
 
@@ -25,10 +33,15 @@ Ca-Bench solves reviewer reproducibility by making the public artifact surface s
 - a maintainer-side packaging script that produces a GitHub-Release-ready tarball and checksum
 - an anonymization leak scanner for the submission-facing markdown package
 - an explicit supported-versus-unsupported reproduction table
+- a vendored public Ca-Bench builder pinned to a fixed upstream commit rather than a moving upstream branch
+- a repo-local graph contract documented in `docs/GRAPH_SCHEMA_CONTRACT_20260407.md`
+- two non-Ca-Bench public raw-data validation chains under `data_hitrust/public_benchmarks/westermo/` and `data_hitrust/public_benchmarks/litnet2020/`
+- a second Westermo attack-family rerun entry point plus both a minimal runtime benchmark and a `10/20/40`-client runtime scaling package for the public hardest scenario
+- a maintainer-side confidential raw-audit script that exactly rebuilds the released internal graph bundle when the preserved private traces are available locally
 
 Mutable reviewer outputs are handled differently on purpose. Public reruns rewrite `data_hitrust/public_benchmarks/*/{graphs,meta}` and `paper_hitrust/{runs,tables,figures}` in place, so those directories are verified by layout and manifest references rather than by frozen output checksums.
 
-The remaining difference from a fully public benchmark release is structural rather than editorial: HiTrust-FedBot still has a private-data boundary upstream of the released internal pilot graphs, so full raw-data regeneration is not a truthful public claim.
+The remaining difference from a fully public benchmark release is now narrower but still structural rather than editorial: HiTrust-FedBot still has a private-data boundary upstream of the released internal pilot graphs, so public raw-data regeneration is not a truthful claim. The new maintainer-side audit path shows that the released internal bundle can nevertheless be regenerated exactly from the preserved private traces. The public evidence is materially broader than in the earlier artifact round because it no longer relies on Ca-Bench alone and now includes two non-Ca-Bench raw-data paths plus a runtime scaling package, but it is still a bounded public evidence surface rather than a complete end-to-end opening of the internal pipeline.
 
 ## Maintainer Release Steps
 

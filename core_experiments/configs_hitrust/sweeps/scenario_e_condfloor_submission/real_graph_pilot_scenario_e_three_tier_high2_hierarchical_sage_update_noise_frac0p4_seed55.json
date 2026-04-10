@@ -1,6 +1,6 @@
 {
   "run_name": "real_graph_pilot_scenario_e_three_tier_high2_hierarchical_sage_update_noise_frac0p4_seed55",
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_e_three_tier_high2.pt",
   "seed": 55,
   "num_clients": 10,
   "partition_mode": "topology_noniid",

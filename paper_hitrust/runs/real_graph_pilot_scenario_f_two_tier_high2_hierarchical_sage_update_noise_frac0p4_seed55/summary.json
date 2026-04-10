@@ -41,7 +41,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "/mnt/c/Users/Administrator/Ca-Bench/mininet_testbed/real_collection/scenario_f_two_tier_high2/arena_manifest_v2.json",
+    "manifest_file": "data_hitrust/bootstrap/manifests/scenario_f_two_tier_high2/arena_manifest_v2.json",
     "topology_type": "two_tier",
     "load_profile": "high",
     "bot_type_mode": "mixed"
@@ -203,5 +203,13 @@
       "role:bot:slowburn"
     ],
     "kept_poisoned_clients": 0
+  },
+  "dataset_info": {
+    "dataset_name": "HiTrust-Bootstrap",
+    "dataset_variant": "scenario_f_two_tier_high2",
+    "dataset_source": "repo_bootstrap:data_hitrust/bootstrap_graphs",
+    "split_scheme": "released_bootstrap_graph_masks",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "internal_released_bootstrap"
   }
 }

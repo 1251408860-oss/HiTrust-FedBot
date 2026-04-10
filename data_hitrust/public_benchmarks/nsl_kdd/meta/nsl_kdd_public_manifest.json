@@ -317,5 +317,6 @@
     "owner_udp_private_b001": 1,
     "owner_udp_private_b002": 1,
     "owner_udp_private_b003": 1
-  }
+  },
+  "graph_contract_version": "hitrust_graph_v1"
 }

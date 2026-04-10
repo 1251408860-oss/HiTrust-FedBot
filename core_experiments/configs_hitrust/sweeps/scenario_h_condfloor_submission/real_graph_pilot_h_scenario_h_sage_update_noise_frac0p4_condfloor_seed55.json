@@ -1,6 +1,6 @@
 {
   "run_name": "real_graph_pilot_h_scenario_h_sage_update_noise_frac0p4_condfloor_seed55",
-  "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
+  "graph_file": "data_hitrust/bootstrap_graphs/graphs/scenario_h_mimic_heavy_overlap.pt",
   "seed": 55,
   "num_clients": 10,
   "partition_mode": "topology_noniid",

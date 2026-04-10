@@ -4,7 +4,7 @@
   "rows": [
     {
       "label": "condfloor",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_clean_condfloor_seed_stats.json",
+      "source_file": "paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_clean_condfloor_seed_stats.json",
       "test_f1_mean": 0.9775787671217149,
       "test_f1_std": 0.0030260336657002467,
       "test_fpr_mean": 0.018691588785046728,
@@ -18,7 +18,7 @@
     },
     {
       "label": "static",
-      "source_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_clean_seed_stats.json",
+      "source_file": "paper_hitrust/tables/real_graph_pilot_h_scenario_h_sage_clean_seed_stats.json",
       "test_f1_mean": 0.9784892782069413,
       "test_f1_std": 0.0028217619462674107,
       "test_fpr_mean": 0.024299065420560748,

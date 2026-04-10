@@ -1,0 +1,22 @@
+{
+  "run_name": "public_westermo_hierarchical_sage_sign_flip_frac0p4_seed111",
+  "graph_file": "data_hitrust/public_benchmarks/westermo/graphs/westermo_nst_public_graph.pt",
+  "seed": 111,
+  "num_clients": 10,
+  "partition_mode": "topology_noniid",
+  "aggregation": "hierarchical",
+  "num_groups": 3,
+  "hidden_dim": 32,
+  "adapter_dim": 8,
+  "backbone": "sage",
+  "tuning_mode": "adapter_ft",
+  "global_warmup_epochs": 8,
+  "rounds": 5,
+  "local_epochs": 1,
+  "lr": 0.01,
+  "poison_frac": 0.4,
+  "poison_type": "sign_flip",
+  "poison_scale": 1.0,
+  "trust_threshold": 0.35,
+  "min_keep_per_group": 1
+}

@@ -1,0 +1,39 @@
+{
+  "graphs_root": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs",
+  "manifest_root": "/home/user/workspace/HiTrust-FedBot/data_hitrust/bootstrap/manifests",
+  "output_root": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized",
+  "num_graphs": 5,
+  "graph_contract_version": "hitrust_graph_v1",
+  "rows": [
+    {
+      "scenario_name": "scenario_d_three_tier_low2",
+      "input_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_d_three_tier_low2.pt",
+      "output_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_d_three_tier_low2.pt",
+      "graph_contract_version": "hitrust_graph_v1"
+    },
+    {
+      "scenario_name": "scenario_e_three_tier_high2",
+      "input_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_e_three_tier_high2.pt",
+      "output_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_e_three_tier_high2.pt",
+      "graph_contract_version": "hitrust_graph_v1"
+    },
+    {
+      "scenario_name": "scenario_f_two_tier_high2",
+      "input_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_f_two_tier_high2.pt",
+      "output_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_f_two_tier_high2.pt",
+      "graph_contract_version": "hitrust_graph_v1"
+    },
+    {
+      "scenario_name": "scenario_g_mimic_congest",
+      "input_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_g_mimic_congest.pt",
+      "output_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_g_mimic_congest.pt",
+      "graph_contract_version": "hitrust_graph_v1"
+    },
+    {
+      "scenario_name": "scenario_h_mimic_heavy_overlap",
+      "input_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_h_mimic_heavy_overlap.pt",
+      "output_graph_file": "/home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_normalized/scenario_h_mimic_heavy_overlap.pt",
+      "graph_contract_version": "hitrust_graph_v1"
+    }
+  ]
+}

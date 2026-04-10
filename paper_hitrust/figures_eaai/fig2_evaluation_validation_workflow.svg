@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="620" viewBox="0 0 1450 620">
+<rect x="0" y="0" width="1450" height="620" fill="white" />
+<text x="725.0" y="34" font-family="Helvetica, Arial, sans-serif" font-size="23" font-weight="700" fill="#32465a" text-anchor="middle">Evaluation and validation workflow</text>
+<rect x="28" y="58" width="1394" height="530" rx="24" ry="24" fill="white" stroke="#b8c7d5" stroke-width="1.6" stroke-dasharray="7 6" />
+<rect x="56" y="116" width="332" height="156" rx="22" ry="22" fill="#eaf3fb" stroke="#2b6ea6" stroke-width="1.8" />
+<text x="222" y="146" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#32465a" text-anchor="middle">Internal topology-aware pilots</text>
+<rect x="84" y="176" width="82" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="125.0" y="194.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#32465a" text-anchor="middle">scenario_d</text>
+<rect x="184" y="176" width="82" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="225.0" y="194.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#32465a" text-anchor="middle">scenario_e</text>
+<rect x="284" y="176" width="82" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="325.0" y="194.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#32465a" text-anchor="middle">scenario_f</text>
+<rect x="84" y="220" width="82" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="125.0" y="238.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#32465a" text-anchor="middle">scenario_g</text>
+<rect x="184" y="220" width="82" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="225.0" y="238.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#32465a" text-anchor="middle">scenario_h</text>
+<text x="222" y="248" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#6f8193" text-anchor="middle">topology stress tests</text>
+<text x="222" y="263" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#6f8193" text-anchor="middle">and group-collapse probes</text>
+<rect x="430" y="104" width="432" height="172" rx="22" ry="22" fill="#e8f7f3" stroke="#3e8f87" stroke-width="1.8" />
+<text x="646" y="140" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#3e8f87" text-anchor="middle">Same-task public validation</text>
+<rect x="482" y="176" width="138" height="72" rx="16" ry="16" fill="white" stroke="#3e8f87" stroke-width="1.8" />
+<rect x="672" y="176" width="138" height="72" rx="16" ry="16" fill="white" stroke="#3e8f87" stroke-width="1.8" />
+<text x="551" y="204" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">Ca-Bench</text>
+<text x="551" y="222" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">scenario_e</text>
+<text x="741" y="204" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">Ca-Bench</text>
+<text x="741" y="222" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#32465a" text-anchor="middle">scenario_h</text>
+<rect x="534" y="246" width="224" height="24" rx="10" ry="10" fill="#eef8ea" stroke="#6aa870" stroke-width="1.4" />
+<text x="646" y="263" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#6aa870" text-anchor="middle">primary external evidence</text>
+<rect x="912" y="126" width="450" height="132" rx="22" ry="22" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1137" y="156" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#32465a" text-anchor="middle">Auxiliary public transfer</text>
+<rect x="1006" y="184" width="262" height="50" rx="16" ry="16" fill="white" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1137" y="205" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">NSL-KDD graph-converted</text>
+<text x="1137" y="223" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#32465a" text-anchor="middle">transfer context</text>
+<rect x="132" y="338" width="458" height="124" rx="22" ry="22" fill="#fff3e0" stroke="#d98a35" stroke-width="1.8" />
+<text x="174" y="368" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#d98a35" text-anchor="start">Attack regimes</text>
+<rect x="164" y="392" width="172" height="28" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="250.0" y="411.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">sign-flip@0.4</text>
+<rect x="350" y="392" width="196" height="28" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="448.0" y="411.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">update-noise@0.4</text>
+<rect x="164" y="426" width="172" height="28" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="250.0" y="445.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">benign-mimic@0.4</text>
+<rect x="350" y="426" width="196" height="28" rx="10" ry="10" fill="white" stroke="#d98a35" stroke-width="1.6" />
+<text x="448.0" y="445.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">ALIE-like@0.4</text>
+<rect x="640" y="324" width="324" height="148" rx="22" ry="22" fill="#dfeefb" stroke="#2b6ea6" stroke-width="1.8" />
+<text x="802" y="356" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#2b6ea6" text-anchor="middle">Matched public paired tests</text>
+<rect x="684" y="386" width="236" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="802.0" y="404.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">paired confidence intervals</text>
+<rect x="684" y="420" width="236" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="802.0" y="438.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">paired sign tests</text>
+<rect x="684" y="454" width="236" height="26" rx="10" ry="10" fill="white" stroke="#2b6ea6" stroke-width="1.6" />
+<text x="802.0" y="472.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">paired t-tests</text>
+<rect x="1010" y="320" width="304" height="158" rx="22" ry="22" fill="#f5f7fa" stroke="#b8c7d5" stroke-width="1.8" />
+<text x="1162" y="350" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#32465a" text-anchor="middle">Deployment evidence</text>
+<rect x="1052" y="378" width="220" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1162.0" y="395.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">F1</text>
+<rect x="1052" y="410" width="220" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1162.0" y="427.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">FPR</text>
+<rect x="1052" y="442" width="220" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1162.0" y="459.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">retained poisoned clients</text>
+<rect x="1052" y="474" width="220" height="24" rx="10" ry="10" fill="white" stroke="#b8c7d5" stroke-width="1.6" />
+<text x="1162.0" y="491.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#32465a" text-anchor="middle">retained clients</text>
+<line x1="222" y1="272" x2="222" y2="338" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="646" y1="276" x2="646" y2="324" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="1137" y1="258" x2="1137" y2="320" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="590" y1="400" x2="640" y2="400" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+<line x1="964" y1="400" x2="1010" y2="400" stroke="#7e91a6" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)" />
+
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.5" refY="5" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7e91a6" />
+  </marker>
+</defs>
+
+</svg>

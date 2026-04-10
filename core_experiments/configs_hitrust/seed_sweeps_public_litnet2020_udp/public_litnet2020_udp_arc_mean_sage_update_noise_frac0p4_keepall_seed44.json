@@ -1,0 +1,23 @@
+{
+  "run_name": "public_litnet2020_udp_arc_mean_sage_update_noise_frac0p4_keepall_seed44",
+  "graph_file": "data_hitrust/public_benchmarks/litnet2020/graphs/litnet2020_udp_flood_public_graph.pt",
+  "seed": 44,
+  "num_clients": 10,
+  "partition_mode": "topology_noniid",
+  "aggregation": "arc_mean",
+  "arc_faulty_clients": 4,
+  "num_groups": 3,
+  "hidden_dim": 32,
+  "adapter_dim": 8,
+  "backbone": "sage",
+  "tuning_mode": "adapter_ft",
+  "global_warmup_epochs": 8,
+  "rounds": 5,
+  "local_epochs": 1,
+  "lr": 0.01,
+  "poison_frac": 0.4,
+  "poison_type": "update_noise",
+  "poison_scale": 0.2,
+  "trust_threshold": 0.0,
+  "min_keep_per_group": 0
+}

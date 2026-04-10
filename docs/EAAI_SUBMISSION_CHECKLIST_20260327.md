@@ -36,6 +36,14 @@ Recommended public external-validation commands:
 
 ```bash
 bash core_experiments/reproduce/reproduce_public_cabench_validation.sh
+bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh
+bash core_experiments/reproduce/reproduce_public_westermo_validation.sh
+bash core_experiments/reproduce/reproduce_public_westermo_sign_flip_validation.sh
+bash core_experiments/reproduce/reproduce_public_litnet2020_udp_validation.sh
+bash core_experiments/reproduce/reproduce_public_adaptive_matched_validation.sh
+bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_attack_extension.sh
+bash core_experiments/reproduce/reproduce_public_server_runtime_benchmark.sh
+bash core_experiments/reproduce/reproduce_public_server_runtime_scaling.sh
 bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh
 bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 ```
@@ -43,13 +51,19 @@ bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 ## 4. Required Narrative Constraints
 
 - Treat trust-aware filtering as a conservative defense control.
-- Treat FLTrust-like as a covered trust-bootstrapping baseline, not as the paper's proposed method.
-- Treat Centered Clipping as a modern aggregation-only comparator; if it appears strong on F1/FPR, also state that it retains all poisoned clients because it does not perform explicit participation control.
+- Treat FLTrust-like and FLShield-like as covered trust-bootstrapping comparators, not as the paper's proposed method.
+- Treat Centered Clipping and CAF as modern aggregation-only comparators; if they appear strong on F1/FPR, also state that they retain all poisoned clients because they do not perform explicit participation control.
 - Report security gain primarily as reduced poisoned participation.
 - Keep accuracy claims near-neutral; do not claim universal F1 improvement.
 - State that NSL-KDD is cross-domain auxiliary validation.
 - State that Ca-Bench public scenario validation is same-task external evidence.
+- State that Westermo and LITNET-2020 are public raw-data evidence chains, not auxiliary footnotes.
+- State that Westermo `update_noise` is the main non-Ca-Bench public claim surface, Westermo `sign_flip` is supportive second-attack-family evidence, and LITNET-2020 UDP-flood is a matched 20-seed collapse-stress raw-data path rather than a same-task benchmark replacement.
+- State that the internal pilot raw traces are still not publicly redistributed, but the repository now includes a maintainer-side exact-match raw audit for the released internal graph bundle.
+- State that the primary non-adaptive public claims use matched 20-seed paired evaluation.
+- State that `scenario_h + adaptive_benign_mimic@0.4` and `scenario_e + adaptive_alie_like@0.4` are now promoted matched 20-seed adaptive evidence, while the remaining adaptive public paths stay exploratory 10-seed evidence.
 - State that conditional floor is a targeted hardening for the identified hardest-setting failure mode, not a universal default.
+- If runtime/latency is reported, state that the repository now includes a 5-seed public `scenario_h` server-side scaling study over `10/20/40` clients with peak RSS, but not a distributed end-to-end deployment benchmark.
 
 ## 5. Upload-Order Sanity Check
 

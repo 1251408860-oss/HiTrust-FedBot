@@ -11,6 +11,7 @@ class ArtifactReleaseTests(unittest.TestCase):
     def test_release_status_files_exist(self) -> None:
         required = [
             ROOT / "docs" / "ARTIFACT_STATUS_20260326.md",
+            ROOT / "docs" / "EXPERIMENT_DESIGN_CONTRACT_20260407.md",
             ROOT / "docs" / "reviewer_bundle_sha256_20260326.txt",
             ROOT / "core_experiments" / "reproduce" / "generate_reviewer_checksums.sh",
             ROOT / "core_experiments" / "reproduce" / "verify_artifact_bundle.sh",

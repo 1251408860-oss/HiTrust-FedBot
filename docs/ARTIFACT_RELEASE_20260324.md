@@ -4,7 +4,7 @@ This repository now includes reproducible same-task public-benchmark validation 
 
 ## Environment
 
-- Recommended Python: `/home/user/miniconda3/envs/DL/bin/python`
+- Recommended Python: `python3` (or set `PY_BIN` to your project-local interpreter)
 - Core packages used in the artifact path:
   - `torch`
   - `torch_geometric`
@@ -13,12 +13,16 @@ This repository now includes reproducible same-task public-benchmark validation 
   - `matplotlib`
   - `scipy`
 
+## Public Graph Contract and Builder Freeze
+
+Public Ca-Bench reruns now use the vendored builder under `data_hitrust/public_benchmarks/cabench_v1/tools/`. Maintainer-only refreshes are pinned to a fixed upstream commit rather than `main`, and the emitted graphs follow the local contract documented in `docs/GRAPH_SCHEMA_CONTRACT_20260407.md`.
+
 ## Public Same-Task External Validation (Ca-Bench `scenario_e`)
 
 Reproduce the public same-task scenario validation with:
 
 ```bash
-cd /home/user/workspace/HiTrust-FedBot
+cd <repo-root>
 bash core_experiments/reproduce/reproduce_public_cabench_validation.sh
 ```
 
@@ -34,7 +38,7 @@ This script performs four steps:
 Reproduce the public same-task hardest-setting validation with:
 
 ```bash
-cd /home/user/workspace/HiTrust-FedBot
+cd <repo-root>
 bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh
 ```
 
@@ -51,7 +55,7 @@ This script performs five steps:
 Reproduce the trusted-root sensitivity sweep with:
 
 ```bash
-cd /home/user/workspace/HiTrust-FedBot
+cd <repo-root>
 bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh
 ```
 
@@ -66,7 +70,7 @@ This script performs three steps:
 Reproduce the public NSL-KDD auxiliary validation with:
 
 ```bash
-cd /home/user/workspace/HiTrust-FedBot
+cd <repo-root>
 bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh
 ```
 
@@ -82,7 +86,7 @@ This script performs four steps:
 Reproduce the conditional trust-mass floor validation with:
 
 ```bash
-cd /home/user/workspace/HiTrust-FedBot
+cd <repo-root>
 bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh
 ```
 

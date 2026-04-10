@@ -2,7 +2,7 @@
   "timestamp_utc": "2026-03-31T02:36:48Z",
   "config": {
     "run_name": "public_cabench_scenario_h_temporal_rootguard_sage_adaptive_benign_mimic_frac0p4_seed22",
-    "graph_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+    "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
     "seed": 22,
     "num_clients": 10,
     "partition_mode": "topology_noniid",
@@ -45,12 +45,14 @@
       "peer_redundancy_penalty": 0.2
     }
   },
-  "graph_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\data_hitrust\\public_benchmarks\\cabench_v1\\graphs\\cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
+  "graph_file": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_h_mimic_heavy_overlap_public_graph.pt",
   "dataset_info": {
     "dataset_name": "Ca-Bench",
     "dataset_variant": "scenario_h_mimic_heavy_overlap_public_data_v1",
-    "dataset_source": "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1",
-    "split_scheme": "random_flow_split_from_public_scenario_capture"
+    "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
+    "split_scheme": "random_flow_split_from_public_scenario_capture",
+    "graph_contract_version": "hitrust_graph_v1",
+    "graph_source_kind": "external_public_dataset"
   },
   "graph_stats": {
     "num_nodes": 6985,
@@ -70,7 +72,7 @@
     "partition_mode": "topology_noniid",
     "num_clients": 10,
     "active_clients": 10,
-    "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
+    "manifest_file": "data_hitrust/public_benchmarks/cabench_v1/raw/real_collection/mininet_testbed/real_collection/scenario_h_mimic_heavy_overlap/arena_manifest_v2.json",
     "topology_type": "three_tier",
     "load_profile": "high",
     "bot_type_mode": "mimic_heavy"

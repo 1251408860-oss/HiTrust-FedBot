@@ -36,6 +36,13 @@
     "baseline_figure": "paper_hitrust/figures/public_nslkdd_update_noise_baseline_comparison.png",
     "reproduce_script": "core_experiments/reproduce/reproduce_public_nslkdd_validation.sh"
   },
+  "cross_dataset_frontier_summary": {
+    "summary_table": "paper_hitrust/tables/cross_dataset_f1_kp_kc_frontier_summary.json",
+    "main_figure": "paper_hitrust/figures/cross_dataset_f1_kp_kc_frontier_summary.png",
+    "eaai_figure": "paper_hitrust/figures_eaai/cross_dataset_f1_kp_kc_frontier_summary.png",
+    "sage_figure": "paper_hitrust/figures_sage_main/cross_dataset_f1_kp_kc_frontier_summary.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_cross_dataset_frontier_summary.sh"
+  },
   "conditional_floor_validation": {
     "scenario_h_table": "paper_hitrust/tables/scenario_h_update_noise_condfloor_comparison.json",
     "scenario_h_figure": "paper_hitrust/figures/scenario_h_update_noise_condfloor_comparison.png",

@@ -1,5 +1,5 @@
 {
-  "base_config": "/home/user/workspace/HiTrust-FedBot/core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_clean.json",
+  "base_config": "core_experiments/configs_hitrust/real_graph_pilot_h_scenario_h_sage_clean.json",
   "rows": [
     {
       "id": "keep0",

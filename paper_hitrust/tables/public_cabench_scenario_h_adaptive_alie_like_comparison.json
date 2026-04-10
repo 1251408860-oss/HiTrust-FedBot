@@ -5,7 +5,7 @@
   "rows": [
     {
       "label": "condfloor",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_hierarchical_sage_adaptive_alie_like_frac0p4_condfloor_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_adaptive_alie_like_frac0p4_condfloor_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9773151968902315,
       "test_f1_std": 0.0035064062215260433,
@@ -50,7 +50,7 @@
     },
     {
       "label": "static",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_hierarchical_sage_adaptive_alie_like_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_adaptive_alie_like_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.977677455387912,
       "test_f1_std": 0.004044752157672373,
@@ -95,7 +95,7 @@
     },
     {
       "label": "foolsgold",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_foolsgold_sage_adaptive_alie_like_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.975173910334744,
       "test_f1_std": 0.009338850144386188,
@@ -140,7 +140,7 @@
     },
     {
       "label": "fltrust_like",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_fltrust_like_sage_adaptive_alie_like_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sage_adaptive_alie_like_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9754793666370243,
       "test_f1_std": 0.003283009972081484,
@@ -185,7 +185,7 @@
     },
     {
       "label": "flshield_like",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_flshield_like_sage_adaptive_alie_like_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_flshield_like_sage_adaptive_alie_like_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9786723780548905,
       "test_f1_std": 0.0022982390623614685,
@@ -230,7 +230,7 @@
     },
     {
       "label": "temporal_rootguard",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_sage_adaptive_alie_like_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_sage_adaptive_alie_like_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9761597421854278,
       "test_f1_std": 0.0036667989655834042,
@@ -275,7 +275,7 @@
     },
     {
       "label": "temporal_rootguard_v2",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_alie_like_frac0p4_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_temporal_rootguard_v2_sage_adaptive_alie_like_frac0p4_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9762907431059491,
       "test_f1_std": 0.004002338183015643,
@@ -320,7 +320,7 @@
     },
     {
       "label": "keepall",
-      "source_file": "\\\\wsl.localhost\\Ubuntu4\\home\\user\\workspace\\HiTrust-FedBot\\paper_hitrust\\tables\\public_cabench_scenario_h_hierarchical_sage_adaptive_alie_like_frac0p4_keepall_seed_stats.json",
+      "source_file": "paper_hitrust/tables/public_cabench_scenario_h_hierarchical_sage_adaptive_alie_like_frac0p4_keepall_seed_stats.json",
       "n": 10,
       "test_f1_mean": 0.9781823524110922,
       "test_f1_std": 0.003155766960960642,

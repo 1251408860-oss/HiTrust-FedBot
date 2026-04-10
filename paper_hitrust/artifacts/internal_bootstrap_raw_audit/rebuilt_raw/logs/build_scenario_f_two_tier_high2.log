@@ -1,0 +1,22 @@
+====================================================================
+Phase 2: Build Graph from PCAP
+====================================================================
+[1/5] Load PCAP: /home/user/workspace/Ca-Bench-temp/mininet_testbed/real_collection/scenario_f_two_tier_high2/full_arena_v2.pcap
+  packets=74560
+  delay_metric=http_request_to_first_response_sec requests=5259 matched=5259 match_rate=1.000
+[2/5] Inbound packets=37519 duration=183.1s windows=184
+  source_ips=61
+  labels=manifest
+[3/5] Build nodes and edges
+  nodes=4794 flow_nodes=4793 edges=6656
+[4/5] Assemble tensors
+[5/5] Save: /home/user/workspace/HiTrust-FedBot/paper_hitrust/artifacts/internal_bootstrap_raw_audit/rebuilt_raw/graphs/scenario_f_two_tier_high2.pt
+====================================================================
+Done: nodes=4794 edges=6656 windows=184
+Flow labels: benign=1996 attack=2797
+Features (7D): ['ln(N+1)', 'ln(T+1)', 'entropy', 'D_observed', 'pkt_rate', 'avg_pkt_size', 'port_diversity']
+feature_index={'ln(N+1)': 0, 'ln(T+1)': 1, 'entropy': 2, 'D_observed': 3, 'pkt_rate': 4, 'avg_pkt_size': 5, 'port_diversity': 6}
+label_source=manifest
+delay_match_rate=1.000
+capacity_bytes_per_sec=1000000.00 (manifest_core_bw_mbps=8.00)
+====================================================================

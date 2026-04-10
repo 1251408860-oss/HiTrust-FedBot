@@ -1,6 +1,6 @@
 # Centered Clipping Baseline Note (2026-04-02)
 
-This note records the new Centered Clipping baseline that was added after the matched 10-seed public refresh.
+This note records the new Centered Clipping baseline that was added after the matched public refresh.
 
 ## What Was Added
 
@@ -11,15 +11,15 @@ This note records the new Centered Clipping baseline that was added after the ma
   - `public_nslkdd_centered_clipping_sage_update_noise_frac0p4_keepall.json`
 - The three public rerun entry points now rebuild the baseline comparison tables with Centered Clipping included.
 
-## 10-Seed Summary
+## Current Summary
 
-- Public `scenario_e + update_noise@0.4`:
-  - Centered Clipping: `F1 = 0.9881`, `FPR = 0.0228`, retained poisoned clients `4.0`, kept clients `10.0`
-  - Trust-aware mainline: `F1 = 0.9882`, `FPR = 0.0179`, retained poisoned clients `0.1`, kept clients `6.1`
-- Public `scenario_h + update_noise@0.4`:
-  - Centered Clipping: `F1 = 0.9777`, `FPR = 0.0218`, retained poisoned clients `4.0`, kept clients `10.0`
-  - Trust-aware mainline: `F1 = 0.9723`, `FPR = 0.0330`, retained poisoned clients `0.2`, kept clients `6.2`
-- Public `NSL-KDD + update_noise@0.4`:
+- Public `scenario_e + update_noise@0.4` (`20` seeds):
+  - Centered Clipping: `F1 = 0.9877`, `FPR = 0.0225`, retained poisoned clients `4.0`, kept clients `10.0`
+  - Trust-aware mainline: `F1 = 0.9875`, `FPR = 0.0208`, retained poisoned clients `0.1`, kept clients `6.1`
+- Public `scenario_h + update_noise@0.4` (`20` seeds):
+  - Centered Clipping: `F1 = 0.9757`, `FPR = 0.0265`, retained poisoned clients `4.0`, kept clients `10.0`
+  - Trust-aware mainline: `F1 = 0.9703`, `FPR = 0.0442`, retained poisoned clients `0.3`, kept clients `6.3`
+- Public `NSL-KDD + update_noise@0.4` (`10` seeds):
   - Centered Clipping: `F1 = 0.7642`, `FPR = 0.0619`, retained poisoned clients `4.0`, kept clients `10.0`
   - Trust-aware mainline: `F1 = 0.7952`, `FPR = 0.0772`, retained poisoned clients `0.7`, kept clients `6.7`
 

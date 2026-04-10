@@ -4,7 +4,7 @@
   "num_clients": 10,
   "num_assigned_ips": 151,
   "support_nodes": 0,
-  "manifest_file": "/home/user/workspace/HiTrust-FedBot/data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
+  "manifest_file": "data_hitrust/public_benchmarks/nsl_kdd/meta/nsl_kdd_public_manifest.json",
   "topology_type": "public_benchmark",
   "load_profile": "public_benchmark",
   "bot_type_mode": "intrusion_binary",

@@ -40,6 +40,7 @@ required_files=(
   "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md"
   "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md"
   "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md"
+  "docs/GRAPH_SCHEMA_CONTRACT_20260407.md"
   "docs/reviewer_bundle_sha256_20260326.txt"
   "data_hitrust/README.md"
   "paper_hitrust/README.md"

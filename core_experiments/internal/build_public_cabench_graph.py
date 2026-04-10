@@ -13,6 +13,13 @@ from pathlib import Path
 
 import torch
 
+from graph_contract import (
+    GRAPH_CONTRACT_VERSION,
+    apply_graph_contract,
+    graph_stats,
+    repo_relative_path,
+    validate_graph_contract,
+)
 
 CABENCH_RELEASE_ASSET_URL = (
     "https://github.com/1251408860-oss/Ca-Bench/releases/download/data-v1/real_collection.tar.gz"
@@ -20,10 +27,8 @@ CABENCH_RELEASE_ASSET_URL = (
 CABENCH_RELEASE_SHA256_URL = (
     "https://github.com/1251408860-oss/Ca-Bench/releases/download/data-v1/real_collection.tar.gz.sha256"
 )
-CABENCH_BUILD_GRAPH_URL = "https://raw.githubusercontent.com/1251408860-oss/Ca-Bench/main/core_experiments/build_graph_v2.py"
-CABENCH_SUBMISSION_COMMON_URL = (
-    "https://raw.githubusercontent.com/1251408860-oss/Ca-Bench/main/core_experiments/internal/submission_common.py"
-)
+CABENCH_DATASET_SOURCE = "github_release:1251408860-oss/Ca-Bench@data-v1"
+CABENCH_UPSTREAM_COMMIT = "666af74e55f03c321557b2f2f83feb4f0950dd2d"
 
 
 def parse_args() -> argparse.Namespace:
@@ -41,6 +46,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output-graph", default="")
     p.add_argument("--output-manifest", default="")
     p.add_argument("--output-summary", default="")
+    p.add_argument("--refresh-builder-from-upstream", action="store_true")
+    p.add_argument("--builder-commit", default=CABENCH_UPSTREAM_COMMIT)
     return p.parse_args()
 
 
@@ -153,44 +160,62 @@ def extract_scenario_archive(
     return pcap_file, manifest_file
 
 
-def ensure_builder_tools(tools_root: Path) -> tuple[Path, Path]:
+def raw_github_url(builder_commit: str, suffix: str) -> str:
+    return f"https://raw.githubusercontent.com/1251408860-oss/Ca-Bench/{builder_commit}/{suffix}"
+
+
+def ensure_builder_tools(
+    tools_root: Path,
+    *,
+    refresh_builder_from_upstream: bool,
+    builder_commit: str,
+) -> tuple[Path, Path]:
     build_graph_file = tools_root / "build_graph_v2.py"
     submission_common_file = tools_root / "internal" / "submission_common.py"
-    ensure_download(CABENCH_BUILD_GRAPH_URL, build_graph_file)
-    ensure_download(CABENCH_SUBMISSION_COMMON_URL, submission_common_file)
+    if refresh_builder_from_upstream:
+        if build_graph_file.exists():
+            build_graph_file.unlink()
+        if submission_common_file.exists():
+            submission_common_file.unlink()
+        ensure_download(raw_github_url(builder_commit, "core_experiments/build_graph_v2.py"), build_graph_file)
+        ensure_download(
+            raw_github_url(builder_commit, "core_experiments/internal/submission_common.py"),
+            submission_common_file,
+        )
+    if not build_graph_file.exists() or not submission_common_file.exists():
+        raise RuntimeError(
+            "vendored Ca-Bench builder files are missing; restore "
+            "data_hitrust/public_benchmarks/cabench_v1/tools or rerun with "
+            "--refresh-builder-from-upstream"
+        )
     return build_graph_file, submission_common_file
 
 
 def enrich_graph_metadata(
     *,
+    project_root: Path,
     graph_file: Path,
     scenario_name: str,
     scenario_manifest_file: Path,
+    scenario_manifest: dict[str, object],
+    build_graph_file: Path,
 ) -> dict[str, object]:
     graph = torch.load(graph_file, weights_only=False, map_location="cpu")
-    flow_mask = graph.window_idx >= 0 if hasattr(graph, "window_idx") else torch.ones(graph.num_nodes, dtype=torch.bool)
-
-    graph.dataset_name = "Ca-Bench"
-    graph.dataset_variant = f"{scenario_name}_public_data_v1"
-    graph.dataset_source = "https://github.com/1251408860-oss/Ca-Bench/releases/tag/data-v1"
-    graph.split_scheme = "random_flow_split_from_public_scenario_capture"
-    graph.manifest_file = str(scenario_manifest_file.resolve())
+    apply_graph_contract(
+        graph,
+        project_root=project_root,
+        dataset_name="Ca-Bench",
+        dataset_variant=f"{scenario_name}_public_data_v1",
+        dataset_source=CABENCH_DATASET_SOURCE,
+        split_scheme="random_flow_split_from_public_scenario_capture",
+        manifest_file=scenario_manifest_file,
+        manifest_metadata=scenario_manifest,
+        graph_source_kind="external_public_dataset",
+        builder_reference=build_graph_file,
+    )
+    validate_graph_contract(graph)
     torch.save(graph, graph_file)
-
-    return {
-        "num_nodes": int(graph.num_nodes),
-        "num_edges": int(graph.num_edges),
-        "flow_nodes": int(flow_mask.sum().item()),
-        "benign_flow_nodes": int(((graph.y == 0) & flow_mask).sum().item()),
-        "attack_flow_nodes": int(((graph.y == 1) & flow_mask).sum().item()),
-        "num_features": int(graph.x.shape[1]),
-        "num_source_ips": int(len(list(getattr(graph, "source_ips", [])))),
-        "split_counts": {
-            "train": int(getattr(graph, "train_mask", torch.zeros(graph.num_nodes, dtype=torch.bool)).sum().item()),
-            "val": int(getattr(graph, "val_mask", torch.zeros(graph.num_nodes, dtype=torch.bool)).sum().item()),
-            "test": int(getattr(graph, "test_mask", torch.zeros(graph.num_nodes, dtype=torch.bool)).sum().item()),
-        },
-    }
+    return graph_stats(graph)
 
 
 def resolve_python_bin(arg_value: str) -> str:
@@ -239,7 +264,11 @@ def main() -> None:
         extract_root=extract_root,
         scenario_name=str(args.scenario_name),
     )
-    build_graph_file, _ = ensure_builder_tools(tools_root)
+    build_graph_file, _ = ensure_builder_tools(
+        tools_root,
+        refresh_builder_from_upstream=bool(args.refresh_builder_from_upstream),
+        builder_commit=str(args.builder_commit).strip() or CABENCH_UPSTREAM_COMMIT,
+    )
 
     should_build = bool(args.force_rebuild) or (not output_graph.exists())
     python_bin = resolve_python_bin(str(args.python_bin))
@@ -263,25 +292,30 @@ def main() -> None:
         subprocess.run(cmd, cwd=str(tools_root), check=True)
 
     scenario_manifest = json.loads(scenario_manifest_file.read_text(encoding="utf-8"))
-    graph_stats = enrich_graph_metadata(
+    stats = enrich_graph_metadata(
+        project_root=project_root,
         graph_file=output_graph,
         scenario_name=str(args.scenario_name),
         scenario_manifest_file=scenario_manifest_file,
+        scenario_manifest=scenario_manifest,
+        build_graph_file=build_graph_file,
     )
 
     artifact_manifest = {
         "dataset_name": "Ca-Bench",
         "dataset_variant": f"{args.scenario_name}_public_data_v1",
-        "dataset_source": "github_release:1251408860-oss/Ca-Bench@data-v1",
+        "dataset_source": CABENCH_DATASET_SOURCE,
         "release_asset_url": CABENCH_RELEASE_ASSET_URL,
         "scenario_name": str(args.scenario_name),
-        "scenario_manifest_file": str(scenario_manifest_file),
+        "scenario_manifest_file": repo_relative_path(scenario_manifest_file, project_root),
         "topology": dict(scenario_manifest.get("topology", {})),
         "run_config": dict(scenario_manifest.get("run_config", {})),
         "roles": dict(scenario_manifest.get("roles", {})),
         "ip_labels": dict(scenario_manifest.get("ip_labels", {})),
-        "graph_file": str(output_graph),
-        "build_tool_source": CABENCH_BUILD_GRAPH_URL,
+        "graph_file": repo_relative_path(output_graph, project_root),
+        "builder_reference": repo_relative_path(build_graph_file, project_root),
+        "upstream_builder_commit": str(args.builder_commit).strip() or CABENCH_UPSTREAM_COMMIT,
+        "graph_contract_version": GRAPH_CONTRACT_VERSION,
     }
     output_manifest.parent.mkdir(parents=True, exist_ok=True)
     output_manifest.write_text(json.dumps(artifact_manifest, indent=2), encoding="utf-8")
@@ -290,16 +324,18 @@ def main() -> None:
         "dataset_name": "Ca-Bench",
         "dataset_variant": f"{args.scenario_name}_public_data_v1",
         "scenario_name": str(args.scenario_name),
-        "graph_file": str(output_graph),
-        "manifest_file": str(output_manifest),
-        "scenario_manifest_file": str(scenario_manifest_file),
-        "release_archive": str(archive_file),
+        "graph_file": repo_relative_path(output_graph, project_root),
+        "manifest_file": repo_relative_path(output_manifest, project_root),
+        "scenario_manifest_file": repo_relative_path(scenario_manifest_file, project_root),
+        "release_archive": repo_relative_path(archive_file, project_root),
         "release_archive_sha256": expected_sha256 or "",
         "seed": int(args.seed),
         "delta_t": float(args.delta_t),
         "target_ip": str(args.target_ip),
-        "build_tool_source": CABENCH_BUILD_GRAPH_URL,
-        "graph_stats": graph_stats,
+        "builder_reference": repo_relative_path(build_graph_file, project_root),
+        "upstream_builder_commit": str(args.builder_commit).strip() or CABENCH_UPSTREAM_COMMIT,
+        "graph_contract_version": GRAPH_CONTRACT_VERSION,
+        "graph_stats": stats,
     }
     output_summary.parent.mkdir(parents=True, exist_ok=True)
     output_summary.write_text(json.dumps(summary, indent=2), encoding="utf-8")

@@ -1,84 +1,199 @@
 {
+  "run_prefix": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4",
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "foolsgold",
+      "method_family": "reference_baseline",
+      "provenance_kind": "official_code_port",
+      "reference_grade": true,
+      "claim_role": "reference_anchor",
+      "upstream_name": "FoolsGold",
+      "upstream_url": "https://github.com/DistributedML/FoolsGold",
+      "notes": "Official-code history-similarity baseline.",
+      "method_key": "foolsgold",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "adaptive_benign_mimic",
+      "attack_family": "defense_aware_poisoning",
+      "adaptive": true,
+      "coordination": "colluding",
+      "stats_priority": "exploratory",
+      "attack_key": "adaptive_benign_mimic",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "same_task_public",
+      "evidence_tier": "primary",
+      "benchmark_key": "public_cabench_scenario_e",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "exploratory",
+      "recommended_seed_count": 10,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "bh_fdr",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "seed_plan": {
+    "observed_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55,
+      66,
+      77,
+      88,
+      99,
+      111
+    ],
+    "observed_seed_count": 10,
+    "recommended_seed_count": 10,
+    "meets_recommended_seed_count": true,
+    "family": "exploratory",
+    "correction_method": "bh_fdr"
+  },
   "rows": [
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed11",
+      "seed": 11,
       "test_f1": 0.9600725952813067,
       "test_recall": 0.9232111692844677,
       "test_fpr": 0.0,
-      "kept_clients": 1,
-      "kept_poisoned_clients": 0
+      "kept_clients": 1.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed111",
+      "seed": 111,
       "test_f1": 0.9489051094890512,
       "test_recall": 0.9075043630017452,
       "test_fpr": 0.009259259259259259,
-      "kept_clients": 2,
-      "kept_poisoned_clients": 0
+      "kept_clients": 2.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed22",
+      "seed": 22,
       "test_f1": 0.9714795008912657,
       "test_recall": 0.9511343804537522,
       "test_fpr": 0.012345679012345678,
-      "kept_clients": 1,
-      "kept_poisoned_clients": 0
+      "kept_clients": 1.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed33",
+      "seed": 33,
       "test_f1": 0.9929947460595447,
       "test_recall": 0.9895287958115183,
       "test_fpr": 0.006172839506172839,
-      "kept_clients": 2,
-      "kept_poisoned_clients": 0
+      "kept_clients": 2.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed44",
+      "seed": 44,
       "test_f1": 0.9859402460456941,
       "test_recall": 0.9790575916230366,
       "test_fpr": 0.012345679012345678,
-      "kept_clients": 1,
-      "kept_poisoned_clients": 0
+      "kept_clients": 1.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed55",
+      "seed": 55,
       "test_f1": 0.9886660854402789,
       "test_recall": 0.9895287958115183,
       "test_fpr": 0.021604938271604937,
-      "kept_clients": 2,
-      "kept_poisoned_clients": 0
+      "kept_clients": 2.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed66",
+      "seed": 66,
       "test_f1": 0.9768270944741533,
       "test_recall": 0.956369982547993,
       "test_fpr": 0.0030864197530864196,
-      "kept_clients": 1,
-      "kept_poisoned_clients": 0
+      "kept_clients": 1.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed77",
+      "seed": 77,
       "test_f1": 0.9912891986062716,
       "test_recall": 0.9930191972076788,
       "test_fpr": 0.018518518518518517,
-      "kept_clients": 1,
-      "kept_poisoned_clients": 0
+      "kept_clients": 1.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed88",
+      "seed": 88,
       "test_f1": 0.9833187006145743,
       "test_recall": 0.9773123909249564,
       "test_fpr": 0.018518518518518517,
-      "kept_clients": 1,
-      "kept_poisoned_clients": 0
+      "kept_clients": 1.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     },
     {
       "run_name": "public_cabench_scenario_e_foolsgold_sage_adaptive_benign_mimic_frac0p4_seed99",
+      "seed": 99,
       "test_f1": 0.9895104895104896,
       "test_recall": 0.987783595113438,
       "test_fpr": 0.015432098765432098,
-      "kept_clients": 2,
-      "kept_poisoned_clients": 0
+      "kept_clients": 2.0,
+      "kept_poisoned_clients": 0.0,
+      "method_key": "foolsgold",
+      "attack_key": "adaptive_benign_mimic",
+      "benchmark_key": "public_cabench_scenario_e"
     }
   ],
   "stats": {
