@@ -1,6 +1,6 @@
 # HiTrust-FedBot
 
-This repository contains the reviewer-facing artifact package for the HiTrust-FedBot study on hierarchical and trust-aware federated Web bot detection under congested edge environments. The current evidence base spans topology-aware pilot scenarios, a maintainer-side confidential raw-to-graph audit for the released internal bundle, same-task public Ca-Bench validation on `scenario_e` and `scenario_h`, two non-Ca-Bench public raw-data chains (Westermo and LITNET-2020 UDP-flood), a Westermo `sign_flip` attack-family extension, matched public baseline/provenance comparisons, a public `scenario_h` server-runtime scaling package, and an auxiliary public NSL-KDD validation path.
+This repository contains the reviewer-facing artifact package for the HiTrust-FedBot study on hierarchical and trust-aware federated Web bot detection under congested edge environments. The current evidence base spans topology-aware pilot scenarios, a maintainer-side confidential raw-to-graph audit for the released internal bundle, same-task public Ca-Bench validation on `scenario_e` and `scenario_h`, a full matched adaptive public `2 x 2` matrix over those scenarios, two non-Ca-Bench public raw-data chains (Westermo and LITNET-2020 UDP-flood), matched `sign_flip` attack-family extensions on both public raw-data chains, matched public baseline/provenance comparisons, a public `scenario_h` single-host deployment/runtime package, and an auxiliary public NSL-KDD validation path.
 
 ## Repository Navigation & Artifact Mapping
 
@@ -43,10 +43,14 @@ Reviewers usually choose one of the following public entry points depending on h
 | Non-Ca-Bench public raw-data validation (Westermo `update_noise`) | `bash core_experiments/reproduce/reproduce_public_westermo_validation.sh` |
 | Non-Ca-Bench public second attack-family validation (Westermo `sign_flip`) | `bash core_experiments/reproduce/reproduce_public_westermo_sign_flip_validation.sh` |
 | Non-Ca-Bench public raw-data validation (LITNET-2020 UDP-flood `update_noise`) | `bash core_experiments/reproduce/reproduce_public_litnet2020_udp_validation.sh` |
+| Non-Ca-Bench public second attack-family validation (LITNET-2020 UDP-flood `sign_flip`) | `bash core_experiments/reproduce/reproduce_public_litnet2020_udp_sign_flip_validation.sh` |
 | Cross-dataset F1 / KP / KC frontier summary figure | `bash core_experiments/reproduce/reproduce_cross_dataset_frontier_summary.sh` |
 | Public `scenario_h` non-adaptive attack-extension package | `bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_attack_extension.sh` |
+| Promoted matched adaptive validation | `bash core_experiments/reproduce/reproduce_public_adaptive_matched_validation.sh` |
+| Full matched adaptive 2x2 matrix validation | `bash core_experiments/reproduce/reproduce_public_adaptive_full_matrix_validation.sh` |
 | Minimal public `scenario_h` server runtime benchmark | `bash core_experiments/reproduce/reproduce_public_server_runtime_benchmark.sh` |
-| Public `scenario_h` server runtime scaling (10/20/40 clients) | `bash core_experiments/reproduce/reproduce_public_server_runtime_scaling.sh` |
+| Public `scenario_h` server runtime scaling (10/20/40/80 clients) | `bash core_experiments/reproduce/reproduce_public_server_runtime_scaling.sh` |
+| Public `scenario_h` single-host deployment/runtime package (10/20/40/80 clients) | `bash core_experiments/reproduce/reproduce_public_server_deployment_runtime_package.sh` |
 | FLTrust-like sensitivity on public hardest `scenario_h` | `bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh` |
 | Auxiliary external validation on NSL-KDD | `bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh` |
 | Conditional trust-mass floor hardening package | `bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh` |
@@ -65,7 +69,7 @@ The committed checksum manifest in `docs/reviewer_bundle_sha256_20260326.txt` in
 
 ## Reproducibility Boundary
 
-The public release supports paper-level reruns from the released derived graphs, reruns of the same-task public Ca-Bench `scenario_e` and `scenario_h` paths, reruns of the public Westermo `update_noise` and `sign_flip` paths, reruns of the public LITNET-2020 UDP-flood `update_noise` path, the public `scenario_h` runtime benchmark and runtime-scaling package, reruns of the auxiliary public NSL-KDD path, and reruns of the conditional hardening package. It still does not redistribute the private raw traces behind the internal pilot scenarios. However, maintainers who hold those preserved traces can now run `core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh`, which rebuilds all five released internal graphs and checks them against the shipped bundle with exact tensor/hash agreement. That boundary is documented consistently in `RELEASE_CHECKLIST.md`, `docs/DATA_AVAILABILITY_20260324.md`, and `docs/ARTIFACT_STATUS_20260326.md`.
+The public release supports paper-level reruns from the released derived graphs, reruns of the same-task public Ca-Bench `scenario_e` and `scenario_h` paths, reruns of the public Westermo `update_noise` and `sign_flip` paths, reruns of the public LITNET-2020 UDP-flood `update_noise` and `sign_flip` paths, both the two-anchor adaptive rerun and the full matched adaptive `2 x 2` matrix rerun, the public `scenario_h` runtime benchmark, runtime-scaling package, and single-host deployment/runtime package, reruns of the auxiliary public NSL-KDD path, and reruns of the conditional hardening package. It still does not redistribute the private raw traces behind the internal pilot scenarios. However, maintainers who hold those preserved traces can now run `core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh`, which rebuilds all five released internal graphs and checks them against the shipped bundle with exact tensor/hash agreement. That boundary is documented consistently in `RELEASE_CHECKLIST.md`, `docs/DATA_AVAILABILITY_20260324.md`, and `docs/ARTIFACT_STATUS_20260326.md`.
 
 ## Additional Documentation
 

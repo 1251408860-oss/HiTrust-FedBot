@@ -1,0 +1,280 @@
+{
+  "run_prefix": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients80",
+  "experiment_contract": {
+    "registry_version": "hitrust_experiment_registry_v1",
+    "method": {
+      "label": "condfloor",
+      "method_family": "proposed_hardening",
+      "provenance_kind": "repo_native",
+      "reference_grade": false,
+      "claim_role": "targeted_repair",
+      "notes": "Conditional trust-mass floor repair for small-group collapse.",
+      "method_key": "hitrust_condfloor",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "attack": {
+      "label": "update_noise",
+      "attack_family": "non_adaptive_update_poisoning",
+      "adaptive": false,
+      "coordination": "independent",
+      "stats_priority": "primary",
+      "attack_key": "update_noise",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "benchmark": {
+      "dataset_scope": "public_raw_to_graph",
+      "task_relation": "same_task_public",
+      "evidence_tier": "primary",
+      "benchmark_key": "public_cabench_scenario_h",
+      "registry_version": "hitrust_experiment_registry_v1"
+    },
+    "stats_plan": {
+      "family": "primary",
+      "recommended_seed_count": 20,
+      "recommended_seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77,
+        88,
+        99,
+        111,
+        122,
+        133,
+        144,
+        155,
+        166,
+        177,
+        188,
+        199,
+        211,
+        222
+      ],
+      "primary_endpoints": [
+        "test_f1",
+        "test_fpr",
+        "kept_poisoned_clients",
+        "kept_clients"
+      ],
+      "correction_method": "holm_bonferroni",
+      "promotion_note": "",
+      "registry_version": "hitrust_experiment_registry_v1"
+    }
+  },
+  "seed_plan": {
+    "observed_seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "observed_seed_count": 5,
+    "recommended_seed_count": 20,
+    "meets_recommended_seed_count": false,
+    "family": "primary",
+    "correction_method": "holm_bonferroni"
+  },
+  "rows": [
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients80_seed11",
+      "seed": 11,
+      "test_f1": 0.9797909407665506,
+      "test_recall": 0.9656593406593407,
+      "test_fpr": 0.012461059190031152,
+      "kept_clients": 48.0,
+      "kept_poisoned_clients": 0.0,
+      "local_training_ms_mean": 238.04756080016887,
+      "attack_simulation_ms_mean": 1.573410999844782,
+      "client_eval_ms_mean": 264.75049000009676,
+      "server_aggregation_ms_mean": 6.067448999874614,
+      "global_eval_ms_mean": 4.9808551999376505,
+      "server_round_ms_mean": 275.798794199909,
+      "round_wall_clock_ms_mean": 516.8917058000261,
+      "process_rss_mb_mean": 828.90625,
+      "process_peak_rss_mb_mean": 828.90625,
+      "bytes_per_round_est": 197760.0,
+      "active_clients": 80.0,
+      "method_key": "hitrust_condfloor",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients80_seed22",
+      "seed": 22,
+      "test_f1": 0.9784272790535837,
+      "test_recall": 0.9656593406593407,
+      "test_fpr": 0.018691588785046728,
+      "kept_clients": 48.0,
+      "kept_poisoned_clients": 0.0,
+      "local_training_ms_mean": 226.83329120009148,
+      "attack_simulation_ms_mean": 1.425550200019643,
+      "client_eval_ms_mean": 247.52978639990033,
+      "server_aggregation_ms_mean": 6.07696200004284,
+      "global_eval_ms_mean": 5.1899186000810005,
+      "server_round_ms_mean": 258.7966670000242,
+      "round_wall_clock_ms_mean": 488.87239519990544,
+      "process_rss_mb_mean": 823.8125,
+      "process_peak_rss_mb_mean": 825.8125,
+      "bytes_per_round_est": 197760.0,
+      "active_clients": 80.0,
+      "method_key": "hitrust_condfloor",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients80_seed33",
+      "seed": 33,
+      "test_f1": 0.979706088173548,
+      "test_recall": 0.9615384615384616,
+      "test_fpr": 0.003115264797507788,
+      "kept_clients": 48.0,
+      "kept_poisoned_clients": 0.0,
+      "local_training_ms_mean": 237.42030539988264,
+      "attack_simulation_ms_mean": 1.325691600140999,
+      "client_eval_ms_mean": 259.9808132000362,
+      "server_aggregation_ms_mean": 6.8460868002148345,
+      "global_eval_ms_mean": 4.867626799932623,
+      "server_round_ms_mean": 271.69452680018367,
+      "round_wall_clock_ms_mean": 511.7551035999895,
+      "process_rss_mb_mean": 825.4453125,
+      "process_peak_rss_mb_mean": 829.75,
+      "bytes_per_round_est": 197760.0,
+      "active_clients": 80.0,
+      "method_key": "hitrust_condfloor",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients80_seed44",
+      "seed": 44,
+      "test_f1": 0.9759450171821307,
+      "test_recall": 0.9752747252747253,
+      "test_fpr": 0.0529595015576324,
+      "kept_clients": 48.0,
+      "kept_poisoned_clients": 0.0,
+      "local_training_ms_mean": 257.1154237999508,
+      "attack_simulation_ms_mean": 1.3065464000646898,
+      "client_eval_ms_mean": 275.9789251998882,
+      "server_aggregation_ms_mean": 6.891477199951623,
+      "global_eval_ms_mean": 4.5885116000135895,
+      "server_round_ms_mean": 287.4589139998534,
+      "round_wall_clock_ms_mean": 547.3068208001678,
+      "process_rss_mb_mean": 831.7109375,
+      "process_peak_rss_mb_mean": 831.7109375,
+      "bytes_per_round_est": 197760.0,
+      "active_clients": 80.0,
+      "method_key": "hitrust_condfloor",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    },
+    {
+      "run_name": "public_cabench_scenario_h_hierarchical_sage_update_noise_frac0p4_condfloor_runtimebench_clients80_seed55",
+      "seed": 55,
+      "test_f1": 0.9722607489597781,
+      "test_recall": 0.9629120879120879,
+      "test_fpr": 0.040498442367601244,
+      "kept_clients": 48.0,
+      "kept_poisoned_clients": 0.0,
+      "local_training_ms_mean": 236.84118760011188,
+      "attack_simulation_ms_mean": 1.3742666000325698,
+      "client_eval_ms_mean": 269.10337420004,
+      "server_aggregation_ms_mean": 7.106913999996323,
+      "global_eval_ms_mean": 4.751512599978014,
+      "server_round_ms_mean": 280.9618008000143,
+      "round_wall_clock_ms_mean": 520.4696899999362,
+      "process_rss_mb_mean": 827.17578125,
+      "process_peak_rss_mb_mean": 828.58203125,
+      "bytes_per_round_est": 197760.0,
+      "active_clients": 80.0,
+      "method_key": "hitrust_condfloor",
+      "attack_key": "update_noise",
+      "benchmark_key": "public_cabench_scenario_h"
+    }
+  ],
+  "stats": {
+    "test_f1": {
+      "n": 5,
+      "mean": 0.9772260148271182,
+      "std": 0.0031807021520438962
+    },
+    "test_recall": {
+      "n": 5,
+      "mean": 0.9662087912087912,
+      "std": 0.005372969015276889
+    },
+    "test_fpr": {
+      "n": 5,
+      "mean": 0.02554517133956386,
+      "std": 0.020593761845530727
+    },
+    "kept_clients": {
+      "n": 5,
+      "mean": 48.0,
+      "std": 0.0
+    },
+    "kept_poisoned_clients": {
+      "n": 5,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "local_training_ms": {
+      "n": 5,
+      "mean": 239.25155376004113,
+      "std": 10.999363986608122
+    },
+    "attack_simulation_ms": {
+      "n": 5,
+      "mean": 1.4010931600205367,
+      "std": 0.10681260938954747
+    },
+    "client_eval_ms": {
+      "n": 5,
+      "mean": 263.4686777999923,
+      "std": 10.678396351690655
+    },
+    "server_aggregation_ms": {
+      "n": 5,
+      "mean": 6.597777800016047,
+      "std": 0.48980457863156446
+    },
+    "global_eval_ms": {
+      "n": 5,
+      "mean": 4.875684959988575,
+      "std": 0.22790118886816083
+    },
+    "server_round_ms": {
+      "n": 5,
+      "mean": 274.9421405599969,
+      "std": 10.78034199153052
+    },
+    "round_wall_clock_ms": {
+      "n": 5,
+      "mean": 517.059143080005,
+      "std": 20.91176381764861
+    },
+    "process_rss_mb": {
+      "n": 5,
+      "mean": 827.41015625,
+      "std": 3.0656846284657098
+    },
+    "process_peak_rss_mb": {
+      "n": 5,
+      "mean": 828.95234375,
+      "std": 2.1356480121126293
+    },
+    "bytes_per_round_est": {
+      "n": 5,
+      "mean": 197760.0,
+      "std": 0.0
+    },
+    "active_clients": {
+      "n": 5,
+      "mean": 80.0,
+      "std": 0.0
+    }
+  }
+}

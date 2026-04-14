@@ -60,6 +60,7 @@
         "kept_clients"
       ],
       "correction_method": "holm_bonferroni",
+      "promotion_note": "",
       "registry_version": "hitrust_experiment_registry_v1"
     }
   },

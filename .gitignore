@@ -29,3 +29,8 @@ data_hitrust/public_benchmarks/*/downloads/
 paper_hitrust/runs/tmp_*/
 paper_hitrust/runs/*_debug/
 paper_hitrust/runs/*_clustercheck/
+
+# Generated seed sweeps and rerun outputs
+core_experiments/configs_hitrust/seed_sweeps_*/
+core_experiments/configs_hitrust/runtime_scaling_generated/*clients*.json
+paper_hitrust/runs/*seed*/

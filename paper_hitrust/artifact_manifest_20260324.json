@@ -1,5 +1,5 @@
 {
-  "artifact_version": "2026-03-30",
+  "artifact_version": "2026-04-14",
   "same_task_public_validation": {
     "scenario_e": {
       "graph": "data_hitrust/public_benchmarks/cabench_v1/graphs/cabench_scenario_e_three_tier_high2_public_graph.pt",
@@ -22,10 +22,82 @@
       "reproduce_script": "core_experiments/reproduce/reproduce_public_cabench_scenario_h_validation.sh"
     }
   },
+  "public_raw_data_validation": {
+    "westermo_update_noise": {
+      "baseline_table": "paper_hitrust/tables/public_westermo_update_noise_baseline_comparison.json",
+      "baseline_figure": "paper_hitrust/figures/public_westermo_update_noise_baseline_comparison.png",
+      "condfloor_table": "paper_hitrust/tables/public_westermo_update_noise_condfloor_comparison.json",
+      "condfloor_figure": "paper_hitrust/figures/public_westermo_update_noise_condfloor_comparison.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_westermo_validation.sh"
+    },
+    "westermo_sign_flip": {
+      "baseline_table": "paper_hitrust/tables/public_westermo_sign_flip_baseline_comparison.json",
+      "baseline_figure": "paper_hitrust/figures/public_westermo_sign_flip_baseline_comparison.png",
+      "condfloor_table": "paper_hitrust/tables/public_westermo_sign_flip_condfloor_comparison.json",
+      "condfloor_figure": "paper_hitrust/figures/public_westermo_sign_flip_condfloor_comparison.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_westermo_sign_flip_validation.sh"
+    },
+    "litnet2020_udp_update_noise": {
+      "baseline_table": "paper_hitrust/tables/public_litnet2020_udp_update_noise_baseline_comparison.json",
+      "baseline_figure": "paper_hitrust/figures/public_litnet2020_udp_update_noise_baseline_comparison.png",
+      "condfloor_table": "paper_hitrust/tables/public_litnet2020_udp_update_noise_condfloor_comparison.json",
+      "condfloor_figure": "paper_hitrust/figures/public_litnet2020_udp_update_noise_condfloor_comparison.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_litnet2020_udp_validation.sh"
+    },
+    "litnet2020_udp_sign_flip": {
+      "baseline_table": "paper_hitrust/tables/public_litnet2020_udp_sign_flip_baseline_comparison.json",
+      "baseline_figure": "paper_hitrust/figures/public_litnet2020_udp_sign_flip_baseline_comparison.png",
+      "condfloor_table": "paper_hitrust/tables/public_litnet2020_udp_sign_flip_condfloor_comparison.json",
+      "condfloor_figure": "paper_hitrust/figures/public_litnet2020_udp_sign_flip_condfloor_comparison.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_litnet2020_udp_sign_flip_validation.sh"
+    }
+  },
+  "public_attack_extension": {
+    "colluding_update_noise_table": "paper_hitrust/tables/public_cabench_scenario_h_colluding_update_noise_comparison.json",
+    "colluding_update_noise_figure": "paper_hitrust/figures/public_cabench_scenario_h_colluding_update_noise_comparison.png",
+    "multi_round_stealth_table": "paper_hitrust/tables/public_cabench_scenario_h_multi_round_stealth_comparison.json",
+    "multi_round_stealth_figure": "paper_hitrust/figures/public_cabench_scenario_h_multi_round_stealth_comparison.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_public_cabench_scenario_h_attack_extension.sh"
+  },
+  "public_adaptive_matched_validation": {
+    "scenario_h_adaptive_benign_mimic_table": "paper_hitrust/tables/public_cabench_scenario_h_adaptive_benign_mimic_comparison.json",
+    "scenario_h_adaptive_benign_mimic_figure": "paper_hitrust/figures/public_cabench_scenario_h_adaptive_benign_mimic_comparison.png",
+    "scenario_e_adaptive_alie_like_table": "paper_hitrust/tables/public_cabench_scenario_e_adaptive_alie_like_comparison.json",
+    "scenario_e_adaptive_alie_like_figure": "paper_hitrust/figures/public_cabench_scenario_e_adaptive_alie_like_comparison.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_public_adaptive_matched_validation.sh"
+  },
+  "public_adaptive_full_matrix_validation": {
+    "scenario_h_adaptive_benign_mimic_table": "paper_hitrust/tables/public_cabench_scenario_h_adaptive_benign_mimic_comparison.json",
+    "scenario_h_adaptive_benign_mimic_figure": "paper_hitrust/figures/public_cabench_scenario_h_adaptive_benign_mimic_comparison.png",
+    "scenario_h_adaptive_alie_like_table": "paper_hitrust/tables/public_cabench_scenario_h_adaptive_alie_like_comparison.json",
+    "scenario_h_adaptive_alie_like_figure": "paper_hitrust/figures/public_cabench_scenario_h_adaptive_alie_like_comparison.png",
+    "scenario_e_adaptive_benign_mimic_table": "paper_hitrust/tables/public_cabench_scenario_e_adaptive_benign_mimic_comparison.json",
+    "scenario_e_adaptive_benign_mimic_figure": "paper_hitrust/figures/public_cabench_scenario_e_adaptive_benign_mimic_comparison.png",
+    "scenario_e_adaptive_alie_like_table": "paper_hitrust/tables/public_cabench_scenario_e_adaptive_alie_like_comparison.json",
+    "scenario_e_adaptive_alie_like_figure": "paper_hitrust/figures/public_cabench_scenario_e_adaptive_alie_like_comparison.png",
+    "reproduce_script": "core_experiments/reproduce/reproduce_public_adaptive_full_matrix_validation.sh"
+  },
   "public_hardest_fltrust_sensitivity": {
     "table": "paper_hitrust/tables/public_cabench_scenario_h_fltrust_like_sensitivity_report.json",
     "figure": "paper_hitrust/figures/public_cabench_scenario_h_fltrust_like_sensitivity.png",
     "reproduce_script": "core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh"
+  },
+  "public_runtime_packages": {
+    "server_runtime_benchmark": {
+      "table": "paper_hitrust/tables/public_cabench_scenario_h_server_runtime_benchmark.json",
+      "figure": "paper_hitrust/figures/public_cabench_scenario_h_server_runtime_benchmark.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_server_runtime_benchmark.sh"
+    },
+    "server_runtime_scaling": {
+      "table": "paper_hitrust/tables/public_cabench_scenario_h_server_runtime_scaling.json",
+      "figure": "paper_hitrust/figures/public_cabench_scenario_h_server_runtime_scaling.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_server_runtime_scaling.sh"
+    },
+    "deployment_runtime_package": {
+      "table": "paper_hitrust/tables/public_cabench_scenario_h_deployment_runtime_package.json",
+      "figure": "paper_hitrust/figures/public_cabench_scenario_h_deployment_runtime_package.png",
+      "reproduce_script": "core_experiments/reproduce/reproduce_public_server_deployment_runtime_package.sh"
+    }
   },
   "public_aux_validation": {
     "graph": "data_hitrust/public_benchmarks/nsl_kdd/graphs/nsl_kdd_public_graph.pt",
@@ -40,7 +112,7 @@
     "summary_table": "paper_hitrust/tables/cross_dataset_f1_kp_kc_frontier_summary.json",
     "main_figure": "paper_hitrust/figures/cross_dataset_f1_kp_kc_frontier_summary.png",
     "eaai_figure": "paper_hitrust/figures_eaai/cross_dataset_f1_kp_kc_frontier_summary.png",
-    "sage_figure": "paper_hitrust/figures_sage_main/cross_dataset_f1_kp_kc_frontier_summary.png",
+    "sage_figure": "paper_hitrust/figures/cross_dataset_f1_kp_kc_frontier_summary.png",
     "reproduce_script": "core_experiments/reproduce/reproduce_cross_dataset_frontier_summary.sh"
   },
   "conditional_floor_validation": {
@@ -51,6 +123,10 @@
     "public_table": "paper_hitrust/tables/public_nslkdd_update_noise_condfloor_comparison.json",
     "public_figure": "paper_hitrust/figures/public_nslkdd_update_noise_condfloor_comparison.png",
     "reproduce_script": "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
+  },
+  "internal_raw_audit": {
+    "reproduce_script": "core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh",
+    "note": "Maintainer-only exact-match rebuild of the released internal graphs from preserved private traces."
   },
   "manuscript_support": {
     "main_draft": "paper_hitrust/manuscript_eaai_compact_draft_20260401.md",
@@ -68,6 +144,8 @@
   "docs": {
     "artifact_release_notes": "docs/ARTIFACT_RELEASE_20260324.md",
     "data_availability_notes": "docs/DATA_AVAILABILITY_20260324.md",
+    "artifact_status": "docs/ARTIFACT_STATUS_20260326.md",
+    "runtime_note": "docs/RUNTIME_SCALING_NOTE_20260408.md",
     "eaai_submission_checklist": "docs/EAAI_SUBMISSION_CHECKLIST_20260327.md",
     "eaai_title_page_template": "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md",
     "eaai_highlights_template": "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md",

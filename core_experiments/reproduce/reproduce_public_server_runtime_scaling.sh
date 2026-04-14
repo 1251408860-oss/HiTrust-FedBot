@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 SEEDS="${SEEDS:-11,22,33,44,55}"
-CLIENT_COUNTS="${CLIENT_COUNTS:-10,20,40}"
+CLIENT_COUNTS="${CLIENT_COUNTS:-10,20,40,80}"
 
 if [[ -n "${PY_BIN:-}" ]]; then
   :

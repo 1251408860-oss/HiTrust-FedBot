@@ -40,13 +40,14 @@ bash core_experiments/reproduce/reproduce_public_westermo_sign_flip_validation.s
 
 The Westermo reruns use matched 20-seed public sweeps by default and rebuild the paired comparison tables used for the paper-facing non-Ca-Bench evidence.
 
-Non-Ca-Bench public raw-data validation (LITNET-2020 UDP-flood `update_noise`):
+Non-Ca-Bench public raw-data validation (LITNET-2020 UDP-flood `update_noise` and supportive `sign_flip`):
 
 ```bash
 bash core_experiments/reproduce/reproduce_public_litnet2020_udp_validation.sh
+bash core_experiments/reproduce/reproduce_public_litnet2020_udp_sign_flip_validation.sh
 ```
 
-The LITNET-2020 rerun also defaults to the matched 20-seed primary sweep and rebuilds both the main trust-vs-baseline comparison and the `condfloor`-focused comparison.
+The LITNET-2020 reruns default to matched 20-seed sweeps. The `update_noise` entry point rebuilds the main trust-vs-baseline comparison and the `condfloor`-focused comparison, while the `sign_flip` entry point widens the same raw-data chain to a second non-adaptive attack family.
 
 Cross-dataset F1 / KP / KC frontier summary:
 
@@ -68,11 +69,27 @@ Promoted matched adaptive validation (`scenario_h + adaptive_benign_mimic`, `sce
 bash core_experiments/reproduce/reproduce_public_adaptive_matched_validation.sh
 ```
 
+Full matched adaptive `2 x 2` matrix validation:
+
+```bash
+bash core_experiments/reproduce/reproduce_public_adaptive_full_matrix_validation.sh
+```
+
+This wrapper rebuilds all four public adaptive scenario/attack combinations with matched 20-seed sweeps: `scenario_h + adaptive_benign_mimic`, `scenario_h + adaptive_alie_like`, `scenario_e + adaptive_benign_mimic`, and `scenario_e + adaptive_alie_like`.
+
 FLTrust-like sensitivity on public hardest `scenario_h`:
 
 ```bash
 bash core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh
 ```
+
+Single-host deployment/runtime package on public hardest `scenario_h`:
+
+```bash
+bash core_experiments/reproduce/reproduce_public_server_deployment_runtime_package.sh
+```
+
+This entry point aggregates the `10/20/40/80`-client runtime seed sweeps into the paper-facing deployment/runtime summary with wall-clock time, local training time, client evaluation time, server-round time, bytes per round, and peak RSS.
 
 Auxiliary cross-domain validation:
 
