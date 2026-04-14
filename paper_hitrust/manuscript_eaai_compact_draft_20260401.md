@@ -1,175 +1,464 @@
-# HiTrust-FedBot: Trust-Aware Hierarchical Federated Web Bot Detection with Group-Coverage-Constrained Filtering
+# HiTrust-FedBot: An Interpretable Federated Web Bot Detection Framework with Trust-Aware Hierarchical Aggregation and Coverage-Constrained Filtering
 
-Author identities, affiliations, and correspondence details should remain on the separate title page for submission formatting.
+Author identities, affiliations, and correspondence details should remain on the separate title page required by the journal workflow.
 
 ## Abstract
 
-Federated web bot detection at the network edge is an engineering artificial intelligence problem because traffic graphs often cannot be centralized, yet deployed systems must handle heterogeneous clients, communication limits, and malicious participants. We present HiTrust-FedBot, a trust-aware hierarchical federated detector that preserves semantic group coverage and adds targeted hardening for identified failure modes. The study combines internal topology-aware pilots, a confidential maintainer-side raw-to-graph audit for the released internal bundle, same-task public validation on Ca-Bench scenarios `e` and `h`, two public raw-data chains from Westermo and LITNET-2020 flood traffic, and auxiliary cross-domain transfer. Main public non-adaptive claims use matched 20-seed paired testing. On public Ca-Bench `scenario_h` with `update_noise@0.4`, conditional-floor hardening reaches an F1 score of `0.9746`, a false positive rate of `0.0307`, and `0.0` retained poisoned clients, while strong aggregation baselines keep all `4.0` poisoned clients. Westermo and LITNET-2020 now widen the raw-data evidence to separate pipelines and second attack-family checks, but they mainly support a deployment frontier rather than universal dominance. A five-seed single-host deployment/runtime package further shows server-round time rising from `29.6` to `266.1` milliseconds and aggregation from `0.71` to `7.04` milliseconds as active clients increase from `10` to `80`, with peak memory near `830` megabytes and linear bytes per round. The results support HiTrust-FedBot as an interpretable engineering control for the trade-off among predictive quality, poisoned participation, and abstention.
+Federated web bot detection at the edge is an engineering artificial intelligence problem because graph-structured traffic evidence often cannot be centralized, yet the deployed system must tolerate non-IID clients, poisoned participation, semantic coverage constraints, and practical runtime limits. We present HiTrust-FedBot, an interpretable federated bot-detection framework that combines trust-aware hierarchical aggregation with targeted hardening for two observed failure regimes: small-group collapse under non-adaptive poisoning and benign-looking camouflage under adaptive poisoning. The evaluation is organized around a reviewer-auditable evidence stack: five internal topology-aware pilots, same-task public Ca-Bench validation on `scenario_e` and `scenario_h`, two additional public raw-data chains built from Westermo and LITNET-2020 UDP-flood flows, a matched 20-seed adaptive `2 x 2` public matrix, an attack-extension package, and a 5-seed single-host deployment/runtime package over `10/20/40/80` active clients. On the hardest same-task public non-adaptive setting, public Ca-Bench `scenario_h + update_noise@0.4`, the targeted `condfloor` repair reaches `F1 = 0.9746`, `FPR = 0.0307`, `KP = 0.0`, and `KC = 6.0`, while strong aggregation baselines still retain all `4.0` poisoned clients. Across Westermo and LITNET-2020, the same public raw-data pipelines expose a stable frontier between predictive quality and poisoned participation rather than a universal winner. The deployment package shows static-line server-round time rising from `29.6` to `266.1 ms` and aggregation from `0.71` to `7.04 ms` as client count increases from `10` to `80`, with peak RSS near `830 MB`. These results support a deployment-oriented interpretation: HiTrust-FedBot is best understood as a set of interpretable engineering controls for predictive quality, poisoned participation, abstention, and runtime cost, not as a universal robust-FL theorem.
 
-**Keywords:** federated learning, bot detection, GraphSAGE, adversarial robustness, trust-aware aggregation, edge security
+**Keywords:** federated learning, bot detection, graph neural networks, trust-aware aggregation, adversarial robustness, edge security
 
 ## 1. Introduction
 
-### 1.1 Background and Motivation
+### 1.1 Engineering Motivation
 
-Web bot detection at the network edge is a concrete engineering AI problem: operators want a shared detector across multiple sites, but raw traffic records and graph-derived behavior traces are often too sensitive or too expensive to centralize. Federated learning is therefore attractive, yet a deployable system must satisfy more than average predictive accuracy. It must operate under communication limits, non-IID client structure, and the possibility that some participating sites or updates are malicious.
+Web bot detection is increasingly deployed across multiple edge sites, network segments, or administrative domains. In that setting, raw traffic records, flow traces, and graph-derived interaction structures are often difficult to centralize because of privacy, bandwidth, or operational constraints. Federated learning is therefore attractive, but a practical deployment must solve more than a standard distributed classification problem. It must cope with non-IID client populations, communication budgets, and malicious participants that poison the update stream.
 
-In topology-aware bot detection, these constraints are sharper than in flat iid classification. Relational structure is part of the signal, not something that can be averaged away without consequence. Different sites naturally emphasize different traffic roles, overlap patterns, and attack concentrations. As a result, a server that simply suppresses unusual updates may remove poisoned clients, but it may also remove the only remaining representatives of a semantically important subgroup.
+In topology-aware bot detection, these issues interact more strongly than in flat iid benchmarks. The graph structure is part of the detection signal: overlap patterns, neighborhood context, and role asymmetry all matter. Aggressive server-side filtering can suppress poisoned updates, but it can also remove the only remaining representatives of a semantically important subgroup. A deployed system therefore faces a multi-objective operating problem: it should improve predictive quality, reduce retained poisoned participation, preserve enough client and group coverage to remain useful, and do so at acceptable engineering cost.
 
-This makes the server-side objective an engineering trade-off problem rather than a pure leaderboard problem. In practice, the system should reduce poisoned participation without silently collapsing minority but valid semantic groups, and it should do so without falling into unrealistic abstention regimes where almost no clients remain active. For an EAAI-facing paper, this distinction matters: the relevant contribution is not merely another robust federated rule, but a deployable AI system design that exposes and manages the operating trade-off explicitly.
+This motivates a narrower and more defensible paper thesis than a generic "robust federated learning" claim. The strongest question is not whether one method wins every leaderboard metric. The stronger question is whether an interpretable federated detector can expose and manage the trade-off among predictive quality, poisoned participation, semantic coverage, abstention, and runtime cost under public, reviewer-auditable evidence.
 
-This paper addresses that gap with HiTrust-FedBot, a trust-aware hierarchical federated bot detection framework built around grouped aggregation and group-coverage-constrained trust filtering. The framework is instantiated with a GraphSAGE backbone and evaluated not only on internal topology-aware pilot scenarios, but also on same-task public Ca-Bench validation with matched multi-seed statistics, two non-Ca-Bench public raw-data chains (Westermo and LITNET-2020 UDP-flood), and auxiliary cross-domain NSL-KDD transfer. The resulting evidence supports a deliberately conservative narrative. The strongest claim is not universal F1 superiority over every baseline; it is that HiTrust-FedBot and its hardening variants occupy more useful operating points on the trade-off between retained poisoned participation and overly aggressive abstention. That interpretation remains intact even after adding stronger modern comparators such as Centered Clipping, CAF, and `ARC+mean` to the non-adaptive public suite, official FoolsGold to the adaptive suite, and multiple public raw-data evidence chains outside Ca-Bench.
+### 1.2 HiTrust-FedBot
 
-### 1.2 Main Contributions
+HiTrust-FedBot addresses that question with trust-aware hierarchical aggregation. The server evaluates client updates, filters them through trust-aware rules, aggregates within semantic groups, and then combines the group-level updates into a global model. The grouped structure is important because it turns semantic coverage into an explicit control variable rather than a side effect of flat filtering.
+
+The current repository also shows that this mainline should be interpreted carefully. A static group floor is useful for preserving coverage, but the hardest same-task public stress case reveals a small-group collapse mode in which forced coverage can preserve exactly the poisoned client that should have been rejected. A second failure regime appears under adaptive benign-mimic poisoning, where malicious clients imitate benign update directions closely enough to survive static trust rules. The paper is therefore strongest when it presents targeted hardening lines for distinct failure modes instead of claiming a single universally superior defense.
+
+### 1.3 Contributions
 
 This paper makes four main contributions.
 
-- It presents HiTrust-FedBot, a trust-aware hierarchical federated bot-detection framework that treats semantic group coverage as a first-class design constraint instead of relying on flat trust filtering alone.
-- It evaluates the framework with a GraphSAGE backbone across internal topology-aware scenarios, same-task public Ca-Bench `scenario_e` and `scenario_h`, public Westermo and LITNET-2020 raw-data chains, and auxiliary public NSL-KDD transfer, together with keep-all, classical robust aggregation, modern Centered Clipping, CAF, and `ARC+mean` comparators, FLTrust-like, FLShield-like, and official FoolsGold baselines.
-- It studies two practically important failure regimes: small-group collapse under non-adaptive poisoning and adaptive camouflage under defense-aware poisoning, and introduces targeted hardening variants for each regime instead of claiming a single universal defense.
-- It supports the main public non-adaptive claims with matched 20-seed paired evaluation, exposes pinned reviewer-visible provenance for both the reference baseline bundle and the adapted trust-bootstrapping comparators, adds a maintainer-side exact-match raw-to-graph audit for the released internal bundle, and complements the communication study with a measured 5-seed single-host deployment/runtime package over `10/20/40/80` clients.
+- It presents HiTrust-FedBot, an interpretable federated web bot-detection framework that couples trust-aware hierarchical aggregation with explicit semantic-group coverage control.
+- It constructs an EAAI-oriented evidence stack that combines internal topology-aware pilots, same-task public Ca-Bench validation, two additional public raw-data chains from Westermo and LITNET-2020 UDP-flood traffic, a matched 20-seed adaptive `2 x 2` matrix, an attack-extension package, and a measured single-host deployment/runtime package.
+- It identifies two distinct failure mechanisms and addresses them with targeted hardenings: `condfloor` for static small-group collapse and `temporal_rootguard` / `temporal_rootguard_v2` for adaptive camouflage.
+- It frames the results conservatively around deployment-relevant operating points, reproducibility surface, and engineering cost, rather than around universal superiority on `F1`.
 
 ## 2. Related Work
 
-Federated learning has become an active direction in cyber-security detection because it allows multiple sites to learn a shared detector without exchanging raw data [3-5]. Existing studies have applied federated learning to intrusion detection, malicious traffic classification, and privacy-sensitive security monitoring, but they also report substantial non-IID effects across clients. Those effects are highly relevant in the present setting, where graph partitions derived from different traffic roles and topologies naturally induce heterogeneous client behavior.
+Federated learning has become a practical direction for intrusion detection, malicious traffic analysis, and privacy-sensitive security monitoring because it allows distributed model training without centralizing raw data [1-5]. That literature establishes the engineering motivation for distributed security AI, but it also repeatedly highlights non-IID client structure, unstable local distributions, and resource constraints. These issues are central in the present task because graph-derived bot-detection clients differ systematically in traffic roles, overlap structure, and attack concentration.
 
-A second line of work addresses poisoning and Byzantine robustness in federated learning [6-9]. Classical robust aggregators such as Krum, median, trimmed mean, and centered clipping [18] focus on suppressing malicious updates in flat client pools, while more recent pre-aggregation strategies such as ARC [19] explicitly target robustness under stronger heterogeneity. Trust-bootstrapping methods such as FLTrust emphasize alignment to a trusted server root [8], while sybil-oriented methods such as FoolsGold focus on the similarity structure of client histories [17]. These methods are directly relevant because our threat model includes poisoned clients and coordinated camouflage. However, most of them are still not designed for settings in which semantic group coverage is itself a deployment requirement. In topology-aware bot detection, dropping or clipping updates aggressively may improve aggregation quality while still leaving the system with the wrong active client population for deployment.
+Robust federated learning under poisoning has produced a large family of defenses based on robust aggregation, clipping, trust bootstrapping, and validation-guided filtering [6-9,18,19]. These methods are directly relevant because our setting includes malicious participants. However, much of the robust-FL literature treats the client population as a flat pool and focuses on suppressing suspicious updates. In topology-aware bot detection, that design is incomplete: the server may improve the cleanliness of the retained pool while also deleting the only surviving representatives of a semantically important client group. This is the engineering gap that motivates our group-aware filtering rule and the way we interpret abstention.
 
-Graph learning has also become increasingly important in security analytics because relational structure often carries information that feature-only models miss [10-13]. This is particularly true for bot and attack behavior that emerges from interaction patterns rather than isolated flow attributes. GraphSAGE is attractive in the present setting because it offers a practical balance between structural expressiveness and deployment tractability [13]. In addition, communication-efficient adaptation remains a central concern in federated systems [1,14-16], which motivates comparing multiple tuning regimes instead of assuming that robust behavior requires full-model updates.
+Graph neural networks have also become important for cyber-security analytics because relational structure often carries the signal that feature-only models miss [10-13]. For federated bot detection, this makes GraphSAGE an attractive practical backbone: it provides structural expressiveness without requiring an unrealistic centralized graph [13]. Communication-efficient adaptation is a second practical concern in federated systems [1,14-16], so we also evaluate `head_only`, `adapter_ft`, and `full_ft` update regimes instead of assuming that strong robustness requires the heaviest communication path.
 
-Against this background, HiTrust-FedBot occupies a specific position. It is not simply another robust aggregator or another graph-based detector. Its main design distinction is that poisoning resistance and semantic coverage are coupled explicitly. This choice changes the aggregation rule, the interpretation of failure modes, and the meaning of aggressive abstention. It also leads to a paper structure in which the strongest claims come from carefully chosen public hardest settings rather than from broad average-case accuracy claims.
+Against that background, HiTrust-FedBot should not be read as just another robust aggregation rule. Its distinguishing feature is the joint treatment of poisoned participation, semantic group coverage, abstention, and deployment cost under a public evidence surface that reviewers can audit directly.
 
 ## 3. Problem Setting
 
-### 3.1 Federated Bot Detection Scenario
+### 3.1 Federated Topology-Aware Bot Detection
 
-We consider a server-coordinated federated learning system for web bot detection. Each client corresponds to an edge site that observes a local traffic-derived graph partition. The client trains a local detector and uploads model updates, while the server aggregates these updates into a global model. The graph partitions are not assumed to be iid. Instead, they may differ in traffic load, role composition, attack concentration, and relational structure.
+We consider a server-coordinated federated learning system with active client set `C_t` at communication round `t`. Each client trains locally on a graph-derived partition of traffic or behavior data and uploads a model update instead of raw records. Clients are mapped to semantic groups `g(i)` defined by topology- or role-aware metadata from the graph-building pipeline. The global server must combine these updates into a single detector that remains useful across groups.
 
-Let the active clients be partitioned into semantic groups according to topology- or role-aware metadata derived from the graph-building pipeline. This grouping reflects the fact that different clients may represent distinct traffic roles or structural contexts. The server must combine these local contributions into a global model while handling two competing requirements. First, it should reduce the influence of malicious or low-quality updates. Second, it should avoid silently removing all clients from a semantically meaningful subgroup when that subgroup remains relevant to deployment.
+The server does not solve a pure prediction problem. It must balance:
 
-The core performance metrics therefore extend beyond standard classification accuracy. In addition to test F1 and false positive rate, the experiments track retained poisoned clients and retained total clients after filtering. These quantities expose the defense behavior directly. A method that appears strong on F1 but keeps many poisoned clients is operationally different from a method that achieves similar F1 while sharply reducing poisoned participation. Likewise, a method that removes nearly all clients may achieve strong poisoning suppression, but at the cost of an unrealistic operating point.
+- predictive quality on held-out data,
+- false-positive behavior,
+- retained poisoned participation after filtering,
+- retained total clients after filtering.
 
-### 3.2 Threat Model and Research Objective
+We denote retained poisoned clients by `KP` and retained total clients by `KC`. These quantities make the deployment trade-off explicit. A defense that attains a strong `F1` score while keeping many poisoned clients is operationally different from a defense that reaches similar `F1` with tighter participation control. Likewise, a defense that suppresses poisoning only by collapsing to a near-single-client operating point is not necessarily practical.
 
-The threat model includes malicious clients that participate in training and poison the federated update stream. The main non-adaptive attacks are `sign_flip@0.4` and `update_noise@0.4`, both of which corrupt 40% of the active clients. The adaptive public analysis further includes two defense-aware attacks. `adaptive_benign_mimic` shifts poisoned updates toward the benign centroid to accumulate trust mass, while `adaptive_alie_like` keeps poisoned updates inside a benign coordinate-wise envelope while preserving coordinated directionality.
+### 3.2 Threat Model
 
-These attacks expose two different failure regimes. In the first regime, a static group floor can preserve a fully compromised small group. In the second regime, trust-based heuristics can be fooled by malicious updates that are intentionally made benign-looking. The research objective is therefore not simply to maximize F1 under all settings. The objective is to find practical aggregation and hardening rules that reduce poisoned participation while maintaining enough semantic coverage and enough predictive quality for real deployment.
+The current paper studies both non-adaptive and adaptive poisoning.
 
-This objective leads to the central research question of the paper: can a grouped trust-aware federated bot detector provide more balanced operating points than either keep-all aggregation or more aggressive adaptive defenses that reduce poisoning primarily by severe abstention? The proposed framework, the experimental design, and the interpretation of results are all organized around this question.
+- Non-adaptive attacks:
+  - `update_noise@0.4`
+  - `sign_flip@0.4`
+- Adaptive attacks:
+  - `adaptive_benign_mimic@0.4`
+  - `adaptive_alie_like@0.4`
+- Supportive stress extensions:
+  - `colluding_update_noise`
+  - `multi_round_stealth`
+
+The `0.4` poisoning rate means that `40%` of active clients are malicious. In the main public settings, that corresponds to `4` poisoned clients out of `10`. The important point is not the exact attack naming, but the failure geometry each one reveals. `update_noise` exposes small-group collapse under static group floors. `adaptive_benign_mimic` and `adaptive_alie_like` expose a different problem: malicious clients can preserve benign-looking geometry long enough to accumulate trust and survive static screening.
+
+### 3.3 Research Objective
+
+The research objective is therefore deployment-oriented:
+
+1. maximize predictive quality where possible,
+2. minimize retained poisoned participation,
+3. avoid unnecessary abstention and client collapse,
+4. preserve enough semantic coverage for a useful global model,
+5. keep runtime cost within a practical single-host deployment budget.
+
+This objective is stricter than maximizing `F1` alone and more realistic for an engineering AI paper.
 
 ## 4. Proposed Method
 
-### 4.1 Overall Framework
+### 4.1 Pipeline Overview
 
-HiTrust-FedBot follows a server-coordinated federated workflow. A global model is initialized and warm-started on the server side. In each communication round, active clients train locally on their graph partitions and return model updates. The server then evaluates client behavior, derives trust-aware retention decisions, aggregates the retained updates within semantic groups, and finally combines the group-level aggregates into a global update.
+HiTrust-FedBot follows a simple, interpretable pipeline in each round:
 
-The key design choice is that the server does not aggregate all retained updates in one flat pool. Instead, it first preserves group structure, then applies trust-aware filtering with explicit group-level logic, and only then performs hierarchical aggregation. This structure is intended to reduce two common failures of flat robust aggregation: the domination of large groups over small but useful groups, and the complete collapse of a minority semantic group after aggressive filtering.
+1. The server selects active clients and sends the current global model.
+2. Each client trains locally on its graph partition and returns an update.
+3. The server computes trust-related signals from validation behavior and update consistency.
+4. The server filters or down-weights updates with explicit group-aware logic.
+5. Retained updates are aggregated within semantic groups and then merged into the global update.
 
-The framework is instantiated in this paper with a GraphSAGE backbone. GraphSAGE is chosen because the target task is graph-based bot detection and the experiments show a clear benefit over a feature-only baseline in the harder topology-aware settings. The same framework, however, is not conceptually tied to GraphSAGE alone. The design is more general: grouped trust-aware aggregation plus interpretable hardening rules for specific failure regimes.
+The key architectural choice is Step 5. The server does not aggregate all retained updates in a flat pool. It first aggregates within groups and only then across groups. This prevents dominant groups from overwhelming weaker ones and makes coverage-preservation logic explicit and auditable.
 
 ### 4.2 Trust-Aware Hierarchical Aggregation
 
-For each round, the server derives trust-related signals from local validation behavior and update characteristics. These signals are normalized and used to decide which clients remain active in the aggregation step. The retained client updates are then grouped according to their assigned semantic group. Aggregation first occurs within each group, and the group-level updates are then combined into the final global update.
+The mainline method assigns each update a trust score and retains updates that satisfy the trust rule. Retained updates are then grouped by semantic label. Aggregation inside a group produces a group-level update, and the server combines the group-level updates into the final global update.
 
-This hierarchical structure matters because the deployment setting is inherently structured. If aggregation is fully flat, dominant client populations can drown out minority but useful groups. A grouped hierarchy reduces that effect and makes the coverage decision explicit. It also provides a natural place to apply group-preservation logic after trust filtering.
+This structure provides two practical advantages.
 
-The server further enforces a minimum retained-client floor per group in the repaired mainline. This floor prevents a group from disappearing silently when all of its members receive low trust in a single round. However, this repair introduces a trade-off. A static floor can preserve semantic coverage, but it can also force the system to keep a poisoned client when an entire small group is compromised. That observation motivates the first targeted hardening.
+- It respects the topology-aware client organization of the task instead of assuming that all clients are exchangeable.
+- It gives the server a natural place to enforce a minimum retained-client floor per group so that a small but valid group is not removed silently.
 
-### 4.3 Hardening Strategies for Challenging Attack Regimes
+The default grouped mainline is denoted `trust_aware` or `static` in the result tables. Its value is not that it always wins `F1`; its value is that it often reduces `KP` sharply while retaining a meaningful client set.
 
-The first hardening strategy is `condfloor`, designed for the non-adaptive small-group collapse mechanism. Instead of always enforcing the group floor, `condfloor` skips the repair step when a group's total normalized trust mass falls below a small threshold. In effect, the system is allowed to abstain from representing a group that appears collectively untrustworthy. This is a narrow repair, not a universal new default, but it directly addresses the failure mode observed in the hardest non-adaptive public setting.
+### 4.3 `condfloor`: Targeted Repair for Small-Group Collapse
 
-The second hardening strategy targets adaptive camouflage. In the `adaptive_benign_mimic` regime, poisoned updates are intentionally aligned with benign behavior, so a static threshold or static conditional floor is not enough. `temporal_rootguard` therefore combines multi-round trust smoothing, root-anchor blending against a deterministic trusted server update, a drift penalty relative to that anchor, and a peer-redundancy penalty that suppresses clusters of nearly identical suspicious updates. The variant also allows abstention by setting the group floor to zero in suspicious groups. `temporal_rootguard_v2` extends this operating mode with stronger layerwise and behavioral probes, but the experiments show that its main value lies in certain adaptive geometries rather than as a universal replacement.
+The hardest same-task public non-adaptive case reveals a weakness in the static group floor. If a small group has very low total trust mass and its remaining candidates are poisoned, always enforcing a floor of one retained client can preserve the poisoned client by construction. We therefore introduce `condfloor`, a targeted repair that skips the floor-repair step when the group's normalized trust mass falls below a small threshold.
 
-To make the interpretation more rigorous, the adaptive public suite also includes three comparators beyond keep-all aggregation: task-adapted FLTrust-like, task-adapted FLShield-like, and official FoolsGold. The FLTrust-like line is now explicitly anchored to the original FLTrust author code archive, and the FLShield-like line to a fixed official FLShield repository commit, even though both remain adapted to the present graph-federated setting. These baselines are not included merely for leaderboard comparison. They are used to expose where the proposed hardening sits on the poisoning-retention versus abstention frontier. In particular, FoolsGold serves as an official-code anchor for a more aggressive sybil-style defense that can drive retained poisoned clients to zero in multiple adaptive settings while often collapsing to near-single-client participation.
+`condfloor` is intentionally narrow. It is not a universal replacement for the mainline. Its purpose is to convert forced coverage into abstention only when the evidence for the group is too weak to justify keeping a representative. This makes its interpretation clean: `condfloor` repairs a specific static failure mode rather than adding another generic heuristic layer.
 
-## 5. Experimental Results
+### 4.4 `temporal_rootguard` and `temporal_rootguard_v2`: Targeted Adaptive Controls
 
-### 5.1 Experimental Setup
+Adaptive camouflage requires a different response. When malicious clients imitate benign update directions, static trust thresholds and static conditional floors become insufficient. For this case we introduce `temporal_rootguard`, which combines:
 
-The experiments are conducted on five internal topology-aware pilot scenarios, two same-task public Ca-Bench scenarios, and two non-Ca-Bench public raw-data chains derived from Westermo industrial intrusion traffic and LITNET-2020 UDP-flood flows. The internal scenarios are `scenario_d_three_tier_low2`, `scenario_e_three_tier_high2`, `scenario_f_two_tier_high2`, `scenario_g_mimic_congest`, and `scenario_h_mimic_heavy_overlap`. The same-task public validation focuses on `scenario_e_three_tier_high2` and `scenario_h_mimic_heavy_overlap`, which offer a stronger task match than a cross-domain benchmark. The Westermo and LITNET paths are included because they provide additional public raw-data to graph to result chains under the same local graph contract, and the paper also keeps an auxiliary public NSL-KDD path converted into a feature-similarity graph. The internal bundle is still released as derived graphs, but the current repository now also includes a confidential maintainer-side audit script that rebuilds those five graphs from the preserved private traces and checks them against the shipped bundle with exact tensor/hash comparison.
+- multi-round trust smoothing,
+- blending against a deterministic trusted server root update,
+- a temporal drift penalty,
+- a peer-redundancy penalty for suspicious near-duplicate updates,
+- permissive abstention in suspicious groups.
 
-The backbone comparison uses FeatureMLP and GraphSAGE. For GraphSAGE, three tuning modes are considered: `head_only`, `adapter_ft`, and `full_ft`. The reported metrics include test F1, test recall, test FPR, retained poisoned clients, retained total clients, and estimated communication cost. To avoid overstating the public evidence, the primary paper claims are restricted to the non-adaptive `update_noise@0.4` paths on public Ca-Bench `scenario_e`, public Ca-Bench `scenario_h`, public Westermo, and public LITNET-2020 UDP-flood. These comparisons use matched 20-seed sweeps and paired testing with multiplicity correction in the released comparison tables. The Westermo and LITNET-2020 raw-data chains are also widened with matched 20-seed `sign_flip@0.4` sweeps, but those second-attack-family tables are used as supportive attack-family-width evidence rather than as replacement headline claims. A separate 5-seed single-host deployment/runtime package records wall-clock time, local training time, client evaluation time, server-round time, bytes per round, and peak RSS for the static, `condfloor`, and keep-all lines on public `scenario_h + update_noise@0.4` at `10`, `20`, `40`, and `80` active clients. The re-tuned `colluding_update_noise` and `multi_round_stealth` extensions on public `scenario_h` are also run as 20-seed stress tests, but they are interpreted as secondary stress-point evidence rather than as the central headline. The adaptive public suite now covers a full matched 20-seed `2 x 2` matrix over `scenario_e` / `scenario_h` and `adaptive_benign_mimic` / `adaptive_alie_like`. In the main text, `scenario_h + adaptive_benign_mimic@0.4` and `scenario_e + adaptive_alie_like@0.4` remain the two anchor paths, while the other two matched paths are treated as supportive evidence for width rather than as new headline claims.
+`temporal_rootguard_v2` extends that logic with stronger adaptive probes and a stricter rejection posture. In the public adaptive suite, the two variants should be read as different operating points. `temporal_rootguard` is often the more balanced adaptive control, while `temporal_rootguard_v2` is often the stricter poisoned-participation control. Neither should be presented as a universal winner.
 
-The main public hardest non-adaptive setting is `scenario_h + update_noise@0.4`. The main adaptive public reference is `scenario_h + adaptive_benign_mimic@0.4`, and the adaptive evidence is broadened with `scenario_e + adaptive_benign_mimic@0.4`, `scenario_h + adaptive_alie_like@0.4`, and `scenario_e + adaptive_alie_like@0.4`. These choices are intended to separate distinct failure modes rather than to maximize the number of benchmark points. The comparison reports now also expose reviewer-visible provenance metadata for the baseline bundle. In particular, FoolsGold is tied to a pinned official upstream commit, mean/median/Krum/RFA/Centered Clipping/CAF/`ARC+mean` are tied to fixed ByzFL semantic anchors, FLTrust-like is tied to the original FLTrust author code archive, and FLShield-like is tied to a fixed official upstream commit. This does not convert every baseline into a bit-for-bit upstream mirror, but it makes the comparison boundary substantially more reviewer-auditable.
+### 4.5 Backbone and Tuning Regimes
 
-### 5.2 Main Results on Internal and Public Benchmarks
+The framework is instantiated with a GraphSAGE backbone [13]. We compare three update regimes:
 
-The internal pilot results show that the GraphSAGE mainline remains strong across the harder topology-aware scenarios. In the single-run matrix, test F1 ranges from `0.9692` to `0.9966` in the clean setting, from `0.9696` to `0.9966` under sign-flip, and from `0.9705` to `0.9966` under update-noise. On `scenario_h`, the five-seed means remain strong at `0.9785` in the clean setting, `0.9797` under sign-flip, and `0.9686` under update-noise. These results indicate that the repaired trust semantics preserve the mainline in the internal topology-aware suite rather than only in a narrow favorable subset.
+- `head_only`
+- `adapter_ft`
+- `full_ft`
 
-The corresponding artifact boundary is also narrower than before. The confidential maintainer-side raw audit now rebuilds all five released internal graphs from the preserved traces with exact tensor/hash agreement, so the remaining limitation is public raw-data availability rather than the absence of a raw-to-graph audit chain.
+This lets the paper answer an engineering question that matters for EAAI: do the best operating points require the most expensive communication path, or can they be reached with lighter adaptation? The communication study in Section 6 shows that strong operating points remain available without always using full-model updates.
 
-The backbone comparison further supports the choice of GraphSAGE. On the structurally harder `scenario_h`, FeatureMLP reaches mean F1 values of `0.9417` in the clean setting and `0.9512` under sign-flip, whereas GraphSAGE reaches `0.9785` and `0.9797`, respectively. These gains are statistically significant and are accompanied by substantial false-positive-rate reductions. The communication study also shows that strong performance does not require the most expensive update regime. Under `scenario_h + sign_flip@0.4`, `adapter_ft` reaches `F1 = 0.9696` while using only `19.45%` of the communication cost of `full_ft`, and `head_only` retains comparable F1 at an even lower communication budget.
+## 5. Experimental Setup
 
-The primary public non-adaptive evidence now has four main components. On same-task public `scenario_e + update_noise@0.4`, the static trust-aware mainline reaches `F1 = 0.9875`, `FPR = 0.0208`, and `0.1` retained poisoned clients. `FLTrust-like` reaches a slightly higher `F1 = 0.9885` but retains `2.45` poisoned clients, while CAF, keep-all, Centered Clipping, and `ARC+mean` all retain the full `4.0` poisoned clients. CAF reaches `F1 = 0.9876` and `FPR = 0.0221`, which again sharpens the distinction between strong aggregation metrics and explicit participation control. This cleaner public path matters because it shows the participation-control story without depending on the hardest small-group failure mode alone.
+### 5.1 Evidence Hierarchy
 
-Public `scenario_h + update_noise@0.4` is more revealing because it exposes the small-group floor failure directly. In the current 20-seed comparison, the static trust-aware line reaches `F1 = 0.9703`, `FPR = 0.0442`, and `0.3` retained poisoned clients. The targeted `condfloor` repair moves that point to `F1 = 0.9746`, `FPR = 0.0307`, and `0.0` retained poisoned clients, whereas keep-all reaches `F1 = 0.9725`, `FPR = 0.0374`, and retains all `4.0` poisoned clients. The modern CAF, `ARC+mean`, and Centered Clipping comparators reach `F1 = 0.9746` / `0.9753` / `0.9757` and `FPR = 0.0279` / `0.0274` / `0.0265`, but all three still retain all `4.0` poisoned clients because they are aggregation-only controls without explicit participation filtering. Relative to the task-adapted `FLTrust-like` baseline, `condfloor` also reduces mean retained poisoned clients from `2.05` to `0.0`. However, the updated 20-seed table does not show Holm-significant separation between `condfloor` and the static line on the primary endpoints, so `condfloor` should be read as a targeted repair for the identified small-group failure mode rather than as a universal upgrade.
+The experimental package is organized as an evidence hierarchy rather than a flat benchmark list.
 
-The new public Westermo chain materially widens the external evidence. On `update_noise@0.4`, the static trust-aware line reaches `F1 = 0.6147`, `FPR = 0.0224`, `0.1` retained poisoned clients, and `6.1` kept clients. `condfloor` reaches `F1 = 0.6159`, `FPR = 0.0190`, `0.05` retained poisoned clients, and `6.05` kept clients. CAF reaches `F1 = 0.6211` and `FPR = 0.0093`, but again retains all `4.0` poisoned clients and all `10.0` clients. By contrast, `FLTrust-like` retains `1.85` poisoned clients. The same raw-data path now also includes a matched 20-seed `sign_flip@0.4` sweep: the static and `condfloor` lines reach `F1 = 0.6215` and `0.6217`, reduce retained poisoned clients from `4.0` under keep-all to `2.8` and `2.9`, and keep `7.05` and `7.25` clients, while `FLTrust-like` is stricter at `2.05` retained poisoned clients but keeps only `4.15` clients. Against keep-all, the retained-poisoned-client and kept-client differences remain Holm-significant, but `condfloor` still does not separate from the static line. Westermo therefore widens both dataset and attack-family coverage on a separate public raw-data path, but it still does not support a stronger claim that `condfloor` significantly beats the static line or universally dominates the baseline set on standard predictive metrics.
+*Table 1. Evidence hierarchy used in the manuscript.*
 
-The new LITNET-2020 UDP-flood chain adds a third public raw-data to graph to result path and exposes a different failure geometry. In the current 20-seed `update_noise@0.4` comparison, the static trust-aware line reaches `F1 = 0.5447`, `FPR = 0.0766`, `0.85` retained poisoned clients, and `6.85` kept clients. `condfloor` shifts that point to `F1 = 0.5856`, `FPR = 0.0464`, `0.4` retained poisoned clients, and `6.4` kept clients, while keep-all reaches nearly identical predictive metrics to the static line (`F1 = 0.5446`, `FPR = 0.0745`) but retains all `4.0` poisoned clients and all `10.0` clients. `FLTrust-like`, CAF, Centered Clipping, and `ARC+mean` reach higher mean F1 values (`0.6244`, `0.6197`, `0.6188`, and `0.6217`) and lower FPR (`0.0255`, `0.0241`, `0.0258`, and `0.0274`), but they retain `1.75`, `4.0`, `4.0`, and `4.0` poisoned clients, respectively. Against the static line, the Holm-corrected table therefore shows a familiar frontier rather than a clean winner: the stronger aggregation baselines gain F1 but also keep significantly more poisoned clients, while `condfloor` improves the static operating point in the desired direction without separating significantly after multiplicity correction. LITNET consequently strengthens the deployment-oriented interpretation instead of a leaderboard claim. It shows that the participation-control story survives on a second non-Ca-Bench public raw-data path, but only as an explicit trade-off among predictive quality, poisoned participation, and abstention.
+| Layer | Setting | Seeds | Role in the paper | Public status |
+| --- | --- | ---: | --- | --- |
+| Primary same-task public | Ca-Bench `scenario_h + update_noise@0.4` | 20 | Main hardest non-adaptive claim | Public and reproducible |
+| Primary same-task public | Ca-Bench `scenario_e + update_noise@0.4` | 20 | Main stable same-task operating point | Public and reproducible |
+| Primary public raw-data width | Westermo `update_noise@0.4` | 20 | Width evidence on separate raw-data chain | Public and reproducible |
+| Primary public raw-data width | LITNET-2020 UDP-flood `update_noise@0.4` | 20 | Harsher width evidence on separate raw-data chain | Public and reproducible |
+| Supportive second attack family | Westermo and LITNET `sign_flip@0.4` | 20 | Width evidence, not headline claims | Public and reproducible |
+| Public adaptive matrix | `scenario_e` / `scenario_h` x `adaptive_benign_mimic` / `adaptive_alie_like` | 20 | Two anchor tables plus matched width evidence | Public and reproducible |
+| Public attack extension | `colluding_update_noise`, `multi_round_stealth` on public `scenario_h` | 20 | Supportive stress evidence | Public and reproducible |
+| Auxiliary public transfer | NSL-KDD `update_noise@0.4` | 10 | Exploratory transfer check | Public and reproducible |
+| Internal pilots | Five topology-aware pilot scenarios | repo-native summaries | Mechanism and backbone support only | Derived graphs public; raw traces private |
+| Runtime package | Public `scenario_h + update_noise@0.4`, `10/20/40/80` clients | 5 | Single-host deployment-cost evidence | Public and reproducible |
 
-The same LITNET-2020 raw-data path now also includes a matched 20-seed `sign_flip@0.4` sweep. There, the static line reaches `F1 = 0.6201`, `FPR = 0.0302`, `2.85` retained poisoned clients, and `6.9` kept clients, while `condfloor` reaches `F1 = 0.6231`, `FPR = 0.0289`, `3.05` retained poisoned clients, and `6.95` kept clients. `FLTrust-like` keeps only `0.9` poisoned clients and `5.4` total clients at `F1 = 0.6229`, whereas Centered Clipping and `ARC+mean` reach `F1 = 0.6227` and `0.6255` but retain all `4.0` poisoned clients and all `10.0` clients. The Holm-corrected table therefore adds width more clearly than a new win claim: relative to `FLTrust-like`, `condfloor` keeps significantly more poisoned clients, and relative to keep-all it keeps significantly fewer total clients without separating from the static line on the main predictive endpoints. LITNET now covers two non-adaptive attack families on the same public raw-data pipeline, but the added sweep should be read as broader frontier evidence rather than as stronger support for `condfloor`.
+### 5.2 Datasets and Benchmarks
 
-The re-tuned attack extensions strengthen but do not radically change the picture. On public `scenario_h + colluding_update_noise@0.4`, `condfloor` reaches `F1 = 0.9765`, `FPR = 0.0248`, `0.1` retained poisoned clients, and `4.3` kept clients, compared with `0.3` retained poisoned clients for the static line and `4.0` for keep-all. On public `scenario_h + multi_round_stealth@0.4`, `condfloor` reaches `F1 = 0.9758`, `FPR = 0.0232`, `0.15` retained poisoned clients, and `4.35` kept clients, compared with `0.3` retained poisoned clients for the static line and `4.0` for keep-all. Against keep-all, the poisoned-retention and kept-client differences remain significant after Holm correction. Against the static line, the improvement direction persists but is not strong enough to justify promoting these extensions into a broader "`condfloor` universally wins" claim. They are better interpreted as supportive 20-seed public stress points.
+The evaluation uses four benchmark families.
 
-The adaptive public results now have two promoted matched 20-seed anchors and require a more careful interpretation than a simple leaderboard reading. On `scenario_h + adaptive_benign_mimic@0.4`, the static line, `condfloor`, and keep-all still retain `4.0` poisoned clients on average. `temporal_rootguard` reduces this to `0.35` with `F1 = 0.9748`, `FPR = 0.0176`, and `2.4` kept clients, while `temporal_rootguard_v2` reaches `0.0` retained poisoned clients with `F1 = 0.9744`, `FPR = 0.0190`, and `1.9` kept clients. Official FoolsGold also remains extremely strict at `0.05` retained poisoned clients, but it drops to `F1 = 0.9694`, `FPR = 0.0467`, and only `1.65` kept clients. This promoted main adaptive reference therefore still supports the same core interpretation: zero or near-zero retained poison is not unique to the proposed hardening, but it can be achieved at very different abstention and predictive-quality operating points.
+- Internal topology-aware pilots:
+  - `scenario_d_three_tier_low2`
+  - `scenario_e_three_tier_high2`
+  - `scenario_f_two_tier_high2`
+  - `scenario_g_mimic_congest`
+  - `scenario_h_mimic_heavy_overlap`
+- Same-task public validation:
+  - public Ca-Bench `scenario_e`
+  - public Ca-Bench `scenario_h`
+- Additional public raw-data chains:
+  - Westermo Network Traffic Dataset
+  - LITNET-2020 Network Flow Dataset, UDP-flood path
+- Auxiliary public transfer:
+  - NSL-KDD converted to the local graph contract
 
-The strongest external adaptive transfer now comes from a matched 20-seed `scenario_e + adaptive_alie_like@0.4` table. There, `temporal_rootguard_v2` reaches `F1 = 0.9884`, `FPR = 0.0168`, `0.6` retained poisoned clients, and `3.15` kept clients, while official FoolsGold reaches `0.0` retained poisoned clients but drops to `F1 = 0.9783`, `FPR = 0.0231`, and `1.6` kept clients. In the released paired table, the FoolsGold F1 deficit remains significant after multiplicity correction, while the retained-poison and retained-client differences do not.
+The two Ca-Bench paths are the strongest public same-task evidence. Westermo and LITNET materially widen the paper because they are separate raw-data-to-graph-to-result chains under the same local schema. NSL-KDD remains auxiliary because it is cross-domain and weaker as a same-task bot-detection benchmark.
 
-The two previously exploratory adaptive paths now also have matched 20-seed reruns and reinforce the same conclusion. On `scenario_h + adaptive_alie_like@0.4`, `temporal_rootguard_v2` reaches `F1 = 0.9748`, `FPR = 0.0190`, `0.8` retained poisoned clients, and `2.85` kept clients, while official FoolsGold reaches `0.0` retained poisoned clients but falls to `F1 = 0.9698` and `1.6` kept clients, and `FLShield-like` reaches the highest mean F1 (`0.9769`) only while retaining `2.6` poisoned clients. On `scenario_e + adaptive_benign_mimic@0.4`, `temporal_rootguard_v2` reaches `F1 = 0.9888`, `FPR = 0.0182`, `1.75` retained poisoned clients, and `4.1` kept clients, while official FoolsGold again reaches `0.0` retained poisoned clients only at `F1 = 0.9778` and `1.3` kept clients. Against `temporal_rootguard_v2`, the static, `condfloor`, and keep-all lines on this path now also show Holm-corrected deficits on both retained poisoned clients and F1. The full adaptive `2 x 2` public matrix therefore remains useful as width evidence, but it still supports a frontier of operating points rather than a universal winner.
+### 5.3 Baselines, Attacks, Metrics, and Statistics
 
-Taken together, the public suite supports a conservative but meaningful conclusion. The framework is strongest when interpreted as a set of operating points. `condfloor` is the most compelling repair for the non-adaptive small-group collapse mechanism, and `temporal_rootguard` / `temporal_rootguard_v2` offer more balanced adaptive operating points than the more aggressive official FoolsGold anchor. The evidence does not support a universal "best method" claim across all adaptive metrics.
+The non-adaptive comparison suite includes keep-all aggregation, classical reference aggregators, and modern robust aggregators:
 
-Figure 1 compresses the same four primary public non-adaptive mainlines into a single cross-dataset frontier view: Ca-Bench `scenario_e`, Ca-Bench `scenario_h`, Westermo, and LITNET-2020 UDP-flood. The horizontal axis reports retained poisoned clients (`KP`, lower is better), the vertical axis reports test F1 (higher is better), and bubble area encodes retained total clients (`KC`). Black outlines mark Pareto-optimal operating points under the joint objective of maximizing F1 and `KC` while minimizing `KP`. The visual summary therefore reinforces the paper's intended claim surface: the public evidence reveals a stable deployment frontier rather than a universal winner across all relevant dimensions.
+- `mean`
+- `median`
+- `krum`
+- `rfa`
+- `centered_clipping`
+- `caf`
+- `arc_mean`
+- `fltrust_like`
+- `fedtruth_like`
+- `flshield_like`
 
-![Figure 1. Cross-dataset `F1` / `KP` / `KC` frontier summary over the four primary public non-adaptive mainlines. Each panel corresponds to one dataset, bubble area is proportional to retained clients (`KC`), the x-axis is retained poisoned clients (`KP`), and black outlines indicate Pareto-optimal operating points.](figures_eaai/cross_dataset_f1_kp_kc_frontier_summary.png)
+The adaptive suite further includes:
 
-### 5.3 Ablation, Sensitivity, and Baseline Comparison
+- `foolsgold`
+- `fltrust_like`
+- `flshield_like`
+- `temporal_rootguard`
+- `temporal_rootguard_v2`
 
-The baseline analysis changes what can be claimed honestly. `FLTrust-like` is not weak in the current graph-federated setting, but it remains a task-adapted comparator rather than a bit-for-bit recreation of the original FLTrust release. The same is true for `FLShield-like`: it is now better anchored, but still adapted to the current graph-federated environment. The modern non-adaptive comparators sharpen the same lesson in a different way: on the matched 20-seed public `scenario_h + update_noise@0.4` comparison, CAF reaches `F1 = 0.9746` and `FPR = 0.0279`, `ARC+mean` reaches `F1 = 0.9753` and `FPR = 0.0274`, and Centered Clipping reaches `F1 = 0.9757` and `FPR = 0.0265`, yet all three still retain the full `4.0` poisoned clients. This means the proposed method should not be framed as universally better on standard accuracy metrics. Its stronger value lies in reducing retained poisoned participation under the topology-aware public hardest setting without requiring an F1-dominance story.
+The provenance boundary is explicit. Mean/median/Krum/RFA/Centered Clipping/CAF/`ARC+mean` are aligned to fixed ByzFL semantic anchors. `foolsgold` is tied to a pinned official upstream history. `fltrust_like` and `flshield_like` remain task-adapted implementations, but their upstream anchors are now reviewer-visible and fixed. This is important because the paper does not claim bit-for-bit reproduction of the original FLTrust or FLShield release environments.
 
-The artifact story also changes. The reviewer-facing comparison tables now expose pinned provenance not only for the reference baseline bundle, but also for the adapted trust-bootstrapping comparators. Official FoolsGold is anchored to a fixed upstream commit, mean/median/Krum/RFA/Centered Clipping/CAF/`ARC+mean` expose fixed ByzFL semantic anchors, `FLTrust-like` exposes the original author code archive, and `FLShield-like` exposes a fixed official upstream commit. This does not erase the distinction between official-code ports and task-adapted reimplementations, but it makes the comparison boundary much more auditable than in the earlier draft.
+Primary endpoints are:
 
-The ablation and sensitivity results reinforce the mechanism interpretation. The small-group collapse case on `scenario_h + update_noise@0.4` shows that the critical issue is not general model instability but the interaction between a static group floor and a fully compromised small group. The conditional-floor repair addresses exactly this issue. On the adaptive side, the `temporal_rootguard_v2` ablation indicates that the strongest visible benefit comes from the peer-redundancy and cluster-level rejection logic, while some of the other refinements contribute less visibly in the current public adaptive line. This is useful because it keeps the paper from over-claiming a large number of equally critical components.
+- `test_f1`
+- `test_fpr`
+- retained poisoned clients (`KP`)
+- retained total clients (`KC`)
 
-The auxiliary NSL-KDD validation provides additional context. In the current 10-seed update-noise comparison, the trust-aware line reaches `F1 = 0.7952` with `0.7` retained poisoned clients, the `ARC+mean` comparator reaches `F1 = 0.7585`, the centered-clipping comparator reaches `F1 = 0.7642`, and both modern clipping-based baselines still retain all `4.0` poisoned clients. The FLTrust-like baseline reaches `F1 = 0.7557` with `1.7` retained poisoned clients. Although NSL-KDD is not a same-task benchmark, this contrast remains supportive. The more important shift in the present version is that the external public story no longer depends on Ca-Bench alone, because the Westermo and LITNET-2020 raw-data chains now provide additional public mainlines.
+Primary and promoted public matched comparisons use 20-seed paired testing with Holm-Bonferroni correction. Exploratory comparisons such as NSL-KDD remain lower-depth supportive evidence.
 
-## 6. Discussion
+### 5.4 Reproducibility Boundary
 
-### 6.1 Security-Coverage Trade-off
+The public evidence surface is broad and reviewer-auditable. The repository includes public reproduction scripts for:
 
-The central lesson of the current evidence is that the main security claim does not live on average F1 alone. It lives on the relationship among test quality, retained poisoned participation, and retained total clients. This is why the public comparison scripts report paired statistics not only for F1 and FPR but also for retained poisoned clients and retained total clients. Without those quantities, a method that removes nearly every client and a method that preserves broader semantic coverage can appear superficially similar.
+- same-task Ca-Bench validation,
+- Westermo and LITNET raw-data chains,
+- adaptive full-matrix validation,
+- attack-extension reruns,
+- runtime and deployment packages.
 
-Centered Clipping, CAF, and `ARC+mean` make this distinction concrete in the non-adaptive public suite. On `scenario_h + update_noise@0.4`, they reach better mean F1/FPR than the static trust-aware line (`0.9757` / `0.0265`, `0.9746` / `0.0279`, and `0.9753` / `0.0274` versus `0.9703` / `0.0442`), but they still keep all `4.0` poisoned clients because they do not attempt explicit participation control. Even the stronger `condfloor` repair, which reaches `0.0` retained poisoned clients on this table, should still be read as a targeted failure-mode repair rather than a universal replacement. This is precisely why the paper's main engineering claim must remain tied to retained-poisoned-participation control rather than to accuracy alone.
+The internal pilot bundle is more limited. Reviewers receive the released derived graphs, not the private upstream traces. However, the maintainer-side raw audit now rebuilds all five internal scenarios from preserved raw traces and matches the shipped graphs exactly (`5 / 5` exact tensor/hash agreement). This closes the maintainer-side audit gap without changing the public redistribution boundary.
 
-The new Westermo evidence shows the same issue on a different public raw-data path. Under the 20-seed `update_noise` mainline, keep-all again retains `4.0` poisoned clients, while the static and `condfloor` lines reduce that number to `0.1` and `0.05`, respectively. The matched 20-seed `sign_flip` sweep widens this same path to a second attack family and again shows a frontier rather than a clean dominance story: the static and `condfloor` lines keep more total clients (`7.05` and `7.25`) while `FLTrust-like` keeps fewer poisoned clients (`2.05`) at only `4.15` kept clients. This matters because it shows that the participation-control story is not a single-benchmark accident and that the public raw-data evidence is broader than one attack geometry.
+## 6. Results
 
-LITNET-2020 sharpens the same lesson under a harsher raw-data regime. There, keep-all and the static line land at almost the same predictive point, which means accuracy alone would largely miss the security difference between retaining all `4.0` poisoned clients and retaining `0.85`. The `condfloor` repair pushes that point toward lower retained poison (`0.4`) and better mean F1 (`0.5856`), but the modern aggregation baselines still expose the opposite side of the frontier by reaching `F1` near `0.62` while retaining `1.75-4.0` poisoned clients. The new matched 20-seed LITNET `sign_flip` sweep does not strengthen the `condfloor` story: the static and `condfloor` lines sit at `2.85` and `3.05` retained poisoned clients, `FLTrust-like` drops that number to `0.9` at only `5.4` kept clients, and `ARC+mean` reaches `F1 = 0.6255` while retaining all `4.0` poisoned clients. The value of the added LITNET sweep is therefore width, not dominance. A second attack family on the same raw-data pipeline still reveals a deployment frontier rather than a universal winner.
+### 6.1 Internal Pilots, Backbone Choice, and Communication Budget
 
-This perspective also explains why the official FoolsGold baseline is valuable even though it does not strengthen the headline claim in a simple "ours is better" sense. FoolsGold shows that zero retained poisoned clients are achievable in multiple adaptive public settings. However, it typically achieves this by collapsing to about `1.3-1.6` kept clients. This exposes a much harsher abstention operating point. The proposed adaptive hardening variants, especially `temporal_rootguard_v2` in the external `scenario_e` transfers, occupy a more balanced point on that frontier. They do not always achieve the strictest poisoning suppression, but they do so while retaining substantially more clients and substantially better F1 in the external adaptive settings.
+The internal pilot matrix is useful for understanding why the public hardest same-task case behaves the way it does. With GraphSAGE, update-noise `F1` remains high across the five internal scenarios and ranges from `0.9705` on the hardest `scenario_h` to `0.9966` on `scenario_d`, while `scenario_g` is nearly saturated. The point of this matrix is not to carry the paper's main claim, but to show that `scenario_h` is the appropriate stress point for grouped trust-aware aggregation.
 
-For an EAAI paper, this interpretation is a strength rather than a weakness. The paper is not trying to claim a new universal theory of Byzantine robustness. It is presenting an interpretable engineering framework for topology-aware federated bot detection and demonstrating, with same-task public evidence, where different controls are useful. Under that standard, the current evidence is strongest when the claims remain tied to the observed frontier rather than inflated into universal superiority statements.
+Backbone choice matters most on the harder topology-aware setting. On internal `scenario_h` clean, FeatureMLP reaches `F1 = 0.9148` and `FPR = 0.1931`, while GraphSAGE reaches `F1 = 0.9692` and `FPR = 0.0779`. Under `sign_flip@0.4`, FeatureMLP reaches `F1 = 0.9243` and `FPR = 0.1433`, whereas GraphSAGE reaches `F1 = 0.9696` and `FPR = 0.0530`. The structural backbone therefore matters most where semantic overlap and topology heterogeneity are most severe.
 
-### 6.2 Limitations and Practical Implications
+The communication study shows that the strongest internal operating points do not require full-model updates. On internal `scenario_h + update_noise@0.4`, `head_only` reaches `F1 = 0.9718`, essentially matching `full_ft` at `F1 = 0.9716`, while using only `2.08%` of the full-model byte budget. `adapter_ft` reaches `F1 = 0.9705` while using `19.45%` of the full-model byte budget. This matters for EAAI positioning because it means the framework can stay competitive under lighter adaptation regimes rather than requiring the most communication-heavy update path.
 
-The study still has several limitations. First, the main topology-aware pilot scenarios are still released as derived internal graphs rather than as a fully open end-to-end raw-data benchmark pipeline. However, the remaining gap is now public redistributability rather than the absence of an auditable raw-to-graph chain, because the current repository includes a confidential maintainer-side audit that rebuilds all five released internal graphs exactly from the preserved private traces. Second, although the public evidence is materially broader than before and now includes supportive second-attack-family sweeps on both the Westermo and LITNET-2020 raw-data paths, it still concentrates on two same-task public Ca-Bench scenarios, two non-Ca-Bench raw-data pipelines, and one auxiliary NSL-KDD path. Third, while the public suite now includes modern Centered Clipping, CAF, and `ARC+mean` comparators together with an official FoolsGold comparator and pinned provenance metadata, the FLTrust-like and FLShield-like baselines still remain task-adapted implementations in the current graph-federated environment rather than exact reproductions of their original release settings; the difference is that their upstream anchors are now explicit and reviewer-auditable.
+### 6.2 Same-Task Public Non-Adaptive Main Results
 
-The adaptive story also remains incomplete. `temporal_rootguard` and `temporal_rootguard_v2` improve the balance between poisoning suppression and client retention, but they do not solve adaptive camouflage universally. In some settings, especially on `scenario_e`, the official FoolsGold comparator remains stricter on retained poisoned clients, albeit at a much more aggressive abstention point. This means the right conceptual picture is still a frontier of trade-offs rather than a settled winner. The adaptive evidence is now broader because all four public scenario/attack combinations have matched 20-seed reruns, but the paper still uses only two of them as main anchors and treats the other two as supportive matched evidence.
+The strongest public non-adaptive result is the hardest same-task public table: Ca-Bench `scenario_h + update_noise@0.4`. This table should be read as a failure-mode diagnosis and repair table, not as a universal F1-dominance table.
 
-From a deployment perspective, however, the results are already useful. The communication study suggests that strong robustness does not require the heaviest update regime. The grouped hierarchy provides an interpretable handle on semantic coverage. The hardening variants are linked to specific failure regimes rather than opaque heuristic stacking. These properties make the framework more attractive for real engineering use than a paper narrative based only on incremental average F1 gains.
+*Table 2. Public Ca-Bench `scenario_h + update_noise@0.4` (matched 20-seed comparison). Lower `KP` is better; higher `KC` means less abstention.*
 
-### 6.3 Engineering Cost and Deployment Scope
+| Method | F1 | FPR | KP | KC |
+| --- | ---: | ---: | ---: | ---: |
+| `condfloor` | 0.9746 | 0.0307 | 0.00 | 6.00 |
+| `trust_aware` static | 0.9703 | 0.0442 | 0.30 | 6.30 |
+| `fltrust_like` | 0.9736 | 0.0157 | 2.05 | 4.85 |
+| `centered_clipping` | 0.9757 | 0.0265 | 4.00 | 10.00 |
+| `ARC+mean` | 0.9753 | 0.0274 | 4.00 | 10.00 |
+| `keepall` | 0.9725 | 0.0374 | 4.00 | 10.00 |
 
-The current evidence is also more credible for an engineering-AI venue because the cost story is no longer hidden behind accuracy tables alone. Under `scenario_h + sign_flip@0.4`, the `adapter_ft` regime reaches `F1 = 0.9696` while using only `19.45%` of the communication cost of `full_ft`. This means the framework's strongest behavior does not require the most expensive update path. The repository now also includes a 5-seed single-host deployment/runtime package on public `scenario_h + update_noise@0.4` over `10`, `20`, `40`, and `80` active clients. For the static line, total round wall-clock time rises from `56.34` to `97.47` to `207.0` to `504.36` milliseconds, local training time from `26.19` to `44.28` to `102.98` to `235.51` milliseconds, client evaluation time from `25.09` to `47.58` to `96.37` to `253.61` milliseconds, and server-round time from `29.64` to `52.45` to `102.67` to `266.08` milliseconds. Aggregation itself remains small at `0.71`, `1.22`, `2.40`, and `7.04` milliseconds, which is about `2.3%-2.6%` of the measured server-round time, while peak RSS stays near `830` megabytes and bytes per round scale linearly from `24.14` to `48.28` to `96.56` to `193.12` kibibytes. The `condfloor` and keep-all lines remain in the same timing band. This is a materially stronger engineering-cost story than the earlier reviewer-scale runtime table because it exposes where the measured time is spent, not only that server cost grows roughly linearly over the measured client-count range.
+Three observations matter.
 
-At the same time, the paper should remain honest about what has not yet been measured. The runtime package is still a single-host deployment/runtime study, not a distributed multi-host latency benchmark or a full end-to-end wide-area systems analysis. For that reason, the paper can now claim a measured local deployment-cost story, but it should still avoid claiming a fully benchmarked end-to-end systems optimization story.
+1. `condfloor` is the cleanest security point in the table because it reduces `KP` to `0.0`.
+2. Strong aggregation baselines such as Centered Clipping and `ARC+mean` remain highly competitive on `F1` and `FPR`, so the paper should not claim universal predictive superiority.
+3. The decisive difference is poisoned participation, not `F1`.
 
-## 7. Conclusion
+The matched paired statistics reinforce that interpretation. Relative to `fltrust_like`, `condfloor` achieves a Holm-corrected retained-poison difference with `p = 7.63e-05`, while the `F1` difference is not significant after correction. Relative to keep-all, the retained-poison difference is absolute (`0.0` versus `4.0`). This is exactly the kind of deployment-oriented result the paper can defend: cleaner control of poisoned participation without claiming universal `F1` dominance.
 
-HiTrust-FedBot should be read as an engineering AI system for federated bot detection rather than as a universal robust-federated-learning theorem. Across internal topology-aware pilots, a confidential exact-match raw-to-graph audit for the released internal bundle, matched 20-seed same-task public Ca-Bench validation, and the public Westermo and LITNET-2020 raw-data chains, the framework preserves strong predictive quality while making poisoned participation an explicit controllable quantity. The clearest non-adaptive result is still the `condfloor` repair on public `scenario_h + update_noise@0.4`, which reduces retained poisoned clients to `0.0`, but the broader public picture is now stronger than in the previous draft: on public Westermo `update_noise@0.4`, the trust-aware and `condfloor` lines reduce retained poisoned clients from `4.0` under keep-all to `0.1` and `0.05`; on public LITNET-2020 UDP-flood `update_noise@0.4`, `condfloor` reaches `0.4` retained poisoned clients while the higher-F1 baselines retain `1.75-4.0`; matched 20-seed Westermo and LITNET `sign_flip@0.4` sweeps widen both raw-data chains to a second attack family without changing the conservative claim boundary; the internal maintainer-side audit reproduces all five released pilot graphs exactly from the preserved traces; and the new `10/20/40/80`-client single-host deployment/runtime package adds measured wall-clock, memory, and communication-overhead evidence.
+The same-task public `scenario_e + update_noise@0.4` result plays a different role. It is the stable same-task operating-point table that shows the proposed mainline is not only a `scenario_h` anomaly.
 
-The adaptive suite reinforces the same engineering interpretation. The public adaptive matrix now also has matched 20-seed reruns for all four scenario/attack combinations, although only two are used as main anchors in the paper text. `temporal_rootguard` and `temporal_rootguard_v2` still do not dominate every baseline on every metric, yet they occupy more practical operating points than official FoolsGold when retained poisoned participation, client retention, and predictive quality are considered together. For an EAAI submission, that is the right conclusion: the contribution is an interpretable and reproducible deployment-oriented framework, plus an evaluation protocol that makes the trade-off between predictive performance, poisoned participation, and abstention explicit. The most valuable next steps are to widen the public raw-data evaluation surface beyond the current Westermo and LITNET-2020 chains, test broader client-count and networked deployment settings, and extend the measured runtime package from single-host deployment profiling to fuller end-to-end deployment benchmarks.
+*Table 3. Public Ca-Bench `scenario_e + update_noise@0.4` (matched 20-seed comparison).*
+
+| Method | F1 | FPR | KP | KC |
+| --- | ---: | ---: | ---: | ---: |
+| `trust_aware` static | 0.9875 | 0.0208 | 0.10 | 6.10 |
+| `fltrust_like` | 0.9885 | 0.0222 | 2.45 | 6.35 |
+| `ARC+mean` | 0.9877 | 0.0188 | 4.00 | 10.00 |
+| `CAF` | 0.9876 | 0.0221 | 4.00 | 10.00 |
+| `keepall` | 0.9877 | 0.0222 | 4.00 | 10.00 |
+
+Here the trust-aware mainline remains predictive-quality competitive while reducing `KP` sharply. `ARC+mean` and `CAF` match or slightly edge some pure prediction metrics, but they do not perform explicit poisoned-participation control. The correct interpretation is therefore consistent with `scenario_h`: the paper contributes a better deployment-relevant operating point, not a new universal leaderboard winner.
+
+The FLTrust-like sensitivity grid further constrains the manuscript's claims. In a separate 3-seed sensitivity sweep on public `scenario_h`, the tuned `root192_e1` point reaches `F1 = 0.9802`, `FPR = 0.0104`, and `KP = 1.0`. That is a very strong baseline result. It strengthens the paper because it forces a disciplined conclusion: even after tuning a trust-bootstrapping baseline, the cleanest public hardest-setting `KP` control in the current repository still comes from `condfloor`, but the proposed method should not be sold as universally better on `F1` or `FPR`.
+### 6.3 Public Raw-Data Width Evidence
+
+Westermo and LITNET-2020 are the main width-evidence datasets because they are public raw-data chains outside Ca-Bench. They show that the operating-point story is not tied to a single benchmark family.
+
+*Table 4. Selected public raw-data operating points. Westermo and LITNET update-noise tables are primary width evidence; sign-flip tables are supportive second-attack-family evidence.*
+
+| Dataset | Attack | Method | F1 | FPR | KP | KC |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| Westermo | `update_noise@0.4` | `trust_aware` | 0.6147 | 0.0224 | 0.10 | 6.10 |
+| Westermo | `update_noise@0.4` | `condfloor` | 0.6159 | 0.0190 | 0.05 | 6.05 |
+| Westermo | `update_noise@0.4` | `fltrust_like` | 0.6213 | 0.0087 | 1.85 | 3.90 |
+| Westermo | `update_noise@0.4` | `keepall` | 0.6196 | 0.0081 | 4.00 | 10.00 |
+| Westermo | `sign_flip@0.4` | `condfloor` | 0.6217 | 0.0102 | 2.90 | 7.25 |
+| Westermo | `sign_flip@0.4` | `fltrust_like` | 0.6203 | 0.0142 | 2.05 | 4.15 |
+| Westermo | `sign_flip@0.4` | `keepall` | 0.6200 | 0.0133 | 4.00 | 10.00 |
+| LITNET-2020 UDP | `update_noise@0.4` | `trust_aware` | 0.5447 | 0.0766 | 0.85 | 6.85 |
+| LITNET-2020 UDP | `update_noise@0.4` | `condfloor` | 0.5856 | 0.0464 | 0.40 | 6.40 |
+| LITNET-2020 UDP | `update_noise@0.4` | `fltrust_like` | 0.6244 | 0.0255 | 1.75 | 5.65 |
+| LITNET-2020 UDP | `update_noise@0.4` | `ARC+mean` | 0.6217 | 0.0274 | 4.00 | 10.00 |
+| LITNET-2020 UDP | `sign_flip@0.4` | `condfloor` | 0.6231 | 0.0289 | 3.05 | 6.95 |
+| LITNET-2020 UDP | `sign_flip@0.4` | `fltrust_like` | 0.6229 | 0.0282 | 0.90 | 5.40 |
+| LITNET-2020 UDP | `sign_flip@0.4` | `ARC+mean` | 0.6255 | 0.0265 | 4.00 | 10.00 |
+
+Westermo supports the same high-level story as Ca-Bench. `condfloor` and the static line both move to much safer `KP` points than keep-all, while `fltrust_like` and the stronger aggregation baselines sometimes attain cleaner `F1` / `FPR` values at more aggressive abstention or looser poisoned retention. The value of Westermo is therefore width evidence rather than a new headline win.
+
+LITNET-2020 is even more informative because it is harsher. On `update_noise@0.4`, `condfloor` improves the static line from `F1 = 0.5447`, `KP = 0.85` to `F1 = 0.5856`, `KP = 0.40`, while higher-`F1` alternatives still retain more poisoned clients. At the same time, the Holm-corrected 20-seed table does not support a claim that `condfloor` significantly dominates every comparator. That is exactly why LITNET is valuable: it demonstrates that the paper is not hiding difficult public cases, and it reinforces a frontier interpretation rather than a benchmark-optimized story.
+
+The Westermo and LITNET `sign_flip` sweeps should be read as second-attack-family width evidence. They widen the attack surface on the same public raw-data chains, but they do not change the conservative manuscript boundary.
+
+### 6.4 Cross-Dataset Frontier and Attack Extension
+
+The public non-adaptive story is summarized more clearly by a frontier view than by any single table. Across the four primary public non-adaptive mainlines, Pareto-optimal points include the static line on Ca-Bench `scenario_e`, `condfloor` on Ca-Bench `scenario_h`, `condfloor` on Westermo, and both `condfloor` and `fltrust_like` on LITNET depending on whether the reader prioritizes `KP` or `F1`.
+
+![Figure 1. Cross-dataset frontier summary for the four primary public non-adaptive settings. The x-axis is retained poisoned clients (`KP`), the y-axis is `F1`, and bubble area encodes retained clients (`KC`). Black outlines mark Pareto-optimal operating points.](figures_eaai/cross_dataset_f1_kp_kc_frontier_summary.png)
+
+This figure is important for interpretation. It shows that the paper's strongest contribution is not universal dominance. It is the ability to occupy useful operating points on a three-way surface involving predictive quality, poisoned participation, and abstention.
+
+The attack-extension package adds two supportive stress tests on public `scenario_h`.
+
+- `colluding_update_noise`:
+  - `condfloor`: `F1 = 0.9765`, `FPR = 0.0248`, `KP = 0.10`, `KC = 4.30`
+  - `trust_aware`: `F1 = 0.9761`, `FPR = 0.0227`, `KP = 0.30`, `KC = 4.60`
+  - `keepall`: `F1 = 0.9761`, `FPR = 0.0237`, `KP = 4.00`, `KC = 10.00`
+- `multi_round_stealth`:
+  - `condfloor`: `F1 = 0.9758`, `FPR = 0.0232`, `KP = 0.15`, `KC = 4.35`
+  - `trust_aware`: `F1 = 0.9758`, `FPR = 0.0235`, `KP = 0.30`, `KC = 4.90`
+  - `keepall`: `F1 = 0.9752`, `FPR = 0.0251`, `KP = 4.00`, `KC = 10.00`
+
+These tables do not create new headline claims, but they show that the small-group repair remains meaningful beyond the canonical `update_noise` line.
+
+### 6.5 Public Adaptive `2 x 2` Matrix
+
+The adaptive evidence is now much stronger because all four public scenario/attack combinations have matched 20-seed reruns. For the main paper, the two best anchor tables are public `scenario_h + adaptive_benign_mimic@0.4` and public `scenario_e + adaptive_alie_like@0.4`. Together they show both the strict and the balanced sides of the adaptive operating-point frontier.
+
+*Table 5. Selected adaptive operating points from the matched 20-seed public matrix.*
+
+| Setting | Method | F1 | FPR | KP | KC |
+| --- | --- | ---: | ---: | ---: | ---: |
+| `scenario_h + adaptive_benign_mimic@0.4` | `trust_aware` static | 0.9750 | 0.0266 | 4.00 | 7.25 |
+| `scenario_h + adaptive_benign_mimic@0.4` | `flshield_like` | 0.9760 | 0.0201 | 2.60 | 6.10 |
+| `scenario_h + adaptive_benign_mimic@0.4` | `foolsgold` | 0.9694 | 0.0467 | 0.05 | 1.65 |
+| `scenario_h + adaptive_benign_mimic@0.4` | `temporal_rootguard` | 0.9748 | 0.0176 | 0.35 | 2.40 |
+| `scenario_h + adaptive_benign_mimic@0.4` | `temporal_rootguard_v2` | 0.9744 | 0.0190 | 0.00 | 1.90 |
+| `scenario_e + adaptive_alie_like@0.4` | `trust_aware` static | 0.9865 | 0.0248 | 3.80 | 6.65 |
+| `scenario_e + adaptive_alie_like@0.4` | `flshield_like` | 0.9880 | 0.0198 | 1.80 | 5.10 |
+| `scenario_e + adaptive_alie_like@0.4` | `foolsgold` | 0.9783 | 0.0231 | 0.00 | 1.60 |
+| `scenario_e + adaptive_alie_like@0.4` | `temporal_rootguard` | 0.9883 | 0.0167 | 1.20 | 5.00 |
+| `scenario_e + adaptive_alie_like@0.4` | `temporal_rootguard_v2` | 0.9884 | 0.0168 | 0.60 | 3.15 |
+
+The adaptive matrix supports three disciplined conclusions.
+
+1. Static and `condfloor` lines are not enough under camouflage. On public `scenario_h + adaptive_benign_mimic@0.4`, both static and `condfloor` retain all `4.0` poisoned clients on average.
+2. `temporal_rootguard` and `temporal_rootguard_v2` meaningfully improve the adaptive operating point, but they often do so by increasing abstention.
+3. Official FoolsGold remains a useful frontier anchor because it can achieve near-zero or zero `KP`, but usually at a much harsher `KC` point and lower `F1`.
+
+The other two matched adaptive paths remain supportive width evidence and show that the adaptive logic transfers without becoming a universal winner.
+
+- Public `scenario_e + adaptive_benign_mimic@0.4`:
+  - `temporal_rootguard_v2`: `F1 = 0.9888`, `FPR = 0.0182`, `KP = 1.75`, `KC = 4.10`
+  - `temporal_rootguard`: `F1 = 0.9888`, `FPR = 0.0191`, `KP = 2.20`, `KC = 5.95`
+  - `trust_aware`: `F1 = 0.9872`, `KP = 4.00`, `KC = 6.95`
+- Public `scenario_h + adaptive_alie_like@0.4`:
+  - `temporal_rootguard_v2`: `F1 = 0.9748`, `FPR = 0.0190`, `KP = 0.80`, `KC = 2.85`
+  - `temporal_rootguard`: `F1 = 0.9751`, `FPR = 0.0188`, `KP = 1.60`, `KC = 3.80`
+  - `trust_aware`: `F1 = 0.9752`, `KP = 3.65`, `KC = 7.35`
+
+These results support a practical interpretation rather than a universal adaptive-robustness claim. `temporal_rootguard_v2` is the stricter adaptive control; `temporal_rootguard` is often the more balanced adaptive point.
+
+### 6.6 Auxiliary NSL-KDD and Deployment Runtime Package
+
+The NSL-KDD path remains supportive rather than central, but it is still useful as a cross-domain transfer check. On the exploratory 10-seed `update_noise@0.4` comparison:
+
+- `trust_aware`: `F1 = 0.7952`, `FPR = 0.0772`, `KP = 0.70`, `KC = 6.70`
+- `fltrust_like`: `F1 = 0.7557`, `FPR = 0.0490`, `KP = 1.70`, `KC = 5.10`
+- `ARC+mean`: `F1 = 0.7585`, `FPR = 0.0547`, `KP = 4.00`, `KC = 10.00`
+- `centered_clipping`: `F1 = 0.7642`, `FPR = 0.0619`, `KP = 4.00`, `KC = 10.00`
+
+This table should not be oversold as same-task evidence, but it supports the claim that the trust-aware participation-control story is not unique to Ca-Bench.
+
+The runtime package is the main engineering-cost result. It reports a 5-seed single-host deployment/runtime profile for public `scenario_h + update_noise@0.4` at `10`, `20`, `40`, and `80` active clients. The static line is the clearest summary because `condfloor` and keep-all remain in the same timing band.
+
+*Table 6. Static-line single-host deployment/runtime package on public `scenario_h + update_noise@0.4`.*
+
+| Active clients | Wall clock (ms) | Server round (ms) | Aggregation (ms) | Bytes/round (KiB) | Peak RSS (MB) |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 10 | 56.34 | 29.64 | 0.71 | 24.14 | 823.4 |
+| 20 | 97.47 | 52.45 | 1.22 | 48.28 | 823.1 |
+| 40 | 207.00 | 102.67 | 2.40 | 96.56 | 822.7 |
+| 80 | 504.36 | 266.08 | 7.04 | 193.12 | 830.0 |
+
+Two engineering conclusions follow.
+
+- Aggregation remains a small share of the measured server round, about `2.2%` to `2.6%`.
+- The trust-aware control logic does not dominate runtime at the tested client counts; most of the measured cost remains in local training and client-side evaluation.
+
+`condfloor` and keep-all remain in the same range, with `condfloor` wall-clock times of `55.10`, `99.00`, `210.90`, and `517.06 ms` and keep-all times of `53.64`, `100.13`, `202.67`, and `505.80 ms` across `10`, `20`, `40`, and `80` clients. The right interpretation is therefore a practical single-host deployment profile, not a distributed multi-host benchmark.
+
+![Figure 2. Single-host deployment/runtime package for public `scenario_h + update_noise@0.4` across `10/20/40/80` active clients.](figures/public_cabench_scenario_h_deployment_runtime_package.png)
+
+## 7. Discussion
+
+### 7.1 What the Paper Can Claim
+
+The results support a clear but bounded claim: HiTrust-FedBot improves deployment-relevant operating points by explicitly managing the trade-off among predictive quality, poisoned participation, retained clients, and runtime cost. That claim is supported by four kinds of public evidence:
+
+- same-task public Ca-Bench validation on `scenario_h` and `scenario_e`,
+- separate raw-data-to-graph chains on Westermo and LITNET-2020,
+- a matched adaptive `2 x 2` matrix,
+- a measured runtime package.
+
+This is stronger than a single-benchmark paper, but it is still a frontier claim, not a universal dominance claim.
+
+### 7.2 What the Paper Should Not Claim
+
+The manuscript should not claim:
+
+- universal superiority on `F1`,
+- complete solution of adaptive poisoning,
+- bit-for-bit reproduction of the original FLTrust or FLShield release settings,
+- end-to-end public regeneration of the internal raw traces,
+- distributed systems benchmarking.
+
+The current results themselves show why. Centered Clipping, `ARC+mean`, and tuned FLTrust-like points can match or exceed the proposed method on some predictive metrics. Official FoolsGold can be stricter on poisoned retention under some adaptive settings. What HiTrust-FedBot provides more consistently is interpretable control of `KP` and `KC`, plus targeted hardenings linked to identifiable failure modes.
+
+### 7.3 Why the Hardening Narrative Works
+
+The paper is much stronger with two targeted hardening lines than with a single over-claimed story.
+
+- `condfloor` is justified because the hardest same-task public non-adaptive setting exposes a small-group collapse mechanism directly.
+- `temporal_rootguard` and `temporal_rootguard_v2` are justified because the adaptive matched matrix exposes a different camouflage mechanism that static rules do not solve.
+
+This failure-mode-repair framing is scientifically cleaner and better aligned with EAAI than stacking heuristics without explanation.
+
+### 7.4 Reproducibility and Engineering Meaning
+
+The repository's artifact surface is already strong for this submission type. Public reruns exist for the main public result layers, the release includes reviewer verification scripts, and the internal bundle now has a maintainer-side exact-match raw audit. The remaining limitation is not the absence of auditability but the honest private-data boundary for the internal raw traces.
+
+The runtime package further improves journal fit because it shows where time is spent, not only whether accuracy is high. Aggregation stays inexpensive even at `80` clients, and the communication study shows that strong operating points do not require the heaviest update regime. These are engineering results, not only benchmark results.
+
+## 8. Conclusion
+
+HiTrust-FedBot should be read as an interpretable engineering AI system for federated web bot detection. Its main value is not universal dominance on `F1`. Its main value is the ability to manage practical operating points under non-IID client structure, poisoned participation, semantic coverage constraints, abstention, and measured runtime limits.
+
+The strongest public non-adaptive evidence comes from same-task public Ca-Bench `scenario_h + update_noise@0.4`, where `condfloor` reaches `F1 = 0.9746`, `FPR = 0.0307`, `KP = 0.0`, and `KC = 6.0`. The stronger public systems story comes from the full evidence stack: same-task Ca-Bench validation, Westermo and LITNET raw-data chains, a matched adaptive `2 x 2` matrix, a public attack-extension package, and a measured `10/20/40/80` client runtime package. Together these results support a deployment frontier rather than a benchmark-leader narrative.
+
+The paper's conclusion should therefore remain disciplined. HiTrust-FedBot does not solve federated poisoning universally. What it does provide is a reviewer-auditable, deployment-oriented framework in which grouped trust-aware aggregation, targeted static repair, targeted adaptive control, and runtime profiling all contribute to a coherent engineering story.
+
+## Declarations
+
+### Availability of data and materials
+
+Public Ca-Bench, Westermo, LITNET-2020, and NSL-KDD reproduction paths are included in the repository through released derived graphs, metadata, scripts, figures, and result tables. The internal pilot scenarios are released as derived graphs only. Private upstream raw traces for the internal bundle are not publicly redistributed.
+
+### Code availability
+
+The repository includes the training code, baseline implementations, experiment registries, reproduction scripts, manuscript-support tables, and figure-generation utilities used for the reported evidence surface.
+
+### Competing interests
+
+The authors should confirm the journal-form competing-interest statement at submission. If no competing interests apply, the standard statement is: `The authors declare that they have no competing interests.`
+
+### Funding
+
+Funding details should be confirmed at submission. If no external funding applies, the journal-form statement is: `This research received no external funding.`
 
 ## References
 

@@ -8,7 +8,33 @@ This directory contains the executable code, configuration files, and reproducti
 - `internal/`: implementation code for training, trust scoring, aggregation, graph building, and table generation
 - `reproduce/`: reviewer-facing shell entry points for the main reproduction paths
 
-## Recommended Entry Points
+## Reviewer-First Entry Points
+
+Full public paper-facing rerun:
+
+```bash
+bash core_experiments/reproduce/reproduce_public_paper_bundle.sh
+```
+
+This is the main reviewer command for rebuilding the current public paper package. It runs bundle verification, the Ca-Bench `scenario_e` / `scenario_h` mainlines, the Westermo and LITNET-2020 raw-data chains with both promoted attack families, the full adaptive `2 x 2` matrix, the `scenario_h` attack-extension package, the single-host deployment/runtime package, and the cross-dataset frontier summary. By default it also includes the FLTrust-like sensitivity package and the auxiliary NSL-KDD path.
+
+Useful toggles:
+
+```bash
+VERIFY_FIRST=0 bash core_experiments/reproduce/reproduce_public_paper_bundle.sh
+INCLUDE_FLTRUST_SENSITIVITY=0 bash core_experiments/reproduce/reproduce_public_paper_bundle.sh
+INCLUDE_NSLKDD=0 bash core_experiments/reproduce/reproduce_public_paper_bundle.sh
+```
+
+Light reviewer bundle:
+
+```bash
+bash core_experiments/reproduce/reproduce_reviewer_bundle.sh
+```
+
+This is a quicker artifact sanity path, not the full paper rerun. It covers the smoke path, optional public Ca-Bench reruns, the NSL-KDD path, and the conditional-floor package.
+
+## Standalone Entry Points
 
 Smoke test:
 
@@ -121,7 +147,7 @@ Bundled reviewer rerun:
 bash core_experiments/reproduce/reproduce_reviewer_bundle.sh
 ```
 
-The bundled rerun keeps the public Ca-Bench paths opt-in by default. Set `WITH_PUBLIC_CABENCH=1` when you explicitly want to include the same-task public scenario reruns.
+The bundled rerun keeps the public Ca-Bench paths opt-in by default. Set `WITH_PUBLIC_CABENCH=1` when you explicitly want to include the same-task public scenario reruns, but use `reproduce_public_paper_bundle.sh` when you want the full paper-facing public rebuild.
 
 Anonymous-submission leak scan:
 

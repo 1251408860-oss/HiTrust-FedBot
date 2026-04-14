@@ -1,5 +1,7 @@
 # `paper_hitrust/`
 
+Reviewers should start from the repository root `README.md` when they want reproduction instructions. This directory is the paper-facing output surface that those root-level commands rebuild.
+
 This directory contains paper-facing outputs and manuscript-support materials.
 
 ## Main Contents
@@ -75,6 +77,8 @@ The release-facing integrity metadata is stored alongside the paper artifact:
 - `core_experiments/reproduce/verify_artifact_bundle.sh`
 
 The checksum manifest covers the static release surface only. Precomputed outputs under `runs/`, `tables/`, and `figures/` are intentionally treated as mutable derived evidence because the reviewer rerun scripts rebuild them in place.
+
+The main full public rerun is `bash core_experiments/reproduce/reproduce_public_paper_bundle.sh`. The lighter `reproduce_reviewer_bundle.sh` path is only a sanity-oriented subset and should not be read as the full paper reproduction command.
 
 Submission-anonymization support scripts and templates are available under:
 
