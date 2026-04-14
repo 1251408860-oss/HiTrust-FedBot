@@ -25,7 +25,6 @@
 | Auxiliary external validation on public NSL-KDD | supported | `bash core_experiments/reproduce/reproduce_public_nslkdd_validation.sh` | Public cross-domain stress test, not a same-distribution public bot benchmark |
 | Conditional trust-mass floor hardening package | supported | `bash core_experiments/reproduce/reproduce_conditional_floor_validation.sh` | Targeted mitigation for the identified failure mode |
 | Maintainer-side internal raw audit from local private traces | maintainer-only supported | `bash core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh` | Rebuilds all five released internal graphs and verifies exact tensor/hash agreement against the shipped bundle |
-| Anonymous submission leakage scan | supported | `bash core_experiments/reproduce/check_anonymization_leaks.sh` | Heuristic scan for emails/author-affiliation metadata fields in submission-facing markdown |
 | Direct inspection of precomputed evidence | supported | inspect `paper_hitrust/tables/`, `paper_hitrust/figures/`, and `paper_hitrust/runs/` | The release already includes the paper-facing outputs |
 | Public rebuild of internal pilot graphs from redistributed private raw traces | not supported in the public release | not available | The private raw collection traces are not redistributed; use the maintainer-side raw-audit path when those traces are available locally |
 
@@ -36,7 +35,6 @@ Ca-Bench solves reviewer reproducibility by making the public artifact surface s
 - a single reviewer verification entry point
 - a committed SHA-256 manifest for the immutable release surface
 - a maintainer-side packaging script that produces a GitHub-Release-ready tarball and checksum
-- an anonymization leak scanner for the submission-facing markdown package
 - an explicit supported-versus-unsupported reproduction table
 - a vendored public Ca-Bench builder pinned to a fixed upstream commit rather than a moving upstream branch
 - a repo-local graph contract documented in `docs/GRAPH_SCHEMA_CONTRACT_20260407.md`

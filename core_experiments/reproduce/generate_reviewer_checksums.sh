@@ -18,7 +18,6 @@ paths=(
   "RELEASE_CHECKLIST.md"
   "environment.yml"
   "requirements_artifact.txt"
-  "docs/anonymization_allowlist.txt"
   "paper_hitrust/artifact_manifest_20260324.json"
 )
 

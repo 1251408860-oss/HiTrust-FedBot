@@ -41,17 +41,13 @@ required_files=(
   "core_experiments/reproduce/reproduce_public_cabench_scenario_h_fltrust_sensitivity.sh"
   "core_experiments/reproduce/reproduce_conditional_floor_validation.sh"
   "core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh"
+  "core_experiments/reproduce/reproduce_public_paper_bundle.sh"
   "core_experiments/reproduce/reproduce_reviewer_bundle.sh"
-  "core_experiments/reproduce/check_anonymization_leaks.sh"
   "core_experiments/reproduce/generate_reviewer_checksums.sh"
   "core_experiments/reproduce/package_reviewer_release.sh"
   "docs/ARTIFACT_RELEASE_20260324.md"
   "docs/DATA_AVAILABILITY_20260324.md"
   "docs/ARTIFACT_STATUS_20260326.md"
-  "docs/EAAI_SUBMISSION_CHECKLIST_20260327.md"
-  "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md"
-  "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md"
-  "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md"
   "docs/GRAPH_SCHEMA_CONTRACT_20260407.md"
   "docs/reviewer_bundle_sha256_20260326.txt"
   "data_hitrust/README.md"
@@ -93,8 +89,6 @@ for path in core_experiments/reproduce/*.sh; do
   bash -n "$path"
 done
 echo "[OK] shell syntax: core_experiments/reproduce/*.sh"
-
-bash core_experiments/reproduce/check_anonymization_leaks.sh
 
 "$PY_BIN" - <<'PY'
 import json

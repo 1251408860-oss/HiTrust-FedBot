@@ -149,12 +149,6 @@ bash core_experiments/reproduce/reproduce_reviewer_bundle.sh
 
 The bundled rerun keeps the public Ca-Bench paths opt-in by default. Set `WITH_PUBLIC_CABENCH=1` when you explicitly want to include the same-task public scenario reruns, but use `reproduce_public_paper_bundle.sh` when you want the full paper-facing public rebuild.
 
-Anonymous-submission leak scan:
-
-```bash
-bash core_experiments/reproduce/check_anonymization_leaks.sh
-```
-
 Maintainer packaging for a GitHub Release:
 
 ```bash

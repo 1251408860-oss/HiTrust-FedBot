@@ -62,7 +62,7 @@ Useful toggles for the full public bundle:
 | --- | --- |
 | `core_experiments/` | Main codebase, configs, and reviewer-facing reproduction scripts |
 | `data_hitrust/` | Released derived internal graphs plus public Ca-Bench, Westermo, LITNET-2020, and NSL-KDD graph artifacts |
-| `paper_hitrust/` | Bundled runs, tables, figures, and manuscript-support materials |
+| `paper_hitrust/` | Bundled runs, tables, figures, and artifact manifests |
 | `environment.yml` | Recommended Conda environment for the public artifact path |
 | `RELEASE_CHECKLIST.md` | Release-scope checklist and interpretation constraints |
 | `docs/ARTIFACT_STATUS_20260326.md` | Supported versus unsupported reviewer reproduction matrix |
@@ -77,4 +77,4 @@ The public release supports paper-level reruns from the released derived graphs,
 
 ## Additional Documentation
 
-Module-specific execution details are documented in `core_experiments/README.md`, `data_hitrust/README.md`, and `paper_hitrust/README.md`. Release notes and submission-side support files remain under `docs/`, including `docs/INTERNAL_BOOTSTRAP_RAW_AUDIT_20260408.md`, `docs/RUNTIME_SCALING_NOTE_20260408.md`, and `docs/REFERENCE_BASELINE_PROVENANCE_20260407.md`.
+Module-specific execution details are documented in `core_experiments/README.md`, `data_hitrust/README.md`, and `paper_hitrust/README.md`. Supporting artifact notes remain under `docs/`, including `docs/INTERNAL_BOOTSTRAP_RAW_AUDIT_20260408.md`, `docs/RUNTIME_SCALING_NOTE_20260408.md`, and `docs/REFERENCE_BASELINE_PROVENANCE_20260407.md`.

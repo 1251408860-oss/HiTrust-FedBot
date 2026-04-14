@@ -12,12 +12,11 @@ This file summarizes what is intentionally included in the public repository and
 - precomputed run outputs under `paper_hitrust/runs/`
 - paper tables under `paper_hitrust/tables/`
 - paper figures under `paper_hitrust/figures/`
-- manuscript-support documents under `paper_hitrust/` and `docs/`
+- artifact manifests and supporting notes under `paper_hitrust/` and `docs/`
 - exact package snapshot in `requirements_artifact.txt`
 - suggested conda environment in `environment.yml`
 - reviewer checksum manifest in `docs/reviewer_bundle_sha256_20260326.txt`
 - reviewer integrity notes in `docs/ARTIFACT_STATUS_20260326.md`
-- EAAI submission templates and checklist under `docs/EAAI_*_20260327.md`
 - maintainer packaging script in `core_experiments/reproduce/package_reviewer_release.sh`
 - reviewer integrity verification script in `core_experiments/reproduce/verify_artifact_bundle.sh`
 
@@ -51,7 +50,7 @@ This file summarizes what is intentionally included in the public repository and
 
 ## Paper-Interpretation Constraints
 
-The repository is aligned with the current manuscript framing:
+The repository is aligned with the current release claim boundary:
 
 - trust-aware filtering should not be described as universally improving F1
 - the primary security gain is reducing retained poisoned participation
@@ -79,7 +78,6 @@ The repository is aligned with the current manuscript framing:
 
 - `core_experiments/reproduce/generate_reviewer_checksums.sh` refreshes the SHA-256 manifest for the static public artifact surface.
 - `core_experiments/reproduce/verify_artifact_bundle.sh` checks release completeness before a reviewer rerun and verifies mutable evidence directories by layout rather than by output checksums.
-- `core_experiments/reproduce/check_anonymization_leaks.sh` scans submission-facing markdown for obvious anonymization leaks.
 - `core_experiments/reproduce/package_reviewer_release.sh` creates a GitHub-Release-ready tarball and checksum file for maintainers.
 - This matches the Ca-Bench-style reviewer delivery pattern for the public artifact surface, while still keeping the private raw-data boundary explicit and no longer making Ca-Bench the only public evidence path.
 

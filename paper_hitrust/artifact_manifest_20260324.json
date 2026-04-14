@@ -128,12 +128,6 @@
     "reproduce_script": "core_experiments/reproduce/reproduce_internal_bootstrap_raw_audit.sh",
     "note": "Maintainer-only exact-match rebuild of the released internal graphs from preserved private traces."
   },
-  "manuscript_support": {
-    "main_draft": "paper_hitrust/manuscript_eaai_compact_draft_20260401.md",
-    "fltrust_like_note": "paper_hitrust/fltrust_like_baseline_note_20260330.md",
-    "foolsgold_note": "paper_hitrust/foolsgold_official_baseline_note_20260331.md",
-    "paper_readme": "paper_hitrust/README.md"
-  },
   "release_integrity": {
     "artifact_status": "docs/ARTIFACT_STATUS_20260326.md",
     "checksum_manifest": "docs/reviewer_bundle_sha256_20260326.txt",
@@ -145,10 +139,10 @@
     "artifact_release_notes": "docs/ARTIFACT_RELEASE_20260324.md",
     "data_availability_notes": "docs/DATA_AVAILABILITY_20260324.md",
     "artifact_status": "docs/ARTIFACT_STATUS_20260326.md",
+    "experiment_design_contract": "docs/EXPERIMENT_DESIGN_CONTRACT_20260407.md",
+    "graph_schema_contract": "docs/GRAPH_SCHEMA_CONTRACT_20260407.md",
     "runtime_note": "docs/RUNTIME_SCALING_NOTE_20260408.md",
-    "eaai_submission_checklist": "docs/EAAI_SUBMISSION_CHECKLIST_20260327.md",
-    "eaai_title_page_template": "docs/EAAI_TITLE_PAGE_TEMPLATE_20260327.md",
-    "eaai_highlights_template": "docs/EAAI_HIGHLIGHTS_TEMPLATE_20260327.md",
-    "eaai_data_availability_template": "docs/EAAI_DATA_AVAILABILITY_TEMPLATE_20260327.md"
+    "reference_baseline_provenance": "docs/REFERENCE_BASELINE_PROVENANCE_20260407.md",
+    "internal_raw_audit_note": "docs/INTERNAL_BOOTSTRAP_RAW_AUDIT_20260408.md"
   }
 }
